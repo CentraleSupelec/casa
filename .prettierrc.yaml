@@ -1,0 +1,12 @@
+singleQuote: true
+printWidth: 80
+tabWidth: 4
+overrides:
+  - files:
+      - '.gitlab-ci.yml'
+      - 'docker-compose.yml'
+      - '.prettierrc.yaml'
+    options:
+      tabWidth: 2
+plugins:
+  - ./node_modules/prettier-plugin-twig-melody
