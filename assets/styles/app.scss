@@ -1,5 +1,14 @@
+$primary: #63003c;
+$secondary: #7c8790;
+$danger: #c60b46;
+$info: #7c2a90;
+$warning: #f37320;
+$light: #83002e; // Rose de Figma
+$dark: #313e48;
+$succes: #009b7a;
+
 @import '~bootstrap/scss/bootstrap';
 
 body {
-    background-color: lightgray;
+    background-color: white;
 }
