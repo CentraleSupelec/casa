@@ -34,10 +34,22 @@ class HousingGroup
     #[Assert\NotNull]
     private ?Lessor $lessor = null;
 
+    #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: HousingGroupService::class, orphanRemoval: true)]
+    private Collection $housingGroupServices;
+
+    #[ORM\ManyToMany(targetEntity: Equipment::class)]
+    private Collection $equipments;
+
+    #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: PointOfInterest::class, orphanRemoval: true)]
+    private Collection $pointsOfInterest;
+
     public function __construct()
     {
         $this->address = new Address();
         $this->housings = new ArrayCollection();
+        $this->housingGroupServices = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
+        $this->pointsOfInterest = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -112,6 +124,90 @@ class HousingGroup
     public function setLessor(?Lessor $lessor): self
     {
         $this->lessor = $lessor;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, HousingGroupService>
+     */
+    public function getHousingGroupServices(): Collection
+    {
+        return $this->housingGroupServices;
+    }
+
+    public function addHousingGroupService(HousingGroupService $housingGroupService): self
+    {
+        if (!$this->housingGroupServices->contains($housingGroupService)) {
+            $this->housingGroupServices[] = $housingGroupService;
+            $housingGroupService->setHousingGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHousingGroupService(HousingGroupService $housingGroupService): self
+    {
+        if ($this->housingGroupServices->removeElement($housingGroupService)) {
+            // set the owning side to null (unless already changed)
+            if ($housingGroupService->getHousingGroup() === $this) {
+                $housingGroupService->setHousingGroup(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipment>
+     */
+    public function getEquipments(): Collection
+    {
+        return $this->equipments;
+    }
+
+    public function addEquipment(Equipment $equipment): self
+    {
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments[] = $equipment;
+        }
+
+        return $this;
+    }
+
+    public function removeEquipment(Equipment $equipment): self
+    {
+        $this->equipments->removeElement($equipment);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PointOfInterest>
+     */
+    public function getPointsOfInterest(): Collection
+    {
+        return $this->pointsOfInterest;
+    }
+
+    public function addPointsOfInterest(PointOfInterest $pointsOfInterest): self
+    {
+        if (!$this->pointsOfInterest->contains($pointsOfInterest)) {
+            $this->pointsOfInterest[] = $pointsOfInterest;
+            $pointsOfInterest->setHousingGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removePointsOfInterest(PointOfInterest $pointsOfInterest): self
+    {
+        if ($this->pointsOfInterest->removeElement($pointsOfInterest)) {
+            // set the owning side to null (unless already changed)
+            if ($pointsOfInterest->getHousingGroup() === $this) {
+                $pointsOfInterest->setHousingGroup(null);
+            }
+        }
 
         return $this;
     }

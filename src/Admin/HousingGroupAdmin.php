@@ -3,8 +3,11 @@
 namespace App\Admin;
 
 use App\Constants;
+use App\Entity\Equipment;
 use App\Entity\HousingGroup;
+use App\Entity\HousingGroupService;
 use App\Entity\Lessor;
+use App\Entity\PointOfInterest;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -54,6 +57,34 @@ class HousingGroupAdmin extends AbstractAdmin
                 ->add('address.country', ChoiceType::class, [
                     'label' => 'Pays',
                     'choices' => Constants::getAddressCountries(),
+                ])
+            ->end()
+            ->with('Équipements', [
+                'class' => 'col-md-8 col-md-offset-2',
+            ])
+                ->add('equipments', ModelType::class, [
+                    'class' => Equipment::class,
+                    'multiple' => true,
+                    'label' => 'Équipements des logements',
+                    'btn_add' => false,
+                ])
+            ->end()
+            ->with('Services', [
+                'class' => 'col-md-8 col-md-offset-2',
+            ])
+                ->add('housingGroupServices', ModelType::class, [
+                    'class' => HousingGroupService::class,
+                    'multiple' => true,
+                    'label' => 'Services des logements',
+                ])
+            ->end()
+            ->with('Points d\'intérêts', [
+                'class' => 'col-md-8 col-md-offset-2',
+            ])
+                ->add('pointsOfInterest', ModelType::class, [
+                    'class' => PointOfInterest::class,
+                    'multiple' => true,
+                    'label' => 'Points d\'intérêts à proximité',
                 ])
             ->end()
         ;
@@ -116,6 +147,15 @@ class HousingGroupAdmin extends AbstractAdmin
             ])
             ->add('address.country', null, [
                 'label' => 'Pays',
+            ])
+            ->add('housingGroupServices', null, [
+                'label' => 'Services',
+            ])
+            ->add('equipments', null, [
+                'label' => 'Équipements',
+            ])
+            ->add('pointsOfInterest', null, [
+                'label' => 'Points d\'intérêt',
             ])
             ->add('createdAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',

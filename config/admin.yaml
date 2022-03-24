@@ -36,3 +36,37 @@ services:
               manager_type: orm
               label: Photos de logements
               group: Logement
+
+    admin.service:
+        class: App\Admin\ServiceAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Service
+              manager_type: orm
+              label: Services
+              group: Référentiels
+
+    admin.housing_group_service:
+        class: App\Admin\HousingGroupServiceAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\HousingGroupService
+              manager_type: orm
+              show_in_dashboard: false
+
+    admin.equipment:
+        class: App\Admin\EquipmentAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Equipment
+              manager_type: orm
+              label: Équipements
+              group: Référentiels
+
+    admin.point_of_interest:
+        class: App\Admin\PointOfInterestAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\PointOfInterest
+              manager_type: orm
+              show_in_dashboard: false

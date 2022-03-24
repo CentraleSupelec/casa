@@ -46,4 +46,15 @@ final class Constants
     {
         return ['FRANCE' => 'france'];
     }
+
+    /**
+     * @return string[]
+     */
+    public static function getPointsOfInterestCategories(): array
+    {
+        return [
+            'Commerce' => 'commerce',
+            'Transport' => 'transport',
+        ];
+    }
 }
