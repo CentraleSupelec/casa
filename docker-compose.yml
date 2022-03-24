@@ -11,3 +11,15 @@ services:
       - '5432:5432'
     volumes:
       - ./volumes/psuh-db:/var/lib/postgresql/data:rw
+
+  minio:
+    image: quay.io/minio/minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: symfony
+      MINIO_ROOT_PASSWORD: ${S3_STORAGE_PASSWORD:-password}
+    ports:
+      - '9090:9000'
+      - '9091:9001'
+    volumes:
+      - ./volumes/minio:/data:rw

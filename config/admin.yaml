@@ -1,0 +1,38 @@
+services:
+    admin.lessor:
+        class: App\Admin\LessorAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Lessor
+              manager_type: orm
+              label: Bailleurs
+              group: Transverse
+
+    admin.housing_group:
+        class: App\Admin\HousingGroupAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\HousingGroup
+              manager_type: orm
+              label: Groupes de logements
+              group: Transverse
+
+    admin.housing:
+        class: App\Admin\HousingAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Housing
+              manager_type: orm
+              label: Logements
+              group: Logement
+
+    admin.housing_picture:
+        class: App\Admin\HousingPictureAdmin
+        arguments:
+            - '%env(S3_STORAGE_BASE_URL)%/%env(S3_STORAGE_BUCKET_NAME)%'
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\HousingPicture
+              manager_type: orm
+              label: Photos de logements
+              group: Logement

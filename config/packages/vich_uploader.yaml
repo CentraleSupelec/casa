@@ -1,0 +1,11 @@
+vich_uploader:
+    db_driver: orm
+    storage: flysystem
+    metadata:
+        type: attribute
+
+    mappings:
+        housing_picture:
+            uri_prefix: '%env(S3_STORAGE_BASE_URL)%/%env(S3_STORAGE_BUCKET_NAME)%'
+            upload_destination: housing_picture.storage
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

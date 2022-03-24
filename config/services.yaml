@@ -1,5 +1,7 @@
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.
+imports:
+    - resource: admin.yaml
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
@@ -22,3 +24,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    s3_object_storage:
+        class: Aws\S3\S3Client
+        arguments:
+            - version: '2006-03-01'
+              region: '%env(S3_STORAGE_REGION)%'
+              use_path_style_endpoint: true
+              credentials:
+                  key: '%env(S3_STORAGE_ACCESS_KEY)%'
+                  secret: '%env(S3_STORAGE_SECRET_KEY)%'
+              endpoint: '%env(S3_STORAGE_BASE_URL)%'

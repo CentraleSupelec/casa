@@ -1,4 +1,10 @@
 {
+    "aws/aws-crt-php": {
+        "version": "v1.0.2"
+    },
+    "aws/aws-sdk-php": {
+        "version": "3.214.0"
+    },
     "behat/transliterator": {
         "version": "v1.3.0"
     },
@@ -107,11 +113,47 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.5.0"
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.4.1"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.5.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "2.1.0"
+    },
+    "jms/metadata": {
+        "version": "2.6.1"
+    },
+    "jms/serializer": {
+        "version": "3.17.1"
+    },
+    "knplabs/knp-menu": {
+        "version": "v3.3.0"
+    },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.2.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
+    "league/flysystem": {
+        "version": "3.0.12"
+    },
+    "league/flysystem-aws-s3-v3": {
+        "version": "3.0.11"
+    },
+    "league/flysystem-bundle": {
+        "version": "2.2.0"
+    },
+    "league/mime-type-detection": {
+        "version": "1.9.0"
+    },
     "monolog/monolog": {
         "version": "2.4.0"
+    },
+    "mtdowling/jmespath.php": {
+        "version": "2.6.1"
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
@@ -140,11 +182,23 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "2.0.1"
     },
     "psr/log": {
         "version": "3.0.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sensio/framework-extra-bundle": {
         "version": "6.2",
@@ -157,6 +211,50 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "sonata-project/admin-bundle": {
+        "version": "4.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "0e5931df1732e3dccfba42a20853049e5e9db6ae"
+        },
+        "files": [
+            "config/packages/sonata_admin.yaml",
+            "config/routes/sonata_admin.yaml",
+            "src/Admin/.gitignore"
+        ]
+    },
+    "sonata-project/block-bundle": {
+        "version": "4.11.0"
+    },
+    "sonata-project/cache": {
+        "version": "2.2.0"
+    },
+    "sonata-project/doctrine-extensions": {
+        "version": "1.16.0"
+    },
+    "sonata-project/doctrine-orm-admin-bundle": {
+        "version": "4.2.7"
+    },
+    "sonata-project/exporter": {
+        "version": "2.11.0"
+    },
+    "sonata-project/form-extensions": {
+        "version": "1.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.4",
+            "ref": "9c8a1e8ce2b1f215015ed16652c4ed18eb5867fd"
+        },
+        "files": [
+            "config/packages/sonata_form.yaml"
+        ]
+    },
+    "sonata-project/twig-extensions": {
+        "version": "1.9.1"
     },
     "stof/doctrine-extensions-bundle": {
         "version": "1.7",
@@ -388,6 +486,9 @@
     "symfony/runtime": {
         "version": "v6.0.5"
     },
+    "symfony/security-acl": {
+        "version": "v3.3.1"
+    },
     "symfony/security-bundle": {
         "version": "6.0",
         "recipe": {
@@ -524,8 +625,23 @@
     "twig/extra-bundle": {
         "version": "v3.3.8"
     },
+    "twig/string-extra": {
+        "version": "v3.3.5"
+    },
     "twig/twig": {
         "version": "v3.3.8"
+    },
+    "vich/uploader-bundle": {
+        "version": "1.19",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.7",
+            "ref": "c4f5755b37fb65b9c6a3cbdae91205c15a137ed4"
+        },
+        "files": [
+            "config/packages/vich_uploader.yaml"
+        ]
     },
     "webmozart/assert": {
         "version": "1.10.0"

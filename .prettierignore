@@ -4,3 +4,5 @@ vendor
 composer.lock
 package-lock.json
 README.md
+public/bundles/
+volumes/

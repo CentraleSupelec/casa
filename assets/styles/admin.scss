@@ -1,0 +1,32 @@
+.admin-housing-picture-show-view {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    img {
+        border: solid;
+        border-radius: 8px;
+        overflow: hidden;
+        max-height: 300px;
+        max-width: 300px;
+    }
+}
+
+.admin-housing-picture-image-form-field {
+    .vich-image {
+        display: flex;
+        flex-direction: column;
+        a {
+            width: auto;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            img {
+                max-height: 300px;
+                max-width: 300px;
+                border: solid;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+        }
+    }
+}

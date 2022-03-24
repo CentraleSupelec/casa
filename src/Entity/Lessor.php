@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\LessorRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: LessorRepository::class)]
 class Lessor
@@ -14,10 +15,16 @@ class Lessor
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private readonly int $id;
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $name;
+    #[ORM\Column(type: 'string', length: 80)]
+    #[Assert\NotNull]
+    private ?string $name = null;
+
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
 
     public function getId(): ?int
     {
@@ -29,7 +36,7 @@ class Lessor
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

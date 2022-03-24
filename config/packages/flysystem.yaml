@@ -1,0 +1,8 @@
+flysystem:
+    storages:
+        housing_picture.storage:
+            adapter: 'aws'
+            visibility: public
+            options:
+                client: s3_object_storage
+                bucket: '%env(S3_STORAGE_BUCKET_NAME)%'
