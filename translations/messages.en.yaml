@@ -1,0 +1,18 @@
+housing:
+    living_mode:
+        full: Full
+        homestay: Homestay Accomodation
+    occupation_mode:
+        alone: Alone
+        couple: Couple
+        share: House-share
+    type:
+        t1: T1
+        t2: T2
+        t3: T3
+housing_group:
+    country:
+        france: FRANCE
+    point_of_interest_category:
+        store: Store
+        transportation: Transportation

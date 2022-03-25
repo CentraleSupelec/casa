@@ -10,9 +10,9 @@ final class Constants
     public static function getHousingTypes(): array
     {
         return [
-            'T1' => 'T1',
-            'T2' => 'T2',
-            'T3' => 'T3',
+            'housing.type.t1' => 't1',
+            'housing.type.t2' => 't2',
+            'housing.type.t3' => 't3',
         ];
     }
 
@@ -22,8 +22,8 @@ final class Constants
     public static function getHousingLivingModes(): array
     {
         return [
-            'Entier' => 'entier',
-            'Chez l\'habitant' => 'habitant',
+            'housing.living_mode.full' => 'full',
+            'housing.living_mode.homestay' => 'homestay',
         ];
     }
 
@@ -33,9 +33,9 @@ final class Constants
     public static function getHousingOccupationModes(): array
     {
         return [
-            'Seul' => 'seul',
-            'Couple' => 'couple',
-            'Colocation' => 'colocation',
+            'housing.occupation_mode.alone' => 'alone',
+            'housing.occupation_mode.couple' => 'couple',
+            'housing.occupation_mode.share' => 'share',
         ];
     }
 
@@ -44,7 +44,7 @@ final class Constants
      */
     public static function getAddressCountries(): array
     {
-        return ['FRANCE' => 'france'];
+        return ['housing_group.country.france' => 'france'];
     }
 
     /**
@@ -53,8 +53,8 @@ final class Constants
     public static function getPointsOfInterestCategories(): array
     {
         return [
-            'Commerce' => 'commerce',
-            'Transport' => 'transport',
+            'housing_group.point_of_interest_category.store' => 'store',
+            'housing_group.point_of_interest_category.transportation' => 'transportation',
         ];
     }
 }

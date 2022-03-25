@@ -1,0 +1,18 @@
+housing:
+    living_mode:
+        full: Entier
+        homestay: Chez l'habitant
+    occupation_mode:
+        alone: Seul
+        couple: Couple
+        share: Colocation
+    type:
+        t1: T1
+        t2: T2
+        t3: T3
+housing_group:
+    country:
+        france: FRANCE
+    point_of_interest_category:
+        store: Commerce
+        transportation: Transport
