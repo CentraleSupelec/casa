@@ -71,6 +71,11 @@ php bin/console doctrine:migrations:migrate
 php bin/console make:migration
 ```
 
+* Chargement des données de référence 
+```
+symfony console app:load-refdata data/reference-data.yaml
+```
+
 ## Outils pour le développement
 
 * Formatting automatique des fichiers de front-end (templates twig, js, scss, etc.) avec `prettier`

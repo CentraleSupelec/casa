@@ -1,0 +1,42 @@
+service:
+    - label: Eau
+    - label: Electricité
+    - label: Internet
+    - label: Entretien logement
+    - label: Petit déjeuner Cafétéria
+    - label: Petit déjeuner à Emporter
+    - label: Distributeurs pain
+    - label: Distributeur viennoiseries
+    - label: Réception de colis
+    - label: Prêt électroménager
+    - label: Assistance Technique
+    - label: Accueil 24/24
+    - label: Assurance Multirisque habitation
+
+equipement:
+    - label: Parking vélo
+    - label: Laverie
+    - label: Baby foot
+    - label: Espace détente
+    - label: Potager
+    - label: Terrain de basket
+    - label: Salle de Fitness
+    - label: Ascenceur
+    - label: Boite aux lettres
+    - label: Salle de musique
+    - label: Surveillance vidéo
+    - label: Accès sécurisé
+    - label: Interphone
+    - label: Détecteur Fumée
+    - label: Agora
+    - label: Kitchenette
+    - label: Réfrigirateur
+    - label: Salle d'eau
+    - label: Prise TV
+    - label: Lit
+    - label: Table de Chevet
+    - label: Placard
+    - label: Salle de bain
+    - label: Cuisine commune
+    - label: Balcon
+    - label: Micro-onde
