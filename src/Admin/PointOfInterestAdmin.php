@@ -36,12 +36,18 @@ class PointOfInterestAdmin extends AbstractAdmin
                 ->add('description', TextType::class, [
                     'label' => 'Description',
                     'required' => false,
-                ])
+                ]);
+
+        if (!$this->isChild()) {
+            $form
                 ->add('housingGroup', ModelType::class, [
                     'label' => 'Groupe de logements',
                     'class' => HousingGroup::class,
                     'btn_add' => false,
-                ])
+                ]);
+        }
+
+        $form
             ->end();
     }
 
@@ -53,17 +59,21 @@ class PointOfInterestAdmin extends AbstractAdmin
             ])
             ->add('category', null, [
                 'label' => 'Catégorie',
-            ])
-            ->addIdentifier('housingGroup', null, [
-                'label' => 'Groupe de logements',
-            ])
+            ]);
+
+        if (!$this->isChild()) {
+            $list
+                ->addIdentifier('housingGroup', null, [
+                    'label' => 'Groupe de logements',
+                ]);
+        }
+        $list
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'edit' => [],
                     'delete' => [],
                 ],
-            ])
-        ;
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $show): void
@@ -88,7 +98,6 @@ class PointOfInterestAdmin extends AbstractAdmin
             ->add('updated_at', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Dernière mise à jour',
-            ])
-        ;
+            ]);
     }
 }

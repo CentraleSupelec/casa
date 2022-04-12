@@ -15,7 +15,11 @@ services:
               model_class: App\Entity\HousingGroup
               manager_type: orm
               label: Groupes de logements
-              group: Transverse
+              group: Logement
+        calls:
+            - ['addChild', ['@admin.housing_group_service', 'housingGroup']]
+            - ['addChild', ['@admin.housing', 'housingGroup']]
+            - ['addChild', ['@admin.point_of_interest', 'housingGroup']]
 
     admin.housing:
         class: App\Admin\HousingAdmin
@@ -25,6 +29,8 @@ services:
               manager_type: orm
               label: Logements
               group: Logement
+        calls:
+            - ['addChild', ['@admin.housing_picture', 'housing']]
 
     admin.housing_picture:
         class: App\Admin\HousingPictureAdmin

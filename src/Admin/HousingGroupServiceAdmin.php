@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class HousingGroupServiceAdmin extends AbstractAdmin
@@ -30,30 +31,34 @@ class HousingGroupServiceAdmin extends AbstractAdmin
                     'class' => Service::class,
                     'btn_add' => false,
                 ])
-                ->add('housingGroup', ModelType::class, [
-                    'label' => 'Groupe de logements',
-                    'class' => HousingGroup::class,
-                ])
+
                 ->add('isOptional', CheckboxType::class, [
                     'label' => 'Service en option (frais supplémentaires)',
                     'required' => false,
-                ])
+                ]);
+
+        if (!$this->isChild()) {
+            $form
+                ->add('housingGroup', EntityType::class, [
+                    'label' => 'Groupe de logements',
+                    'class' => HousingGroup::class,
+                ]);
+        }
+
+        $form
             ->end();
     }
 
     protected function configureListFields(ListMapper $list): void
     {
+        if (!$this->isChild()) {
+            $list->addIdentifier('housingGroup');
+        }
         $list
-            ->add('service', null, [
-                'label' => 'Service',
-            ])
-            ->add('housingGroup', null, [
-                'label' => 'Groupe de logements',
-            ])
+            ->addIdentifier('service')
             ->add('isOptional', null, [
                 'label' => 'Service en option',
-            ])
-        ;
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $show): void
@@ -67,7 +72,6 @@ class HousingGroupServiceAdmin extends AbstractAdmin
             ])
             ->add('isOptional', null, [
                 'label' => 'Service en option',
-            ])
-        ;
+            ]);
     }
 }

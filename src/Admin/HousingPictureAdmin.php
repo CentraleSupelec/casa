@@ -34,13 +34,19 @@ class HousingPictureAdmin extends AbstractAdmin
             ->with('Général', [
                 'class' => 'col-md-8 col-md-offset-2',
             ])
-            ->add('label', TextType::class, [
-                'label' => 'Titre de la photo',
-                'required' => false,
-            ])
-            ->add('housing', ModelType::class, [
-                'label' => 'Logement concerné',
-            ])
+                ->add('label', TextType::class, [
+                    'label' => 'Titre de la photo',
+                    'required' => false,
+                ]);
+
+        if (!$this->isChild()) {
+            $form
+                ->add('housing', ModelType::class, [
+                    'label' => 'Logement concerné',
+                ]);
+        }
+
+        $form
             ->add('file', VichImageType::class, [
                 'label' => 'Photo du logement',
                 'row_attr' => [
@@ -65,17 +71,20 @@ class HousingPictureAdmin extends AbstractAdmin
             ])
             ->add('housing.housingGroup', null, [
                 'label' => 'Groupe de logements',
-            ])
-            ->add('housing', null, [
-                'label' => 'Logement',
-            ])
+            ]);
+        if (!$this->isChild()) {
+            $list
+                ->add('housing', null, [
+                    'label' => 'Logement',
+                ]);
+        }
+        $list
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'edit' => [],
                     'delete' => [],
                 ],
-            ])
-        ;
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $show): void
@@ -106,7 +115,6 @@ class HousingPictureAdmin extends AbstractAdmin
             ->add('updatedAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Dernière mise à jour',
-            ])
-        ;
+            ]);
     }
 }

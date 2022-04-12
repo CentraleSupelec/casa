@@ -5,10 +5,11 @@ namespace App\Admin;
 use App\Constants;
 use App\Entity\Equipment;
 use App\Entity\HousingGroup;
-use App\Entity\HousingGroupService;
 use App\Entity\Lessor;
 use App\Entity\PointOfInterest;
+use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -19,6 +20,28 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HousingGroupAdmin extends AbstractAdmin
 {
+    protected function configureTabMenu(MenuItemInterface $menu, string $action, ?AdminInterface $childAdmin = null): void
+    {
+        if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
+            return;
+        }
+
+        $admin = $this->isChild() ? $this->getParent() : $this;
+        $id = $admin->getRequest()->get('id');
+
+        $menu->addChild('View', $admin->generateMenuUrl('show', ['id' => $id]));
+
+        if ($this->isGranted('EDIT')) {
+            $menu->addChild('Edit', $admin->generateMenuUrl('edit', ['id' => $id]));
+        }
+
+        if ($this->isGranted('LIST')) {
+            $menu->addChild('Services', $admin->generateMenuUrl('admin.housing_group_service.list', ['id' => $id]));
+            $menu->addChild('Logements', $admin->generateMenuUrl('admin.housing.list', ['id' => $id]));
+            $menu->addChild('POI', $admin->generateMenuUrl('admin.point_of_interest.list', ['id' => $id]));
+        }
+    }
+
     public function toString(object $object): string
     {
         return $object instanceof HousingGroup ? (string) $object : 'Groupe de logements';
@@ -69,15 +92,7 @@ class HousingGroupAdmin extends AbstractAdmin
                     'btn_add' => false,
                 ])
             ->end()
-            ->with('Services', [
-                'class' => 'col-md-8 col-md-offset-2',
-            ])
-                ->add('housingGroupServices', ModelType::class, [
-                    'class' => HousingGroupService::class,
-                    'multiple' => true,
-                    'label' => 'Services des logements',
-                ])
-            ->end()
+
             ->with('Points d\'intérêts', [
                 'class' => 'col-md-8 col-md-offset-2',
             ])
@@ -86,8 +101,7 @@ class HousingGroupAdmin extends AbstractAdmin
                     'multiple' => true,
                     'label' => 'Points d\'intérêts à proximité',
                 ])
-            ->end()
-        ;
+            ->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $filter): void
@@ -120,8 +134,7 @@ class HousingGroupAdmin extends AbstractAdmin
                     'edit' => [],
                     'delete' => [],
                 ],
-            ])
-        ;
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $show): void
@@ -148,9 +161,6 @@ class HousingGroupAdmin extends AbstractAdmin
             ->add('address.country', null, [
                 'label' => 'Pays',
             ])
-            ->add('housingGroupServices', null, [
-                'label' => 'Services',
-            ])
             ->add('equipments', null, [
                 'label' => 'Équipements',
             ])
@@ -164,7 +174,6 @@ class HousingGroupAdmin extends AbstractAdmin
             ->add('updatedAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Dernière mise à jour',
-            ])
-        ;
+            ]);
     }
 }

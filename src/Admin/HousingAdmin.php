@@ -5,7 +5,9 @@ namespace App\Admin;
 use App\Constants;
 use App\Entity\Housing;
 use App\Entity\HousingGroup;
+use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -18,6 +20,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HousingAdmin extends AbstractAdmin
 {
+    protected function configureTabMenu(MenuItemInterface $menu, string $action, ?AdminInterface $childAdmin = null): void
+    {
+        if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
+            return;
+        }
+
+        $admin = $this->isChild() ? $this->getParent() : $this;
+        $id = $admin->getRequest()->get('id');
+
+        $menu->addChild('View', $admin->generateMenuUrl('show', ['id' => $id]));
+
+        if ($this->isGranted('EDIT')) {
+            $menu->addChild('Edit', $admin->generateMenuUrl('edit', ['id' => $id]));
+        }
+
+        if ($this->isGranted('LIST')) {
+            $menu->addChild('Photos', $admin->generateMenuUrl('admin.housing_picture.list', ['id' => $id]));
+        }
+    }
+
     public function toString(object $object): string
     {
         return $object instanceof Housing ? (string) $object : 'Logement';
@@ -28,88 +50,95 @@ class HousingAdmin extends AbstractAdmin
         $form
             ->with('Général', [
                 'class' => 'col-md-8 col-md-offset-2',
-            ])
+            ]);
+
+        if (!$this->isChild()) {
+            $form
                 ->add('housingGroup', ModelType::class, [
                     'class' => HousingGroup::class,
-                ])
-                ->add('type', ChoiceType::class, [
-                    'label' => 'Type',
-                    'choices' => Constants::getHousingTypes(),
-                ])
-                ->add('description', TextType::class, [
-                    'label' => 'Description',
-                    'required' => false,
-                ])
-                ->add('redirectLink', TextType::class, [
-                    'label' => 'Lien de redirection',
-                    'required' => false,
-                ])
-                ->add('areaMin', IntegerType::class, [
-                    'label' => 'Surface (min)',
-                ])
-                ->add('areaMax', IntegerType::class, [
-                    'label' => 'Surface (max)',
-                    'required' => false,
-                ])
-                ->add('rentMin', IntegerType::class, [
-                    'label' => 'Loyer (min)',
-                ])
-                ->add('rentMax', IntegerType::class, [
-                    'label' => 'Loyer (max)',
-                    'required' => false,
-                ])
-                ->add('chargesIncluded', CheckboxType::class, [
-                    'label' => 'Charges comprises',
-                    'required' => false,
-                ])
-                ->add('chargesMin', IntegerType::class, [
-                    'label' => 'Charges (min)',
-                    'required' => false,
-                ])
-                ->add('chargesMax', IntegerType::class, [
-                    'label' => 'Charges (max)',
-                    'required' => false,
-                ])
-                ->add('available', CheckboxType::class, [
-                    'label' => 'Disponible',
-                    'required' => false,
-                ])
-                ->add('applicationFeeMin', IntegerType::class, [
-                    'label' => 'Frais de dossier (min)',
-                ])
-                ->add('applicationFeeMax', IntegerType::class, [
-                    'label' => 'Frais de dossier (max)',
-                    'required' => false,
-                ])
-                ->add('securityDepositMin', IntegerType::class, [
-                    'label' => 'Dépôt de garantie (min)',
-                ])
-                ->add('securityDepositMax', IntegerType::class, [
-                    'label' => 'Dépôt de garantie (max)',
-                    'required' => false,
-                ])
-                ->add('livingMode', ChoiceType::class, [
-                    'label' => 'Mode d\'habitation',
-                    'required' => false,
-                    'choices' => Constants::getHousingLivingModes(),
-                ])
-                ->add('occupationMode', ChoiceType::class, [
-                    'label' => 'Mode d\'occupation',
-                    'required' => false,
-                    'choices' => Constants::getHousingOccupationModes(),
-                ])
-                ->add('accessibility', CheckboxType::class, [
-                    'label' => 'Accessibilité PMR',
-                    'required' => false,
-                ])
-                ->add('smoking', CheckboxType::class, [
-                    'label' => 'Fumeur',
-                    'required' => false,
-                ])
-                ->add('animalsAllowed', CheckboxType::class, [
-                    'label' => 'Animaux autorisés',
-                    'required' => false,
-                ])
+                ]);
+        }
+
+        $form
+
+            ->add('type', ChoiceType::class, [
+                'label' => 'Type',
+                'choices' => Constants::getHousingTypes(),
+            ])
+            ->add('description', TextType::class, [
+                'label' => 'Description',
+                'required' => false,
+            ])
+            ->add('redirectLink', TextType::class, [
+                'label' => 'Lien de redirection',
+                'required' => false,
+            ])
+            ->add('areaMin', IntegerType::class, [
+                'label' => 'Surface (min)',
+            ])
+            ->add('areaMax', IntegerType::class, [
+                'label' => 'Surface (max)',
+                'required' => false,
+            ])
+            ->add('rentMin', IntegerType::class, [
+                'label' => 'Loyer (min)',
+            ])
+            ->add('rentMax', IntegerType::class, [
+                'label' => 'Loyer (max)',
+                'required' => false,
+            ])
+            ->add('chargesIncluded', CheckboxType::class, [
+                'label' => 'Charges comprises',
+                'required' => false,
+            ])
+            ->add('chargesMin', IntegerType::class, [
+                'label' => 'Charges (min)',
+                'required' => false,
+            ])
+            ->add('chargesMax', IntegerType::class, [
+                'label' => 'Charges (max)',
+                'required' => false,
+            ])
+            ->add('available', CheckboxType::class, [
+                'label' => 'Disponible',
+                'required' => false,
+            ])
+            ->add('applicationFeeMin', IntegerType::class, [
+                'label' => 'Frais de dossier (min)',
+            ])
+            ->add('applicationFeeMax', IntegerType::class, [
+                'label' => 'Frais de dossier (max)',
+                'required' => false,
+            ])
+            ->add('securityDepositMin', IntegerType::class, [
+                'label' => 'Dépôt de garantie (min)',
+            ])
+            ->add('securityDepositMax', IntegerType::class, [
+                'label' => 'Dépôt de garantie (max)',
+                'required' => false,
+            ])
+            ->add('livingMode', ChoiceType::class, [
+                'label' => 'Mode d\'habitation',
+                'required' => false,
+                'choices' => Constants::getHousingLivingModes(),
+            ])
+            ->add('occupationMode', ChoiceType::class, [
+                'label' => 'Mode d\'occupation',
+                'required' => false,
+                'choices' => Constants::getHousingOccupationModes(),
+            ])
+            ->add('accessibility', CheckboxType::class, [
+                'label' => 'Accessibilité PMR',
+                'required' => false,
+            ])
+            ->add('smoking', CheckboxType::class, [
+                'label' => 'Fumeur',
+                'required' => false,
+            ])
+            ->add('animalsAllowed', CheckboxType::class, [
+                'label' => 'Animaux autorisés',
+                'required' => false,
+            ])
             ->end();
     }
 
@@ -150,8 +179,7 @@ class HousingAdmin extends AbstractAdmin
                     'edit' => [],
                     'delete' => [],
                 ],
-            ])
-        ;
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $show): void
@@ -227,7 +255,6 @@ class HousingAdmin extends AbstractAdmin
             ->add('updatedAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Dernière mise à jour',
-            ])
-        ;
+            ]);
     }
 }
