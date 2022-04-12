@@ -1,80 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Hello HomeController!
+    {{ 'home.pagetitle'|trans }}
 {% endblock %}
 
 {% block body %}
-    <div class="container" style="text-align: center">
-        <div>
-            <h2>
-                Welcome to Paris Saclay University Housing Platform !
-            </h2>
+    <div class="container text-center">
+        <h1>
+            {{ 'home.welcome.title'|trans }}
+        </h1>
 
-            <div>
-                <h3>
-                    La plateforme qui permet aux étudiants de l'université
-                    Paris-Saclay
-                </h3>
-
-                <h3>
-                    de trouver leur logement.
-                </h3>
-            </div>
-
-            <div class="alert alert-light">
-                There are currently
-
-                {{ lessor_count }}
-
-                lessors registered on the platform.
-            </div>
-
-            <h3>
-                Proposition choix palette
-            </h3>
-            <p>
-                d'autres choix sont possibles dans la charte de PS
-
-                <a class="btn btn-outline-success"
-                    href="https://trello.com/c/sTkZ3kDb"
-                    target="_blank">
-                    Carte Trello
-                </a>
-            </p>
-            <div class="row g-2">
-                <div class="col-4">
-                    <div class="p-3 bg-primary" style="color: white;">
-                        primary
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3"
-                        style="color: white; background-color: rgba(0,0,0,.4);">
-                        secondary
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3 bg-success" style="color: white;">
-                        Success
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3 bg-danger" style="color: white;">
-                        Danger
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3 bg-warning">
-                        Warning
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3 bg-info" style="color: white;">
-                        Info
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2>
+            {{ 'home.welcome.subtitle'|trans }}
+        </h2>
     </div>
+    {% import '/home/housingcard.html.twig' as HousingCard %}
+    <main class="container">
+        {% for housing in housings %}
+            {{ HousingCard.displayCard(housing, imageBaseUrl) }}
+        {% endfor %}
+    </main>
 {% endblock %}

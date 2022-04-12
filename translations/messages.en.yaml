@@ -7,12 +7,21 @@ housing:
         couple: Couple
         share: House-share
     type:
+        studio: Studio
         t1: T1
+        t1bis: T1 Bis
         t2: T2
         t3: T3
+        t4: T4
+    vatincluded: VAT incl.
 housing_group:
     country:
         france: FRANCE
     point_of_interest_category:
         store: Store
         transportation: Transportation
+home:
+    pagetitle: Accueil PSUH
+    welcome:
+        title: Welcome to Paris Saclay University Housing Platform !
+        subtitle: the website that helps students to find their housing.

@@ -1,0 +1,106 @@
+{% macro displayCard(housing, imageBaseUrl) %}
+    <div class="card mb-3">
+        <div class="row g-0 mb-4">
+            <div id="carousel{{ housing.id }}"
+                class="carousel slide col-lg-4"
+                data-bs-interval="false"
+                data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% set imgNum = 0 %}
+                    {% for picture in housing.pictures %}
+                        <div class="carousel-item {{
+                            imgNum == 0
+                                ? 'active'
+                            }} ">
+                            <img src="{{ imageBaseUrl }}/{{
+                                picture.getPicture()
+                                }}"
+                                class="img-fluid d-block rounded-2"
+                                alt="{{ picture.label }}" />
+                        </div>
+                        {% set imgNum = imgNum + 1 %}
+                    {% endfor %}
+                </div>
+
+                {# Caroussel controls Prev / next Picture #}
+
+                {% if (housing.pictures|length) > 1 %}
+                    <button class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carousel{{ housing.id }}"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"
+                            aria-hidden="true">
+
+                        </span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carousel{{ housing.id }}"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"
+                            aria-hidden="true">
+
+                        </span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                {% endif %}
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <span>
+                            {{ housing.type }} - {{ housing.areaMin }}m²
+                        </span>
+                        <span>{{ housing.housingGroup.address.city }}</span>
+                        <span>
+                            {% if housing.smoking %}
+                                <i class="fa-solid fa-smoking"></i>
+                            {% endif %}
+                            {% if housing.animalsAllowed %}
+                                <i class="fa-solid fa-paw"></i>
+                            {% endif %}
+
+                            {% if housing.accessibility %}
+                                <i class="fa-brands fa-accessible-icon"></i>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-start flex-column bd-highlight mb-3">
+                        {% for poi in housing.housingGroup.pointsOfInterest %}
+                            {% if poi.category == 'transportation' %}
+                                <div class="p-2">
+                                    <i class="fa-solid fa-bus"></i>{{
+                                        poi.label
+                                    }} {{ poi.description }}
+                                </div>
+                            {% endif %}
+                            {% if poi.category == 'store' %}
+                                <div class="p-2">
+                                    <i class="fa-solid fa-basket-shopping"></i>{{
+                                        poi.label
+                                    }} {{ poi.description }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="p-2">
+                            <i class="fa-solid fa-school"></i>CentraleSupélec
+                        </div>
+                    </div>
+
+                    <a href="#" class="card-link">
+                        Voir les conditions d’éligibilité après connexion
+                    </a>
+
+                    <span class="price card-text d-flex align-items-end justify-content-end">
+                        {{ housing.rentMin }} € {{
+                            'housing.vatincluded'|trans
+                        }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

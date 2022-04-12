@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Required meta tags -->
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
             {% block title %}
                 Welcome!
@@ -19,6 +21,7 @@
         {% endblock %}
     </head>
     <body>
+        {% include 'navbar.html.twig' %}
         {% block body %}
 
         {% endblock %}

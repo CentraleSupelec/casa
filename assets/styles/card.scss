@@ -1,0 +1,30 @@
+.card {
+    border: dotted 1px;
+    border-radius: 5px;
+    border-color: $light;
+}
+
+.card-title {
+    font-size: xx-large;
+}
+
+.card-title svg {
+    border: solid;
+    border-radius: 10%;
+    padding: 4px;
+    color: $primary;
+}
+
+ul.services {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card-link {
+    font-size: small;
+}
+
+.price {
+    font-size: xx-large;
+}

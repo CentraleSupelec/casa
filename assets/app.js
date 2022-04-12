@@ -8,5 +8,10 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
+import '@fortawesome/fontawesome-free/js/all';
+
+import * as $ from 'jQuery';
+import 'bootstrap/js/dist/carousel';
+
 // start the Stimulus application
 import './bootstrap';
