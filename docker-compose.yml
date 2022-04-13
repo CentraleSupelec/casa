@@ -23,3 +23,12 @@ services:
       - '9091:9001'
     volumes:
       - ./volumes/minio:/data:rw
+
+  test-database:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: test-psuh-db
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_USER: test-symfony
+    ports:
+      - '5433:5432'

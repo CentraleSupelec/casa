@@ -58,6 +58,31 @@ symfony server:start
 
 Le projet est ensuite accessible à cette URL : https://127.0.01:8000/
 
+### Lancement des tests
+
+Pour lancer les tests, il faut commencer par lancer la base de données de tests (via docker):
+
+```
+docker-compose up -d test-database
+```
+
+Il faut ensuite vérifier que les variables d'environnements indiquées dans le fichier `.env.test` permettent bien de se
+connecter à cette base de données (variables `PASSWORD` et `DATABASE_URL`). Pour avoir une configuration locale
+particulière, il est possible de copier le fichier `.env.test` dans `.env.test.local` (non commit) qui prendra la
+précédence.
+
+Il faut ensuite générer les tables dans cette base de données telles que décrites par les entités, pour cela :
+
+```
+php bin/console --env=test doctrine:schema:create
+```
+
+On peut enfin lancer les tests avec la commande suivante :
+
+```
+php bin/phpunit
+```
+
 
 ## Commandes utiles
 
