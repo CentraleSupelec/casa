@@ -25,3 +25,6 @@ home:
     welcome:
         title: Welcome to Paris Saclay University Housing Platform !
         subtitle: the website that helps students to find their housing.
+    sort:
+        price: Sort by min price
+        area: Sort by min area

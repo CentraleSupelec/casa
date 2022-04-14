@@ -140,11 +140,17 @@
     "jms/serializer": {
         "version": "3.17.1"
     },
+    "knplabs/knp-components": {
+        "version": "v3.5.0"
+    },
     "knplabs/knp-menu": {
         "version": "v3.3.0"
     },
     "knplabs/knp-menu-bundle": {
         "version": "v3.2.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.8.0"
     },
     "laminas/laminas-code": {
         "version": "4.5.1"

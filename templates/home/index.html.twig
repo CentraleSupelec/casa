@@ -16,8 +16,27 @@
     </div>
     {% import '/home/housingcard.html.twig' as HousingCard %}
     <main class="container">
-        {% for housing in housings %}
+        <div class="d-flex justify-content-end">
+            {{
+                knp_pagination_sortable(
+                    pagination,
+                    'home.sort.price'|trans,
+                    'h.rentMin'
+                )
+            }}
+            {{
+                knp_pagination_sortable(
+                    pagination,
+                    'home.sort.area'|trans,
+                    'h.areaMin'
+                )
+            }}
+        </div>
+        {% for housing in pagination %}
             {{ HousingCard.displayCard(housing, imageBaseUrl) }}
         {% endfor %}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     </main>
 {% endblock %}

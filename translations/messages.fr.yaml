@@ -25,3 +25,6 @@ home:
     welcome:
         title: Bienvenue sur la plateforme de logement de l'Université Paris Saclay!
         subtitle: La plateforme qui permet aux étudiants de l'université Paris-Saclay de trouver leur logement.
+    sort:
+        price: Trier par prix mini
+        area: Trier par surface mini
