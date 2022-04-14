@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
         <!-- Required meta tags -->
         <meta charset="UTF-8" />
@@ -25,5 +25,8 @@
         {% block body %}
 
         {% endblock %}
+        <footer>
+            {% include 'footer.html.twig' %}
+        </footer>
     </body>
 </html>

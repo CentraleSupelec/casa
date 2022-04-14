@@ -21,6 +21,9 @@ housing_group:
         store: Commerce
         transportation: Transport
 home:
+    nav:
+        title: La plateforme de logements mutualisée
+        subtitle: de l'Université Paris-Saclay
     pagetitle: Accueil PSUH
     welcome:
         title: Bienvenue sur la plateforme de logement de l'Université Paris Saclay!

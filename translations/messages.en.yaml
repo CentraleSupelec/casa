@@ -21,6 +21,9 @@ housing_group:
         store: Store
         transportation: Transportation
 home:
+    nav:
+        title: The housng platorm
+        subtitle: of Paris-Saclay University
     pagetitle: Accueil PSUH
     welcome:
         title: Welcome to Paris Saclay University Housing Platform !

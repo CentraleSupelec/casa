@@ -3,7 +3,7 @@ $secondary: #7c8790;
 $danger: #c60b46;
 $info: #7c2a90;
 $warning: #f37320;
-$light: rgba(131, 0, 46, 0.2); // Rose de Figma
+$light: #eee;
 $dark: #313e48;
 $succes: #009b7a;
 
@@ -11,6 +11,26 @@ $succes: #009b7a;
 
 @import './card.scss';
 
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf');
+}
+
 body {
+    font-family: 'Open Sans', sans-serif;
     background-color: white;
+    font-variation-settings: 'wgth' 300;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h2 {
+    font-size: x-large;
+}
+
+footer {
+    color: $primary;
+    background-color: rgba($primary, 0.2);
 }
