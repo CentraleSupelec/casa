@@ -12,6 +12,7 @@ import '@fortawesome/fontawesome-free/js/all';
 
 import * as $ from 'jQuery';
 import 'bootstrap/js/dist/carousel';
+import 'bootstrap/js/dist/collapse';
 
 // start the Stimulus application
 import './bootstrap';

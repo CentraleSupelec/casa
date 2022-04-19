@@ -1,0 +1,37 @@
+{% macro displayArea(min, max) %}
+    {% if max is null %}
+        <span>{{ min }} m<sup>2</sup></span>
+    {% else %}
+        <span>{{ min }} - {{ max }} m<sup>2</sup></span>
+    {% endif %}
+{% endmacro %}
+
+{% macro displayRangeCost(min, max) %}
+    {% if max is null %}
+        <span>{{ min }} €</span>
+    {% else %}
+        <span>{{ min }} - {{ max }} €</span>
+    {% endif %}
+{% endmacro %}
+
+{% macro displayMonthlyRangeCost(min, max) %}
+    <span>
+        {{ _self.displayRangeCost(min, max) }}
+        {{ 'housing.price.per_month'|trans }}
+    </span>
+{% endmacro %}
+
+{% macro displayCharges(included, min, max) %}
+    {% if included %}
+        <span class="list-title">
+            {{ 'housing.price.charges.included'|trans }}
+        </span>
+    {% else %}
+        <span>
+            <span class="strong-text">
+                {{ 'housing.price.charges.title'|trans }}
+            </span>
+            {{ _self.displayMonthlyRangeCost(min, max) }}
+        </span>
+    {% endif %}
+{% endmacro %}

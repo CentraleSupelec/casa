@@ -1,0 +1,9 @@
+{% macro displayAddress(address) %}
+    <ul>
+        <li class="main-info">{{ address.street }}</li>
+        {% if address.streetDetail is not null %}
+            <li class="main-info">{{ address.streetDetail }}</li>
+        {% endif %}
+        <li class="main-info">{{ address.postalCode }}, {{ address.city }}</li>
+    </ul>
+{% endmacro %}

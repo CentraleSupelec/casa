@@ -1,7 +1,7 @@
 housing:
     living_mode:
         full: Full
-        homestay: Homestay Accomodation
+        homestay: Homestay accomodation
     occupation_mode:
         alone: Alone
         couple: Couple
@@ -13,7 +13,32 @@ housing:
         t2: T2
         t3: T3
         t4: T4
-    vatincluded: VAT incl.
+    price:
+        title: Prix du logement
+        per_month: monthly
+        rent: Rent
+        charges:
+            title: Charges
+            included: Charges included
+        security_deposit: Security deposit
+        application_fee: Application fees
+    practical_information: Practical information
+    address: Address
+    available: Available
+    unavailable: Unavailable
+    smoking: Smoking allowed
+    non_smoking: Smoking forbidden
+    animals_allowed: Animals allowed
+    animals_non_allowed: Animals forbidden
+    accessible: Reduced mobility access
+    non_accessible: No reduced mobility access
+    equipment:
+        title: Housing equipments
+    services:
+        included: Included services
+        optional: Optional services
+    point_of_interest: Points of interest
+    redirect_button: Apply for this housing
 housing_group:
     country:
         france: FRANCE

@@ -1,11 +1,11 @@
 housing:
     living_mode:
-        full: Entier
+        full: Logement entier
         homestay: Chez l'habitant
     occupation_mode:
-        alone: Seul
-        couple: Couple
-        share: Colocation
+        alone: À occuper seul
+        couple: Idéal pour un couple
+        share: À occuper en colocation
     type:
         studio: Studio
         t1: T1
@@ -13,7 +13,32 @@ housing:
         t2: T2
         t3: T3
         t4: T4
-    vatincluded: TTC
+    price:
+        title: Prix du logement
+        per_month: mensuels
+        rent: Loyer
+        charges:
+            title: Charges
+            included: Charges comprises
+        security_deposit: Dépôt de garantie
+        application_fee: Frais de dossier
+    practical_information: Infos pratiques
+    address: Adresse du logement
+    available: Disponible
+    unavailable: Indisponible
+    smoking: Fumeur
+    non_smoking: Non fumeur
+    animals_allowed: Animaux autorisés
+    animals_non_allowed: Animaux non autorisés
+    accessible: Accès PMR
+    non_accessible: Pas d'accès PMR
+    equipment:
+        title: Équipements du logement
+    services:
+        included: Services inclus
+        optional: Services optionnels
+    point_of_interest: Points d'intérêts
+    redirect_button: Déposer un dossier pour ce logement
 housing_group:
     country:
         france: FRANCE

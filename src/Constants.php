@@ -10,12 +10,12 @@ final class Constants
     public static function getHousingTypes(): array
     {
         return [
-            'housing.type.studio' => 'Studio',
-            'housing.type.t1' => 'T1',
-            'housing.type.t1bis' => 'T1Bis',
-            'housing.type.t2' => 'T2',
-            'housing.type.t3' => 'T3',
-            'housing.type.t4' => 'T4',
+            'housing.type.studio' => 'studio',
+            'housing.type.t1' => 't1',
+            'housing.type.t1bis' => 't1bis',
+            'housing.type.t2' => 't2',
+            'housing.type.t3' => 't2',
+            'housing.type.t4' => 't2',
         ];
     }
 

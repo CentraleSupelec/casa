@@ -1,0 +1,344 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Logement
+{% endblock %}
+
+{% import 'housing/_range_data.html.twig' as RangeData %}
+{% import 'housing/_address.html.twig' as Address %}
+{% import 'housing/_carousel.html.twig' as Carousel %}
+
+{% block body %}
+    <div class="container housing-detail-page text-dark">
+        <div class="row justify-content-center">
+            <div class="col col-lg-8 pt-3">
+                <h1 class="text-center text-primary">
+                    {{ ("housing.type.#{housing.type}")|trans }} - {{
+                        housing.housingGroup.address.city
+                    }}
+                </h1>
+
+                {{
+                    Carousel.displayHousingCarousel(
+                        housing.id,
+                        imageBaseUrl,
+                        housing.pictures
+                    )
+                }}
+
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                        <h2 class="text-info text-center text-md-start">
+                            <span class="me-1">
+                                <i class="fa-solid fa-euro-sign fa-xl"></i>
+                            </span>
+                            {{ 'housing.price.title'|trans }}
+                        </h2>
+                        <ul class="text-center text-md-start">
+                            <li class="main-info">
+                                <span class="strong-text">
+                                    {{ 'housing.price.rent'|trans }}
+                                </span>
+                                {{
+                                    RangeData.displayMonthlyRangeCost(
+                                        housing.rentMin,
+                                        housing.rentMax
+                                    )
+                                }}
+                            </li>
+                            <li class="main-info">
+                                {{
+                                    RangeData.displayCharges(
+                                        housing.chargesIncluded,
+                                        housing.chargesMin,
+                                        housing.chargesMax
+                                    )
+                                }}
+                            </li>
+                            <li class="main-info">
+                                <span class="strong-text">
+                                    {{ 'housing.price.application_fee'|trans }}
+                                </span>
+                                {{
+                                    RangeData.displayRangeCost(
+                                        housing.applicationFeeMin,
+                                        housing.applicationFeeMax
+                                    )
+                                }}
+                            </li>
+                            <li class="main-info">
+                                <span class="strong-text">
+                                    {{ 'housing.price.security_deposit'|trans }}
+                                </span>
+                                {{
+                                    RangeData.displayRangeCost(
+                                        housing.securityDepositMin,
+                                        housing.securityDepositMax
+                                    )
+                                }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <h2 class="text-info text-center text-md-end">
+                            <span class="me-1">
+                                <i class="fa-solid fa-ruler-combined fa-xl"></i>
+                            </span>
+                            {{
+                                RangeData.displayArea(
+                                    housing.areaMin,
+                                    housing.areaMax
+                                )
+                            }}
+                        </h2>
+                        <ul class="text-center text-md-end">
+                            <li class="main-info">
+                                {% if housing.available %}
+                                    {{ 'housing.available'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                {% else %}
+                                    {{ 'housing.unavailable'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </span>
+                                {% endif %}
+                            </li>
+                            <li class="main-info">
+                                {% if housing.accessibility %}
+                                    {{ 'housing.accessible'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-brands fa-accessible-icon">
+
+                                        </i>
+                                    </span>
+                                {% else %}
+                                    {{ 'housing.non_accessible'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </span>
+                                {% endif %}
+                            </li>
+                            <li class="main-info">
+                                {% if housing.smoking %}
+                                    {{ 'housing.smoking'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-smoking"></i>
+                                    </span>
+                                {% else %}
+                                    {{ 'housing.non_smoking'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-ban-smoking"></i>
+                                    </span>
+                                {% endif %}
+                            </li>
+                            <li class="main-info">
+                                {% if housing.animalsAllowed %}
+                                    {{ 'housing.animals_allowed'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-paw"></i>
+                                    </span>
+                                {% else %}
+                                    {{ 'housing.animals_non_allowed'|trans }}
+                                    <span class="ms-2 text-info">
+                                        <i class="fa-solid fa-ban"></i>
+                                    </span>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if housing.description is not null %}
+                    <div class="row mt-3">
+                        <div class="col">
+                            <p class="m-0 text-center">
+                                {{ housing.description }}
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                        <h2 class="text-info text-center text-md-start">
+                            <span class="me-1">
+                                <i class="fa-solid fa-circle-info fa-xl"></i>
+                            </span>
+                            {{ 'housing.practical_information'|trans }}
+                        </h2>
+                        <ul class="text-center text-md-start">
+                            <li class="main-info">
+                                {{
+                                    ("housing.living_mode.#{housing.livingMode}")|trans
+                                }}
+                            </li>
+                            <li class="main-info">
+                                {{
+                                    ("housing.occupation_mode.#{housing.occupationMode}")|trans
+                                }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                        <h2 class="text-info text-center text-md-end">
+                            <span class="me-1">
+                                <i class="fa-solid fa-location-dot fa-xl"></i>
+                            </span>
+                            {{ 'housing.address'|trans }}
+                        </h2>
+                        <div class="text-center text-md-end">
+                            {{
+                                Address.displayAddress(
+                                    housing.housingGroup.address
+                                )
+                            }}
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mt-4 mb-3 text-info text-center text-md-start">
+                    {{ 'housing.equipment.title'|trans }}
+                </h2>
+                <div class="row">
+                    <div class="col icons-container">
+                        {% for equipment in housing.housingGroup.equipments %}
+                            <div>
+                                <div class="icon-with-text">
+                                    <span class="picture">
+                                        <i class="fa-solid {{
+                                            equipment.picture
+                                            }} fa-2xl">
+
+                                        </i>
+                                    </span>
+                                    <span class="picture-label">
+                                        {{ equipment.label }}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <h2 class="mt-4 mb-3 text-info text-center text-md-start">
+                    {{ 'housing.services.included'|trans }}
+                </h2>
+                <div class="row">
+                    <div class="col icons-container">
+                        {% for housingGroupService in housing.housingGroup.housingGroupServices %}
+                            {% if not housingGroupService.isOptional %}
+                                <div>
+                                    <div class="icon-with-text">
+                                        <span class="picture">
+                                            <i class="fa-solid {{
+                                                housingGroupService.service.picture
+                                                }} fa-2xl">
+
+                                            </i>
+                                        </span>
+                                        <span class="picture-label">
+                                            {{
+                                                housingGroupService.service.label
+                                            }}
+                                        </span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <h2 class="mt-4 mb-3 text-info text-center text-md-start">
+                    {{ 'housing.services.optional'|trans }}
+                </h2>
+                <div class="row">
+                    <div class="col icons-container">
+                        {% for housingGroupService in housing.housingGroup.housingGroupServices %}
+                            {% if housingGroupService.isOptional %}
+                                <div>
+                                    <div class="icon-with-text">
+                                        <span class="text-dark picture">
+                                            <i class="fa-solid {{
+                                                housingGroupService.service.picture
+                                                }} fa-2xl">
+
+                                            </i>
+                                        </span>
+                                        <span class="picture-label">
+                                            {{
+                                                housingGroupService.service.label
+                                            }}
+                                        </span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <h2 class="mt-4 mb-0 text-info text-center text-md-start">
+                    {{ 'housing.point_of_interest'|trans }}
+                </h2>
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-3">
+                        <h3 class="strong-text text-center text-md-start">
+                            <span class="me-1">
+                                <i class="fa-solid fa-bus fa-xl"></i>
+                            </span>
+                            {{
+                                'housing_group.point_of_interest_category.transportation'|trans
+                            }}
+                        </h3>
+                        <ul class="text-center text-md-start">
+                            {% for poi in housing.housingGroup.pointsOfInterest %}
+                                {% if poi.category == 'transportation' %}
+                                    <li class="main-info">
+                                        {{ poi.label }}
+                                        {% if poi.description is not null %}
+                                            : {{ poi.description }}
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3">
+                        <h3 class="strong-text text-center text-md-end">
+                            <span class="me-1">
+                                <i class="fa-solid fa-shop fa-xl"></i>
+                            </span>
+                            {{
+                                'housing_group.point_of_interest_category.store'|trans
+                            }}
+                        </h3>
+                        <ul class="text-center text-md-end">
+                            {% for poi in housing.housingGroup.pointsOfInterest %}
+                                {% if poi.category == 'store' %}
+                                    <li class="main-info d-flex flex-column">
+                                        <span>{{ poi.label }}</span>
+                                        {% if poi.description is not null %}
+                                            <span class="minor-info">
+                                                {{ poi.description }}
+                                            </span>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row mt-4 mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <button type="button"
+                            class="btn btn-outline-primary btn-large">
+                            {{ 'housing.redirect_button'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

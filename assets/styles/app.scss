@@ -1,25 +1,30 @@
-$primary: #63003c;
-$secondary: #7c8790;
-$danger: #c60b46;
-$info: #7c2a90;
-$warning: #f37320;
-$light: #eee;
-$dark: #313e48;
-$succes: #009b7a;
+@import 'variables';
 
 @import '~bootstrap/scss/bootstrap';
 
 @import './card.scss';
 
+@import './housing.scss';
+
 @font-face {
     font-family: 'Open Sans';
-    src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf');
+    src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf')
+        format('truetype-variations');
+}
+
+html {
+    height: 100%;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: white;
+    min-height: 100%;
     font-variation-settings: 'wgth' 300;
+}
+
+.navbar {
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -28,6 +33,10 @@ h1 {
 
 h2 {
     font-size: x-large;
+}
+
+h3 {
+    font-size: large;
 }
 
 footer {

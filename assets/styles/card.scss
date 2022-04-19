@@ -1,7 +1,9 @@
+@use 'variables' as v;
+
 .card {
     border: dotted 1px;
     border-radius: 5px;
-    border-color: $light;
+    border-color: v.$light;
 }
 
 .card-title {
@@ -12,7 +14,7 @@
     border: solid;
     border-radius: 10%;
     padding: 4px;
-    color: $primary;
+    color: v.$primary;
 }
 
 ul.services {

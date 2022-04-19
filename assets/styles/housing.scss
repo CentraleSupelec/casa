@@ -1,0 +1,44 @@
+.housing-detail-page {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .strong-text {
+        font-variation-settings: 'wght' 700;
+    }
+
+    .main-info {
+        font-variation-settings: 'wght' 400;
+        font-size: large;
+    }
+
+    .minor-info {
+        font-size: small;
+        font-style: italic;
+    }
+
+    .icons-container {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .icon-with-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .picture {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .picture-label {
+            font-size: small;
+            text-align: center;
+        }
+    }
+}
