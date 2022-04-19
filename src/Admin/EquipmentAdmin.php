@@ -25,6 +25,9 @@ class EquipmentAdmin extends AbstractAdmin
                 ->add('label', TextType::class, [
                     'label' => 'Désignation de l\'équipement',
                 ])
+                ->add('picture', TextType::class, [
+                    'label' => 'Code icone',
+                ])
             ->end();
     }
 
@@ -33,6 +36,10 @@ class EquipmentAdmin extends AbstractAdmin
         $list
             ->add('label', null, [
                 'label' => 'Désignation de l\'équipement',
+            ])
+            ->add('picture', TextType::class, [
+                'editable' => true,
+                'label' => 'Code icone',
             ])
             ->add('created_at', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',

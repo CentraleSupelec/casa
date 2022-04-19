@@ -1,42 +1,95 @@
 service:
     - label: Eau
+      picture: fa-droplet
+
     - label: Electricité
+      picture: fa-plug-circle-bolt
+
     - label: Internet
+      picture: fa-wifi
+
     - label: Entretien logement
+
     - label: Petit déjeuner Cafétéria
+      picture: fa-mug-saucer
+
     - label: Petit déjeuner à Emporter
     - label: Distributeurs pain
     - label: Distributeur viennoiseries
+
     - label: Réception de colis
+      picture: fa-box
+
     - label: Prêt électroménager
+
     - label: Assistance Technique
+      picture: fa-screwdriver-wrench
+
     - label: Accueil 24/24
+      picture: fa-bell-concierge
+
     - label: Assurance Multirisque habitation
 
 equipement:
     - label: Parking vélo
+      picture: fa-bicycle
+
     - label: Laverie
+      picture: fa-shirt
+
     - label: Baby foot
+
     - label: Espace détente
+      picture: fa-couch
+
     - label: Potager
+
     - label: Terrain de basket
+      picture: fa-basketball
+
     - label: Salle de Fitness
+
     - label: Ascenceur
+      picture: fa-elevator
+
     - label: Boite aux lettres
+      picture: fa-square-envelope
+
     - label: Salle de musique
+      picture: fa-drum
+
     - label: Surveillance vidéo
+      picture: fa-eye
+
     - label: Accès sécurisé
+      picture: fa-building-lock
+
     - label: Interphone
+      picture: fa-intercom
+
     - label: Détecteur Fumée
+
     - label: Agora
+
     - label: Kitchenette
+      picture: fa-kitchen-set
+
     - label: Réfrigirateur
+
     - label: Salle d'eau
+      picture: fa-shower
+
     - label: Prise TV
+
     - label: Lit
+      picture: fa-bed
+
     - label: Table de Chevet
     - label: Placard
+
     - label: Salle de bain
+      pciture: fa-bath
+
     - label: Cuisine commune
     - label: Balcon
     - label: Micro-onde

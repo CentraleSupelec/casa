@@ -104,6 +104,7 @@ class LoadRefdataCommand extends Command
         foreach ($refTable as $newRef) {
             $obj = new $classType();
             $obj->setLabel($newRef['label']);
+            $obj->setPicture($newRef['picture'] ?? '');
             $this->entityManager->persist($obj);
             $io->progressAdvance();
         }

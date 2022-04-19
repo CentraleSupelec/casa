@@ -25,6 +25,9 @@ class ServiceAdmin extends AbstractAdmin
                 ->add('label', TextType::class, [
                     'label' => 'Désignation du service',
                 ])
+                ->add('picture', TextType::class, [
+                    'label' => 'Code icone',
+                ])
             ->end();
     }
 
@@ -34,6 +37,9 @@ class ServiceAdmin extends AbstractAdmin
             ->addIdentifier('label', null, [
                 'label' => 'Désignation',
                 ])
+            ->add('picture', TextType::class, [
+                'label' => 'Code icone',
+            ])
             ->add('created_at', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Création',
