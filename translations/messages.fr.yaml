@@ -39,6 +39,7 @@ housing:
         optional: Services optionnels
     point_of_interest: Points d'intérêts
     redirect_button: Déposer un dossier pour ce logement
+    area_unit: mètres carré
 housing_group:
     country:
         france: FRANCE
@@ -46,6 +47,8 @@ housing_group:
         store: Commerce
         transportation: Transport
 home:
+    link:
+        skiptomain: Aller au contenu principal
     nav:
         title: La plateforme de logements mutualisée
         subtitle: de l'Université Paris-Saclay
@@ -56,3 +59,7 @@ home:
     sort:
         price: Trier par prix mini
         area: Trier par surface mini
+btn:
+    image:
+        previous: image précédente
+        next: image suivante

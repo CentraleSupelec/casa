@@ -7,7 +7,7 @@
 }
 
 .card-title {
-    font-size: xx-large;
+    @include font-size(1.2rem);
 }
 
 .card-title svg {
@@ -29,5 +29,5 @@ ul.services {
 }
 
 .price {
-    font-size: xx-large;
+    @include font-size(1.5rem);
 }

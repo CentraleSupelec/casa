@@ -1,9 +1,10 @@
 {% macro displayCard(housing, imageBaseUrl) %}
     {% import 'housing/_carousel.html.twig' as Carousel %}
+    {% import 'housing/_range_data.html.twig' as RangeData %}
 
     <div class="card mb-3">
         <div class="row g-0 mb-4">
-            <div class="col-lg-4">
+            <div class="col-12 col-md-6">
                 {{
                     Carousel.displayHousingCarousel(
                         housing.id,
@@ -13,7 +14,7 @@
                 }}
             </div>
 
-            <div class="col-lg-8">
+            <div class="col-12 col-md-6">
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-between">
                         <a href="{{
@@ -24,19 +25,32 @@
                                 }
                             )
                             }}">
-                            {{ housing.type }} - {{ housing.areaMin }}m²
+                            <span>
+                                {{ housing.type }} - {{
+                                    RangeData.displayArea(
+                                        housing.areaMin,
+                                        housing.areaMax
+                                    )
+                                }}
+                            </span>
                         </a>
                         <span>{{ housing.housingGroup.address.city }}</span>
                         <span>
                             {% if housing.smoking %}
-                                <i class="fa-solid fa-smoking"></i>
+                                <i class="fa-solid fa-smoking"></i><span class="visually-hidden">{{
+                                        'housing.smoking'|trans
+                                    }}</span>
                             {% endif %}
                             {% if housing.animalsAllowed %}
-                                <i class="fa-solid fa-paw"></i>
+                                <i class="fa-solid fa-paw"></i><span class="visually-hidden">{{
+                                        'housing.animals_allowed'|trans
+                                    }}</span>
                             {% endif %}
 
                             {% if housing.accessibility %}
-                                <i class="fa-brands fa-accessible-icon"></i>
+                                <i class="fa-brands fa-accessible-icon"></i><span class="visually-hidden">{{
+                                        'housing.accessible'|trans
+                                    }}</span>
                             {% endif %}
                         </span>
                     </div>

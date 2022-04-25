@@ -2,16 +2,27 @@
     <div id="carousel-{{ housingId }}"
         class="carousel slide"
         data-bs-interval="false"
-        data-bs-ride="carousel">
-        <div class="carousel-inner">
+        data-bs-ride="carousel"
+        aria-roledescription="carousel">
+        <div class="carousel-inner" aria-live="off">
             {% for picture in pictures %}
                 <div class="carousel-item {{
                     loop.index0 is same as(0)
                         ? 'active'
-                    }}">
-                    <img src="{{ pictureBaseUrl }}/{{ picture.getPicture() }}"
-                        class="img-fluid d-block rounded-2 me-auto ms-auto"
-                        alt="{{ picture.label }}" />
+                    }}"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="image {{
+                    loop.index
+                    }} of {{ pictures|length }} ">
+                    <a href="#">
+                        <!-- sert à l'accessibilité , lire les infos -->
+                        <img src="{{ pictureBaseUrl }}/{{
+                            picture.getPicture()
+                            }}"
+                            class="img-fluid d-block rounded-2 me-auto ms-auto"
+                            alt="{{ picture.label }}" />
+                    </a>
                 </div>
             {% endfor %}
         </div>
@@ -20,7 +31,9 @@
             <button class="carousel-control-prev"
                 type="button"
                 data-bs-target="#carousel-{{ housingId }}"
-                data-bs-slide="prev">
+                data-bs-slide="prev"
+                aria-controls="carousel-{{ housingId }}"
+                aria-label="{{ 'btn.image.previous'|trans }}">
                 <span class="carousel-control-prev-icon" aria-hidden="true">
 
                 </span>
@@ -29,7 +42,9 @@
             <button class="carousel-control-next"
                 type="button"
                 data-bs-target="#carousel-{{ housingId }}"
-                data-bs-slide="next">
+                data-bs-slide="next"
+                aria-controls="carousel-{{ housingId }}"
+                aria-label="{{ 'btn.image.next'|trans }}">
                 <span class="carousel-control-next-icon" aria-hidden="true">
 
                 </span>

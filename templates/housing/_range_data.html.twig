@@ -1,9 +1,10 @@
 {% macro displayArea(min, max) %}
-    {% if max is null %}
-        <span>{{ min }} m<sup>2</sup></span>
-    {% else %}
-        <span>{{ min }} - {{ max }} m<sup>2</sup></span>
-    {% endif %}
+    <span>
+        {{ min }} {% if max %}
+            - {{ max }}
+        {% endif %} <span aria-hidden="true">m<sup>2</sup></span>
+        <span class="visually-hidden">{{ 'housing.area_unit'|trans }}</span>
+    </span>
 {% endmacro %}
 
 {% macro displayRangeCost(min, max) %}

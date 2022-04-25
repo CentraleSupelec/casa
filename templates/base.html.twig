@@ -21,10 +21,17 @@
         {% endblock %}
     </head>
     <body>
-        {% include '_navbar.html.twig' %}
+        <a href="#maincontent" class="visually-hidden">
+            {{ 'home.link.skiptomain'|trans }}
+        </a>
+        <header>
+            {% include '_navbar.html.twig' %}
+        </header>
+
         {% block body %}
 
         {% endblock %}
+
         <footer>
             {% include 'footer.html.twig' %}
         </footer>

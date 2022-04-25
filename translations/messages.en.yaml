@@ -39,6 +39,7 @@ housing:
         optional: Optional services
     point_of_interest: Points of interest
     redirect_button: Apply for this housing
+    area_unit: square meters
 housing_group:
     country:
         france: FRANCE
@@ -46,6 +47,8 @@ housing_group:
         store: Store
         transportation: Transportation
 home:
+    link:
+        skiptomain: Skip to main content
     nav:
         title: The housng platorm
         subtitle: of Paris-Saclay University
@@ -56,3 +59,7 @@ home:
     sort:
         price: Sort by min price
         area: Sort by min area
+btn:
+    image:
+        previous: previous slide
+        next: next slide
