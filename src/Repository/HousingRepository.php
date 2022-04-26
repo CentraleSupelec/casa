@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Housing;
+use App\Model\SearchCriteriaModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,8 +21,19 @@ class HousingRepository extends ServiceEntityRepository
         parent::__construct($registry, Housing::class);
     }
 
-    public function qbFindAll(): QueryBuilder
+    public function qbFindByCriteria(SearchCriteriaModel $searchCriteria): QueryBuilder
     {
-        return $this->createQueryBuilder('h');
+        $query = $this->createQueryBuilder('h');
+
+        if ($searchCriteria->getMaxPrice()) {
+            $query->where('h.rentMin <= :price ')->setParameter('price', $searchCriteria->getMaxPrice());
+        }
+
+        if ($searchCriteria->getMinArea()) {
+            $query->andWhere('h.areaMin >=:area')->setParameter('area', $searchCriteria->getMinArea());
+        }
+        $query->orderBy('h.rentMin', 'ASC');
+
+        return $query;
     }
 }

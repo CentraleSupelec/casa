@@ -1,4 +1,12 @@
 housing:
+    list:
+        search_result: housings found
+        page_title: PSUH - Housing
+        not_found: No offer found, please refine your search
+        sort:
+            label: Trier par
+            price: Loyer
+            area: Surface
     living_mode:
         full: Full
         homestay: Homestay accomodation
@@ -14,7 +22,7 @@ housing:
         t3: T3
         t4: T4
     price:
-        title: Prix du logement
+        title: Rent price
         per_month: monthly
         rent: Rent
         charges:
@@ -48,14 +56,13 @@ housing_group:
         transportation: Transportation
 home:
     link:
-        skiptomain: Skip to main content
+        skip_to_main: Skip to main content
     nav:
-        title: The housng platorm
+        title: The housing platorm
         subtitle: of Paris-Saclay University
-    pagetitle: Accueil PSUH
+    page_title: PSUH homepage
     welcome:
-        title: Welcome to Paris Saclay University Housing Platform !
-        subtitle: the website that helps students to find their housing.
+        title: the website that helps students to find their housing.
     sort:
         price: Sort by min price
         area: Sort by min area
@@ -92,5 +99,22 @@ authentication:
         expiration: This link expires in
 btn:
     image:
-        previous: previous slide
-        next: next slide
+        previous: previous picture
+        next: next picture
+search:
+    criteria:
+        title: Search a housing
+        refine: Modify
+        max_rent:
+            label: maximum Rent
+            help: please fill in your maximum rent amount
+        min_area:
+            label: minimum Area
+            help: please fill the desired minimum area
+        submit: Search
+footer:
+    faq: Faq
+    contact: Contact us
+    legal: legal notice & credits
+    urgent: urgence
+    university: University

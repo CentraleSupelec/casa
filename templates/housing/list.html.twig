@@ -1,0 +1,75 @@
+{% import 'housing/_search.html.twig' as Search %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'housing.list.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% import 'housing/_housing_card.html.twig' as HousingCard %}
+    <div class="container" role="search">
+        {% if (pagination|length) > 0 %}
+            <div class="d-flex align-items-center">
+                <button class="btn btn-sm btn-outline-primary m-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseSearch"
+                    aria-expanded="false"
+                    aria-controls="collapseSearch">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span class="d-none d-md-inline">
+                        {{ 'search.criteria.refine'|trans }}
+                    </span>
+                </button>
+
+                <div class="mx-auto">
+                    {{ pagination|length }} offres correspondent à votre recherche
+                </div>
+            </div>
+        {% endif %}
+        <div class="collapse {{ (pagination|length) == 0 ? 'show' }}"
+            id="collapseSearch">
+            <div class="card card-body">
+                {{ Search.displaySearch(form) }}
+            </div>
+        </div>
+    </div>
+    <main class="container" id="maincontent">
+        {% if (pagination|length) > 0 %}
+            <div class="d-flex justify-content-between m-2" role="navigation">
+                <div class="h3 me-auto">
+                    {{ 'housing.list.sort.label'|trans }} :
+                </div>
+
+                {{
+                    knp_pagination_sortable(
+                        pagination,
+                        'housing.list.sort.price'|trans,
+                        'h.rentMin'
+                    )
+                }}
+
+                {{
+                    knp_pagination_sortable(
+                        pagination,
+                        'housing.list.sort.area'|trans,
+                        'h.areaMin'
+                    )
+                }}
+            </div>
+            <section aria-label="{{ 'housing.list.search_result'|trans }}">
+                {% for housing in pagination %}
+                    {{ HousingCard.displayCard(housing, imageBaseUrl) }}
+                {% endfor %}
+            </section>
+            <div class="navigation" role="navigation" aria-label="pages">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        {% else %}
+            <div class="container bg-light h2 p-2">
+                {{ 'housing.list.not_found'|trans }}
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

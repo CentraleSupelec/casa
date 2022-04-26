@@ -28,18 +28,32 @@ body {
 }
 
 h1 {
-    font-size: xx-large;
+    @include font-size(1.5rem);
+}
+
+h1 .emphase {
+    color: $primary;
+    font-variation-settings: 'wght' 600;
 }
 
 h2 {
-    font-size: x-large;
+    @include font-size(1.3rem);
 }
 
 h3 {
-    font-size: large;
+    @include font-size(1.1rem);
 }
 
 footer {
-    color: $primary;
-    background-color: rgba($primary, 0.2);
+    color: white;
+    background-color: $dark;
+}
+
+footer .nav-link {
+    color: white;
+}
+
+footer .nav-link:hover {
+    color: white;
+    text-decoration: underline;
 }

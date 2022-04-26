@@ -22,7 +22,7 @@
     </head>
     <body class="d-flex flex-column h-100">
         <a href="#maincontent" class="visually-hidden">
-            {{ 'home.link.skiptomain'|trans }}
+            {{ 'home.link.skip_to_main'|trans }}
         </a>
         <header>
             {% include '_navbar.html.twig' %}
@@ -35,7 +35,7 @@
         {% endblock %}
 
         <footer class="container-fluid mt-auto">
-            {% include 'footer.html.twig' %}
+            {% include '_footer.html.twig' %}
         </footer>
     </body>
 </html>

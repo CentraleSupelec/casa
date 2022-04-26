@@ -1,4 +1,12 @@
 housing:
+    list:
+        search_result: liste des logements trouvés
+        page_title: PSUH - Offres logement
+        not_found: Aucune offre ne correspond à vos critères
+        sort:
+            label: Trier par
+            price: Loyer
+            area: Surface
     living_mode:
         full: Logement entier
         homestay: Chez l'habitant
@@ -48,14 +56,13 @@ housing_group:
         transportation: Transport
 home:
     link:
-        skiptomain: Aller au contenu principal
+        skip_to_main: Aller au contenu principal
     nav:
         title: La plateforme de logements mutualisée
         subtitle: de l'Université Paris-Saclay
     page_title: PSUH - Accueil
     welcome:
-        title: Bienvenue sur la plateforme de logement de l'Université Paris Saclay!
-        subtitle: La plateforme qui permet aux étudiants de l'université Paris-Saclay de trouver leur logement.
+        title: La <span class="emphase">plateforme</span> qui permet aux étudiantes et étudiants de l'<span class="emphase">Université Paris-Saclay</span> de trouver leur logement.
     sort:
         price: Trier par prix mini
         area: Trier par surface mini
@@ -94,3 +101,20 @@ btn:
     image:
         previous: image précédente
         next: image suivante
+search:
+    criteria:
+        title: Trouvez votre logement
+        refine: Modifier
+        max_rent:
+            label: Loyer maximum
+            help: Indiquez le montant de votre budget maximum
+        min_area:
+            label: Surface minimum
+            help: Indiquez la surface minimum recherchée
+        submit: Rechercher
+footer:
+    faq: F.a.q
+    contact: Contact
+    legal: mentions légales
+    urgent: urgent
+    university: L'université

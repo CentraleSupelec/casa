@@ -2,9 +2,9 @@
     {% import 'housing/_carousel.html.twig' as Carousel %}
     {% import 'housing/_range_data.html.twig' as RangeData %}
 
-    <div class="card mb-3">
-        <div class="row g-0 mb-4">
-            <div class="col-12 col-md-6">
+    <div class="card mb-2">
+        <div class="row g-0">
+            <div class="col-12 col-md-6 col-lg-4">
                 {{
                     Carousel.displayHousingCarousel(
                         housing.id,
@@ -13,8 +13,7 @@
                     )
                 }}
             </div>
-
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 col-lg-8">
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-between">
                         <a href="{{
@@ -33,9 +32,10 @@
                                     )
                                 }}
                             </span>
+                            {{ housing.housingGroup.address.city }}
                         </a>
-                        <span>{{ housing.housingGroup.address.city }}</span>
-                        <span>
+
+                        <span role="comment">
                             {% if housing.smoking %}
                                 <i class="fa-solid fa-smoking"></i><span class="visually-hidden">{{
                                         'housing.smoking'|trans

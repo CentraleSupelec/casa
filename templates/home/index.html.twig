@@ -1,3 +1,5 @@
+{% import 'housing/_search.html.twig' as Search %}
+
 {% extends 'base.html.twig' %}
 
 {% block title %}
@@ -5,38 +7,25 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container text-center p-4 d-none d-md-block">
-        <h1 class="fs-1">
-            {{ 'home.welcome.title'|trans }}
+    <div class="container text-center p-4 d-md-block">
+        <h1>
+            {{ 'home.welcome.title'|trans|raw }}
         </h1>
-
-        <h2>
-            {{ 'home.welcome.subtitle'|trans }}
-        </h2>
     </div>
-    {% import 'home/_housing_card.html.twig' as HousingCard %}
-    <main class="container" id="maincontent">
-        <div class="d-flex justify-content-end">
-            {{
-                knp_pagination_sortable(
-                    pagination,
-                    'home.sort.price'|trans,
-                    'h.rentMin'
-                )
-            }}
-            {{
-                knp_pagination_sortable(
-                    pagination,
-                    'home.sort.area'|trans,
-                    'h.areaMin'
-                )
-            }}
+    <div class="container col-12" role="presentation">
+        <div class="d-flex flex-col g-0">
+            <img class="img-fluid"
+                alt=""
+                aria-hidden="true"
+                src="{{ asset('build/images/home/mosaic-1600-502.jpg') }}" />
         </div>
-        {% for housing in pagination %}
-            {{ HousingCard.displayCard(housing, imageBaseUrl) }}
-        {% endfor %}
-        <div class="navigation" aria-label="pages">
-            {{ knp_pagination_render(pagination) }}
+    </div>
+    <main class="container col-12" role="search" id="maincontent">
+        <div class="col-12 bg-light p-4">
+            <div class="h1">
+                {{ 'search.criteria.title'|trans }}
+            </div>
+            {{ Search.displaySearch(form) }}
         </div>
     </main>
 {% endblock %}
