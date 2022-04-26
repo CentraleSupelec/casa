@@ -20,7 +20,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         <a href="#maincontent" class="visually-hidden">
             {{ 'home.link.skiptomain'|trans }}
         </a>
@@ -28,11 +28,13 @@
             {% include '_navbar.html.twig' %}
         </header>
 
+        {% include '_flashes.html.twig' %}
+
         {% block body %}
 
         {% endblock %}
 
-        <footer>
+        <footer class="container-fluid mt-auto">
             {% include 'footer.html.twig' %}
         </footer>
     </body>

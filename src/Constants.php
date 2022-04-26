@@ -4,6 +4,10 @@ namespace App;
 
 final class Constants
 {
+    public const NON_VERIFIED_ACCOUNT_ERROR_CODE = 4031;
+
+    public const APP_EMAIL_ADDRESS = 'psuh@paris-saclay.com';
+
     /**
      * @return string[]
      */
@@ -59,5 +63,10 @@ final class Constants
             'housing_group.point_of_interest_category.store' => 'store',
             'housing_group.point_of_interest_category.transportation' => 'transportation',
         ];
+    }
+
+    public static function getPlatformEmailAddress(): string
+    {
+        return 'psuh@paris-saclay.com';
     }
 }

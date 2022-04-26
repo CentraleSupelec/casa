@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'authentication.log_in.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <main class="container flex-grow-1 d-flex flex-column justify-content-center"
+        id="maincontent">
+        <form class="row d-flex justify-content-center"
+            action="{{ path('app_login_check') }}"
+            method="post">
+            <div class="col-12 col-md-8">
+                <div class="form-floating mb-3">
+                    <input type="email"
+                        id="username"
+                        class="form-control"
+                        name="_username"
+                        value="{{
+                        last_username is defined
+                            ? last_username
+                            : null
+                        }}"
+                        placeholder="{{ 'authentication.email.placeholder'|trans }}" />
+                    <label for="username">
+                        {{ 'authentication.email.label'|trans }}
+                    </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password"
+                        id="password"
+                        name="_password"
+                        class="form-control"
+                        placeholder="{{ 'authentication.password.placeholder'|trans }}" />
+                    <label for="password">
+                        {{ 'authentication.password.label'|trans }}
+                    </label>
+                </div>
+
+                <input type="hidden"
+                    name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}" />
+
+                {% if error %}
+                    <div class="row mb-3">
+                        <div class="col text-center">
+                            <div class="text-danger fst-italic mb-2">
+                                {{
+                                    error.messageKey|trans(
+                                        error.messageData,
+                                        'security'
+                                    )
+                                }}
+                            </div>
+                            {% if
+                                error.code is same as(
+                                    constant(
+                                        'App\\Constants::NON_VERIFIED_ACCOUNT_ERROR_CODE'
+                                    )
+                                ) %}
+                                <a href="{{
+                                    path(
+                                        'app_send_verification_email',
+                                        {
+                                            verificationToken: verification_token
+                                        }
+                                    )
+                                    }}">
+                                    Renvoyer l'email de vérification
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">
+                            {{ 'authentication.log_in.button'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <a class="row pb-3 pt-3" href="{{ path('app_register') }}">
+            <span class="col d-flex justify-content-center">
+                {{ 'authentication.register.call_to_action'|trans }}
+            </span>
+        </a>
+    </main>
+{% endblock %}

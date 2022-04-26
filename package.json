@@ -8,6 +8,7 @@
         "core-js": "^3.0.0",
         "file-loader": "^6.0.0",
         "jquery": "^3.6.0",
+        "mjml": "^4.12.0",
         "prettier": "^2.5.1",
         "prettier-plugin-twig-melody": "^0.4.6",
         "regenerator-runtime": "^0.13.2",

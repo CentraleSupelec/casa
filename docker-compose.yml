@@ -24,6 +24,18 @@ services:
     volumes:
       - ./volumes/minio:/data:rw
 
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+
+  mjml:
+    image: adrianrudnik/mjml-server:2.3.0
+    restart: on-failure
+    ports:
+      - '8081:80'
+
   test-database:
     image: postgres:14-alpine
     environment:

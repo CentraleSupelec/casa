@@ -59,6 +59,37 @@ home:
     sort:
         price: Sort by min price
         area: Sort by min area
+profile:
+    title: My profile
+    information: My data
+authentication:
+    email:
+        label: Email
+        placeholder: example@domain.com
+        confirmed: Your email address has been verified !
+    password:
+        label: Password
+        placeholder: password
+        blank: Please enter a password
+        short: Your password should be at least {{ limit }} characters long
+        long: Your password should be at most {{ limit }} characters long
+    log_in:
+        button: Log In
+        page_title: PSUH - Connection
+        not_verified: You cannot log in because your email address has not been verified
+        send_verification_error: Impossible send a new verification email to this address
+    log_out: Log Out
+    register:
+        call_to_action: Sign In
+        button: Register
+        page_title: PSUH - Register
+    verification_email:
+        name: Université Paris Saclay - Housing Platform
+        subject: '[PSUH] Email address confirmation'
+        header: Secure your account
+        body: Confirm your email address by clicking on the following link, enabling access to your account.
+        button: Confirm my email address
+        expiration: This link expires in
 btn:
     image:
         previous: previous slide

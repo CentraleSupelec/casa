@@ -52,11 +52,17 @@ faut ensuite reporter les valeurs associées dans son fichier d'environnement lo
 
 ### Lancement du projet en local
 
+Avant de lancer l'application elle-même, il faut lancer (en plus des conteneurs de base de données et de stockage objet)
+le serveur mjml (qui sert à mettre en forme les modèles d'emails), ainsi que le serveur mail (`mailhog`). On peut
+ensuite lancer le serveur. Il faut donc lancer les commandes suivantes :
 ```
+docker-compose up -d mjml mailhog
 symfony server:start
 ```
 
-Le projet est ensuite accessible à cette URL : https://127.0.01:8000/
+Le projet est ensuite accessible à cette URL : http://127.0.01:8000/
+
+Pour voir les mails envoyés par l'application sur l'interface de `mailhog` : http://127.0.0.1:8025
 
 ### Lancement des tests
 

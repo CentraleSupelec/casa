@@ -1,0 +1,5 @@
+# see https://github.com/notFloran/mjml-bundle#binary
+mjml:
+    renderer: 'service'
+    options:
+        service_id: 'mjml_renderer'

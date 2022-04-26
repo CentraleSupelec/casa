@@ -52,13 +52,44 @@ home:
     nav:
         title: La plateforme de logements mutualisée
         subtitle: de l'Université Paris-Saclay
-    pagetitle: Accueil PSUH
+    page_title: PSUH - Accueil
     welcome:
         title: Bienvenue sur la plateforme de logement de l'Université Paris Saclay!
         subtitle: La plateforme qui permet aux étudiants de l'université Paris-Saclay de trouver leur logement.
     sort:
         price: Trier par prix mini
         area: Trier par surface mini
+profile:
+    title: Mon profil
+    information: Mes informations
+authentication:
+    email:
+        label: E-Mail
+        placeholder: exemple@nom-de-domaine.fr
+        confirmed: Votre adresse email a bien été vérifiée !
+    password:
+        label: Mot de passe
+        placeholder: mot-de-passe
+        blank: Veuillez renseignez un mot de passe
+        short: Votre mot de passe doit contenir au moins {{ limit }} caractères
+        long: Votre mot de passe doit contenir au plus {{ limit }} caractères
+    log_in:
+        button: Se connecter
+        page_title: PSUH - Connexion
+        not_verified: Vous ne pouvez pas vous connecter car votre email n'est pas vérifié.
+        send_verification_error: Impossible de renvoyer un mail de confirmation pour cet identifiant
+    log_out: Se déconnecter
+    register:
+        call_to_action: Créer un compte
+        button: S'inscrire
+        page_title: PSUH - Inscription
+    verification_email:
+        name: Université Paris Saclay - Plateforme de Logement
+        subject: '[PSUH] Confirmation de votre adresse email'
+        header: Sécurisez votre compte
+        body: Confirmez votre adresse email en cliquant sur le lien ci-dessous pour pouvoir accéder à votre compte.
+        button: Confirmer mon adresse e-mail
+        expiration: Ce lien expire dans
 btn:
     image:
         previous: image précédente

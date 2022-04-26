@@ -1,0 +1,42 @@
+{% mjml %}
+<mjml>
+    <mj-head>
+        <mj-style inline="inline">
+            .body-section { -webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0,
+            0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15);}
+        </mj-style>
+        <mj-style inline="inline">
+            .footer-link { color: #7c8091 }
+        </mj-style>
+    </mj-head>
+    <mj-body>
+        <mj-wrapper padding-top="2" padding-bottom="2" css-class="body-section">
+            {% block content %}
+
+            {% endblock %}
+            <mj-section padding="20px 0" text-align="center">
+                <mj-column>
+                    <mj-divider border-color="#312336"
+                        border-width="2px"></mj-divider>
+                    <mj-image align="center"
+                        padding-bottom="15px"
+                        src="{{
+                        absolute_url(
+                            asset('build/images/logo-saclay.svg')
+                        )
+                        }}"
+                        width="250px"></mj-image>
+                    <mj-text align="center" font-size="12px" font-weight="bold">
+                        <a class="footer-link"
+                            href="{{ absolute_url(path('app_home')) }}">
+                            {{ 'home.nav.title'|trans }}
+                            {{ 'home.nav.subtitle'|trans }}
+                        </a>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+        </mj-wrapper>
+    </mj-body>
+</mjml>
+{% endmjml %}

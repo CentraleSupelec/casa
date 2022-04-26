@@ -1,14 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light mb-3">
+<nav class="navbar navbar-expand-sm navbar-light mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('app_home') }}">
-            <i class="fa-solid fa-key fa-xl text-primary me-1"></i>
-            <span class="visually-hidden">HomePage Link</span>
+        <a class="navbar-brand fs-6 d-flex align-items-center"
+            href="{{ path('app_home') }}">
+            <div class="me-2">
+                <i class="fa-solid fa-key fa-xl text-primary"></i>
+            </div>
+            <div>
+                <span class="visually-hidden">HomePage Link</span>
+                <span class="d-none d-sm-block">
+                    {{ 'home.nav.title'|trans }}
+                    <br />
+                    {{ 'home.nav.subtitle'|trans }}
+                </span>
+            </div>
         </a>
-        <span class="container col-8">
-            {{ 'home.nav.title'|trans }}
-            <br />
-            {{ 'home.nav.subtitle'|trans }}
-        </span>
         <button class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -19,12 +24,50 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form class="d-flex">
-                <div class="border border-primary p-2 rounded-2">
-                    <i class="fa-solid fa-user fa-xl text-primary"></i>
-                </div>
-            </form>
+            <ul class="navbar-nav ms-auto">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item p-2 p-sm-0 me-sm-3">
+                        <a class="text-decoration-none d-flex flex-row"
+                            href="{{ path('app_student') }}">
+                            <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-user fa-xl text-primary">
+
+                                </i>
+                            </span>
+                            <span class="d-flex align-items-center">
+                                {{ 'profile.title'|trans }}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item p-2 p-sm-0">
+                        <a class="text-decoration-none d-flex flex-row"
+                            href="{{ path('app_logout') }}">
+                            <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-arrow-right-from-bracket fa-xl text-primary">
+
+                                </i>
+                            </span>
+                            <span class="d-flex align-items-center">
+                                {{ 'authentication.log_out'|trans }}
+                            </span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item p-2 p-sm-0">
+                        <a class="text-decoration-none d-flex flex-row"
+                            href="{{ path('app_login') }}">
+                            <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-arrow-right-to-bracket fa-xl text-primary">
+
+                                </i>
+                            </span>
+                            <span class="d-flex align-items-center">
+                                {{ 'authentication.log_in.button'|trans }}
+                            </span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 </nav>
