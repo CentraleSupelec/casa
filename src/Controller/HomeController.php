@@ -17,7 +17,7 @@ class HomeController extends AbstractController
         $form = $this->createForm(SearchHousingType::class, $searchHousing,
             [
                 'action' => $this->generateUrl('app_housing_list'),
-                'method' => 'POST',
+                'method' => 'GET',
             ]);
 
         return $this->renderForm('home/index.html.twig', [

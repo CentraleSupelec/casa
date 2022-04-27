@@ -35,7 +35,9 @@ class HousingController extends AbstractController
         $pagination = null;
 
         $searchHousingCriteria = new SearchCriteriaModel();
-        $form = $this->createForm(SearchHousingType::class, $searchHousingCriteria);
+        $form = $this->createForm(SearchHousingType::class, $searchHousingCriteria,
+            ['method' => 'GET']
+        );
 
         $form->handleRequest($request);
 
