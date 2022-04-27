@@ -43,16 +43,15 @@ class HousingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $searchHousingCriteria = $form->getData();
-
-            $housingsQuery = $entityManager->getRepository(Housing::class)
-                ->qbFindByCriteria($searchHousingCriteria);
-
-            $pagination = $paginator->paginate(
-                $housingsQuery,
-                $request->query->getInt('page', 1),
-                $searchHousingCriteria->getMaxResultsByPage(),
-            );
         }
+        $housingsQuery = $entityManager->getRepository(Housing::class)
+            ->qbFindByCriteria($searchHousingCriteria);
+
+        $pagination = $paginator->paginate(
+            $housingsQuery,
+            $request->query->getInt('page', 1),
+            $searchHousingCriteria->getMaxResultsByPage(),
+        );
 
         return $this->render('housing/list.html.twig', [
             'form' => $form->createView(),

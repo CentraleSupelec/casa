@@ -24,7 +24,8 @@
                 </button>
 
                 <div class="mx-auto">
-                    {{ pagination|length }} offres correspondent à votre recherche
+                    {{ pagination.getTotalItemCount }} offres correspondent à votre
+                    recherche
                 </div>
             </div>
         {% endif %}
