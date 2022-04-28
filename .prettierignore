@@ -6,3 +6,6 @@ package-lock.json
 README.md
 public/bundles/
 volumes/
+
+# Necessary because of filter arrow function not supported (impossible to ignore lines only)
+templates/housing/_housing_card.html.twig

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Model\PsuhUserInterface;
 use App\Repository\StudentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
@@ -50,6 +52,14 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     #[Assert\NotNull]
     private bool $verified = false;
+
+    #[ORM\ManyToMany(targetEntity: Housing::class)]
+    private Collection $bookmarks;
+
+    public function __construct()
+    {
+        $this->bookmarks = new ArrayCollection();
+    }
 
     public function __toString(): string
     {
@@ -166,6 +176,30 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $verified): self
     {
         $this->verified = $verified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Housing>
+     */
+    public function getBookmarks(): Collection
+    {
+        return $this->bookmarks;
+    }
+
+    public function addBookmark(Housing $bookmark): self
+    {
+        if (!$this->bookmarks->contains($bookmark)) {
+            $this->bookmarks[] = $bookmark;
+        }
+
+        return $this;
+    }
+
+    public function removeBookmark(Housing $bookmark): self
+    {
+        $this->bookmarks->removeElement($bookmark);
 
         return $this;
     }

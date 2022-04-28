@@ -54,9 +54,13 @@ faut ensuite reporter les valeurs associées dans son fichier d'environnement lo
 
 Avant de lancer l'application elle-même, il faut lancer (en plus des conteneurs de base de données et de stockage objet)
 le serveur mjml (qui sert à mettre en forme les modèles d'emails), ainsi que le serveur mail (`mailhog`). On peut
-ensuite lancer le serveur. Il faut donc lancer les commandes suivantes :
+ensuite lancer le serveur. Un profil `docker-compose` permet de sélectionner l'ensemble des services nécessaires :
+`local`. Il inclut les deux précédemment cités ainsi que la base de données et le stockage objet.
+
+Il faut donc lancer les commandes suivantes :
+
 ```
-docker-compose up -d mjml mailhog
+COMPOSE_PROFILES=local docker-compose --env-file=.env.local up -d
 symfony server:start
 ```
 

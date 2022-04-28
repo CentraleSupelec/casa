@@ -7,16 +7,22 @@
 {% import 'housing/_range_data.html.twig' as RangeData %}
 {% import 'housing/_address.html.twig' as Address %}
 {% import 'housing/_carousel.html.twig' as Carousel %}
+{% import 'housing/_bookmark_button.html.twig' as Bookmark %}
 
 {% block body %}
     <main class="container housing-detail-page text-dark" id="maincontent">
         <div class="row justify-content-center">
-            <div class="col col-lg-8 pt-3">
-                <h1 class="text-center text-primary">
-                    {{ ("housing.type.#{housing.type}")|trans }} - {{
-                        housing.housingGroup.address.city
-                    }}
-                </h1>
+            <div class="col-12 col-lg-8 pt-3">
+                <div class="row">
+                    <h1 class="col-12 col-md-9 text-center text-primary">
+                        {{ ("housing.type.#{housing.type}")|trans }} - {{
+                            housing.housingGroup.address.city
+                        }}
+                    </h1>
+                    <div class="col-12 col-md-3 mb-2 text-center text-md-end">
+                        {{ Bookmark.displayBookmarkButton(housing) }}
+                    </div>
+                </div>
 
                 {{
                     Carousel.displayHousingCarousel(
@@ -28,7 +34,7 @@
 
                 <div class="row">
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-info text-center text-md-start">
+                        <h2 class="text-primary text-center text-md-start">
                             <span class="me-1">
                                 <i class="fa-solid fa-euro-sign fa-xl"></i>
                             </span>
@@ -80,7 +86,7 @@
                         </ul>
                     </div>
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-info text-center text-md-end">
+                        <h2 class="text-primary text-center text-md-end">
                             <span class="me-1">
                                 <i class="fa-solid fa-ruler-combined fa-xl"></i>
                             </span>
@@ -95,12 +101,12 @@
                             <li class="main-info">
                                 {% if housing.available %}
                                     {{ 'housing.available'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-check"></i>
                                     </span>
                                 {% else %}
                                     {{ 'housing.unavailable'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-xmark"></i>
                                     </span>
                                 {% endif %}
@@ -108,14 +114,14 @@
                             <li class="main-info">
                                 {% if housing.accessibility %}
                                     {{ 'housing.accessible'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-brands fa-accessible-icon">
 
                                         </i>
                                     </span>
                                 {% else %}
                                     {{ 'housing.non_accessible'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-xmark"></i>
                                     </span>
                                 {% endif %}
@@ -123,12 +129,12 @@
                             <li class="main-info">
                                 {% if housing.smoking %}
                                     {{ 'housing.smoking'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-smoking"></i>
                                     </span>
                                 {% else %}
                                     {{ 'housing.non_smoking'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-ban-smoking"></i>
                                     </span>
                                 {% endif %}
@@ -136,12 +142,12 @@
                             <li class="main-info">
                                 {% if housing.animalsAllowed %}
                                     {{ 'housing.animals_allowed'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-paw"></i>
                                     </span>
                                 {% else %}
                                     {{ 'housing.animals_non_allowed'|trans }}
-                                    <span class="ms-2 text-info">
+                                    <span class="ms-2 text-primary">
                                         <i class="fa-solid fa-ban"></i>
                                     </span>
                                 {% endif %}
@@ -162,7 +168,7 @@
 
                 <div class="row">
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-info text-center text-md-start">
+                        <h2 class="text-primary text-center text-md-start">
                             <span class="me-1">
                                 <i class="fa-solid fa-circle-info fa-xl"></i>
                             </span>
@@ -182,7 +188,7 @@
                         </ul>
                     </div>
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-info text-center text-md-end">
+                        <h2 class="text-primary text-center text-md-end">
                             <span class="me-1">
                                 <i class="fa-solid fa-location-dot fa-xl"></i>
                             </span>
@@ -198,7 +204,7 @@
                     </div>
                 </div>
 
-                <h2 class="mt-4 mb-3 text-info text-center text-md-start">
+                <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
                     {{ 'housing.equipment.title'|trans }}
                 </h2>
                 <div class="row">
@@ -222,7 +228,7 @@
                     </div>
                 </div>
 
-                <h2 class="mt-4 mb-3 text-info text-center text-md-start">
+                <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
                     {{ 'housing.services.included'|trans }}
                 </h2>
                 <div class="row">
@@ -250,7 +256,7 @@
                     </div>
                 </div>
 
-                <h2 class="mt-4 mb-3 text-info text-center text-md-start">
+                <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
                     {{ 'housing.services.optional'|trans }}
                 </h2>
                 <div class="row">
@@ -278,7 +284,7 @@
                     </div>
                 </div>
 
-                <h2 class="mt-4 mb-0 text-info text-center text-md-start">
+                <h2 class="mt-4 mb-0 text-primary text-center text-md-start">
                     {{ 'housing.point_of_interest'|trans }}
                 </h2>
                 <div class="row">
@@ -294,10 +300,12 @@
                         <ul class="text-center text-md-start">
                             {% for poi in housing.housingGroup.pointsOfInterest %}
                                 {% if poi.category == 'transportation' %}
-                                    <li class="main-info">
-                                        {{ poi.label }}
+                                    <li class="main-info d-flex flex-column">
+                                        <span>{{ poi.label }}</span>
                                         {% if poi.description is not null %}
-                                            : {{ poi.description }}
+                                            <span class="minor-info">
+                                                {{ poi.description }}
+                                            </span>
                                         {% endif %}
                                     </li>
                                 {% endif %}

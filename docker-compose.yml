@@ -11,6 +11,8 @@ services:
       - '5432:5432'
     volumes:
       - ./volumes/psuh-db:/var/lib/postgresql/data:rw
+    profiles:
+      - local
 
   minio:
     image: quay.io/minio/minio
@@ -23,18 +25,24 @@ services:
       - '9091:9001'
     volumes:
       - ./volumes/minio:/data:rw
+    profiles:
+      - local
 
   mailhog:
     image: mailhog/mailhog
     ports:
       - '1025:1025'
       - '8025:8025'
+    profiles:
+      - local
 
   mjml:
     image: adrianrudnik/mjml-server:2.3.0
     restart: on-failure
     ports:
       - '8081:80'
+    profiles:
+      - local
 
   test-database:
     image: postgres:14-alpine
@@ -44,3 +52,5 @@ services:
       POSTGRES_USER: test-symfony
     ports:
       - '5433:5432'
+    profiles:
+      - test

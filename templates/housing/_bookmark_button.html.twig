@@ -1,0 +1,38 @@
+{% macro displayBookmarkButton(housing) %}
+    {% if
+        app.user
+            and is_granted('ROLE_STUDENT')
+            and housing in app.user.bookmarks %}
+        <a href="{{
+            path(
+                'app_housing_remove_bookmark',
+                {
+                    id: housing.id,
+                    origin: app.request.get('_route'),
+                    query: app.request.query.all
+                }
+            )
+            }}">
+            <button type="button" class="btn btn-outline-primary bookmark">
+                <i class="fa-solid fa-heart-circle-minus"></i>
+                <span>{{ 'bookmark.remove'|trans }}</span>
+            </button>
+        </a>
+    {% else %}
+        <a href="{{
+            path(
+                'app_housing_add_bookmark',
+                {
+                    id: housing.id,
+                    origin: app.request.get('_route'),
+                    query: app.request.query.all
+                }
+            )
+            }}">
+            <button type="button" class="btn btn-outline-primary bookmark">
+                <i class="fa-solid fa-heart-circle-plus"></i>
+                <span>{{ 'bookmark.add'|trans }}</span>
+            </button>
+        </a>
+    {% endif %}
+{% endmacro %}

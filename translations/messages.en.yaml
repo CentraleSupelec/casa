@@ -118,3 +118,6 @@ footer:
     legal: legal notice & credits
     urgent: urgence
     university: University
+bookmark:
+    add: Save
+    remove: Remove
