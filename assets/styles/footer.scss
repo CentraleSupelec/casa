@@ -1,0 +1,15 @@
+footer {
+    color: white;
+    background-color: $dark;
+
+    .nav-link:link,
+    .nav-link:visited {
+        color: white;
+    }
+
+    .nav-link:hover,
+    .nav-link:active {
+        text-decoration: underline;
+        color: white;
+    }
+}

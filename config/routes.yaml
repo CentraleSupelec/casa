@@ -1,6 +1,13 @@
+home:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+        path: /fr
+
 controllers:
     resource: ../src/Controller/
     type: annotation
+    prefix: /{_locale}
 
 kernel:
     resource: ../src/Kernel.php

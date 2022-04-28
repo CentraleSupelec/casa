@@ -18,8 +18,11 @@ final class Constants
             'housing.type.t1' => 't1',
             'housing.type.t1bis' => 't1bis',
             'housing.type.t2' => 't2',
-            'housing.type.t3' => 't2',
-            'housing.type.t4' => 't2',
+            'housing.type.t3' => 't3',
+            'housing.type.t4' => 't4',
+            'housing.type.t5' => 't5',
+            'housing.type.t6' => 't6',
+            'housing.type.t7' => 't7',
         ];
     }
 

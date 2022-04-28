@@ -25,6 +25,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item p-2 p-sm-0 me-sm-3">
+                    {% set other_locale = app.request.locale != 'fr'
+                        ? 'fr'
+                        : 'en'
+                    %}
+                    <a class="text-decoration-none d-flex flex-row"
+                        href="{{
+                        path(
+                            'app_home',
+                            {
+                                _locale: other_locale
+                            }
+                        )
+                        }}">
+                        <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                            <span class="d-flex align-items-center">
+                                {{ other_locale|locale_name|u.title }}
+                            </span>
+                        </span>
+                    </a>
+                </li>
+
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="nav-item p-2 p-sm-0 me-sm-3">
                         <a class="text-decoration-none d-flex flex-row"

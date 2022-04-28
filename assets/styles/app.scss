@@ -6,6 +6,8 @@
 
 @import './housing.scss';
 
+@import './footer.scss';
+
 @font-face {
     font-family: 'Open Sans';
     src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf')
@@ -42,18 +44,4 @@ h2 {
 
 h3 {
     @include font-size(1.1rem);
-}
-
-footer {
-    color: white;
-    background-color: $dark;
-}
-
-footer .nav-link {
-    color: white;
-}
-
-footer .nav-link:hover {
-    color: white;
-    text-decoration: underline;
 }

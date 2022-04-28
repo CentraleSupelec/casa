@@ -24,8 +24,8 @@
                 </button>
 
                 <div class="mx-auto">
-                    {{ pagination.getTotalItemCount }} offres correspondent à votre
-                    recherche
+                    {{ pagination.getTotalItemCount }}
+                    {{ 'housing.list.found'|trans }}
                 </div>
             </div>
         {% endif %}
@@ -38,26 +38,28 @@
     </div>
     <main class="container" id="maincontent">
         {% if (pagination|length) > 0 %}
-            <div class="d-flex justify-content-between m-2" role="navigation">
-                <div class="h3 me-auto">
-                    {{ 'housing.list.sort.label'|trans }} :
+            <div class="d-flex justify-content-end" role="navigation">
+                <div class="h3 me-4">
+                    {{ 'housing.list.sort.label'|trans }}
                 </div>
-
-                {{
-                    knp_pagination_sortable(
-                        pagination,
-                        'housing.list.sort.price'|trans,
-                        'h.rentMin'
-                    )
-                }}
-
-                {{
-                    knp_pagination_sortable(
-                        pagination,
-                        'housing.list.sort.area'|trans,
-                        'h.areaMin'
-                    )
-                }}
+                <div class="mx-2">
+                    {{
+                        knp_pagination_sortable(
+                            pagination,
+                            'housing.list.sort.price'|trans,
+                            'h.rentMin'
+                        )
+                    }}
+                </div>
+                <div class="mx-2">
+                    {{
+                        knp_pagination_sortable(
+                            pagination,
+                            'housing.list.sort.area'|trans,
+                            'h.areaMin'
+                        )
+                    }}
+                </div>
             </div>
             <section aria-label="{{ 'housing.list.search_result'|trans }}">
                 {% for housing in pagination %}

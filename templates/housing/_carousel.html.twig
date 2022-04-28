@@ -15,14 +15,10 @@
                     aria-label="image {{
                     loop.index
                     }} of {{ pictures|length }} ">
-                    <a href="#">
-                        <!-- necessary for accessibility (screen reader) -->
-                        <img src="{{ pictureBaseUrl }}/{{
-                            picture.getPicture()
-                            }}"
-                            class="img-fluid d-block rounded-2 me-auto ms-auto"
-                            alt="{{ picture.label }}" />
-                    </a>
+                    <img src="{{ pictureBaseUrl }}/{{ picture.getPicture() }}"
+                        class="img-fluid d-block rounded-2 me-auto ms-auto"
+                        alt="{{ picture.label }}"
+                        tabindex="0" />
                 </div>
             {% endfor %}
         </div>
