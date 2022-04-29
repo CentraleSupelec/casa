@@ -102,7 +102,9 @@ class HousingController extends AbstractController
     {
         $redirection_params = [];
         if (null !== $query) {
-            $redirection_params['search_housing'] = $query['search_housing'];
+            foreach ($query as $key => $value) {
+                $redirection_params[$key] = $value;
+            }
         }
 
         if ('app_housing_detail' === $origin) {

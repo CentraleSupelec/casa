@@ -38,8 +38,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/student, roles: ROLE_STUDENT }
-        - { path: ^/housing/(.+)/add-bookmark/(.+), roles: ROLE_STUDENT }
-        - { path: ^/housing/(.+)/remove-bookmark/(.+), roles: ROLE_STUDENT }
+        - { path: ^/(.+)/add-bookmark, roles: ROLE_STUDENT }
+        - { path: ^/(.+)/remove-bookmark, roles: ROLE_STUDENT }
 
 when@test:
     security:
