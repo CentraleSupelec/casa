@@ -2,11 +2,12 @@
 
 namespace App\Admin;
 
-use App\Constants;
+use App\Admin\Embed\AddressEmbeddedAdmin;
 use App\Entity\Equipment;
 use App\Entity\HousingGroup;
 use App\Entity\Lessor;
 use App\Entity\PointOfInterest;
+use App\Entity\School;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\AdminInterface;
@@ -15,7 +16,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HousingGroupAdmin extends AbstractAdmin
@@ -60,27 +60,20 @@ class HousingGroupAdmin extends AbstractAdmin
                     'label' => 'Bailleur',
                     'class' => Lessor::class,
                 ])
+                ->add('schools', ModelType::class, [
+                    'class' => School::class,
+                    'multiple' => true,
+                    'label' => 'Etablissements',
+                    'btn_add' => false,
+                     ])
             ->end()
             ->with('Adresse', [
                 'class' => 'col-md-8 col-md-offset-2',
-            ])
-                ->add('address.street', TextType::class, [
-                    'label' => 'Adresse (ligne 1)',
-                ])
-                ->add('address.streetDetail', TextType::class, [
-                    'label' => 'Adresse (ligne 2)',
-                    'required' => false,
-                ])
-                ->add('address.city', TextType::class, [
-                    'label' => 'Ville',
-                ])
-                ->add('address.postalCode', TextType::class, [
-                    'label' => 'Code postal',
-                ])
-                ->add('address.country', ChoiceType::class, [
-                    'label' => 'Pays',
-                    'choices' => Constants::getAddressCountries(),
-                ])
+            ]);
+
+        AddressEmbeddedAdmin::addFormField($form);
+
+        $form
             ->end()
             ->with('Équipements', [
                 'class' => 'col-md-8 col-md-offset-2',
@@ -146,21 +139,12 @@ class HousingGroupAdmin extends AbstractAdmin
             ->add('lessor.name', null, [
                 'Nom du bailleur',
             ])
-            ->add('address.street', null, [
-                'label' => 'Adresse (ligne 1)',
-            ])
-            ->add('address.streetDetail', null, [
-                'label' => 'Adresse (ligne 2)',
-            ])
-            ->add('address.city', null, [
-                'label' => 'Ville',
-            ])
-            ->add('address.postalCode', null, [
-                'label' => 'Code postal',
-            ])
-            ->add('address.country', null, [
-                'label' => 'Pays',
-            ])
+            ->add('schools', null, [
+                'label' => 'Etablissements',
+            ]);
+        AddressEmbeddedAdmin::addShowField($show);
+
+        $show
             ->add('equipments', null, [
                 'label' => 'Équipements',
             ])

@@ -70,13 +70,14 @@
                                     </span>
                                 {% endfor %}
                             </div>
-                            <div class="p-2">
-                                <i class="fa-solid fa-school me-2"></i>
-                                <span>CentraleSupélec</span>
-                            </div>
-                            <a href="#" class="card-link mt-2">
-                                Voir les conditions d’éligibilité après connexion
-                            </a>
+                            {% if (housing.housingGroup.schools|length) > 0  %}
+                                <div class="p-2 d-flex">
+                                    <i class="fa-solid fa-school me-2"></i>
+                                    {% for school in housing.housingGroup.schools %}
+                                        <span class="badge bg-success">{{school.name}}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="col-12 col-md-6">
                             <span class="price card-text d-flex justify-content-end">

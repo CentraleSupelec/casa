@@ -45,6 +45,9 @@ class HousingGroup
     #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: PointOfInterest::class, orphanRemoval: true)]
     private Collection $pointsOfInterest;
 
+    #[ORM\ManyToMany(targetEntity: School::class, inversedBy: 'housingGroups')]
+    private Collection $schools;
+
     public function __construct()
     {
         $this->address = new Address();
@@ -52,6 +55,7 @@ class HousingGroup
         $this->housingGroupServices = new ArrayCollection();
         $this->equipments = new ArrayCollection();
         $this->pointsOfInterest = new ArrayCollection();
+        $this->schools = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -210,6 +214,30 @@ class HousingGroup
                 $pointsOfInterest->setHousingGroup(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, School>
+     */
+    public function getSchools(): Collection
+    {
+        return $this->schools;
+    }
+
+    public function addSchool(School $school): self
+    {
+        if (!$this->schools->contains($school)) {
+            $this->schools[] = $school;
+        }
+
+        return $this;
+    }
+
+    public function removeSchool(School $school): self
+    {
+        $this->schools->removeElement($school);
 
         return $this;
     }

@@ -30,9 +30,10 @@ class HousingRepository extends ServiceEntityRepository
         }
 
         if ($searchCriteria->getMinArea()) {
-            $query->andWhere('h.areaMin >=:area')->setParameter('area', $searchCriteria->getMinArea());
+            $query->andWhere('h.areaMin >= :area or h.areaMax>=:area')->setParameter('area', $searchCriteria->getMinArea());
         }
-        $query->orderBy('h.rentMin', 'ASC');
+
+        $query->orderBy('h.createdAt', 'DESC');
 
         return $query;
     }

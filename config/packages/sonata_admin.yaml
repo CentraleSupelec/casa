@@ -7,6 +7,8 @@ sonata_admin:
     templates:
         layout: sonata/standard_layout.html.twig
 
+    show_mosaic_button: false
+
 sonata_block:
     blocks:
         sonata.admin.block.admin_list:

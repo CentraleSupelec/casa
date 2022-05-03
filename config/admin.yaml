@@ -76,3 +76,13 @@ services:
               model_class: App\Entity\PointOfInterest
               manager_type: orm
               show_in_dashboard: false
+
+    admin.school:
+        class: App\Admin\SchoolAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\School
+              controller: ~
+              manager_type: orm
+              label: Etablissements
+              group: Référentiels

@@ -12,10 +12,17 @@
     <div>
         {{ form_errors(form) }}
     </div>
-    <div class="row">
+    <div class="row pb-2">
         <div class="col">
-            {{ form_row(form.maxPrice) }}
+            {{ form_label(form.maxPrice) }}
+            <div class="input-group">
+                {{ form_widget(form.maxPrice) }}
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
+            </div>
         </div>
+
         <div class="col">
             {{ form_label(form.minArea) }}
             <div class="input-group">
