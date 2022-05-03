@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: HousingGroupRepository::class)]
@@ -15,9 +16,10 @@ class HousingGroup
     use TimestampableEntity;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: UuidGenerator::class)]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    private ?string $id = null;
 
     #[ORM\Column(type: 'string', length: 80)]
     #[Assert\NotNull]
@@ -57,7 +59,7 @@ class HousingGroup
         return sprintf('%s - %s', $this->getLessor(), $this->getName());
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

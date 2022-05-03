@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\HousingPictureRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -16,9 +17,10 @@ class HousingPicture
     use TimestampableEntity;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: UuidGenerator::class)]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    private ?string $id = null;
 
     #[ORM\Column(type: 'string', length: 80, nullable: true)]
     private ?string $label = null;
@@ -39,7 +41,7 @@ class HousingPicture
         return $this->getLabel() ?: sprintf('Photo #%s sans titre', $this->getId());
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

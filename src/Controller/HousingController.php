@@ -16,8 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HousingController extends AbstractController
 {
-    #[Route('/housing/{id}', name: 'app_housing_detail', requirements: ['id' => '\d+'])]
-    public function detail(int $id, EntityManagerInterface $entityManager, ImageUrlService $imageUrl): Response
+    #[Route('/housing/detail/{id}', name: 'app_housing_detail')]
+    public function detail(string $id, EntityManagerInterface $entityManager, ImageUrlService $imageUrl): Response
     {
         $housing = $entityManager->getRepository(Housing::class)->find($id);
 
@@ -62,7 +62,7 @@ class HousingController extends AbstractController
     }
 
     #[Route('/housing/{id}/add-bookmark', name: 'app_housing_add_bookmark')]
-    public function addBookmark(int $id, EntityManagerInterface $entityManager, Request $request): Response
+    public function addBookmark(string $id, EntityManagerInterface $entityManager, Request $request): Response
     {
         $origin = $request->get('origin', 'app_housing_list');
         $query = $request->get('query');
@@ -80,7 +80,7 @@ class HousingController extends AbstractController
     }
 
     #[Route('/housing/{id}/remove-bookmark', name: 'app_housing_remove_bookmark')]
-    public function removeBookmark(int $id, EntityManagerInterface $entityManager, Request $request): Response
+    public function removeBookmark(string $id, EntityManagerInterface $entityManager, Request $request): Response
     {
         $origin = $request->get('origin', 'app_housing_list');
         $query = $request->get('query');
@@ -98,7 +98,7 @@ class HousingController extends AbstractController
         return $this->redirectAfterBookmarkAction($id, $origin, $query);
     }
 
-    private function redirectAfterBookmarkAction(int $housingId, string $origin, ?array $query): Response
+    private function redirectAfterBookmarkAction(string $housingId, string $origin, ?array $query): Response
     {
         $redirection_params = [];
         if (null !== $query) {

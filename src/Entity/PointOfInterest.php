@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PointOfInterestRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PointOfInterestRepository::class)]
@@ -13,9 +14,10 @@ class PointOfInterest
     use TimestampableEntity;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: UuidGenerator::class)]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    private ?string $id = null;
 
     #[ORM\Column(type: 'string', length: 80)]
     #[Assert\Choice(callback: ['App\Constants', 'getPointsOfInterestCategories'])]
@@ -39,7 +41,7 @@ class PointOfInterest
         return sprintf('[%s] %s', $this->getHousingGroup(), $this->getLabel());
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

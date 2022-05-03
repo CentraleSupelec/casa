@@ -4,15 +4,17 @@ namespace App\Entity;
 
 use App\Repository\HousingGroupServiceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: HousingGroupServiceRepository::class)]
 class HousingGroupService
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: UuidGenerator::class)]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    private ?string $id = null;
 
     #[ORM\Column(type: 'boolean')]
     private ?bool $isOptional = null;
@@ -35,7 +37,7 @@ class HousingGroupService
             ;
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
