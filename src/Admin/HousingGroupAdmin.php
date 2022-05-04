@@ -15,11 +15,18 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HousingGroupAdmin extends AbstractAdmin
 {
+    protected function configureRoutes(RouteCollectionInterface $collection): void
+    {
+        $collection
+            ->add('geocode', $this->getRouterIdParameter().'/geocode');
+    }
+
     protected function configureTabMenu(MenuItemInterface $menu, string $action, ?AdminInterface $childAdmin = null): void
     {
         if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
@@ -114,6 +121,7 @@ class HousingGroupAdmin extends AbstractAdmin
             ->add('lessor.name', null, [
                 'label' => 'Nom du bailleur',
             ])
+            ->add('address.coordinates')
             ->add('createdAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Création',
@@ -124,6 +132,9 @@ class HousingGroupAdmin extends AbstractAdmin
             ])
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
+                    'geocode' => [
+                        'template' => 'admin\_list_action_geocode.html.twig',
+                    ],
                     'edit' => [],
                     'delete' => [],
                 ],

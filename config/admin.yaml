@@ -13,6 +13,7 @@ services:
         tags:
             - name: sonata.admin
               model_class: App\Entity\HousingGroup
+              controller: App\Controller\Admin\GeocodingController
               manager_type: orm
               label: Groupes de logements
               group: Logement
@@ -82,7 +83,7 @@ services:
         tags:
             - name: sonata.admin
               model_class: App\Entity\School
-              controller: ~
+              controller: App\Controller\Admin\GeocodingController
               manager_type: orm
               label: Etablissements
               group: Référentiels

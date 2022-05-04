@@ -9,12 +9,19 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 final class SchoolAdmin extends AbstractAdmin
 {
+    protected function configureRoutes(RouteCollectionInterface $collection): void
+    {
+        $collection
+            ->add('geocode', $this->getRouterIdParameter().'/geocode');
+    }
+
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter
@@ -34,16 +41,14 @@ final class SchoolAdmin extends AbstractAdmin
             ->add('websiteUrl', null, [
                 'label' => 'Adresse Internet',
             ])
-            ->add('createdAt', 'datetime', [
-                'format' => 'H:i:s -- d/m/Y',
-                'label' => 'Création',
-            ])
-            ->add('updatedAt', 'datetime', [
-                'format' => 'H:i:s -- d/m/Y',
-                'label' => 'Dernière mise à jour',
+            ->add('address.coordinates', null, [
+                'label' => 'Coordonnées',
             ])
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
+                    'geocode' => [
+                        'template' => 'admin\_list_action_geocode.html.twig',
+                    ],
                     'show' => [],
                     'edit' => [],
                     'delete' => [],

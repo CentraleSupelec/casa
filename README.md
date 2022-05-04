@@ -68,6 +68,19 @@ Le projet est ensuite accessible à cette URL : http://127.0.01:8000/
 
 Pour voir les mails envoyés par l'application sur l'interface de `mailhog` : http://127.0.0.1:8025
 
+### GeoCoding API 
+
+https://www.geoapify.com/
+
+* Se connecter ( sso google) 
+* Créer un projet 
+* générer une API KEY
+
+Ajouter la clé dans le .env.local 
+```
+GEOCODING_API_ID=
+```
+
 ### Lancement des tests
 
 Pour lancer les tests, il faut commencer par lancer la base de données de tests (via docker):

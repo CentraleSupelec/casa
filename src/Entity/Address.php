@@ -28,6 +28,14 @@ class Address
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $streetDetail = null;
 
+    #[ORM\Embedded(class: Coordinates::class)]
+    private Coordinates $coordinates;
+
+    public function __construct()
+    {
+        $this->coordinates = new Coordinates();
+    }
+
     public function __toString(): string
     {
         return sprintf(
@@ -93,5 +101,20 @@ class Address
         $this->streetDetail = $streetDetail;
 
         return $this;
+    }
+
+    public function getCoordinates(): Coordinates
+    {
+        return $this->coordinates;
+    }
+
+    public function setCoordinates(Coordinates $coordinates)
+    {
+        $this->coordinates = $coordinates;
+    }
+
+    public function getFullAddress(): string
+    {
+        return $this->getStreet().' '.$this->getPostalCode().' '.$this->getCity();
     }
 }
