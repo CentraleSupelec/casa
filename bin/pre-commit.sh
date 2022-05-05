@@ -9,8 +9,8 @@ PHP_CS_FIXER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/
 if [ -x "$PHP_CS_FIXER" ]; then
     if git diff --cached --name-only --diff-filter=ACMRTUXB | grep -q '\.php$'; then
         STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMRTUXB | grep '\.php$')
-        vendor/bin/php-cs-fixer fix --verbose --config=.php-cs-fixer.php -- "${STAGED_FILES[@]}";
-        git add "${STAGED_FILES[@]}"
+        vendor/bin/php-cs-fixer fix --verbose --config=.php-cs-fixer.php ${STAGED_FILES[@]};
+        git add $STAGED_FILES;
     fi
 else
     echo ""
