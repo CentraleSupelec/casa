@@ -1,0 +1,124 @@
+housingGroups:
+    - name: Résidence étudiante Edgar Faure
+      address:
+          street: 21, rue Maximilien Robespierre
+          city: Palaiseau
+          postalcode: 91120
+          country: FRANCE
+
+      lessor: Arpej
+
+      housings:
+          - description: Sweet studio
+            redirectlink: https://www.arpej.fr/fr/residence/edgar-faure-residence-etudiante-palaiseau/
+            type: studio
+            available: true
+            areamin: 19
+            areamax: 23
+            rentmin: 527
+            rentmax: 582
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+    - name: Residence du Parc
+      address:
+          street: 22, rue Henri Auguste Desbruères
+          city: Evry-Courcouronnes
+          postalcode: 91000
+          country: FRANCE
+
+      lessor: Arpej
+
+      housings:
+          - description: En plein cœur du Génopôle d’Evry-Courcouronnes et à deux pas des transports, cette résidence vous permet d’accéder à divers établissements universitaires facilement.
+            redirectlink: https://www.arpej.fr/fr/residence/bernard-barataud-residence-etudiante-evry-courcouronnes/
+            type: studio
+            available: true
+            areamin: 34
+            areamax: 39
+            rentmin: 737
+            rentmax: 837
+            chargesmin: 0
+            chargesmax: 0
+            chargesincluded: true
+            applicationfeemin: 50
+            applicationfeemax: 0
+            securitydepositmin: 448
+            securitydepositmax: 513
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+    - name: Saint-Exupéry
+      address:
+          street: 1, allée des Galants courts
+          city: Evry-Courcouronnes
+          postalcode: 91000
+          country: FRANCE
+
+      lessor: Arpej
+
+      housings:
+          - description: En plein cœur du centre ville d’Evry-Courcouronnes, cette résidence vous offre un accès privilégié aux commerces, services et restaurants pour une vie étudiante animée ! Plusieurs établissements scolaires sont à quelques pas de la résidence.
+            redirectlink: https://www.arpej.fr/fr/residence/saint-exupery-residence-jeunes-actifs-evry-courcouronnes/
+            type: studio
+            available: true
+            areamin: 30
+            areamax:
+            rentmin: 656
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 656
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+    - name: Résidence Eugène Chevreul
+      address:
+          street: 27, avenue de la République
+          city: Massy
+          postalcode: 91300
+          country: FRANCE
+
+      lessor: Arpej
+
+      housings:
+          - description: Sweet studio
+            redirectlink: https://www.arpej.fr/fr/residence/eugene-chevreul-residence-etudiante-massy/
+            type: studio
+            available: true
+            areamin: 18
+            areamax: 20
+            rentmin: 505
+            rentmax: 540
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 50
+            applicationfeemax: 0
+            securitydepositmin: 279
+            securitydepositmax: 314
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false

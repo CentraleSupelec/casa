@@ -119,9 +119,11 @@ php bin/console doctrine:migrations:migrate
 php bin/console make:migration
 ```
 
-* Chargement des données de référence 
+* Chargement des données 
+
+**ATTENTION** : cela vide la database , sauf si on ajoute --append , mais dans ce cas, cela créé des doublons
 ```
-symfony console app:load-refdata data/reference-data.yaml
+symfony console doctrine:fixtures:load 
 ```
 
 ## Outils pour le développement

@@ -1,0 +1,63 @@
+equipments:
+    - label: Parking vélo
+      picture: fa-solid fa-bicycle
+
+    - label: Laverie
+      picture: fa-solid fa-shirt
+
+    - label: Baby foot
+
+    - label: Espace détente
+      picture: fa-solid fa-couch
+
+    - label: Potager
+
+    - label: Terrain de basket
+      picture: fa-solid fa-basketball
+
+    - label: Salle de Fitness
+
+    - label: Ascenceur
+      picture: fa-solid fa-elevator
+
+    - label: Boite aux lettres
+      picture: fa-solid fa-square-envelope
+
+    - label: Salle de musique
+      picture: fa-solid fa-drum
+
+    - label: Surveillance vidéo
+      picture: fa-solid fa-eye
+
+    - label: Accès sécurisé
+      picture: fa-solid fa-building-lock
+
+    - label: Interphone
+      picture: fa-brand fa-intercom
+
+    - label: Détecteur Fumée
+
+    - label: Agora
+
+    - label: Kitchenette
+      picture: fa-solid fa-kitchen-set
+
+    - label: Réfrigirateur
+
+    - label: Salle d'eau
+      picture: fa-solid fa-shower
+
+    - label: Prise TV
+
+    - label: Lit
+      picture: fa-solid fa-bed
+
+    - label: Table de Chevet
+    - label: Placard
+
+    - label: Salle de bain
+      pciture: fa-bath
+
+    - label: Cuisine commune
+    - label: Balcon
+    - label: Micro-onde

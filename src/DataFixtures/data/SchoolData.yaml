@@ -1,0 +1,90 @@
+schools:
+    - name: CentraleSupélec
+      websiteUrl: http://www.centralesupelec.fr
+      address:
+          street: 3 rue Joliot-Curie
+          streetdetail:
+          city: Gif-Sur-Yvette
+          postalcode: 91190
+          country: FRANCE
+
+    - name: Faculté Jean Monnet
+      websiteUrl: https://www.jm.universite-paris-saclay.fr/
+      address:
+          street: 54 boulevard Desgranges
+          streetdetail:
+          city: Sceaux
+          postalcode: 92331
+          country: FRANCE
+
+    - name: Faculté de Médecine
+      websiteUrl: https://www.medecine.universite-paris-saclay.fr/
+      address:
+          street: 63 Rue Gabriel Péri
+          streetdetail:
+          city: Le Kremlin-Bicêtre
+          postalcode: 94270
+          country: FRANCE
+
+    - name: Faculté de Pharmacie
+      websiteUrl: https://www.pharmacie.universite-paris-saclay.fr/
+      address:
+          street: 5 rue Jean-Baptiste Clément
+          streetdetail:
+          city: Châtenay-Malabry
+          postalcode: 92296
+          country: FRANCE
+
+    - name: Institut d'Optique Graduate School - Paris Saclay
+      websiteUrl: https://www.institutoptique.fr/
+      address:
+          street: 2 avenue Augustin Fresnel
+          city: Palaiseau
+          postalcode: 91127
+          country: FRANCE
+
+    - name: AgroParisTech
+      websiteUrl: http://www2.agroparistech.fr/
+      address:
+          street: 16 rue Claude Bernard
+          city: Paris
+          postalcode: 75005
+          country: FRANCE
+
+    - name: École normale supérieure Paris-Saclay
+      websiteUrl: https://ens-paris-saclay.fr/
+      address:
+          street: 4 avenue des Sciences
+          city: Gif-Sur-Yvette
+          postalcode: 91190
+          country: FRANCE
+    - name: IUT D'Orsay
+      websiteUrl: https://www.iut-orsay.universite-paris-saclay.fr/
+      address:
+          street: 13 avenue des Sciences
+          city: cityGif-sur-Yvette
+          postalcode: 91190
+          country: FRANCE
+
+    - name: IUT Sceaux
+      websiteUrl: https://www.iut-sceaux.universite-paris-saclay.fr/
+      address:
+          street: 8 avenue Cauchy
+          city: Sceaux
+          postalcode: 92330
+          country: FRANCE
+
+    - name: IUT de Cachan
+      websiteUrl: https://www.iut-cachan.universite-paris-saclay.fr/
+      address:
+          street: 9 avenue de la Division Leclerc
+          city: Cachan
+          postalcode: 94230
+          country: FRANCE
+    - name: Polytech Paris-Saclay
+      websiteUrl: https://www.polytech.universite-paris-saclay.fr/
+      address:
+          street: Maison de l'ingénieur Bâtiment 620 rue Louis de Broglie
+          city: ORSAY
+          postalcode: 91405
+          country: FRANCE

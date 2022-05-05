@@ -1,0 +1,295 @@
+housingGroups:
+    - name: TWENTY CAMPUS PALAISEAU
+      address:
+          street: 23 Av. des Alliés
+          city: Palaiseau
+          postalcode: 91120
+          country: FRANCE
+
+      lessor: Twenty Campus
+
+      housings:
+          - description: Studio de 19 m² entièrement meublé et équipé. Eau froide, eau chaude, chauffage inclus. Compteur électrique individuel.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-palaiseau/logements/
+            type: studio
+            available: true
+            areamin: 19
+            areamax:
+            rentmin: 620
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: Appartement T1 entre 22 et 26m² entièrement meublé et équipé. Eau froide, eau chaude, chauffage inclus. Compteur électrique individuel.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-palaiseau/logements/
+            type: t1
+            available: true
+            areamin: 22
+            areamax: 26
+            rentmin: 650
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: true
+
+          - description: Appartement Type 2 de 41 m² entièrement meublé et équipé. Eau froide, eau chaude, chauffage inclus. Compteur électrique individuel.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-palaiseau/logements/
+            type: t2
+            available: true
+            areamin: 41
+            areamax:
+            rentmin: 850
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+    - name: TWENTY CAMPUS MASSY
+      address:
+          street: 11 Rue Galvani
+          city: Massy
+          postalcode: 91300
+          country: FRANCE
+
+      lessor: Twenty Campus
+
+      housings:
+          - description: Studio de 18 m² entièrement meublé et équipé. Eau, chauffage et électricité inclus.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-massy/logements/
+            type: studio
+            available: true
+            areamin: 18
+            areamax: 19
+            rentmin: 670
+            rentmax: 695
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: T2 de 28 m² entièrement meublé et équipé. Eau, chauffage et électricité inclus.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-massy/logements/
+            type: t2
+            available: true
+            areamin: 28
+            areamax:
+            rentmin: 750
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: T2 de 28 m² avec Loggia, entièrement meublé et équipé. Eau, chauffage et électricité inclus.
+
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-massy/logements/
+            type: t2
+            available: true
+            areamin: 29
+            areamax:
+            rentmin: 770
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+    - name: TWENTY CAMPUS GIF-SUR-YVETTE
+      address:
+          street: 54 boulevard Desgranges
+          streetdetail: detail
+          city: Sceaux
+          postalcode: 92331
+          country: FRANCE
+
+      lessor: Twenty Campus
+
+      housings:
+          - description: Chambre meublée entre 9 et 12 m² au sein d'un appartement de 73m² avec cuisine commune, pièce de vie avec Balcon. Eau froide, eau chaude et chauffage inclus. Electricité divisée entre les colocataires.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-gif-sur-yvette/logements/
+            type: t4
+            available: true
+            areamin: 9
+            areamax: 12
+            rentmin: 570
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: Studio entre 17 et 23 m² entièrement meublé et équipé. Eau chaude, eau froide et chauffage inclus. Compteur électrique individuel.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-gif-sur-yvette/logements/
+            type: studio
+            available: true
+            areamin: 17
+            areamax: 23
+            rentmin: 700
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: Appartement T1bis de 27 m² entièrement meublé et équipé. Eau chaude, eau froide et chauffage inclus. Compteur électrique individuel.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-gif-sur-yvette/logements/
+            type: t1bis
+            available: true
+            areamin: 27
+            areamax:
+            rentmin: 750
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+    - name: TWENTY CAMPUS CACHAN X JACQUES RESTIGNAT
+      address:
+          street: 36 Av. du Président Wilson
+          city: Cachan
+          postalcode: 94230
+          country: FRANCE
+
+      lessor: Twenty Campus
+
+      housings:
+          - description: Chambre meublée de 16m² meublée et équipée avec WC et salle d'eau individuelle. Réfrigérateur et Micro-onde dans la chambre. Cuisine commune. Eau, chauffage et électricité inclus.
+
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-cachan-x-jacques-restignat/logements/
+            type: t1
+            available: true
+            areamin: 16
+            areamax:
+            rentmin: 630
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: Studio meublée de 18m² entièrement meublé et équipé. Eau, chauffage et électricité inclus.
+            redirectlink: https://www.twenty-campus.com/fr/residences/twenty-campus-cachan-x-jacques-restignat/logements/
+            type: studio
+            available: true
+            areamin: 18
+            areamax:
+            rentmin: 690
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: alone
+            accessibility: true
+            smoking: false
+            animalsallowed: false
+
+          - description: T1 bis entre 27 et 30m² pour 2 personnes, entièrement meublé et équipé. Eau, chauffage et électricité inclus.
+            redirectlink: url
+            type: t1bis
+            available: true
+            areamin: 27
+            areamax: 30
+            rentmin: 990
+            rentmax:
+            chargesmin:
+            chargesmax:
+            chargesincluded: true
+            applicationfeemin: 0
+            applicationfeemax: 0
+            securitydepositmin: 0
+            securitydepositmax: 0
+            livingmode: full
+            occupationmode: share
+            accessibility: true
+            smoking: false
+            animalsallowed: false

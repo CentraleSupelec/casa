@@ -1,0 +1,31 @@
+services:
+    - label: Eau
+      picture: fa-solid fa-droplet
+
+    - label: Electricité
+      picture: fa-solid fa-plug-circle-bolt
+
+    - label: Internet
+      picture: fa-solid fa-wifi
+
+    - label: Entretien logement
+
+    - label: Petit déjeuner Cafétéria
+      picture: fa-solid fa-mug-saucer
+
+    - label: Petit déjeuner à Emporter
+    - label: Distributeurs pain
+    - label: Distributeur viennoiseries
+
+    - label: Réception de colis
+      picture: fa-solid fa-box
+
+    - label: Prêt électroménager
+
+    - label: Assistance Technique
+      picture: fa-solid fa-screwdriver-wrench
+
+    - label: Accueil 24/24
+      picture: fa-solid fa-bell-concierge
+
+    - label: Assurance Multirisque habitation
