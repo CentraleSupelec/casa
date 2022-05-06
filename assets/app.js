@@ -10,7 +10,7 @@ import './styles/app.scss';
 
 import '@fortawesome/fontawesome-free/js/all';
 
-import * as $ from 'jQuery';
+import * as $ from 'jquery';
 import 'bootstrap/js/dist/carousel';
 import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/alert';
