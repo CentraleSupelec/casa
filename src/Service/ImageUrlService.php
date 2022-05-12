@@ -4,7 +4,7 @@ namespace App\Service;
 
 class ImageUrlService
 {
-    private $baseUrl;
+    private string $baseUrl;
 
     public function __construct(string $baseUrl)
     {
