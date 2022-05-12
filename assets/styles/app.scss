@@ -8,6 +8,8 @@
 
 @import './footer.scss';
 
+@import './map.scss';
+
 @font-face {
     font-family: 'Open Sans';
     src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf')
@@ -23,10 +25,12 @@ body {
     background-color: white;
     min-height: 100%;
     font-variation-settings: 'wgth' 300;
+    padding-top: 4.5rem;
 }
 
 .navbar {
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+    background-color: white;
 }
 
 h1 {
@@ -44,4 +48,16 @@ h2 {
 
 h3 {
     @include font-size(1.1rem);
+}
+
+.crop-text {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.divider {
+    border-top: dotted 1px;
 }

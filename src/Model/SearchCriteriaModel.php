@@ -8,7 +8,7 @@ class SearchCriteriaModel
 
     protected $minArea;
 
-    protected $maxResultsByPage = 4;
+    protected $maxResultsByPage = 15;
 
     /**
      * Get the value of maxPrice.

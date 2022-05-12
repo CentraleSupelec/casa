@@ -21,6 +21,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('show_map', './assets/show_map.js')
 
     .addStyleEntry('admin', './assets/styles/admin.scss')
 
@@ -63,7 +64,8 @@ Encore
     })
 
     // enables Sass/SCSS support
-    .enableSassLoader();
+    .enableSassLoader()
+    .autoProvidejQuery();
 
 // uncomment if you use TypeScript
 //.enableTypeScriptLoader()
@@ -74,8 +76,5 @@ Encore
 // uncomment to get integrity="..." attributes on your script & link tags
 // requires WebpackEncoreBundle 1.4 or higher
 //.enableIntegrityHashes(Encore.isProduction())
-
-// uncomment if you're having problems with a jQuery plugin
-//.autoProvidejQuery()
 
 module.exports = Encore.getWebpackConfig();

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light mb-3">
+<nav class="navbar navbar-expand-sm navbar-light fixed-top mb-3">
     <div class="container-fluid">
         <a class="navbar-brand fs-6 d-flex align-items-center"
             href="{{ path('app_home') }}">
@@ -6,7 +6,9 @@
                 <i class="fa-solid fa-key fa-xl text-primary"></i>
             </div>
             <div>
-                <span class="visually-hidden">HomePage Link</span>
+                <span class="visually-hidden">
+                    {{ 'home.homepage_link'|trans }}
+                </span>
                 <span class="d-none d-sm-block">
                     {{ 'home.nav.title'|trans }}
                     <br />
@@ -41,7 +43,11 @@
                         }}">
                         <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
                             <span class="d-flex align-items-center">
-                                {{ other_locale|locale_name|u.title }}
+                                {{
+                                    other_locale
+                                        |locale_name(other_locale)
+                                        |u.title
+                                }}
                             </span>
                         </span>
                     </a>

@@ -70,6 +70,7 @@ home:
     sort:
         price: Sort by min price
         area: Sort by min area
+    homepage_link: link to home page
 profile:
     title: My profile
     information: My data
@@ -123,5 +124,5 @@ footer:
     urgent: urgence
     university: University
 bookmark:
-    add: Save
-    remove: Remove
+    add: Add to favorites
+    remove: Remove from favorites

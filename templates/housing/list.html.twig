@@ -6,9 +6,17 @@
     {{ 'housing.list.page_title'|trans }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+{% endblock %}
+
 {% block body %}
     {% import 'housing/_housing_card.html.twig' as HousingCard %}
-    <div class="container" role="search">
+    <div class="container-fluid" role="search">
         {% if (pagination|length) > 0 %}
             <div class="d-flex align-items-center">
                 <button class="btn btn-sm btn-outline-primary m-2"
@@ -22,52 +30,59 @@
                         {{ 'search.criteria.refine'|trans }}
                     </span>
                 </button>
-
-                <div class="mx-auto">
-                    {{ pagination.getTotalItemCount }}
-                    {{ 'housing.list.found'|trans }}
-                </div>
             </div>
         {% endif %}
-        <div class="collapse {{ (pagination|length) == 0 ? 'show' }}"
+        <div class="collapse mb-4 {{ (pagination|length) == 0 ? 'show' }}"
             id="collapseSearch">
             <div class="card card-body">
                 {{ Search.displaySearch(form) }}
             </div>
         </div>
     </div>
-    <main class="container" id="maincontent">
+    <main class="container-fluid" id="maincontent">
         {% if (pagination|length) > 0 %}
-            <div class="d-flex justify-content-end" role="navigation">
-                <div class="h3 me-4">
-                    {{ 'housing.list.sort.label'|trans }}
+            <div class="row">
+                <div class="cards-list col-12 col-md-7 col-lg-5 px-4">
+                    <p class="mx-auto">
+                        {{ pagination.getTotalItemCount }}
+                        {{ 'housing.list.found'|trans }}
+                    </p>
+                    <div class="d-flex justify-content-end" role="navigation">
+                        <div class="h3">
+                            {{ 'housing.list.sort.label'|trans }}
+                        </div>
+                        <div class="mx-2">
+                            {{
+                                knp_pagination_sortable(
+                                    pagination,
+                                    'housing.list.sort.price'|trans,
+                                    'h.rentMin'
+                                )
+                            }}
+                        </div>
+                        <div class="mx-2">
+                            {{
+                                knp_pagination_sortable(
+                                    pagination,
+                                    'housing.list.sort.area'|trans,
+                                    'h.areaMin'
+                                )
+                            }}
+                        </div>
+                    </div>
+                    <section aria-label="{{ 'housing.list.search_result'|trans }}">
+                        {% for housing in pagination %}
+                            {{ HousingCard.displayCard(housing, imageBaseUrl) }}
+                            <hr class="divider" />
+                        {% endfor %}
+                    </section>
+                    <div class="navigation"
+                        role="navigation"
+                        aria-label="pages">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
                 </div>
-                <div class="mx-2">
-                    {{
-                        knp_pagination_sortable(
-                            pagination,
-                            'housing.list.sort.price'|trans,
-                            'h.rentMin'
-                        )
-                    }}
-                </div>
-                <div class="mx-2">
-                    {{
-                        knp_pagination_sortable(
-                            pagination,
-                            'housing.list.sort.area'|trans,
-                            'h.areaMin'
-                        )
-                    }}
-                </div>
-            </div>
-            <section aria-label="{{ 'housing.list.search_result'|trans }}">
-                {% for housing in pagination %}
-                    {{ HousingCard.displayCard(housing, imageBaseUrl) }}
-                {% endfor %}
-            </section>
-            <div class="navigation" role="navigation" aria-label="pages">
-                {{ knp_pagination_render(pagination) }}
+                <div class="d-none d-md-block col-md-5 col-lg-7" id="map"></div>
             </div>
         {% else %}
             <div class="container bg-light h2 p-2">
@@ -75,4 +90,7 @@
             </div>
         {% endif %}
     </main>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('show_map') }}
+    {% endblock %}
 {% endblock %}

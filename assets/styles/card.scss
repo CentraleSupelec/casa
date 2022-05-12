@@ -1,19 +1,45 @@
 @use 'variables' as v;
 
 .card {
-    border: dotted 1px;
-    border-color: v.$light;
-}
+    border: none;
 
-.card-title {
-    @include font-size(1.2rem);
-}
+    h2 {
+        font-size: 1.1rem;
+        font-variation-settings: 'wght' 300;
+    }
 
-.card-title svg {
-    border: solid;
-    border-radius: 10%;
-    padding: 4px;
-    color: v.$primary;
+    a {
+        text-decoration: none;
+    }
+
+    .modes {
+        font-size: 0.9rem;
+        font-variation-settings: 'wght' 300;
+    }
+
+    .description {
+        font-size: 0.8rem;
+        font-variation-settings: 200;
+    }
+
+    hr {
+        width: 10%;
+        margin: 1 auto 1 0;
+        border-top: 1px dotted;
+    }
+
+    img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    @media only screen and (max-width: 414px) {
+        img {
+            width: 100%;
+            height: 230px;
+        }
+    }
 }
 
 ul.services {
@@ -22,11 +48,16 @@ ul.services {
     padding: 0;
 }
 
-.card-link {
-    font-size: small;
-    font-variation-settings: 'wght' 200;
-}
-
 .price {
     @include font-size(1.5rem);
+}
+
+.cards-list {
+    height: 75vh;
+    overflow: scroll;
+
+    @media screen and (max-width: 414px) {
+        height: unset;
+        overflow: unset;
+    }
 }

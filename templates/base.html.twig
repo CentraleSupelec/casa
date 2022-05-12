@@ -16,7 +16,7 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
+        {% block early_javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
@@ -37,5 +37,8 @@
         <footer class="container-fluid mt-auto">
             {% include '_footer.html.twig' %}
         </footer>
+        {% block javascripts %}
+
+        {% endblock %}
     </body>
 </html>

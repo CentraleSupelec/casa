@@ -3,9 +3,20 @@
     {% import 'housing/_range_data.html.twig' as RangeData %}
     {% import 'housing/_bookmark_button.html.twig' as Bookmark %}
 
-    <div class="card mb-2">
+    {% if housing.housingGroup.address.coordinates.longitude and housing.housingGroup.address.coordinates.latitude %}
+        {%
+        set locationInfo = {
+            longitude: housing.housingGroup.address.coordinates.longitude,
+            latitude: housing.housingGroup.address.coordinates.latitude
+        }
+        %}
+        <article class="card mb-2 contains-map-data" data-location={{ locationInfo | json_encode }}>
+    {% else %}
+        <article class="card mb-2">
+    {% endif %}
+    
         <div class="row g-0">
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6">
                 {{
                     Carousel.displayHousingCarousel(
                         housing.id,
@@ -14,82 +25,48 @@
                     )
                 }}
             </div>
-            <div class="col-12 col-md-6 col-lg-8">
-                <div class="card-body p-2">
-                    <div class="card-title d-flex justify-content-between">
-                        <a href="{{
-                            path(
-                                'app_housing_detail',
-                                {
-                                    id: housing.id
-                                }
-                            )
-                            }}">
-                            <span>
-                                {{ housing.type }} - {{
-                                    RangeData.displayArea(
-                                        housing.areaMin,
-                                        housing.areaMax
-                                    )
-                                }}
-                            </span>
-                            {{ housing.housingGroup.address.city }}
-                        </a>
-
-                        <span role="comment">
-                            {% if housing.smoking %}
-                                <i class="fa-solid fa-smoking"></i>
-                                <span class="visually-hidden">
-                                    {{ 'housing.smoking'|trans }}
-                                </span>
-                            {% endif %}
-                            {% if housing.animalsAllowed %}
-                                <i class="fa-solid fa-paw"></i>
-                                <span class="visually-hidden">
-                                    {{ 'housing.animals_allowed'|trans }}
-                                </span>
-                            {% endif %}
-
-                            {% if housing.accessibility %}
-                                <i class="fa-brands fa-accessible-icon"></i>
-                                <span class="visually-hidden">
-                                    {{ 'housing.accessible'|trans }}
-                                </span>
-                            {% endif %}
-                        </span>
+            <div class="col-12 col-md-6">
+                <div class="card-body p-0 p-md-2">
+                    <div class="row align-items-center">
+                        <div class="col-10 text-truncate d-block">
+                            <a href="{{
+                                path(
+                                    'app_housing_detail',
+                                    {
+                                        id: housing.id
+                                    }
+                                )
+                                }}">
+                                <h2 class="mb-0">
+                                {{ housing.type | capitalize }} • {{
+                                        RangeData.displayArea(
+                                            housing.areaMin,
+                                            housing.areaMax
+                                        )
+                                    }} • {{ housing.housingGroup.address.city }}
+                                </h2>
+                            </a>
+                        </div>
+                        <div class="col-2 text-end">
+                            {{ Bookmark.displayBookmarkButton(housing) }}
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-6 d-flex align-items-start flex-column bd-highlight">
-                            <div class="p-2">
-                                <i class="fa-solid fa-bus me-2"></i>
-                                {% set transportation_poi = housing.housingGroup.pointsOfInterest|filter(p => p.category is same as('transportation')) %}
-                                {% set transportation_poi_length = transportation_poi|length %}
-                                {% for poi in transportation_poi %}
-                                    <span>
-                                        {{ poi.label }}{% if not loop.index is same as(transportation_poi_length) %},{% endif %}
-                                    </span>
-                                {% endfor %}
-                            </div>
-                            {% if (housing.housingGroup.schools|length) > 0  %}
-                                <div class="p-2 d-flex">
-                                    <i class="fa-solid fa-school me-2"></i>
-                                    {% for school in housing.housingGroup.schools %}
-                                        <span class="badge bg-success">{{school.name}}</span>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+                        <div class="col-12">
+                            {% set living_mode = 'housing.living_mode.' ~ housing.livingMode %}  
+                            {% set occupation_mode = 'housing.occupation_mode.' ~ housing.occupationMode %}  
+                            <div class="modes">{{ living_mode | trans }} • {{ occupation_mode | trans }}</div>
+                            <hr />
+                            <div class="description crop-text">{{ housing.Description }}</div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
                             <span class="price card-text d-flex justify-content-end">
                                 {{ housing.rentMin }} €
                             </span>
-                            <div class="text-center text-md-end mt-3">
-                                {{ Bookmark.displayBookmarkButton(housing) }}
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 {% endmacro %}

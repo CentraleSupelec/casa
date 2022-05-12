@@ -70,6 +70,7 @@ home:
     sort:
         price: Trier par prix mini
         area: Trier par surface mini
+    homepage_link: Lien vers la page d'accueil
 profile:
     title: Mon profil
     information: Mes informations
@@ -123,5 +124,5 @@ footer:
     urgent: urgent
     university: L'université
 bookmark:
-    add: Enregistrer
-    remove: Supprimer
+    add: Ajouter en favori
+    remove: supprimer des favoris

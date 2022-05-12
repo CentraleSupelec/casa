@@ -3,7 +3,8 @@
         app.user
             and is_granted('ROLE_STUDENT')
             and housing in app.user.bookmarks %}
-        <a href="{{
+        <a role="button"
+            href="{{
             path(
                 'app_housing_remove_bookmark',
                 {
@@ -13,13 +14,13 @@
                 }
             )
             }}">
-            <button type="button" class="btn btn-outline-primary bookmark">
-                <i class="fa-solid fa-heart-circle-minus"></i>
-                <span>{{ 'bookmark.remove'|trans }}</span>
-            </button>
+            <i class="fa-solid fa-heart fa-xl"></i><span class="visually-hidden">{{
+                    'bookmark.remove'|trans
+                }}</span>
         </a>
     {% else %}
-        <a href="{{
+        <a role="button"
+            href="{{
             path(
                 'app_housing_add_bookmark',
                 {
@@ -29,10 +30,9 @@
                 }
             )
             }}">
-            <button type="button" class="btn btn-outline-primary bookmark">
-                <i class="fa-solid fa-heart-circle-plus"></i>
-                <span>{{ 'bookmark.add'|trans }}</span>
-            </button>
+            <i class="fa-regular fa-heart fa-xl"></i><span class="visually-hidden">{{
+                    'bookmark.remove'|trans
+                }}</span>
         </a>
     {% endif %}
 {% endmacro %}
