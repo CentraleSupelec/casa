@@ -87,3 +87,13 @@ services:
               manager_type: orm
               label: Etablissements
               group: Référentiels
+
+    admin.student:
+        class: App\Admin\StudentAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Student
+              controller: ~
+              manager_type: orm
+              group: Utilisateurs
+              label: Student

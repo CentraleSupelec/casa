@@ -72,4 +72,15 @@ final class Constants
     {
         return 'psuh@paris-saclay.com';
     }
+
+    /**
+     * @return string[]
+     */
+    public static function getRoles(): array
+    {
+        return [
+            'Etudiant' => 'ROLE_STUDENT',
+            'Administrateur' => 'ROLE_ADMIN',
+        ];
+    }
 }
