@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Admin;
 
 use App\Admin\Embed\AddressEmbeddedAdmin;
+use App\Constants;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
@@ -37,6 +39,9 @@ final class SchoolAdmin extends AbstractAdmin
                 ])
             ->add('idGovernment', null, [
                 'label' => 'Identifiant National',
+                ])
+            ->add('campus', null, [
+                'label' => 'Campus',
                 ])
             ->add('websiteUrl', null, [
                 'label' => 'Adresse Internet',
@@ -69,6 +74,14 @@ final class SchoolAdmin extends AbstractAdmin
                     'label' => 'Identifiant National',
                     'required' => false,
                 ])
+                ->add('acronym', TextType::class, [
+                    'label' => 'Sigle',
+                    'required' => false,
+                ])
+                ->add('campus', ChoiceType::class, [
+                    'label' => 'Campus',
+                    'choices' => Constants::getCampus(),
+                ])
                 ->add('websiteurl', UrlType::class, [
                     'label' => 'Adresse Internet',
                     'required' => false,
@@ -95,6 +108,13 @@ final class SchoolAdmin extends AbstractAdmin
                     'label' => 'Identifiant National',
                     'required' => false,
                 ])
+            ->add('acronym', null, [
+                'label' => 'Sigle',
+                'required' => false,
+            ])
+            ->add('campus', null, [
+                'label' => 'Campus',
+            ])
             ->add('websiteurl', null, [
                     'label' => 'Adresse Internet',
                     'required' => false,

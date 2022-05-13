@@ -1,90 +1,510 @@
 schools:
-    - name: CentraleSupélec
-      websiteUrl: http://www.centralesupelec.fr
-      address:
-          street: 3 rue Joliot-Curie
-          streetdetail:
-          city: Gif-Sur-Yvette
-          postalcode: 91190
-          country: FRANCE
-
-    - name: Faculté Jean Monnet
-      websiteUrl: https://www.jm.universite-paris-saclay.fr/
-      address:
-          street: 54 boulevard Desgranges
-          streetdetail:
-          city: Sceaux
-          postalcode: 92331
-          country: FRANCE
-
-    - name: Faculté de Médecine
-      websiteUrl: https://www.medecine.universite-paris-saclay.fr/
-      address:
-          street: 63 Rue Gabriel Péri
-          streetdetail:
-          city: Le Kremlin-Bicêtre
-          postalcode: 94270
-          country: FRANCE
-
-    - name: Faculté de Pharmacie
-      websiteUrl: https://www.pharmacie.universite-paris-saclay.fr/
-      address:
-          street: 5 rue Jean-Baptiste Clément
-          streetdetail:
-          city: Châtenay-Malabry
-          postalcode: 92296
-          country: FRANCE
-
-    - name: Institut d'Optique Graduate School - Paris Saclay
-      websiteUrl: https://www.institutoptique.fr/
-      address:
-          street: 2 avenue Augustin Fresnel
-          city: Palaiseau
-          postalcode: 91127
-          country: FRANCE
-
-    - name: AgroParisTech
-      websiteUrl: http://www2.agroparistech.fr/
-      address:
-          street: 16 rue Claude Bernard
-          city: Paris
-          postalcode: 75005
-          country: FRANCE
-
     - name: École normale supérieure Paris-Saclay
-      websiteUrl: https://ens-paris-saclay.fr/
+      acronym: ENS
+      campus: Plateau de Saclay
       address:
           street: 4 avenue des Sciences
-          city: Gif-Sur-Yvette
           postalcode: 91190
+          city: Gif-sur-Yvette
           country: FRANCE
-    - name: IUT D'Orsay
-      websiteUrl: https://www.iut-orsay.universite-paris-saclay.fr/
+      websiteUrl: https://ens-paris-saclay.fr/
+
+    - name: UFR Langues Arts et Musique
+      acronym: UFR LAM
+      campus: Évry
+      address:
+          street: Bâtiment 1er Cycles, rue Pierre Bérégovoy
+          postalcode: 91000
+          city: Évry-Courcouronnes
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: UFR des Sciences de l'Homme et de la Société
+      acronym: UFR SHS
+      campus: Évry
+      address:
+          street: 2 rue du Facteur Cheval
+          postalcode: 91025
+          city: Évry cedex
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: UFR Sciences Fondamentales et Appliquées
+      acronym: UFR SFA
+      campus: Évry
+      address:
+          street: 23 boulevard François Mitterrand
+          postalcode: 91000
+          city: Évry-Courcouronnes
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: UFR Sciences et Technologies
+      acronym: UFR ST
+      campus: Évry
+      address:
+          street: CE1455, 40 rue du Pelvoux
+          postalcode: 91025
+          city: Évry-Courcouronnes
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: UFR Droit et Science Politique
+      acronym: UFR DSP
+      campus: Évry
+      address:
+          street: 23 boulevard François Mitterrand
+          postalcode: 91000
+          city: Évry-Courcouronnes
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: IUT Évry Val d'Essonne - site d'Évry
+      acronym: IUT Evry
+      campus: Évry
+      address:
+          street: 25 cours Monseigneur Roméro
+          postalcode: 91000
+          city: Évry
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: IUT Évry Val d'Essonne - site de Bretigny
+      acronym: IUT Bretigny
+      campus: Brétigny-sur-Orge
+      address:
+          street: Chemin de la Tuilerie
+          postalcode: 91220
+          city: Brétigny-sur-Orge
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: IUT Évry Val d'Essonne - site de Juvisy
+      acronym: IUT Juvisy
+      campus: Juvisy-sur-Orge
+      address:
+          street: Parc de la Mairie - 6 A rue Piver
+          postalcode: 91260
+          city: Juvisy-sur-Orge
+          country: FRANCE
+      websiteUrl: https://www.univ-evry.fr/accueil.html
+
+    - name: UFR Simone Veil - Santé
+      acronym: UFR Santé
+      campus: Montigny-le-Bretonneux
+      address:
+          street: 2 avenue de la Source de la Bièvre
+          postalcode: 78180
+          city: Montigny-le-Bretonneux
+          country: FRANCE
+      websiteUrl: https://www.sante.uvsq.fr/
+
+    - name: Faculté de Droit et de Science politique
+      acronym: Faculté DSP
+      campus: Guyancourt
+      address:
+          street: 3 rue de la Division Leclerc
+          postalcode: 78280
+          city: Guyancourt
+          country: FRANCE
+      websiteUrl: https://www.facdroit-sciencepo.uvsq.fr/
+
+    - name: Institut d'études culturelles et internationales
+      acronym: IECI
+      campus: Guyancourt
+      address:
+          street: 47 boulevard Vauban
+          postalcode: 78280
+          city: Guyancourt
+          country: FRANCE
+      websiteUrl: https://www.ieci.uvsq.fr/
+
+    - name: Institut supérieur de management IAE
+      acronym: ISM-IAE
+      campus: Guyancourt
+      address:
+          street: 47 boulevard Vauban
+          postalcode: 78047
+          city: Guyancourt
+          country: FRANCE
+      websiteUrl: https://www.ism-iae.uvsq.fr/
+
+    - name: Observatoire de Versailles Saint-Quentin-en-Yvelines
+      acronym: OVSQ
+      campus: Guyancourt
+      address:
+          street: 11 boulevard d'Alembert
+          postalcode: 78280
+          city: Guyancourt cedex
+          country: FRANCE
+      websiteUrl: https://www.ovsq.uvsq.fr/
+
+    - name: UFR des Sciences sociales
+      acronym: UFR SCS
+      campus: Guyancourt
+      address:
+          street: 47 boulevard Vauban
+          postalcode: 78047
+          city: Guyancourt cedex
+          country: FRANCE
+      websiteUrl: https://www.sciences-sociales.uvsq.fr/
+
+    - name: Institut des Sciences et Techniques des Yvelines
+      acronym: ISTY Guyancourt
+      campus: Guyancourt
+      address:
+          street: Bâtiment Rabelais - 9 boulevard d'Alembert
+          postalcode: 78280
+          city: Guyancourt
+          country: FRANCE
+      websiteUrl: https://www.isty.uvsq.fr/
+
+    - name: Institut des Sciences et Techniques des Yvelines
+      acronym: ISTY Vélizy
+      campus: Vélizy-Villacoublay
+      address:
+          street: 10-12 avenue de l'Europe
+          postalcode: 78140
+          city: Vélizy-Villacoublay
+          country: FRANCE
+      websiteUrl: https://www.isty.uvsq.fr/
+
+    - name: Institut des Sciences et Techniques des Yvelines
+      acronym: ISTY Mantes
+      campus: Mantes-la-Ville
+      address:
+          street: 28 boulevard Roger Salengro
+          postalcode: 78711
+          city: Mantes-la-Ville
+          country: FRANCE
+      websiteUrl: https://www.isty.uvsq.fr/
+
+    - name: IUT de Vélizy-Rambouillet
+      acronym: IUT Vélizy
+      campus: Vélizy-Villacoublay
+      address:
+          street: 10-12 avenue de l'Europe
+          postalcode: 78140
+          city: Vélizy-Villacoublay
+          country: FRANCE
+      websiteUrl: https://www.iut-velizy-rambouillet.uvsq.fr/
+
+    - name: IUT de Vélizy-Rambouillet
+      acronym: IUT Rambouillet
+      campus: Rambouillet
+      address:
+          street: 19 allée des Vignes
+          postalcode: 78120
+          city: Rambouillet
+          country: FRANCE
+      websiteUrl: https://www.iut-velizy-rambouillet.uvsq.fr/
+
+    - name: UFR des Sciences
+      acronym: UFR Sciences
+      campus: Versailles
+      address:
+          street: 45 avenue des Etats-Unis
+          postalcode: 78035
+          city: Versailles
+          country: FRANCE
+      websiteUrl: https://www.sciences.uvsq.fr/
+
+    - name: IUT de Mantes
+      acronym: IUT Mantes
+      campus: Mantes-la-Jolie
+      address:
+          street: 7 rue Jean Hoët
+          postalcode: 78200
+          city: Mantes-la-Jolie
+          country: FRANCE
+      websiteUrl: https://www.iut-mantes.uvsq.fr/
+
+    - name: Institut de formation en soins infirmiers Ambroise Paré
+      acronym: IFSI Ambroise Paré
+      campus: Boulogne-Billancourt
+      address:
+          street: 9 avenue Charles de Gaulle
+          postalcode: 92100
+          city: Boulogne-Billancourt
+          country: FRANCE
+      websiteUrl: http://cfdc.aphp.fr/ifsi-ambroise-pare/
+
+    - name: Institut de formation en soins infirmiers Raymond-Poincaré
+      acronym: IFSI Raymond-Poincaré
+      campus: Garches
+      address:
+          street: 104 boulevard Raymond-Poincaré
+          postalcode: 92380
+          city: Garcges
+          country: FRANCE
+      websiteUrl: http://cfdc.aphp.fr/ifsi-ifas-raymond-poincare/
+
+    - name: Institut de formation en soins infirmiers Foch
+      acronym: IFSI Foch
+      campus: Suresnes
+      address:
+          street: 11 rue Guillaume Lenoir
+          postalcode: 92150
+          city: Suresnes
+          country: FRANCE
+      websiteUrl: https://ifsi-foch.com/
+
+    - name: Institut de formation en soins infirmiers André Mignot de Versailles
+      acronym: IFSI André Mignot
+      campus: Versailles
+      address:
+          street: 25 boulevard Saint-Antoine
+          postalcode: 78000
+          city: Versailles
+          country: FRANCE
+      websiteUrl: https://ifsi-ifas.ch-versailles.fr/accueil.aspx
+
+    - name: Institut de formation en soins infirmiers des Mureaux
+      acronym: IFSI Mureaux
+      campus: Les Mureaux
+      address:
+          street: 1 rue Baptiste Marcet
+          postalcode: 78130
+          city: Les Mureaux
+          country: FRANCE
+      websiteUrl: https://www.ghtyvelinesnord.fr/instituts-de-formation/nos-formations/ifsi-des-mureaux/presentation-du-metier/
+
+    - name: Institut de formation en soins infirmiers de Poissy
+      acronym: IFSI Poissy
+      campus: Poissy
+      address:
+          street: 10 rue du Champ Gaillard
+          postalcode: 78300
+          city: Poissy
+          country: FRANCE
+      websiteUrl: https://www.ghtyvelinesnord.fr/instituts-de-formation/nos-formations/ifsi-de-poissy/presentation-de-la-formation/
+
+    - name: Institut de formation en masso-kinésithérapie des Mureaux
+      acronym: IFMK Mureaux
+      campus: Les Mureaux
+      address:
+          street: 1 rue Baptiste Marcet
+          postalcode: 78130
+          city: Les Mureaux
+          country: FRANCE
+      websiteUrl: https://www.ghtyvelinesnord.fr/instituts-de-formation/nos-formations/ifmk-des-mureaux/presentation-du-metier/
+
+    - name: Institut d'Optique Graduate School - site Paris-Saclay
+      acronym: IOGS
+      campus: Palaiseau
+      address:
+          street: 2 avenue Augustin Fresnel
+          postalcode: 91127
+          city: Palaiseau cedex
+          country: FRANCE
+      websiteUrl: https://www.institutoptique.fr/
+
+    - name: CentraleSupélec - Campus Paris-Saclay
+      acronym: CS
+      campus: Plateau de Saclay
+      address:
+          street: Plateau de Moulon - 3 rue Joliot-Curie
+          postalcode: F-91192
+          city: Gif-sur-Yvette
+          country: FRANCE
+      websiteUrl: https://www.centralesupelec.fr/fr
+
+    - name: AgroParisTech
+      acronym: APT
+      campus: Plateau de Saclay
+      address:
+          street: 16 rue Claude Bernard
+          postalcode: F-75231
+          city: Paris cedex 05
+          country: FRANCE
+      websiteUrl: http://www2.agroparistech.fr/
+
+    - name: Faculté des sciences d'Orsay
+      acronym: Sciences
+      campus: Orsay vallée
+      address:
+          street: 15 rue Georges Clémenceau
+          postalcode: 91405
+          city: Orsay cedex
+          country: FRANCE
+      websiteUrl: http://www.sciences.universite-paris-saclay.fr/
+
+    - name: Faculté des sciences du sport
+      acronym: F2S
+      campus: Orsay vallée
+      address:
+          street: Bâtiment 335 rue Pierre de Coubertin
+          postalcode: 91405
+          city: Orsay cedex
+          country: FRANCE
+      websiteUrl: http://www.faculte-sciences-sport.universite-paris-saclay.fr/
+
+    - name: Faculté de pharmacie
+      acronym: Pharmacie
+      campus: Plateau de Saclay
+      address:
+          street: Bâtiment Henri Moisan - rue de la Science
+          postalcode: 91400
+          city: Orsay
+          country: FRANCE
+      websiteUrl: http://www.pharmacie.universite-paris-saclay.fr/
+
+    - name: Faculté de médecine
+      acronym: Medecine
+      campus: Le Kremlin-Bicêtre
+      address:
+          street: 63 rue Gabriel Péri
+          postalcode: 94270
+          city: Le Kremlin-Bicêtre
+          country: FRANCE
+      websiteUrl: http://www.medecine.universite-paris-saclay.fr/
+
+    - name: Ecole nationale de kinésithérapie et de rééducation de Saint-Maurice
+      acronym: ENKRE Saint-Maurice
+      campus: Saint-Maurice
+      address:
+          street: 12 rue du Val d'Oise
+          postalcode: 94410
+          city: Saint-Maurice
+          country: FRANCE
+      websiteUrl: http://www.hopitaux-saint-maurice.fr/Presentation/2/142
+
+    - name: Institut de formation paramédicale du Groupement hospitalier Nord Essonne de Longjumeau
+      acronym: IFPM Longjumeau
+      campus: Longjumeau
+      address:
+          street: 8 bis rue Maurice
+          postalcode: 91160
+          city: Longjumeau
+          country: FRANCE
+      websiteUrl: http://www.gh-nord-essonne.fr/fr/Presentation/2/61
+
+    - name: Institut de formation en soins infirmiers Antoine-Béclère
+      acronym: IFSI Antoine-Béclère
+      campus: Clamart
+      address:
+          street: Bâtiment Lydie Simon - Porte 19 - 157 rue de la Porte de Trivaux
+          postalcode: 92140
+          city: Clamart
+          country: FRANCE
+      websiteUrl: http://cfdc.aphp.fr/ifsi-ifas-antoine-beclere/
+
+    - name: Institut de formation en soins infirmiers Bicêtre
+      acronym: IFSI Bicêtre
+      campus: Le Kremlin-Bicêtre
+      address:
+          street: 78 avenue du Général Leclerc
+          postalcode: 94270
+          city: Le Kremlin-Bicêtre
+          country: FRANCE
+      websiteUrl: http://cfdc.aphp.fr/ifsi-bicetre/#contact
+
+    - name: Institut de formation en soins infirmiers Barthélemy Durand
+      acronym: IFSI Barthélemy Durand
+      campus: Etampes
+      address:
+          street: Avenue du 8 mai 1945 - BP 69
+          postalcode: 91152
+          city: Etampes cedex
+          country: FRANCE
+      websiteUrl: http://www.eps-etampes.fr/ifsi-ifas/
+
+    - name: Institut de formation en soins infirmiers du Perray
+      acronym: IFSI Perray
+      campus: Épinay sur Orge
+      address:
+          street: BP13
+          postalcode: 91360
+          city: Épinay sur Orge
+          country: FRANCE
+      websiteUrl: https://www.ghu-paris.fr/fr/institut-de-formation-en-soins-infirmiers-ifsi-du-perray
+
+    - name: Institut de formation paramédicale du Centre hospitalier Sud francilien
+      acronym: IFPM Sud Francilien
+      campus: Évry
+      address:
+          street: 2 rue Pierre Fontaine
+          postalcode: 91000
+          city: Évry-Courcouronnes
+          country: FRANCE
+      websiteUrl: https://www.chsf.fr/formation/instituts-de-formations/nos-instituts-de-formation/formation-infirmiere
+
+    - name: Institut de formation en soins infirmiers Paul Guiraud
+      acronym: IFSI Paul Guiraud
+      campus: Villejuif
+      address:
+          street: 54 avenue de la République BP 20065
+          postalcode: 94806
+          city: Villejuif cedex
+          country: FRANCE
+      websiteUrl: https://www.gh-paulguiraud.fr/ifsi/ifas
+
+    - name: Institut de formation en masso-kinésithérapie Paul Guinot
+      acronym: IFMK Paul Guinot
+      campus: Villejuif
+      address:
+          street: 24-26 boulevard Chastenet de Géry
+          postalcode: 94814
+          city: Villejuif cedex
+          country: FRANCE
+      websiteUrl: https://guinot.asso.fr/formation-du-crp/i-f-m-k/#ifmk
+
+    - name: Faculté Jean Monnet - site de Sceaux
+      acronym: DEG Sceaux
+      campus: Sceaux
+      address:
+          street: 54 boulevard Desgranges
+          postalcode: 92331
+          city: Sceaux
+          country: FRANCE
+      websiteUrl: http://www.jm.universite-paris-saclay.fr/
+
+    - name: Faculté Jean Monnet - site d'Orsay
+      acronym: DEG Orsay
+      campus: Orsay vallée
+      address:
+          street: Rue andré Ampère
+          postalcode: 91440
+          city: Bures-sur-Yvette
+          country: FRANCE
+      websiteUrl: http://www.jm.universite-paris-saclay.fr/
+
+    - name: IUT d'Orsay
+      acronym: IUT Orsay
+      campus: Plateau de Saclay
       address:
           street: 13 avenue des Sciences
-          city: cityGif-sur-Yvette
           postalcode: 91190
+          city: Gif-sur-Yvette
           country: FRANCE
+      websiteUrl: http://www.iut-orsay.universite-paris-saclay.fr/
 
-    - name: IUT Sceaux
-      websiteUrl: https://www.iut-sceaux.universite-paris-saclay.fr/
+    - name: IUT de Sceaux
+      acronym: IUT Sceaux
+      campus: Sceaux
       address:
           street: 8 avenue Cauchy
-          city: Sceaux
           postalcode: 92330
+          city: Sceaux
           country: FRANCE
+      websiteUrl: http://www.iut-sceaux.universite-paris-saclay.fr/
 
     - name: IUT de Cachan
-      websiteUrl: https://www.iut-cachan.universite-paris-saclay.fr/
+      acronym: IUT Cachan
+      campus: Cachan
       address:
           street: 9 avenue de la Division Leclerc
-          city: Cachan
           postalcode: 94230
+          city: Cachan
           country: FRANCE
+      websiteUrl: http://www.iut-cachan.universite-paris-saclay.fr/
+
     - name: Polytech Paris-Saclay
-      websiteUrl: https://www.polytech.universite-paris-saclay.fr/
+      acronym: Polytech
+      campus: Plateau de Saclay
       address:
-          street: Maison de l'ingénieur Bâtiment 620 rue Louis de Broglie
-          city: ORSAY
+          street: Maison de l'ingénieur - Bâtiment 620 rue Louis de Broglie
           postalcode: 91405
+          city: Orsay cedex
           country: FRANCE
+      websiteUrl: http://www.polytech.universite-paris-saclay.fr/

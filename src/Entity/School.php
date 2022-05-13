@@ -39,6 +39,13 @@ class School
     #[ORM\ManyToMany(targetEntity: HousingGroup::class, mappedBy: 'schools')]
     private Collection $housingGroups;
 
+    #[ORM\Column(type: 'string', length: 32, nullable: true)]
+    private ?string $acronym = null;
+
+    #[ORM\Column(type: 'string', length: 64)]
+    #[Assert\NotNull]
+    private ?string $campus = null;
+
     public function __construct()
     {
         $this->address = new Address();
@@ -126,6 +133,30 @@ class School
         if ($this->housingGroups->removeElement($housingGroup)) {
             $housingGroup->removeSchool($this);
         }
+
+        return $this;
+    }
+
+    public function getAcronym(): ?string
+    {
+        return $this->acronym;
+    }
+
+    public function setAcronym(?string $acronym): self
+    {
+        $this->acronym = $acronym;
+
+        return $this;
+    }
+
+    public function getCampus(): ?string
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?string $campus): self
+    {
+        $this->campus = $campus;
 
         return $this;
     }

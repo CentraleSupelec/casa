@@ -14,6 +14,8 @@ class SchoolLoader extends AbstractLoader
         foreach ($schools as $value) {
             $newSchool = new School();
             $newSchool->setName($value['name']);
+            $newSchool->setCampus($value['campus']);
+            $newSchool->setAcronym($value['acronym']);
             $newSchool->setWebsiteUrl($value['websiteUrl']);
 
             $address = LoaderFactory::getLoader($this->getManager(), 'address', $value)->load();

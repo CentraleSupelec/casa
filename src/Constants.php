@@ -83,4 +83,39 @@ final class Constants
             'Administrateur' => 'ROLE_ADMIN',
         ];
     }
+
+    public static function getCampus(): array
+    {
+        $campus = [
+            'Plateau de Saclay',
+            'Évry',
+            'Brétigny-sur-Orge',
+            'Juvisy-sur-Orge',
+            'Montigny-le-Bretonneux',
+            'Guyancourt',
+            'Vélizy-Villacoublay',
+            'Mantes-la-Ville',
+            'Rambouillet',
+            'Versailles',
+            'Mantes-la-Jolie',
+            'Boulogne-Billancourt',
+            'Garches',
+            'Suresnes',
+            'Les Mureaux',
+            'Poissy',
+            'Palaiseau',
+            'Orsay vallée',
+            'Le Kremlin-Bicêtre',
+            'Saint-Maurice',
+            'Longjumeau',
+            'Clamart',
+            'Etampes',
+            'Épinay sur Orge',
+            'Villejuif',
+            'Sceaux',
+            'Cachan',
+        ];
+
+        return array_combine($campus, $campus);
+    }
 }
