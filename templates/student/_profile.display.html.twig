@@ -1,0 +1,52 @@
+<article class="col-12">
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.first_name'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.firstName }}
+    </p>
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.last_name'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.lastName }}
+    </p>
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.email'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.email }}
+    </p>
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.birthdate'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.birthdate|format_date }}
+    </p>
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.school'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.school }}
+    </p>
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.social_scholarship'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.socialScholarship
+            ? '<i class="fa-regular fa-square-check fa-xl"></i>'
+            : '<i class="fa-regular fa-square fa-xl"></i>' }}
+    </p>
+    <h2 class="fs-6 text-secondary">
+        {{ 'profile.reduced_mobility'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.reducedMobility
+            ? '<i class="fa-regular fa-square-check fa-xl"></i>'
+            : '<i class="fa-regular fa-square fa-xl"></i>' }}
+    </p>
+</article>
+<a href="{{ path('app_student_edit_profile') }} "
+    class="btn btn-outline-primary">
+    {{ 'profile.edit'|trans }}
+</a>

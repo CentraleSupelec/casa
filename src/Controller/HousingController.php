@@ -112,10 +112,7 @@ class HousingController extends AbstractController
 
             return $this->redirectToRoute('app_housing_detail', $redirection_params);
         }
-        if ('app_student' === $origin) {
-            return $this->redirectToRoute('app_student');
-        }
 
-        return $this->redirectToRoute('app_housing_list', $redirection_params);
+        return $this->redirectToRoute($origin, $redirection_params);
     }
 }

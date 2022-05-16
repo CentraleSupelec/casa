@@ -45,7 +45,13 @@ if (locations.length > 0) {
 
     map.addLayer(housings);
     map.fitBounds(bounds);
+
+    $(window).on('resize', function () {
+        map.fitBounds(bounds);
+    });
 } else {
     // Orsay university coordinates
     map.setView([48.69858, 2.18071], 13);
 }
+
+$(window).resize(function () {});

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'profile.title.profile'|trans }}
+{% endblock %}
+
+{% import 'housing/_housing_card.html.twig' as HousingCard %}
+{% import 'student/_navlink.html.twig' as Navigation %}
+
+{% block body %}
+    <main class="container" id="maincontent">
+        {{ Navigation.displayTabs(app.request.attributes.get('_route')) }}
+
+        <div class="col-12 col-md-6 mb-4">
+            {% if mode == 'edit' %}
+                {{
+                    include(
+                        'student/_profile.edit.html.twig',
+                        {
+                            form: form
+                        }
+                    )
+                }}
+            {% else %}
+                {{
+                    include(
+                        'student/_profile.display.html.twig',
+                        {
+                            student: student
+                        }
+                    )
+                }}
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

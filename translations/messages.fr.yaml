@@ -72,8 +72,19 @@ home:
         area: Trier par surface mini
     homepage_link: Lien vers la page d'accueil
 profile:
-    title: Mon profil
+    title:
+        profile: Mon profil
+        bookmarks: Mes favoris
     information: Mes informations
+    edit: Modifier
+    save: Enregistrer
+    first_name: Prénom
+    last_name: Nom
+    birthdate: Date de naissance
+    email: Adresse mail
+    school: Etablissement scolaire
+    social_scholarship: Boursier sur critères sociaux du crous
+    reduced_mobility: personne à mobilité réduite
 authentication:
     email:
         label: E-Mail

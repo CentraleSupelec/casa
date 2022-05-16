@@ -72,8 +72,19 @@ home:
         area: Sort by min area
     homepage_link: link to home page
 profile:
-    title: My profile
+    title:
+        profile: My profile
+        bookmarks: My bookmarks
     information: My data
+    edit: Edit
+    save: Save
+    first_name: First Name
+    last_name: Last Name
+    birthdate: Birthdate
+    email: Email
+    school: School
+    social_scholarship: CROUS Social Scholarship
+    reduced_mobility: Reduced mobility person
 authentication:
     email:
         label: Email
@@ -124,5 +135,5 @@ footer:
     urgent: urgence
     university: University
 bookmark:
-    add: Add to favorites
-    remove: Remove from favorites
+    add: Add to bookmarks
+    remove: Remove from bookmarks

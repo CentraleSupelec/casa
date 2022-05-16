@@ -1,0 +1,23 @@
+{% macro displayTabs(route) %}
+    <ul class="nav nav-tabs my-4">
+
+        {{ _self.displayLink(route, 'app_student_profile', 'profile.title.profile') }}
+        {{ _self.displayLink(route, 'app_student_bookmarks', 'profile.title.bookmarks') }}
+
+    </ul>
+{% endmacro %}
+
+{% macro displayLink(activeRouteName, routeName, label) %}
+    <li class="nav-item">
+        <a 
+            {% if activeRouteName == routeName %}
+                class="nav-link active"
+                aria-current="page"
+            {% else %}
+                class="nav-link" 
+            {% endif %}
+                href="{{ path(routeName) }}">
+            {{  label|trans }}
+        </a>
+    </li>
+{% endmacro %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'profile.title.bookmarks'|trans }}
+{% endblock %}
+
+{% import 'housing/_housing_card.html.twig' as HousingCard %}
+{% import 'student/_navlink.html.twig' as Navigation %}
+
+{% block body %}
+    <main class="container flex-grow-1 d-flex flex-column" id="maincontent">
+        <div class="row">
+            <div class="col-12">
+                {{
+                    Navigation.displayTabs(app.request.attributes.get('_route'))
+                }}
+                <ul class="text-dark text-center text-md-start p-0"
+                    style="list-style: none">
+                    {% for housing in student.getBookmarks %}
+                        <li>
+                            {{ HousingCard.displayCard(housing, imageBaseUrl) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -56,14 +56,14 @@
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="nav-item p-2 p-sm-0 me-sm-3">
                         <a class="text-decoration-none d-flex flex-row"
-                            href="{{ path('app_student') }}">
+                            href="{{ path('app_student_profile') }}">
                             <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-user fa-xl text-primary">
 
                                 </i>
                             </span>
                             <span class="d-flex align-items-center">
-                                {{ 'profile.title'|trans }}
+                                {{ 'profile.title.profile'|trans }}
                             </span>
                         </a>
                     </li>

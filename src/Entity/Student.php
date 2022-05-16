@@ -56,6 +56,24 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Housing::class)]
     private Collection $bookmarks;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?\DateTimeInterface $birthdate = null;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $reducedMobility = null;
+
+    #[ORM\ManyToOne(targetEntity: School::class)]
+    private ?School $school = null;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $socialScholarship = null;
+
     public function __construct()
     {
         $this->bookmarks = new ArrayCollection();
@@ -200,6 +218,78 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
     public function removeBookmark(Housing $bookmark): self
     {
         $this->bookmarks->removeElement($bookmark);
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $name): self
+    {
+        $this->lastName = $name;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getReducedMobility(): ?bool
+    {
+        return $this->reducedMobility;
+    }
+
+    public function setReducedMobility(bool $reducedMobility): self
+    {
+        $this->reducedMobility = $reducedMobility;
+
+        return $this;
+    }
+
+    public function getSchool(): ?school
+    {
+        return $this->school;
+    }
+
+    public function setSchool(?school $school): self
+    {
+        $this->school = $school;
+
+        return $this;
+    }
+
+    public function getSocialScholarship(): ?bool
+    {
+        return $this->socialScholarship;
+    }
+
+    public function setSocialScholarship(?bool $socialScholarship): self
+    {
+        $this->socialScholarship = $socialScholarship;
 
         return $this;
     }
