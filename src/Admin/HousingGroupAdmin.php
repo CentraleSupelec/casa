@@ -6,7 +6,6 @@ use App\Admin\Embed\AddressEmbeddedAdmin;
 use App\Entity\Equipment;
 use App\Entity\HousingGroup;
 use App\Entity\Lessor;
-use App\Entity\PointOfInterest;
 use App\Entity\School;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -72,6 +71,7 @@ class HousingGroupAdmin extends AbstractAdmin
                     'multiple' => true,
                     'label' => 'Etablissements',
                     'btn_add' => false,
+                    'required' => false,
                      ])
             ->end()
             ->with('Adresse', [
@@ -90,16 +90,6 @@ class HousingGroupAdmin extends AbstractAdmin
                     'multiple' => true,
                     'label' => 'Équipements des logements',
                     'btn_add' => false,
-                ])
-            ->end()
-
-            ->with('Points d\'intérêts', [
-                'class' => 'col-md-8 col-md-offset-2',
-            ])
-                ->add('pointsOfInterest', ModelType::class, [
-                    'class' => PointOfInterest::class,
-                    'multiple' => true,
-                    'label' => 'Points d\'intérêts à proximité',
                 ])
             ->end();
     }

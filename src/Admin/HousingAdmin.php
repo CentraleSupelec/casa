@@ -119,12 +119,12 @@ class HousingAdmin extends AbstractAdmin
             ])
             ->add('livingMode', ChoiceType::class, [
                 'label' => 'Mode d\'habitation',
-                'required' => false,
+                'required' => true,
                 'choices' => Constants::getHousingLivingModes(),
             ])
             ->add('occupationMode', ChoiceType::class, [
                 'label' => 'Mode d\'occupation',
-                'required' => false,
+                'required' => true,
                 'choices' => Constants::getHousingOccupationModes(),
             ])
             ->add('accessibility', CheckboxType::class, [

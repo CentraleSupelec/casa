@@ -74,12 +74,14 @@ class Housing
     #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $securityDepositMax = null;
 
-    #[ORM\Column(type: 'string', length: 80, nullable: true)]
+    #[ORM\Column(type: 'string', length: 80)]
     #[Assert\Choice(callback: ['App\Constants', 'getHousingLivingModes'])]
+    #[Assert\NotNull]
     private ?string $livingMode = null;
 
-    #[ORM\Column(type: 'string', length: 80, nullable: true)]
+    #[ORM\Column(type: 'string', length: 80)]
     #[Assert\Choice(callback: ['App\Constants', 'getHousingOccupationModes'])]
+    #[Assert\NotNull]
     private ?string $occupationMode = null;
 
     #[ORM\Column(type: 'boolean')]

@@ -34,10 +34,17 @@
         object-fit: cover;
     }
 
+    .carousel {
+        max-width: 300px;
+    }
+
     @media only screen and (max-width: 414px) {
         img {
             width: 100%;
             height: 230px;
+        }
+        .carousel {
+            max-width: 100%;
         }
     }
 }

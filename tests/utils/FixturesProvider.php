@@ -46,6 +46,8 @@ class FixturesProvider
         $housing->setAccessibility(false);
         $housing->setAnimalsAllowed(false);
         $housing->setSmoking(false);
+        $housing->setOccupationMode('alone');
+        $housing->setLivingMode('full');
 
         return $housing;
     }
