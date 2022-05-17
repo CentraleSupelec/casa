@@ -37,6 +37,14 @@ class HousingAdmin extends AbstractAdmin
 
         if ($this->isGranted('LIST')) {
             $menu->addChild('Photos', $admin->generateMenuUrl('admin.housing_picture.list', ['id' => $id]));
+            $menu->addChild(
+                'Accès boursiers',
+                $admin->generateMenuUrl('admin.social_scholarship_criterion.list', ['id' => $id])
+            );
+            $menu->addChild(
+                'Accès établissements',
+                $admin->generateMenuUrl('admin.school_criterion.list', ['id' => $id])
+            );
         }
     }
 

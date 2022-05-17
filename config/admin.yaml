@@ -32,6 +32,8 @@ services:
               group: Logement
         calls:
             - ['addChild', ['@admin.housing_picture', 'housing']]
+            - ['addChild', ['@admin.social_scholarship_criterion', 'housing']]
+            - ['addChild', ['@admin.school_criterion', 'housing']]
 
     admin.housing_picture:
         class: App\Admin\HousingPictureAdmin
@@ -97,3 +99,19 @@ services:
               manager_type: orm
               group: Utilisateurs
               label: Student
+
+    admin.social_scholarship_criterion:
+        class: App\Admin\SocialScholarshipCriterionAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\SocialScholarshipCriterion
+              manager_type: orm
+              show_in_dashboard: false
+
+    admin.school_criterion:
+        class: App\Admin\SchoolCriterionAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\SchoolCriterion
+              manager_type: orm
+              show_in_dashboard: false

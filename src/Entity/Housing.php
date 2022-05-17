@@ -104,9 +104,17 @@ class Housing
     #[ORM\OneToMany(mappedBy: 'housing', targetEntity: HousingPicture::class, orphanRemoval: true)]
     private Collection $pictures;
 
+    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SocialScholarshipCriterion::class, orphanRemoval: true)]
+    private Collection $socialScholarshipCriteria;
+
+    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SchoolCriterion::class, orphanRemoval: true)]
+    private Collection $schoolCriteria;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->socialScholarshipCriteria = new ArrayCollection();
+        $this->schoolCriteria = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -392,9 +400,66 @@ class Housing
     public function removePicture(HousingPicture $picture): self
     {
         if ($this->pictures->removeElement($picture)) {
-            // set the owning side to null (unless already changed)
             if ($picture->getHousing() === $this) {
                 $picture->setHousing(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SocialScholarshipCriterion>
+     */
+    public function getSocialScholarshipCriteria(): Collection
+    {
+        return $this->socialScholarshipCriteria;
+    }
+
+    public function addSocialScholarshipCriterion(SocialScholarshipCriterion $socialScholarshipCriterion): self
+    {
+        if (!$this->socialScholarshipCriteria->contains($socialScholarshipCriterion)) {
+            $this->socialScholarshipCriteria[] = $socialScholarshipCriterion;
+            $socialScholarshipCriterion->setHousing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSocialScholarshipCriterion(SocialScholarshipCriterion $socialScholarshipCriterion): self
+    {
+        if ($this->socialScholarshipCriteria->removeElement($socialScholarshipCriterion)) {
+            if ($socialScholarshipCriterion->getHousing() === $this) {
+                $socialScholarshipCriterion->setHousing(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SchoolCriterion>
+     */
+    public function getSchoolCriteria(): Collection
+    {
+        return $this->schoolCriteria;
+    }
+
+    public function addSchoolCriterion(SchoolCriterion $schoolCriterion): self
+    {
+        if (!$this->schoolCriteria->contains($schoolCriterion)) {
+            $this->schoolCriteria[] = $schoolCriterion;
+            $schoolCriterion->setHousing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchoolCriterion(SchoolCriterion $schoolCriterion): self
+    {
+        if ($this->schoolCriteria->removeElement($schoolCriterion)) {
+            if ($schoolCriterion->getHousing() === $this) {
+                $schoolCriterion->setHousing(null);
             }
         }
 
