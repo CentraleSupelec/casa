@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Model\SearchCriteriaModel;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,6 +22,10 @@ class SearchHousingType extends AbstractType
             ])
             ->add('minArea', IntegerType::class, [
                 'label' => 'search.criteria.min_area.label',
+                'required' => false,
+                ])
+            ->add('accessibility', CheckboxType::class, [
+                'label' => 'search.criteria.accessibility.label',
                 'required' => false,
                 ]);
     }

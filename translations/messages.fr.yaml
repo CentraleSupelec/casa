@@ -123,10 +123,10 @@ search:
         refine: Modifier
         max_rent:
             label: Loyer maximum
-            help: Indiquez le montant de votre budget maximum
         min_area:
             label: Surface minimum
-            help: Indiquez la surface minimum recherchée
+        accessibility:
+            label: J'ai besoin d'un accès PMR
         submit: Rechercher
 footer:
     faq: F.a.q

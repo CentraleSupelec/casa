@@ -4,16 +4,18 @@ namespace App\Model;
 
 class SearchCriteriaModel
 {
-    protected $maxPrice;
+    protected ?int $maxPrice = null;
 
-    protected $minArea;
+    protected ?int $minArea = null;
 
-    protected $maxResultsByPage = 15;
+    protected int $maxResultsByPage = 15;
+
+    protected bool $accessibility = false;
 
     /**
      * Get the value of maxPrice.
      */
-    public function getMaxPrice()
+    public function getMaxPrice(): ?int
     {
         return $this->maxPrice;
     }
@@ -23,7 +25,7 @@ class SearchCriteriaModel
      *
      * @return self
      */
-    public function setMaxPrice($maxPrice)
+    public function setMaxPrice(?int $maxPrice)
     {
         $this->maxPrice = $maxPrice;
 
@@ -33,7 +35,7 @@ class SearchCriteriaModel
     /**
      * Get the value of minArea.
      */
-    public function getMinArea()
+    public function getMinArea(): ?int
     {
         return $this->minArea;
     }
@@ -43,7 +45,7 @@ class SearchCriteriaModel
      *
      * @return self
      */
-    public function setMinArea($minArea)
+    public function setMinArea(?int $minArea)
     {
         $this->minArea = $minArea;
 
@@ -53,7 +55,7 @@ class SearchCriteriaModel
     /**
      * Get the value of maxResults.
      */
-    public function getMaxResultsByPage()
+    public function getMaxResultsByPage(): int
     {
         return $this->maxResultsByPage;
     }
@@ -66,6 +68,26 @@ class SearchCriteriaModel
     public function setMaxResultsByPage($max)
     {
         $this->maxResultsByPage = $max;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of accessibilty.
+     */
+    public function getAccessibility(): bool
+    {
+        return $this->accessibility;
+    }
+
+    /**
+     * Set the value of accessibilty.
+     *
+     * @return self
+     */
+    public function setAccessibility(bool $accessibility)
+    {
+        $this->accessibility = $accessibility;
 
         return $this;
     }

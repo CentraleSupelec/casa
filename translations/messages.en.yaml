@@ -123,10 +123,10 @@ search:
         refine: Modify
         max_rent:
             label: maximum Rent
-            help: please fill in your maximum rent amount
         min_area:
             label: minimum Area
-            help: please fill the desired minimum area
+        accessibility:
+            label: I need reduced mobility access
         submit: Search
 footer:
     faq: Faq
