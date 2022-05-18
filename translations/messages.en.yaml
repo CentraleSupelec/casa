@@ -52,6 +52,8 @@ housing:
     point_of_interest: Points of interest
     redirect_button: Apply for this housing
     area_unit: square meters
+    criteria:
+        card_badge: Priority access based on criteria
 housing_group:
     country:
         france: FRANCE

@@ -122,6 +122,30 @@ class Housing
         return sprintf('%s - %s', $this->getHousingGroup(), $this->getType());
     }
 
+    public function hasSocialScholarshipCriterion(): bool
+    {
+        $now = time();
+        foreach ($this->getSocialScholarshipCriteria() as $criterion) {
+            if (date_timestamp_get($criterion->getStartDate()) < $now and $now < date_timestamp_get($criterion->getEndDate())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function hasSchoolCriterion(): bool
+    {
+        $now = time();
+        foreach ($this->getSchoolCriteria() as $criterion) {
+            if (date_timestamp_get($criterion->getStartDate()) < $now and $now < date_timestamp_get($criterion->getEndDate())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function getId(): ?string
     {
         return $this->id;

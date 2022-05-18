@@ -52,6 +52,8 @@ housing:
     point_of_interest: Points d'intérêts
     redirect_button: Déposer un dossier pour ce logement
     area_unit: mètres carré
+    criteria:
+        card_badge: Accès prioritaire sur critères
 housing_group:
     country:
         france: FRANCE

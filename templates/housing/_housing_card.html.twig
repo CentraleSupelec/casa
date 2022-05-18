@@ -27,7 +27,14 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="card-body p-0 p-md-2">
-                    <div class="row align-items-center">
+                    {% if housing.hasSchoolCriterion or housing.hasSocialScholarshipCriterion %}
+                    <div class="row mt-1 mt-md-0 mb-0 mb-md-1">
+                        <div class="col-12 d-flex align-items-center justify-content-end">
+                            <span class="badge bg-primary criteria-badge">{{ 'housing.criteria.card_badge' | trans }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row align-items-center mt-1 mt-md-0">
                         <div class="col-10 text-truncate d-block">
                             <a href="{{
                                 path(
