@@ -23,15 +23,15 @@
                         {{ Bookmark.displayBookmarkButton(housing) }}
                     </div>
                 </div>
-
-                {{
-                    Carousel.displayHousingCarousel(
-                        housing.id,
-                        imageBaseUrl,
-                        housing.pictures
-                    )
-                }}
-
+                <div class="card-detail">
+                    {{
+                        Carousel.displayHousingCarousel(
+                            housing.id,
+                            imageBaseUrl,
+                            housing.pictures
+                        )
+                    }}
+                </div>
                 <div class="row">
                     <div class="col-12 col-md-6 mt-4">
                         <h2 class="text-primary text-center text-md-start">
