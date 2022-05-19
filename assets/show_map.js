@@ -15,7 +15,7 @@ const streets = new L.TileLayer(
 const myIcon = L.icon({
     iconUrl: housingIcon,
     iconSize: [32, 32], // size of the icon
-    iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
+    iconAnchor: [16, 16], // point of the icon which will correspond to marker's location
     popupAnchor: [0, -34], // point from which the popup should open relative to the iconAnchor
 });
 
@@ -53,5 +53,3 @@ if (locations.length > 0) {
     // Orsay university coordinates
     map.setView([48.69858, 2.18071], 13);
 }
-
-$(window).resize(function () {});
