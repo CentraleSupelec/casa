@@ -32,15 +32,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row pb-2">
         <div class="col">
-            {{ form_label(form.accessibility) }}
-            <div class="input-group">
-                {{ form_widget(form.accessibility) }}
-            </div>
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
         </div>
     </div>
+
+    {{ form_row(form.accessibility) }}
+
     <div class="d-flex justify-content-center">
         <input type="submit"
             class="btn btn-primary col"

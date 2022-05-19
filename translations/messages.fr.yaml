@@ -129,6 +129,8 @@ search:
             label: Surface minimum
         accessibility:
             label: J'ai besoin d'un accès PMR
+        city:
+            label: Ville
         submit: Rechercher
 footer:
     faq: F.a.q

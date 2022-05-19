@@ -129,6 +129,8 @@ search:
             label: minimum Area
         accessibility:
             label: I need reduced mobility access
+        city:
+            label: Town
         submit: Search
 footer:
     faq: Faq

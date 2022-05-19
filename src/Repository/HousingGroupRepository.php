@@ -18,4 +18,15 @@ class HousingGroupRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, HousingGroup::class);
     }
+
+    public function getDistinctCities(): array
+    {
+        $results = $this->createQueryBuilder('h')
+            ->select('h.address.city')
+            ->distinct()
+            ->getQuery()
+            ->getResult();
+
+        return array_column($results, 'address.city');
+    }
 }

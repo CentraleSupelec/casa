@@ -12,6 +12,8 @@ class SearchCriteriaModel
 
     protected bool $accessibility = false;
 
+    protected ?string $city = null;
+
     /**
      * Get the value of maxPrice.
      */
@@ -88,6 +90,26 @@ class SearchCriteriaModel
     public function setAccessibility(bool $accessibility)
     {
         $this->accessibility = $accessibility;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of City.
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set the value of City.
+     *
+     * @return self
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
 
         return $this;
     }

@@ -35,6 +35,9 @@ class HousingRepository extends ServiceEntityRepository
         if ($searchCriteria->getAccessibility()) {
             $query->andWhere('h.accessibility = true');
         }
+        if ($searchCriteria->getCity()) {
+            $query->innerJoin('h.housingGroup', 'hg', 'WITH', 'hg.address.city = :city')->setParameter('city', $searchCriteria->getCity());
+        }
 
         $query->orderBy('h.rentMin', 'ASC');
 
