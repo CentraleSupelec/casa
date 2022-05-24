@@ -16,9 +16,16 @@
                 }}
                 <ul class="text-dark text-center text-md-start p-0"
                     style="list-style: none">
-                    {% for housing in student.getBookmarks %}
+                    {% for bookmarkElement in bookmarksList %}
                         <li>
-                            {{ HousingCard.displayCard(housing, imageBaseUrl) }}
+                            {{
+                                HousingCard.displayCard(
+                                    bookmarkElement[0],
+                                    bookmarkElement.hasCriteria,
+                                    bookmarkElement.isPriority,
+                                    imageBaseUrl
+                                )
+                            }}
                         </li>
                     {% endfor %}
                 </ul>

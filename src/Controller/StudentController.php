@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Housing;
 use App\Entity\Student;
 use App\Form\StudentFormType;
+use App\Model\StudentProfileCriteriaModel;
 use App\Service\ImageUrlService;
 use App\Service\StudentService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,8 +28,8 @@ class StudentController extends AbstractController
         ]);
     }
 
-    #[Route('/student/editprofile', name: 'app_student_edit_profile')]
-    public function editprofile(
+    #[Route('/student/edit-profile', name: 'app_student_edit_profile')]
+    public function editProfile(
         EntityManagerInterface $entityManager,
         ImageUrlService $imageUrlService,
         StudentService $studentService,
@@ -57,12 +59,28 @@ class StudentController extends AbstractController
     }
 
     #[Route('/student/bookmarks', name: 'app_student_bookmarks')]
-    public function bookmarks(ImageUrlService $imageUrlService): Response
+    public function bookmarks(EntityManagerInterface $entityManager, ImageUrlService $imageUrlService): Response
     {
+        /** @var Student */
         $student = $this->getUser();
+
+        $studentProfileCriteria = (new StudentProfileCriteriaModel())
+            ->setSocialScholarship($student->getSocialScholarship())
+            ->setSchool($student->getSchool());
+
+        /**
+         * $bookmarksList is an array of objects with the following structure:
+         * { 0: Housing, isPriority: bool, hasCriteria: bool }.
+         */
+        $bookmarksList = $entityManager
+            ->getRepository(Housing::class)
+            ->getHousingBookmarksQueryBuilder($studentProfileCriteria, $student->getId())
+            ->getQuery()
+            ->getResult();
 
         return $this->render('student/bookmarks.html.twig', [
             'student' => $student,
+            'bookmarksList' => $bookmarksList,
             'imageBaseUrl' => $imageUrlService->getImageBaseUrl(),
         ]);
     }

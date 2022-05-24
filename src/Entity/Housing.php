@@ -110,11 +110,15 @@ class Housing
     #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SchoolCriterion::class, orphanRemoval: true)]
     private Collection $schoolCriteria;
 
+    #[ORM\ManyToMany(targetEntity: Student::class, mappedBy: 'bookmarks')]
+    private Collection $students;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
         $this->socialScholarshipCriteria = new ArrayCollection();
         $this->schoolCriteria = new ArrayCollection();
+        $this->students = new ArrayCollection();
     }
 
     public function __toString(): string

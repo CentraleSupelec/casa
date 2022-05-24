@@ -53,7 +53,7 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotNull]
     private bool $verified = false;
 
-    #[ORM\ManyToMany(targetEntity: Housing::class)]
+    #[ORM\ManyToMany(targetEntity: Housing::class, inversedBy: 'students')]
     private Collection $bookmarks;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

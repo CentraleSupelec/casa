@@ -23,6 +23,15 @@ class HousingRepository extends ServiceEntityRepository
         parent::__construct($registry, Housing::class);
     }
 
+    public function getHousingBookmarksQueryBuilder(
+        StudentProfileCriteriaModel $studentProfileCriteria, string $studentId
+    ): QueryBuilder {
+        return $this
+            ->getHousingListQueryBuilder(new SearchCriteriaModel(), $studentProfileCriteria)
+            ->innerJoin('h.students', 's', Join::WITH, 's.id = :studentId')
+            ->setParameter('studentId', $studentId);
+    }
+
     public function getHousingListQueryBuilder(
         SearchCriteriaModel $searchCriteria,
         StudentProfileCriteriaModel $studentProfileCriteria = new StudentProfileCriteriaModel()
