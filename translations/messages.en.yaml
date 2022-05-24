@@ -54,6 +54,8 @@ housing:
     area_unit: square meters
     criteria:
         card_badge: Priority access based on criteria
+    priority:
+        card_badge: Recommended offer
 housing_group:
     country:
         france: FRANCE

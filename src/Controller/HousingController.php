@@ -6,6 +6,7 @@ use App\Entity\Housing;
 use App\Entity\Student;
 use App\Form\SearchHousingType;
 use App\Model\SearchCriteriaModel;
+use App\Model\StudentProfileCriteriaModel;
 use App\Service\ImageUrlService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -33,23 +34,35 @@ class HousingController extends AbstractController
         PaginatorInterface $paginator,
         Request $request): Response
     {
-        $pagination = null;
-
+        $student = $this->getUser();
         $searchHousingCriteria = new SearchCriteriaModel();
+        $studentProfileCriteria = new StudentProfileCriteriaModel();
+
+        if (null !== $student and $student instanceof Student) {
+            $studentProfileCriteria
+                ->setSocialScholarship($student->getSocialScholarship())
+                ->setSchool($student->getSchool());
+        }
+
         $form = $this->createForm(SearchHousingType::class, $searchHousingCriteria,
             ['method' => 'GET']
         );
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $searchHousingCriteria = $form->getData();
         }
-        $housingsQuery = $entityManager->getRepository(Housing::class)
-            ->qbFindByCriteria($searchHousingCriteria);
 
+        $housingsListQueryBuilder = $entityManager
+            ->getRepository(Housing::class)
+            ->getHousingListQueryBuilder($searchHousingCriteria, $studentProfileCriteria);
+
+        /**
+         * $pagination is an array of objects with the following structure:
+         * { 0: Housing, isPriority: bool, hasCriteria: bool }.
+         */
         $pagination = $paginator->paginate(
-            $housingsQuery,
+            $housingsListQueryBuilder,
             $request->query->getInt('page', 1),
             $searchHousingCriteria->getMaxResultsByPage(),
         );

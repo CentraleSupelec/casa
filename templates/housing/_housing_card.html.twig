@@ -1,4 +1,4 @@
-{% macro displayCard(housing, imageBaseUrl) %}
+{% macro displayCard(housing, hasCriteria, isPriority, imageBaseUrl) %}
     {% import 'housing/_carousel.html.twig' as Carousel %}
     {% import 'housing/_range_data.html.twig' as RangeData %}
     {% import 'housing/_bookmark_button.html.twig' as Bookmark %}
@@ -27,10 +27,13 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="card-body p-0 p-md-2">
-                    {% if housing.hasSchoolCriterion or housing.hasSocialScholarshipCriterion %}
-                    <div class="row mt-1 mt-md-0 mb-0 mb-md-1">
-                        <div class="col-12 d-flex align-items-center justify-content-end">
-                            <span class="badge bg-primary criteria-badge">{{ 'housing.criteria.card_badge' | trans }}</span>
+                    {% if hasCriteria %}
+                    <div class="row mb-0 mb-md-1">
+                        <div class="col-12 d-flex align-items-center justify-content-end flex-wrap">
+                            <span class="badge bg-primary criteria-badge mt-1">{{ 'housing.criteria.card_badge' | trans }}</span>
+                            {% if isPriority %}
+                                <span class="badge bg-success criteria-badge ms-1 mt-1">{{ 'housing.priority.card_badge' | trans }}</span>
+                            {% endif %}
                         </div>
                     </div>
                     {% endif %}

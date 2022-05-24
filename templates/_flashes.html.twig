@@ -1,5 +1,5 @@
 {% for flash_error in app.flashes('error') %}
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center mt-3">
         <div class="col-12 col-md-8 d-flex justify-content-center">
             <div class="w-75 alert alert-danger" role="alert">
                 {{ flash_error }}
@@ -9,7 +9,7 @@
 {% endfor %}
 
 {% for flash_message in app.flashes('success') %}
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center mt-3">
         <div class="col-12 col-md-8 d-flex justify-content-center">
             <div class="w-75 alert alert-success alert-dismissible fade show text-center"
                 role="alert">

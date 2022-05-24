@@ -14,100 +14,60 @@ class SearchCriteriaModel
 
     protected ?string $city = null;
 
-    /**
-     * Get the value of maxPrice.
-     */
     public function getMaxPrice(): ?int
     {
         return $this->maxPrice;
     }
 
-    /**
-     * Set the value of maxPrice.
-     *
-     * @return self
-     */
-    public function setMaxPrice(?int $maxPrice)
+    public function setMaxPrice(?int $maxPrice): self
     {
         $this->maxPrice = $maxPrice;
 
         return $this;
     }
 
-    /**
-     * Get the value of minArea.
-     */
     public function getMinArea(): ?int
     {
         return $this->minArea;
     }
 
-    /**
-     * Set the value of minArea.
-     *
-     * @return self
-     */
-    public function setMinArea(?int $minArea)
+    public function setMinArea(?int $minArea): self
     {
         $this->minArea = $minArea;
 
         return $this;
     }
 
-    /**
-     * Get the value of maxResults.
-     */
     public function getMaxResultsByPage(): int
     {
         return $this->maxResultsByPage;
     }
 
-    /**
-     * Set the value of maxResults.
-     *
-     * @return self
-     */
-    public function setMaxResultsByPage($max)
+    public function setMaxResultsByPage($max): self
     {
         $this->maxResultsByPage = $max;
 
         return $this;
     }
 
-    /**
-     * Get the value of accessibilty.
-     */
     public function getAccessibility(): bool
     {
         return $this->accessibility;
     }
 
-    /**
-     * Set the value of accessibilty.
-     *
-     * @return self
-     */
-    public function setAccessibility(bool $accessibility)
+    public function setAccessibility(bool $accessibility): self
     {
         $this->accessibility = $accessibility;
 
         return $this;
     }
 
-    /**
-     * Get the value of City.
-     */
     public function getCity(): ?string
     {
         return $this->city;
     }
 
-    /**
-     * Set the value of City.
-     *
-     * @return self
-     */
-    public function setCity(string $city)
+    public function setCity(string $city): self
     {
         $this->city = $city;
 

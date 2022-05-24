@@ -71,8 +71,15 @@
                         </div>
                     </div>
                     <section aria-label="{{ 'housing.list.search_result'|trans }}">
-                        {% for housing in pagination %}
-                            {{ HousingCard.displayCard(housing, imageBaseUrl) }}
+                        {% for pageElement in pagination %}
+                            {{
+                                HousingCard.displayCard(
+                                    pageElement[0],
+                                    pageElement.hasCriteria,
+                                    pageElement.isPriority,
+                                    imageBaseUrl
+                                )
+                            }}
                             <hr class="divider" />
                         {% endfor %}
                     </section>

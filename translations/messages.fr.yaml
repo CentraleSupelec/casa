@@ -54,6 +54,8 @@ housing:
     area_unit: mètres carré
     criteria:
         card_badge: Accès prioritaire sur critères
+    priority:
+        card_badge: Offre recommandée
 housing_group:
     country:
         france: FRANCE
