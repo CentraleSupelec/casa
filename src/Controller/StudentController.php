@@ -64,9 +64,7 @@ class StudentController extends AbstractController
         /** @var Student */
         $student = $this->getUser();
 
-        $studentProfileCriteria = (new StudentProfileCriteriaModel())
-            ->setSocialScholarship($student->getSocialScholarship())
-            ->setSchool($student->getSchool());
+        $studentProfileCriteria = new StudentProfileCriteriaModel($student);
 
         /**
          * $bookmarksList is an array of objects with the following structure:

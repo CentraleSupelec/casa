@@ -34,7 +34,7 @@ class HousingRepository extends ServiceEntityRepository
 
     public function getHousingListQueryBuilder(
         SearchCriteriaModel $searchCriteria,
-        StudentProfileCriteriaModel $studentProfileCriteria = new StudentProfileCriteriaModel()
+        StudentProfileCriteriaModel $studentProfileCriteria = new StudentProfileCriteriaModel(null)
     ): QueryBuilder {
         $queryBuilder = $this
             ->createQueryBuilder('h')

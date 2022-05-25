@@ -36,13 +36,7 @@ class HousingController extends AbstractController
     {
         $student = $this->getUser();
         $searchHousingCriteria = new SearchCriteriaModel();
-        $studentProfileCriteria = new StudentProfileCriteriaModel();
-
-        if (null !== $student and $student instanceof Student) {
-            $studentProfileCriteria
-                ->setSocialScholarship($student->getSocialScholarship())
-                ->setSchool($student->getSchool());
-        }
+        $studentProfileCriteria = new StudentProfileCriteriaModel($student instanceof Student ? $student : null);
 
         $form = $this->createForm(SearchHousingType::class, $searchHousingCriteria,
             ['method' => 'GET']
