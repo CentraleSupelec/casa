@@ -29,7 +29,7 @@ class SchoolCriterion
     #[Assert\NotNull]
     private ?\DateTimeInterface $endDate = null;
 
-    #[ORM\ManyToMany(targetEntity: School::class)]
+    #[ORM\ManyToMany(targetEntity: School::class, inversedBy: 'schoolCriteria')]
     private Collection $schools;
 
     #[ORM\ManyToOne(targetEntity: Housing::class, inversedBy: 'schoolCriteria')]

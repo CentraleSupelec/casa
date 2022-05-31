@@ -32,6 +32,20 @@
                         )
                     }}
                 </div>
+                {% if hasCriteria %}
+                    <div class="row">
+                        <div class="col-12 mt-1 d-flex align-items-center justify-content-end flex-wrap">
+                            <span class="badge bg-primary criteria-badge mt-1">
+                                {{ 'housing.criteria.card_badge'|trans }}
+                            </span>
+                            {% if isPriority %}
+                                <span class="badge bg-success criteria-badge ms-1 mt-1">
+                                    {{ 'housing.priority.card_badge'|trans }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-12 col-md-6 mt-4">
                         <h2 class="text-primary text-center text-md-start">
@@ -203,6 +217,38 @@
                         </div>
                     </div>
                 </div>
+
+                {% if hasCriteria %}
+                    <h2 class="mt-4 text-primary text-center text-md-start">
+                        {{ 'housing.criteria.detail.title'|trans }}
+                    </h2>
+                    <div class="row">
+                        <div class="col text-center text-md-start">
+                            <span>
+                                {{
+                                    'housing.criteria.detail.description'|trans
+                                }}
+                            </span>
+                            <ul class="text-center text-md-start ps-md-3">
+                                {% if hasSocialScholarshipCriteria %}
+                                    <li class="minor-info mt-2">
+                                        {{
+                                            'housing.criteria.detail.social_scholarship_criterion'|trans
+                                        }}
+                                    </li>
+                                {% endif %}
+                                {% if hasSchoolCriteria %}
+                                    <li class="minor-info mt-2">
+                                        {{
+                                            'housing.criteria.detail.school_criterion'|trans
+                                        }}
+                                        {{ schools|join(', ') }}
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
 
                 <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
                     {{ 'housing.equipment.title'|trans }}

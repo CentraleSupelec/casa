@@ -46,10 +46,14 @@ class School
     #[Assert\NotNull]
     private ?string $campus = null;
 
+    #[ORM\ManyToMany(targetEntity: SchoolCriterion::class, mappedBy: 'schools')]
+    private Collection $schoolCriteria;
+
     public function __construct()
     {
         $this->address = new Address();
         $this->housingGroups = new ArrayCollection();
+        $this->schoolCriteria = new ArrayCollection();
     }
 
     public function __toString(): string

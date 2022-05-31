@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Housing;
+use App\Entity\School;
 use App\Entity\Student;
 use App\Form\SearchHousingType;
 use App\Model\SearchCriteriaModel;
 use App\Model\StudentProfileCriteriaModel;
 use App\Service\ImageUrlService;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +20,40 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HousingController extends AbstractController
 {
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     #[Route('/housing/detail/{id}', name: 'app_housing_detail')]
     public function detail(string $id, EntityManagerInterface $entityManager, ImageUrlService $imageUrl): Response
     {
-        $housing = $entityManager->getRepository(Housing::class)->find($id);
+        /** @var Student */
+        $student = $this->getUser();
+        $studentProfileCriteria = new StudentProfileCriteriaModel($student instanceof Student ? $student : null);
+
+        /**
+         * $housingElement is an object with the following structure:
+         * { 0: Housing, isPriority: bool, hasCriteria: bool, hasSchoolCriteria: bool, hasSocialScholarshipCriteria: bool }.
+         */
+        $housingElement = $entityManager
+            ->getRepository(Housing::class)
+            ->getHousingByIdQueryBuilder($studentProfileCriteria, $id)
+            ->getQuery()
+            ->getSingleResult();
+
+        $schools = $entityManager
+            ->getRepository(School::class)
+            ->getHousingSchoolsWithCriteria($housingElement[0])
+            ->getQuery()
+            ->getResult();
 
         return $this->render('housing/index.html.twig', [
-            'housing' => $housing,
+            'housing' => $housingElement[0],
+            'isPriority' => $housingElement['isPriority'],
+            'hasCriteria' => $housingElement['hasCriteria'],
+            'hasSchoolCriteria' => $housingElement['hasSchoolCriteria'],
+            'hasSocialScholarshipCriteria' => $housingElement['hasSocialScholarshipCriteria'],
+            'schools' => $schools,
             'imageBaseUrl' => $imageUrl->getImageBaseUrl(),
         ]);
     }

@@ -54,6 +54,11 @@ housing:
     area_unit: mètres carré
     criteria:
         card_badge: Accès prioritaire sur critères
+        detail:
+            title: Critères d'accès au logement
+            description: Les étudiants validant l'ensemble des critères suivants sont prioritaires pour ce logement
+            social_scholarship_criterion: boursier sur critères sociaux du CROUS
+            school_criterion: "inscrit dans l'un de ces établissements: "
     priority:
         card_badge: Offre recommandée
 housing_group:
@@ -86,8 +91,8 @@ profile:
     last_name: Nom
     birthdate: Date de naissance
     email: Adresse mail
-    school: Etablissement scolaire
-    social_scholarship: Boursier sur critères sociaux du crous
+    school: Établissements scolaire
+    social_scholarship: Boursier sur critères sociaux du CROUS
     reduced_mobility: personne à mobilité réduite
 authentication:
     email:

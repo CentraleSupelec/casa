@@ -27,14 +27,45 @@ class HousingRepository extends ServiceEntityRepository
         StudentProfileCriteriaModel $studentProfileCriteria, string $studentId
     ): QueryBuilder {
         return $this
-            ->getHousingListQueryBuilder(new SearchCriteriaModel(), $studentProfileCriteria)
+            ->getHousingBaseQueryBuilderWithCriteriaAndPriority(new SearchCriteriaModel(), $studentProfileCriteria)
             ->innerJoin('h.students', 's', Join::WITH, 's.id = :studentId')
-            ->setParameter('studentId', $studentId);
+            ->setParameter('studentId', $studentId)
+            ->addOrderBy('isPriority', 'desc')
+            ->addOrderBy('h.createdAt', 'asc');
     }
 
     public function getHousingListQueryBuilder(
         SearchCriteriaModel $searchCriteria,
         StudentProfileCriteriaModel $studentProfileCriteria = new StudentProfileCriteriaModel(null)
+    ): QueryBuilder {
+        return $this
+            ->getHousingBaseQueryBuilderWithCriteriaAndPriority($searchCriteria, $studentProfileCriteria)
+            ->addOrderBy('isPriority', 'desc')
+            ->addOrderBy('h.createdAt', 'asc');
+    }
+
+    public function getHousingByIdQueryBuilder(
+        StudentProfileCriteriaModel $studentProfileCriteria, string $housingId
+    ): QueryBuilder {
+        $now = (new \DateTime())->format('Y-m-d');
+
+        return $this
+            ->getHousingBaseQueryBuilderWithCriteriaAndPriority(new SearchCriteriaModel(), $studentProfileCriteria)
+            ->addSelect(
+                'CASE WHEN :now between ssc.startDate and ssc.endDate THEN true ELSE false END as hasSocialScholarshipCriteria'
+            )
+            ->setParameter('now', $now)
+            ->addSelect(
+                'CASE WHEN :now between sc.startDate and sc.endDate THEN true ELSE false END as hasSchoolCriteria'
+            )
+            ->setParameter('now', $now)
+            ->andWhere('h.id = :housingId')
+            ->setParameter('housingId', $housingId);
+    }
+
+    private function getHousingBaseQueryBuilderWithCriteriaAndPriority(
+        SearchCriteriaModel $searchCriteria,
+        StudentProfileCriteriaModel $studentProfileCriteria
     ): QueryBuilder {
         $queryBuilder = $this
             ->createQueryBuilder('h')
@@ -48,31 +79,42 @@ class HousingRepository extends ServiceEntityRepository
             ->leftJoin('h.socialScholarshipCriteria', 'ssc')
             ->leftJoin('h.schoolCriteria', 'sc');
 
-        return $this
-            ->applySearchCriteriaFilter($queryBuilder, $searchCriteria)
-            ->addOrderBy('isPriority', 'desc')
-            ->addOrderBy('h.createdAt', 'asc');
+        return $this->applySearchCriteriaFilter($queryBuilder, $searchCriteria);
     }
 
     private function addSelectIsPriority(
         QueryBuilder $queryBuilder, StudentProfileCriteriaModel $studentProfileCriteriaModel
     ): QueryBuilder {
-        $selectIsPriority = 'h.id is null';     // condition that is always false
-        $selectSocialScholarshipCriteria = ':now between ssc.startDate and ssc.endDate';
-        $selectSchoolCriteria =
-            'sc.id is null or (:now between sc.startDate and sc.endDate and :school MEMBER OF sc.schools)';
+        $selectIsPriority = $queryBuilder->expr()->isNull('h.id');  // condition that is always false
+        $selectSocialScholarshipCriteria = $queryBuilder->expr()->between(':now', 'ssc.startDate', 'ssc.endDate');
+        $selectSchoolCriteria = $queryBuilder->expr()->orX(
+            $queryBuilder->expr()->isNull('sc.id'),
+            $queryBuilder->expr()->andX(
+                $queryBuilder->expr()->between(':now', 'sc.startDate', 'sc.endDate'),
+                $queryBuilder->expr()->isMemberOf(':school', 'sc.schools')
+            )
+        );
+
         $parameters = [];
+        $now = (new \DateTime())->format('Y-m-d');
 
         if ($studentProfileCriteriaModel->getSocialScholarship()) {
             $selectIsPriority = $selectSocialScholarshipCriteria;
-            $parameters['now'] = (new \DateTime())->format('Y-m-d');
+            $parameters['now'] = $now;
 
             if (null !== $studentProfileCriteriaModel->getSchool()) {
-                $selectIsPriority = $selectIsPriority.' and '.$selectSchoolCriteria;
+                $selectIsPriority = $queryBuilder->expr()->andX(
+                    $selectSocialScholarshipCriteria, $selectSchoolCriteria
+                );
                 $parameters['school'] = $studentProfileCriteriaModel->getSchool();
             }
         } elseif (null !== $studentProfileCriteriaModel->getSchool()) {
-            $selectIsPriority = $selectSchoolCriteria;
+            // A student without social scholarship can only have priority on housings without social scholarship criteria
+            $selectHasNoSocialScholarshipCriteria = $queryBuilder->expr()->isNull('ssc.id');
+            $selectIsPriority = $queryBuilder->expr()->andX(
+                $selectHasNoSocialScholarshipCriteria, $selectSchoolCriteria
+            );
+            $parameters['now'] = $now;
             $parameters['school'] = $studentProfileCriteriaModel->getSchool();
         }
 
