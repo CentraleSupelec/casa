@@ -115,3 +115,12 @@ services:
               model_class: App\Entity\SchoolCriterion
               manager_type: orm
               show_in_dashboard: false
+
+    admin.parent_school:
+        class: App\Admin\ParentSchoolAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\ParentSchool
+              manager_type: orm
+              group: Référentiels
+              label: Etablissement Principal

@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -27,7 +28,11 @@ final class SchoolAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter
-            ->add('name')
+            ->add('name', null, [
+                'label' => 'Nom',
+            ])
+            ->add('parentSchool', null, [
+                'label' => 'Etablissement principal', ])
             ;
     }
 
@@ -37,6 +42,9 @@ final class SchoolAdmin extends AbstractAdmin
             ->add('name', null, [
                 'label' => 'Nom',
                 ])
+            ->add('parentSchool', null, [
+                'label' => 'Etablissement principal',
+            ])
             ->add('idGovernment', null, [
                 'label' => 'Identifiant National',
                 ])
@@ -69,6 +77,10 @@ final class SchoolAdmin extends AbstractAdmin
             ])
                 ->add('name', TextType::class, [
                     'label' => 'Nom',
+                ])
+                ->add('parentSchool', ModelType::class, [
+                    'label' => 'Etablissement Principal',
+                     'btn_add' => false,
                 ])
                 ->add('idGovernment', TextType::class, [
                     'label' => 'Identifiant National',
@@ -104,6 +116,10 @@ final class SchoolAdmin extends AbstractAdmin
             ->add('name', null, [
                     'label' => 'Nom',
                 ])
+            ->add('parentSchool', null, [
+                'label' => 'Etablissement principal',
+                'required' => true,
+            ])
             ->add('idGovernment', null, [
                     'label' => 'Identifiant National',
                     'required' => false,

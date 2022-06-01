@@ -10,3 +10,5 @@ volumes/
 # Necessary because of filter arrow function not supported (impossible to ignore lines only)
 templates/housing/_housing_card.html.twig
 templates/student/_navlink.html.twig
+templates/student/_profile.edit.html.twig
+templates/student/_profile.select_school_widget.html.twig

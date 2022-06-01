@@ -1,0 +1,9 @@
+<select class="form-select">
+    {% for school in schools %}
+        <option value="{{school.id}}"
+        {% if currentSchoolId is same as(school.id)  %}
+            selected
+        {% endif %}
+        >[{{ school.campus }}] {{school.name}} </option>
+    {% endfor %}
+</select>

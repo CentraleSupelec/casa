@@ -26,9 +26,27 @@
     <h2 class="fs-6 text-secondary">
         {{ 'profile.school'|trans }}
     </h2>
-    <p class="h3 mb-4">
-        {{ student.school }}
-    </p>
+    {% if student.school %}
+        {% if
+            student.school.name is not same as(
+                student.school.parentSchool.name
+            ) %}
+            <p class="h3 mb-4">
+                {{ student.school.parentSchool }}
+            </p>
+        {% endif %}
+        <p class="h3 mb-4">
+            {{ student.school }}
+        </p>
+        <p class="h3 mb-4">
+            Campus {{ student.school.campus }}
+        </p>
+    {% else %}
+        <p class="h3 mb-4">
+            {{ 'profile.choose_school'|trans }}
+        </p>
+    {% endif %}
+
     <h2 class="fs-6 text-secondary">
         {{ 'profile.social_scholarship'|trans }}
     </h2>

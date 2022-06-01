@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Housing;
+use App\Entity\ParentSchool;
+use App\Entity\School;
 use App\Entity\Student;
 use App\Form\StudentFormType;
 use App\Model\StudentProfileCriteriaModel;
@@ -40,6 +42,7 @@ class StudentController extends AbstractController
         $student = $this->getUser();
 
         $form = $this->createForm(StudentFormType::class, $student);
+        $parentSchools = $entityManager->getRepository(ParentSchool::class)->findAll();
 
         $form->handleRequest($request);
 
@@ -54,6 +57,7 @@ class StudentController extends AbstractController
             'student' => $student,
             'mode' => $mode,
             'form' => $form->createView(),
+            'parentSchools' => $parentSchools,
             'imageBaseUrl' => $imageUrlService->getImageBaseUrl(),
         ]);
     }
@@ -80,6 +84,22 @@ class StudentController extends AbstractController
             'student' => $student,
             'bookmarksList' => $bookmarksList,
             'imageBaseUrl' => $imageUrlService->getImageBaseUrl(),
+        ]);
+    }
+
+    #[Route('/student/profile/_schools', name: 'app_student_profile_schools')]
+    public function schools(EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $parentId = $request->query->get('parentId');
+        $currentSchoolId = $request->query->get('schoolId');
+
+        $parent = $entityManager->getRepository(ParentSchool::class)->find($parentId);
+        $schools = $entityManager->getRepository(School::class)->findBy(['parentSchool' => $parent], ['parentSchool' => 'ASC']);
+
+        return $this->render('student/_profile.select_school_widget.html.twig',
+        [
+            'schools' => $schools,
+            'currentSchoolId' => $currentSchoolId,
         ]);
     }
 }

@@ -94,6 +94,7 @@ profile:
     school: School
     social_scholarship: CROUS Social Scholarship
     reduced_mobility: Reduced mobility person
+    choose_school: Please select a School
 authentication:
     email:
         label: Email

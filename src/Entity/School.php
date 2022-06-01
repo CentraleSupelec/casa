@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SchoolRepository::class)]
-#[UniqueEntity(fields: ['name'], message: 'There is already a school with this name')]
+#[UniqueEntity(fields: ['name', 'campus'], message: 'There is already a school with this name for this campus')]
 class School
 {
     use TimestampableEntity;
@@ -48,6 +48,10 @@ class School
 
     #[ORM\ManyToMany(targetEntity: SchoolCriterion::class, mappedBy: 'schools')]
     private Collection $schoolCriteria;
+
+    #[ORM\ManyToOne(targetEntity: ParentSchool::class, inversedBy: 'schools')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ParentSchool $parentSchool;
 
     public function __construct()
     {
@@ -161,6 +165,18 @@ class School
     public function setCampus(?string $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    public function getParentSchool(): ?ParentSchool
+    {
+        return $this->parentSchool;
+    }
+
+    public function setParentSchool(?ParentSchool $parentSchool): self
+    {
+        $this->parentSchool = $parentSchool;
 
         return $this;
     }

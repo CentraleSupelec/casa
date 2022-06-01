@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\School;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,16 +25,16 @@ class StudentFormType extends AbstractType
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'profile.birthdate',
                 'required' => false, ])
-            ->add('school', null, [
+            ->add('school', EntityType::class, [
                 'label' => 'profile.school',
+                'class' => School::class,
                 ])
             ->add('socialScholarship', null, [
                 'label' => 'profile.social_scholarship',
-            ])
+                ])
             ->add('reducedMobility', null, [
                 'label' => 'profile.reduced_mobility',
-            ])
-        ;
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

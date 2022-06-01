@@ -1,6 +1,7 @@
 schools:
     - name: École normale supérieure Paris-Saclay
       acronym: ENS
+      parentStructure: École normale supérieure Paris-Saclay
       campus: Plateau de Saclay
       address:
           street: 4 avenue des Sciences
@@ -11,6 +12,7 @@ schools:
 
     - name: UFR Langues Arts et Musique
       acronym: UFR LAM
+      parentStructure: Université d'Évry
       campus: Évry
       address:
           street: Bâtiment 1er Cycles, rue Pierre Bérégovoy
@@ -21,6 +23,7 @@ schools:
 
     - name: UFR des Sciences de l'Homme et de la Société
       acronym: UFR SHS
+      parentStructure: Université d'Évry
       campus: Évry
       address:
           street: 2 rue du Facteur Cheval
@@ -31,6 +34,7 @@ schools:
 
     - name: UFR Sciences Fondamentales et Appliquées
       acronym: UFR SFA
+      parentStructure: Université d'Évry
       campus: Évry
       address:
           street: 23 boulevard François Mitterrand
@@ -41,6 +45,7 @@ schools:
 
     - name: UFR Sciences et Technologies
       acronym: UFR ST
+      parentStructure: Université d'Évry
       campus: Évry
       address:
           street: CE1455, 40 rue du Pelvoux
@@ -51,6 +56,7 @@ schools:
 
     - name: UFR Droit et Science Politique
       acronym: UFR DSP
+      parentStructure: Université d'Évry
       campus: Évry
       address:
           street: 23 boulevard François Mitterrand
@@ -61,6 +67,7 @@ schools:
 
     - name: IUT Évry Val d'Essonne - site d'Évry
       acronym: IUT Evry
+      parentStructure: Université d'Évry
       campus: Évry
       address:
           street: 25 cours Monseigneur Roméro
@@ -71,6 +78,7 @@ schools:
 
     - name: IUT Évry Val d'Essonne - site de Bretigny
       acronym: IUT Bretigny
+      parentStructure: Université d'Évry
       campus: Brétigny-sur-Orge
       address:
           street: Chemin de la Tuilerie
@@ -81,6 +89,7 @@ schools:
 
     - name: IUT Évry Val d'Essonne - site de Juvisy
       acronym: IUT Juvisy
+      parentStructure: Université d'Évry
       campus: Juvisy-sur-Orge
       address:
           street: Parc de la Mairie - 6 A rue Piver
@@ -91,6 +100,7 @@ schools:
 
     - name: UFR Simone Veil - Santé
       acronym: UFR Santé
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Montigny-le-Bretonneux
       address:
           street: 2 avenue de la Source de la Bièvre
@@ -101,6 +111,7 @@ schools:
 
     - name: Faculté de Droit et de Science politique
       acronym: Faculté DSP
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Guyancourt
       address:
           street: 3 rue de la Division Leclerc
@@ -111,6 +122,7 @@ schools:
 
     - name: Institut d'études culturelles et internationales
       acronym: IECI
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Guyancourt
       address:
           street: 47 boulevard Vauban
@@ -121,6 +133,7 @@ schools:
 
     - name: Institut supérieur de management IAE
       acronym: ISM-IAE
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Guyancourt
       address:
           street: 47 boulevard Vauban
@@ -131,6 +144,7 @@ schools:
 
     - name: Observatoire de Versailles Saint-Quentin-en-Yvelines
       acronym: OVSQ
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Guyancourt
       address:
           street: 11 boulevard d'Alembert
@@ -141,6 +155,7 @@ schools:
 
     - name: UFR des Sciences sociales
       acronym: UFR SCS
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Guyancourt
       address:
           street: 47 boulevard Vauban
@@ -151,6 +166,7 @@ schools:
 
     - name: Institut des Sciences et Techniques des Yvelines
       acronym: ISTY Guyancourt
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Guyancourt
       address:
           street: Bâtiment Rabelais - 9 boulevard d'Alembert
@@ -161,6 +177,7 @@ schools:
 
     - name: Institut des Sciences et Techniques des Yvelines
       acronym: ISTY Vélizy
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Vélizy-Villacoublay
       address:
           street: 10-12 avenue de l'Europe
@@ -171,6 +188,7 @@ schools:
 
     - name: Institut des Sciences et Techniques des Yvelines
       acronym: ISTY Mantes
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Mantes-la-Ville
       address:
           street: 28 boulevard Roger Salengro
@@ -181,6 +199,7 @@ schools:
 
     - name: IUT de Vélizy-Rambouillet
       acronym: IUT Vélizy
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Vélizy-Villacoublay
       address:
           street: 10-12 avenue de l'Europe
@@ -191,6 +210,7 @@ schools:
 
     - name: IUT de Vélizy-Rambouillet
       acronym: IUT Rambouillet
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Rambouillet
       address:
           street: 19 allée des Vignes
@@ -201,6 +221,7 @@ schools:
 
     - name: UFR des Sciences
       acronym: UFR Sciences
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Versailles
       address:
           street: 45 avenue des Etats-Unis
@@ -211,6 +232,7 @@ schools:
 
     - name: IUT de Mantes
       acronym: IUT Mantes
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Mantes-la-Jolie
       address:
           street: 7 rue Jean Hoët
@@ -221,6 +243,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Ambroise Paré
       acronym: IFSI Ambroise Paré
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Boulogne-Billancourt
       address:
           street: 9 avenue Charles de Gaulle
@@ -231,6 +254,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Raymond-Poincaré
       acronym: IFSI Raymond-Poincaré
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Garches
       address:
           street: 104 boulevard Raymond-Poincaré
@@ -241,6 +265,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Foch
       acronym: IFSI Foch
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Suresnes
       address:
           street: 11 rue Guillaume Lenoir
@@ -251,6 +276,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers André Mignot de Versailles
       acronym: IFSI André Mignot
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Versailles
       address:
           street: 25 boulevard Saint-Antoine
@@ -261,6 +287,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers des Mureaux
       acronym: IFSI Mureaux
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Les Mureaux
       address:
           street: 1 rue Baptiste Marcet
@@ -271,6 +298,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers de Poissy
       acronym: IFSI Poissy
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Poissy
       address:
           street: 10 rue du Champ Gaillard
@@ -281,6 +309,7 @@ schools:
 
     - name: Institut de formation en masso-kinésithérapie des Mureaux
       acronym: IFMK Mureaux
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Les Mureaux
       address:
           street: 1 rue Baptiste Marcet
@@ -291,6 +320,7 @@ schools:
 
     - name: Institut d'Optique Graduate School - site Paris-Saclay
       acronym: IOGS
+      parentStructure: Université de Versailles Saint-Quentin-en-Yvelines
       campus: Palaiseau
       address:
           street: 2 avenue Augustin Fresnel
@@ -301,6 +331,7 @@ schools:
 
     - name: CentraleSupélec - Campus Paris-Saclay
       acronym: CS
+      parentStructure: CentraleSupélec
       campus: Plateau de Saclay
       address:
           street: Plateau de Moulon - 3 rue Joliot-Curie
@@ -311,6 +342,7 @@ schools:
 
     - name: AgroParisTech
       acronym: APT
+      parentStructure: AgroParisTech
       campus: Plateau de Saclay
       address:
           street: 16 rue Claude Bernard
@@ -321,6 +353,7 @@ schools:
 
     - name: Faculté des sciences d'Orsay
       acronym: Sciences
+      parentStructure: Université Paris-Saclay
       campus: Orsay vallée
       address:
           street: 15 rue Georges Clémenceau
@@ -331,6 +364,7 @@ schools:
 
     - name: Faculté des sciences du sport
       acronym: F2S
+      parentStructure: Université Paris-Saclay
       campus: Orsay vallée
       address:
           street: Bâtiment 335 rue Pierre de Coubertin
@@ -341,6 +375,7 @@ schools:
 
     - name: Faculté de pharmacie
       acronym: Pharmacie
+      parentStructure: Université Paris-Saclay
       campus: Plateau de Saclay
       address:
           street: Bâtiment Henri Moisan - rue de la Science
@@ -351,6 +386,7 @@ schools:
 
     - name: Faculté de médecine
       acronym: Medecine
+      parentStructure: Université Paris-Saclay
       campus: Le Kremlin-Bicêtre
       address:
           street: 63 rue Gabriel Péri
@@ -361,6 +397,7 @@ schools:
 
     - name: Ecole nationale de kinésithérapie et de rééducation de Saint-Maurice
       acronym: ENKRE Saint-Maurice
+      parentStructure: Université Paris-Saclay
       campus: Saint-Maurice
       address:
           street: 12 rue du Val d'Oise
@@ -371,6 +408,7 @@ schools:
 
     - name: Institut de formation paramédicale du Groupement hospitalier Nord Essonne de Longjumeau
       acronym: IFPM Longjumeau
+      parentStructure: Université Paris-Saclay
       campus: Longjumeau
       address:
           street: 8 bis rue Maurice
@@ -381,6 +419,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Antoine-Béclère
       acronym: IFSI Antoine-Béclère
+      parentStructure: Université Paris-Saclay
       campus: Clamart
       address:
           street: Bâtiment Lydie Simon - Porte 19 - 157 rue de la Porte de Trivaux
@@ -391,6 +430,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Bicêtre
       acronym: IFSI Bicêtre
+      parentStructure: Université Paris-Saclay
       campus: Le Kremlin-Bicêtre
       address:
           street: 78 avenue du Général Leclerc
@@ -401,6 +441,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Barthélemy Durand
       acronym: IFSI Barthélemy Durand
+      parentStructure: Université Paris-Saclay
       campus: Etampes
       address:
           street: Avenue du 8 mai 1945 - BP 69
@@ -411,6 +452,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers du Perray
       acronym: IFSI Perray
+      parentStructure: Université Paris-Saclay
       campus: Épinay sur Orge
       address:
           street: BP13
@@ -421,6 +463,7 @@ schools:
 
     - name: Institut de formation paramédicale du Centre hospitalier Sud francilien
       acronym: IFPM Sud Francilien
+      parentStructure: Université Paris-Saclay
       campus: Évry
       address:
           street: 2 rue Pierre Fontaine
@@ -431,6 +474,7 @@ schools:
 
     - name: Institut de formation en soins infirmiers Paul Guiraud
       acronym: IFSI Paul Guiraud
+      parentStructure: Université Paris-Saclay
       campus: Villejuif
       address:
           street: 54 avenue de la République BP 20065
@@ -441,6 +485,7 @@ schools:
 
     - name: Institut de formation en masso-kinésithérapie Paul Guinot
       acronym: IFMK Paul Guinot
+      parentStructure: Université Paris-Saclay
       campus: Villejuif
       address:
           street: 24-26 boulevard Chastenet de Géry
@@ -451,6 +496,7 @@ schools:
 
     - name: Faculté Jean Monnet - site de Sceaux
       acronym: DEG Sceaux
+      parentStructure: Université Paris-Saclay
       campus: Sceaux
       address:
           street: 54 boulevard Desgranges
@@ -461,6 +507,7 @@ schools:
 
     - name: Faculté Jean Monnet - site d'Orsay
       acronym: DEG Orsay
+      parentStructure: Université Paris-Saclay
       campus: Orsay vallée
       address:
           street: Rue andré Ampère
@@ -471,6 +518,7 @@ schools:
 
     - name: IUT d'Orsay
       acronym: IUT Orsay
+      parentStructure: Université Paris-Saclay
       campus: Plateau de Saclay
       address:
           street: 13 avenue des Sciences
@@ -481,6 +529,7 @@ schools:
 
     - name: IUT de Sceaux
       acronym: IUT Sceaux
+      parentStructure: Université Paris-Saclay
       campus: Sceaux
       address:
           street: 8 avenue Cauchy
@@ -491,6 +540,7 @@ schools:
 
     - name: IUT de Cachan
       acronym: IUT Cachan
+      parentStructure: Université Paris-Saclay
       campus: Cachan
       address:
           street: 9 avenue de la Division Leclerc
@@ -501,6 +551,7 @@ schools:
 
     - name: Polytech Paris-Saclay
       acronym: Polytech
+      parentStructure: Université Paris-Saclay
       campus: Plateau de Saclay
       address:
           street: Maison de l'ingénieur - Bâtiment 620 rue Louis de Broglie

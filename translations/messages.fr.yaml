@@ -94,6 +94,7 @@ profile:
     school: Établissements scolaire
     social_scholarship: Boursier sur critères sociaux du CROUS
     reduced_mobility: personne à mobilité réduite
+    choose_school: Veuillez sélectionner un établissement
 authentication:
     email:
         label: E-Mail

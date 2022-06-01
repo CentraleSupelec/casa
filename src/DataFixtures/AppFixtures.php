@@ -14,6 +14,7 @@ class AppFixtures extends Fixture
         $this->LoadEntities($manager, 'src/DataFixtures/data/ServiceData.yaml', 'services');
         $this->LoadEntities($manager, 'src/DataFixtures/data/EquipmentsData.yaml', 'equipments');
         $this->LoadEntities($manager, 'src/DataFixtures/data/LessorData.yaml', 'lessors');
+        $this->LoadEntities($manager, 'src/DataFixtures/data/ParentSchoolData.yaml', 'parentSchools');
         $this->LoadEntities($manager, 'src/DataFixtures/data/SchoolData.yaml', 'schools');
         $this->LoadEntities($manager, 'src/DataFixtures/data/TwentyCampusData.yaml', 'housingGroups');
         $this->LoadEntities($manager, 'src/DataFixtures/data/ArpejData.yaml', 'housingGroups');

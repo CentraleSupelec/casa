@@ -293,4 +293,22 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getCampus(): ?string
+    {
+        if (is_null($this->school)) {
+            return null;
+        }
+
+        return $this->school->getCampus();
+    }
+
+    public function getParentSchool(): ?ParentSchool
+    {
+        if (is_null($this->school)) {
+            return null;
+        }
+
+        return $this->school->getParentSchool();
+    }
 }
