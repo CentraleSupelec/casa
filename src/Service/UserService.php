@@ -5,7 +5,6 @@ namespace App\Service;
 use App\Model\PsuhUserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 class UserService
 {
@@ -21,17 +20,14 @@ class UserService
         $this->entityManager = $entityManager;
     }
 
-    public function updateUser(PsuhUserInterface $user)
+    public function updateUser(PsuhUserInterface $user): void
     {
-        if ($user instanceof PasswordAuthenticatedUserInterface) {
-            $this->hashPassword($user);
-        }
-
+        $this->hashPassword($user);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
 
-    public function hashPassword(PsuhUserInterface $user)
+    private function hashPassword(PsuhUserInterface $user): void
     {
         $plaintextPassword = $user->getPlainPassword();
         if (0 === strlen($plaintextPassword)) {

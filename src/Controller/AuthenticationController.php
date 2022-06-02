@@ -42,11 +42,7 @@ class AuthenticationController extends AbstractController
 
         $user = $studentRepository->findOneBy(['email' => $lastUsername]);
 
-        if (null === $user) {
-            $template_data['verification_token'] = null;
-        } else {
-            $template_data['verification_token'] = $user->getVerificationToken();
-        }
+        $template_data['verification_token'] = $user?->getVerificationToken();
 
         return $this->render('authentication/login.html.twig', $template_data);
     }

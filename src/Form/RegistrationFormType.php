@@ -4,10 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,21 +17,7 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'authentication.email.placeholder',
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                'label' => 'authentication.password.label',
-                'attr' => ['placeholder' => 'authentication.password.placeholder'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'authentication.password.blank',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'max' => 4096,
-                        'minMessage' => 'authentication.password.short',
-                        'maxMessage' => 'authentication.password.long',
-                    ]),
-                ],
-            ])
+            ->add('plainPassword', PlainPasswordType::class)
         ;
     }
 }

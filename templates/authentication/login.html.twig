@@ -67,7 +67,9 @@
                                         }
                                     )
                                     }}">
-                                    Renvoyer l'email de vérification
+                                    {{
+                                        'authentication.verification_email.send_again'|trans
+                                    }}
                                 </a>
                             {% endif %}
                         </div>
@@ -84,10 +86,19 @@
             </div>
         </form>
 
-        <a class="row pb-3 pt-3" href="{{ path('app_register') }}">
-            <span class="col d-flex justify-content-center">
-                {{ 'authentication.register.call_to_action'|trans }}
-            </span>
-        </a>
+        <div class="row pb-3 pt-2">
+            <div class="col-12 col-md-6 text-center text-md-end">
+                <a href="{{ path('app_register') }}">
+                    {{ 'authentication.register.call_to_action'|trans }}
+                </a>
+            </div>
+            <div class="col-12 col-md-6 text-center text-md-start">
+                <a href="{{ path('app_reset_password_request') }}">
+                    {{
+                        'authentication.reset_password.request.call_to_action'|trans
+                    }}
+                </a>
+            </div>
+        </div>
     </main>
 {% endblock %}

@@ -100,9 +100,11 @@ authentication:
         label: Email
         placeholder: example@domain.com
         confirmed: Your email address has been verified !
+        blank: Please enter an email address
     password:
         label: Password
         placeholder: password
+        repeat: Password confirmation
         blank: Please enter a password
         short: Your password should be at least {{ limit }} characters long
         long: Your password should be at most {{ limit }} characters long
@@ -116,6 +118,26 @@ authentication:
         call_to_action: Sign In
         button: Register
         page_title: PSUH - Register
+    reset_password:
+        page_title: Password reset
+        request:
+            call_to_action: Forgotten password
+            button: Reset my password
+            introduction: Indicate the email address associated to your account to receive an email with a link to reset your password
+            confirmation: If an account is associated to this address, then an email has been sent with a link which will allow you to set a new password.
+            link_expiration: This link expires in
+            no_email_advice:
+                text: If you did not receive such an email, please check your spams or
+                link: try again.
+        email:
+            name: Université Paris Saclay - Housing Platform
+            subject: '[PSUH] Password reset'
+            header: Reset your password
+            body: Click on the link below to reset your password.
+            button: Set a new password
+        reset_form:
+            introduction: Please enter your new password
+            button: Change password
     verification_email:
         name: Université Paris Saclay - Housing Platform
         subject: '[PSUH] Email address confirmation'
@@ -123,6 +145,7 @@ authentication:
         body: Confirm your email address by clicking on the following link, enabling access to your account.
         button: Confirm my email address
         expiration: This link expires in
+        send_again: Send verification email again
 btn:
     image:
         previous: previous picture

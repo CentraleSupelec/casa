@@ -24,3 +24,20 @@
         </div>
     </div>
 {% endfor %}
+
+{% for flash_error in app.flashes('reset_password_error') %}
+    <div class="row d-flex justify-content-center mt-3">
+        <div class="col-12 col-md-8 d-flex justify-content-center">
+            <div class="w-75 alert alert-danger alert-dismissible fade show"
+                role="alert">
+                <span>{{ flash_error }}</span>
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+
+                </button>
+            </div>
+        </div>
+    </div>
+{% endfor %}

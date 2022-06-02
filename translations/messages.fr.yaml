@@ -100,9 +100,11 @@ authentication:
         label: E-Mail
         placeholder: exemple@nom-de-domaine.fr
         confirmed: Votre adresse email a bien été vérifiée !
+        blank: Veuillez indiquer une adresse email
     password:
         label: Mot de passe
         placeholder: mot-de-passe
+        repeat: Confirmation du mot de passe
         blank: Veuillez renseignez un mot de passe
         short: Votre mot de passe doit contenir au moins {{ limit }} caractères
         long: Votre mot de passe doit contenir au plus {{ limit }} caractères
@@ -116,6 +118,26 @@ authentication:
         call_to_action: Créer un compte
         button: S'inscrire
         page_title: PSUH - Inscription
+    reset_password:
+        page_title: Réinitialisation de mot de passe
+        request:
+            call_to_action: Mot de passe oublié
+            button: Réinitialiser mon mot de passe
+            introduction: Entrez l'adresse email associée à votre compte afin de recevoir un lien de réinitialisation de mot de passe
+            confirmation: Si un compte est associé à cet adresse mail, alors un email vient d'être envoyé avec un lien permettant de choisir un nouveau de mot de passe.
+            link_expiration: Ce lien expire dans
+            no_email_advice:
+                text: Si vous n'avez pas reçu de mail, vérifiez vos spams ou
+                link: essayez de nouveau.
+        email:
+            name: Université Paris Saclay - Plateforme de Logement
+            subject: '[PSUH] Réinitialisation de votre mot de passe'
+            header: Réinitialisez votre mot de passe
+            body: Cliquez sur le lien ci-dessous afin de réinitialiser votre mot de passe.
+            button: Définir un nouveau mot de passe
+        reset_form:
+            introduction: Veuillez indiquer votre nouveau mot de passe
+            button: Changer de mot de passe
     verification_email:
         name: Université Paris Saclay - Plateforme de Logement
         subject: '[PSUH] Confirmation de votre adresse email'
@@ -123,6 +145,7 @@ authentication:
         body: Confirmez votre adresse email en cliquant sur le lien ci-dessous pour pouvoir accéder à votre compte.
         button: Confirmer mon adresse e-mail
         expiration: Ce lien expire dans
+        send_again: Renvoyer l'email de vérification
 btn:
     image:
         previous: image précédente

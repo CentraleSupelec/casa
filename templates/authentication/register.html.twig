@@ -20,10 +20,19 @@
                     {% endfor %}
                 </div>
                 <div class="form-floating mb-3">
-                    {{ form_widget(registrationForm.plainPassword) }}
-                    {{ form_label(registrationForm.plainPassword) }}
-                    {% for error in registrationForm.plainPassword.vars.errors %}
-                        <div class="invalid-feedback ps-1 pe-1">
+                    {{ form_widget(registrationForm.plainPassword.first) }}
+                    {{ form_label(registrationForm.plainPassword.first) }}
+                    {% for error in registrationForm.plainPassword.first.vars.errors %}
+                        <div class="invalid-feedback">
+                            {{ error.message|trans }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form_widget(registrationForm.plainPassword.second) }}
+                    {{ form_label(registrationForm.plainPassword.second) }}
+                    {% for error in registrationForm.plainPassword.second.vars.errors %}
+                        <div class="invalid-feedback">
                             {{ error.message|trans }}
                         </div>
                     {% endfor %}
