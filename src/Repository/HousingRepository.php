@@ -85,37 +85,53 @@ class HousingRepository extends ServiceEntityRepository
     private function addSelectIsPriority(
         QueryBuilder $queryBuilder, StudentProfileCriteriaModel $studentProfileCriteriaModel
     ): QueryBuilder {
-        $selectIsPriority = $queryBuilder->expr()->isNull('h.id');  // condition that is always false
-        $selectSocialScholarshipCriteria = $queryBuilder->expr()->between(':now', 'ssc.startDate', 'ssc.endDate');
-        $selectSchoolCriteria = $queryBuilder->expr()->orX(
-            $queryBuilder->expr()->isNull('sc.id'),
-            $queryBuilder->expr()->andX(
-                $queryBuilder->expr()->between(':now', 'sc.startDate', 'sc.endDate'),
-                $queryBuilder->expr()->isMemberOf(':school', 'sc.schools')
-            )
+        $now = (new \DateTime())->format('Y-m-d');
+        $parameters = [];
+        $hasSocialScholarshipCriterion = $queryBuilder
+            ->expr()
+            ->between(':now', 'ssc.startDate', 'ssc.endDate');
+        $hasSchoolCriterion = $queryBuilder->expr()->andX(
+            $queryBuilder->expr()->between(':now', 'sc.startDate', 'sc.endDate'),
+            $queryBuilder->expr()->isMemberOf(':school', 'sc.schools')
         );
 
-        $parameters = [];
-        $now = (new \DateTime())->format('Y-m-d');
-
         if ($studentProfileCriteriaModel->getSocialScholarship()) {
-            $selectIsPriority = $selectSocialScholarshipCriteria;
             $parameters['now'] = $now;
-
-            if (null !== $studentProfileCriteriaModel->getSchool()) {
-                $selectIsPriority = $queryBuilder->expr()->andX(
-                    $selectSocialScholarshipCriteria, $selectSchoolCriteria
-                );
+            if (null === $studentProfileCriteriaModel->getSchool()) {
+                /* Student has social scholarship and no school
+                 *      => priority on housing with social scholarship and no school
+                 * */
+                $selectIsPriority = $queryBuilder
+                    ->expr()
+                    ->andX($hasSocialScholarshipCriterion, $queryBuilder->expr()->isNull('sc.id'));
+            } else {
+                /* Student has social scholarship and school
+                 *      => priority on housing with { social scholarship and no school } or school including his
+                 * */
                 $parameters['school'] = $studentProfileCriteriaModel->getSchool();
+                $selectIsPriority = $queryBuilder
+                    ->expr()
+                    ->orX(
+                        $queryBuilder
+                            ->expr()
+                            ->andX($hasSocialScholarshipCriterion, $queryBuilder->expr()->isNull('sc.id')),
+                        $hasSchoolCriterion
+                    );
             }
-        } elseif (null !== $studentProfileCriteriaModel->getSchool()) {
-            // A student without social scholarship can only have priority on housings without social scholarship criteria
-            $selectHasNoSocialScholarshipCriteria = $queryBuilder->expr()->isNull('ssc.id');
-            $selectIsPriority = $queryBuilder->expr()->andX(
-                $selectHasNoSocialScholarshipCriteria, $selectSchoolCriteria
-            );
-            $parameters['now'] = $now;
-            $parameters['school'] = $studentProfileCriteriaModel->getSchool();
+        } else {
+            if (null !== $studentProfileCriteriaModel->getSchool()) {
+                /* Student has no social scholarship and school
+                 *      => priority on housing with no social scholarship and school including his
+                 * */
+                $parameters['now'] = $now;
+                $parameters['school'] = $studentProfileCriteriaModel->getSchool();
+                $selectIsPriority = $queryBuilder
+                    ->expr()
+                    ->andX($queryBuilder->expr()->isNull('ssc.id'), $hasSchoolCriterion);
+            } else {
+                // Student has no social scholarship and no school => no housing should have priority
+                $selectIsPriority = $queryBuilder->expr()->isNull('h.id');
+            }
         }
 
         $queryBuilder->addSelect('CASE WHEN '.$selectIsPriority.' THEN true ELSE false END as isPriority');
