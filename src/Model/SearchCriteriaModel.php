@@ -4,15 +4,15 @@ namespace App\Model;
 
 class SearchCriteriaModel
 {
-    protected ?int $maxPrice = null;
+    private ?int $maxPrice = null;
 
-    protected ?int $minArea = null;
+    private ?int $minArea = null;
 
-    protected int $maxResultsByPage = 15;
+    private int $maxResultsByPage = 15;
 
-    protected bool $accessibility = false;
+    private bool $accessibility = false;
 
-    protected ?string $city = null;
+    private ?string $city = null;
 
     public function getMaxPrice(): ?int
     {

@@ -28,22 +28,22 @@ class SearchHousingType extends AbstractType
 
         $builder
             ->add('maxPrice', IntegerType::class, [
-                'label' => 'search.criteria.max_rent.label',
+                'label' => 'housing.search.criteria.max_rent.label',
                 'required' => false,
             ])
             ->add('minArea', IntegerType::class, [
-                'label' => 'search.criteria.min_area.label',
+                'label' => 'housing.search.criteria.min_area.label',
                 'required' => false,
                 ])
             ->add('city', ChoiceType::class, [
-                'label' => 'search.criteria.city.label',
+                'label' => 'housing.search.criteria.city.label',
                 'choices' => $cities,
                 'choice_label' => function ($choice, $key, $value) {
                     return $value;
                 },
                 ])
             ->add('accessibility', CheckboxType::class, [
-                'label' => 'search.criteria.accessibility.label',
+                'label' => 'housing.search.criteria.accessibility.label',
                 'required' => false,
                 ]);
     }

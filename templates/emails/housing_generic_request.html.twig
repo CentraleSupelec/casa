@@ -1,0 +1,38 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block content %}
+    <mj-section>
+        <mj-column>
+            <mj-text align="center" color="#8b1b59" font-size="30px">
+                {{ 'housing_request.email.header'|trans }}
+            </mj-text>
+        </mj-column>
+    </mj-section>
+    <mj-section>
+        <mj-column>
+            <mj-text align="center" font-size="20px" color="#312336">
+                {{ 'housing_request.email.introduction'|trans }}
+            </mj-text>
+            <mj-text font-size="18px" color="#312336">
+                {{ request.getBody()|nl2br }}
+            </mj-text>
+        </mj-column>
+    </mj-section>
+    <mj-section>
+        <mj-column>
+            <mj-text align="center" font-size="20px" color="#312336">
+                {{ 'housing_request.email.student_info'|trans }}
+            </mj-text>
+            <mj-text font-size="18px" color="#312336">
+                {{ 'profile.full_name'|trans }}:
+                {{ request.getStudent().getFirstName() }}
+                {{ request.getStudent().getLastName }}
+            </mj-text>
+            <mj-text font-size="18px" color="#312336">
+                {{ 'profile.email'|trans }}
+                {{ 'housing_request.email.carbon_copy'|trans }}:
+                {{ request.getStudent().getEmail() }}
+            </mj-text>
+        </mj-column>
+    </mj-section>
+{% endblock %}

@@ -71,7 +71,7 @@ class EmailVerifier
     private function getVerificationEmail(PsuhUserInterface $user): TemplatedEmail
     {
         return (new TemplatedEmail())
-            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('authentication.verification_email.name')))
+            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
             ->to($user->getEmail())
             ->subject($this->translator->trans('authentication.verification_email.subject'))
             ->htmlTemplate('emails/confirmation_email.html.twig');

@@ -1,9 +1,24 @@
+general:
+    email_name: Université Paris Saclay - Plateforme de Logement
 housing:
-    list:
-        search_result: liste des logements trouvés
-        page_title: PSUH - Offres logement
+    search:
+        criteria:
+            title: Trouvez votre logement
+            refine: Modifier
+            max_rent:
+                label: Loyer maximum
+            min_area:
+                label: Surface minimum
+            accessibility:
+                label: J'ai besoin d'un accès PMR
+            city:
+                label: Ville
+            submit: Rechercher
+        result: liste des logements trouvés
         not_found: Aucune offre ne correspond à vos critères
         found: offres correspondent à votre recherche
+    list:
+        page_title: PSUH - Offres logement
         sort:
             label: Trier par
             price: Loyer
@@ -51,6 +66,9 @@ housing:
         optional: Services optionnels
     point_of_interest: Points d'intérêts
     redirect_button: Déposer un dossier pour ce logement
+    carousel_button:
+        previous: image précédente
+        next: image suivante
     area_unit: mètres carré
     criteria:
         card_badge: Accès prioritaire sur critères
@@ -76,9 +94,6 @@ home:
     page_title: PSUH - Accueil
     welcome:
         title: La <span class="emphase">plateforme</span> qui permet aux étudiantes et étudiants de l'<span class="emphase">Université Paris-Saclay</span> de trouver leur logement.
-    sort:
-        price: Trier par prix mini
-        area: Trier par surface mini
     homepage_link: Lien vers la page d'accueil
 profile:
     title:
@@ -89,6 +104,7 @@ profile:
     save: Enregistrer
     first_name: Prénom
     last_name: Nom
+    full_name: Nom complet
     birthdate: Date de naissance
     email: Adresse mail
     school: Établissements scolaire
@@ -130,7 +146,6 @@ authentication:
                 text: Si vous n'avez pas reçu de mail, vérifiez vos spams ou
                 link: essayez de nouveau.
         email:
-            name: Université Paris Saclay - Plateforme de Logement
             subject: '[PSUH] Réinitialisation de votre mot de passe'
             header: Réinitialisez votre mot de passe
             body: Cliquez sur le lien ci-dessous afin de réinitialiser votre mot de passe.
@@ -139,30 +154,12 @@ authentication:
             introduction: Veuillez indiquer votre nouveau mot de passe
             button: Changer de mot de passe
     verification_email:
-        name: Université Paris Saclay - Plateforme de Logement
         subject: '[PSUH] Confirmation de votre adresse email'
         header: Sécurisez votre compte
         body: Confirmez votre adresse email en cliquant sur le lien ci-dessous pour pouvoir accéder à votre compte.
         button: Confirmer mon adresse e-mail
         expiration: Ce lien expire dans
         send_again: Renvoyer l'email de vérification
-btn:
-    image:
-        previous: image précédente
-        next: image suivante
-search:
-    criteria:
-        title: Trouvez votre logement
-        refine: Modifier
-        max_rent:
-            label: Loyer maximum
-        min_area:
-            label: Surface minimum
-        accessibility:
-            label: J'ai besoin d'un accès PMR
-        city:
-            label: Ville
-        submit: Rechercher
 footer:
     faq: F.a.q
     contact: Contact
@@ -172,3 +169,15 @@ footer:
 bookmark:
     add: Ajouter en favori
     remove: supprimer des favoris
+housing_request:
+    page_title: Envoyer une demande
+    introduction: Veuillez décrire votre demande ci-dessous
+    send_button: Envoyer la demande
+    send_error: Une erreur est survenue lors de l'envoie de la demande. Veuillez réessayer.
+    send_success: Votre demande a bien été envoyée.
+    email:
+        subject: '[PSUH] Demande étudiante'
+        header: Demande d'un étudiant à propos de logement
+        introduction: Contenu de la demande
+        student_info: Informations à propos de l'étudiant
+        carbon_copy: (en copie)

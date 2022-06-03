@@ -27,7 +27,7 @@
                     aria-controls="collapseSearch">
                     <i class="fa-solid fa-sliders"></i>
                     <span class="d-none d-md-inline">
-                        {{ 'search.criteria.refine'|trans }}
+                        {{ 'housing.search.criteria.refine'|trans }}
                     </span>
                 </button>
             </div>
@@ -45,7 +45,7 @@
                 <div class="cards-list col-12 col-md-7 col-lg-5 px-4">
                     <p class="mx-auto">
                         {{ pagination.getTotalItemCount }}
-                        {{ 'housing.list.found'|trans }}
+                        {{ 'housing.search.found'|trans }}
                     </p>
                     <div class="d-flex justify-content-end" role="navigation">
                         <div class="h3">
@@ -70,7 +70,7 @@
                             }}
                         </div>
                     </div>
-                    <section aria-label="{{ 'housing.list.search_result'|trans }}">
+                    <section aria-label="{{ 'housing.search.result'|trans }}">
                         {% for pageElement in pagination %}
                             {{
                                 HousingCard.displayCard(
@@ -93,7 +93,7 @@
             </div>
         {% else %}
             <div class="container bg-light h2 p-2">
-                {{ 'housing.list.not_found'|trans }}
+                {{ 'housing.search.not_found'|trans }}
             </div>
         {% endif %}
     </main>

@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
@@ -94,6 +95,9 @@ final class SchoolAdmin extends AbstractAdmin
                     'label' => 'Campus',
                     'choices' => Constants::getCampus(),
                 ])
+                ->add('housingServiceEmail', EmailType::class, [
+                    'label' => 'Email de contact du service logement',
+                ])
                 ->add('websiteurl', UrlType::class, [
                     'label' => 'Adresse Internet',
                     'required' => false,
@@ -130,6 +134,9 @@ final class SchoolAdmin extends AbstractAdmin
             ])
             ->add('campus', null, [
                 'label' => 'Campus',
+            ])
+            ->add('housingServiceEmail', null, [
+                'label' => 'Email de contact du service logement',
             ])
             ->add('websiteurl', null, [
                     'label' => 'Adresse Internet',

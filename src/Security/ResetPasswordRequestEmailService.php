@@ -30,11 +30,7 @@ class ResetPasswordRequestEmailService
     private function getResetPasswordEmail(PsuhUserInterface $user, ResetPasswordToken $resetPasswordToken): TemplatedEmail
     {
         return (new TemplatedEmail())
-            ->from(new Address(
-                Constants::APP_EMAIL_ADDRESS,
-                $this->translator->trans('authentication.reset_password.email.name')
-                )
-            )
+            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
             ->to($user->getEmail())
             ->subject($this->translator->trans('authentication.reset_password.email.subject'))
             ->htmlTemplate('emails/reset_password_email.html.twig')

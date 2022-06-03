@@ -28,6 +28,9 @@ class School
     private ?string $name = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $housingServiceEmail = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $idGovernment = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -78,6 +81,18 @@ class School
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getHousingServiceEmail(): ?string
+    {
+        return $this->housingServiceEmail;
+    }
+
+    public function setHousingServiceEmail(?string $housingServiceEmail): self
+    {
+        $this->housingServiceEmail = $housingServiceEmail;
 
         return $this;
     }

@@ -1,9 +1,24 @@
+general:
+    email_name: Université Paris Saclay - Plateforme de Logement
 housing:
-    list:
-        search_result: housings found
-        page_title: PSUH - Housing
+    search:
+        criteria:
+            title: Search a housing
+            refine: Modify
+            max_rent:
+                label: maximum Rent
+            min_area:
+                label: minimum Area
+            accessibility:
+                label: I need reduced mobility access
+            city:
+                label: Town
+            submit: Search
+        result: housings found
         not_found: No offer found, please refine your search
         found: offers found
+    list:
+        page_title: PSUH - Housing
         sort:
             label: Search by
             price: Rent
@@ -51,6 +66,9 @@ housing:
         optional: Optional services
     point_of_interest: Points of interest
     redirect_button: Apply for this housing
+    carousel_button:
+        previous: previous picture
+        next: next picture
     area_unit: square meters
     criteria:
         card_badge: Priority access based on criteria
@@ -76,9 +94,6 @@ home:
     page_title: PSUH homepage
     welcome:
         title: The <span class="emphase">website</span> that helps students of <span class="emphase">Paris-Saclay University</span> to find their housing.
-    sort:
-        price: Sort by min price
-        area: Sort by min area
     homepage_link: link to home page
 profile:
     title:
@@ -89,6 +104,7 @@ profile:
     save: Save
     first_name: First Name
     last_name: Last Name
+    full_name: Full name
     birthdate: Birthdate
     email: Email
     school: School
@@ -130,7 +146,6 @@ authentication:
                 text: If you did not receive such an email, please check your spams or
                 link: try again.
         email:
-            name: Université Paris Saclay - Housing Platform
             subject: '[PSUH] Password reset'
             header: Reset your password
             body: Click on the link below to reset your password.
@@ -139,30 +154,12 @@ authentication:
             introduction: Please enter your new password
             button: Change password
     verification_email:
-        name: Université Paris Saclay - Housing Platform
         subject: '[PSUH] Email address confirmation'
         header: Secure your account
         body: Confirm your email address by clicking on the following link, enabling access to your account.
         button: Confirm my email address
         expiration: This link expires in
         send_again: Send verification email again
-btn:
-    image:
-        previous: previous picture
-        next: next picture
-search:
-    criteria:
-        title: Search a housing
-        refine: Modify
-        max_rent:
-            label: maximum Rent
-        min_area:
-            label: minimum Area
-        accessibility:
-            label: I need reduced mobility access
-        city:
-            label: Town
-        submit: Search
 footer:
     faq: Faq
     contact: Contact us
@@ -172,3 +169,15 @@ footer:
 bookmark:
     add: Add to bookmarks
     remove: Remove from bookmarks
+housing_request:
+    page_title: Send a request
+    introduction: Please describe your request below
+    send_button: Send the request
+    send_error: An error occurred while sending the request. Please try again.
+    send_success: Your request has been sent.
+    email:
+        subject: '[PSUH] Student request'
+        header: Student request regarding accomodation
+        introduction: Request content
+        student_info: Information about the student
+        carbon_copy: (in cc)
