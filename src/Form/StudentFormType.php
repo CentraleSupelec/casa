@@ -6,6 +6,7 @@ use App\Entity\School;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,6 +23,10 @@ class StudentFormType extends AbstractType
             ->add('lastName', TextType::class, [
                 'label' => 'profile.last_name',
                 'required' => true, ])
+            ->add('phone', TelType::class, [
+                'label' => 'profile.phone',
+                'required' => false,
+            ])
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'profile.birthdate',
                 'required' => false, ])

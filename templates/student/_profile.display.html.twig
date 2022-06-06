@@ -18,6 +18,12 @@
         {{ student.email }}
     </p>
     <h2 class="fs-6 text-secondary">
+        {{ 'profile.phone'|trans }}
+    </h2>
+    <p class="h3 mb-4">
+        {{ student.phone }}
+    </p>
+    <h2 class="fs-6 text-secondary">
         {{ 'profile.birthdate'|trans }}
     </h2>
     <p class="h3 mb-4">
@@ -26,20 +32,18 @@
     <h2 class="fs-6 text-secondary">
         {{ 'profile.school'|trans }}
     </h2>
-    {% if student.school %}
-        {% if
-            student.school.name is not same as(
-                student.school.parentSchool.name
-            ) %}
+    {% set school = student.school %}
+    {% if school %}
+        {% if school.name is not same as(school.parentSchool.name) %}
             <p class="h3 mb-4">
-                {{ student.school.parentSchool }}
+                {{ school.parentSchool }}
             </p>
         {% endif %}
         <p class="h3 mb-4">
-            {{ student.school }}
+            {{ school }}
         </p>
         <p class="h3 mb-4">
-            Campus {{ student.school.campus }}
+            Campus {{ school.campus }}
         </p>
     {% else %}
         <p class="h3 mb-4">

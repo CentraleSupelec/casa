@@ -74,6 +74,9 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean', nullable: true)]
     private ?bool $socialScholarship = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $phone = null;
+
     public function __construct()
     {
         $this->bookmarks = new ArrayCollection();
@@ -310,5 +313,17 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this->school->getParentSchool();
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
     }
 }

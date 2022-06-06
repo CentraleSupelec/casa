@@ -14,7 +14,7 @@
                 {{ 'housing_request.email.introduction'|trans }}
             </mj-text>
             <mj-text font-size="18px" color="#312336">
-                {{ request.getBody()|nl2br }}
+                {{ request.body|nl2br }}
             </mj-text>
         </mj-column>
     </mj-section>
@@ -25,14 +25,21 @@
             </mj-text>
             <mj-text font-size="18px" color="#312336">
                 {{ 'profile.full_name'|trans }}:
-                {{ request.getStudent().getFirstName() }}
-                {{ request.getStudent().getLastName }}
+                {{ request.student.firstName }}
+                {{ request.student.lastName }}
             </mj-text>
             <mj-text font-size="18px" color="#312336">
                 {{ 'profile.email'|trans }}
                 {{ 'housing_request.email.carbon_copy'|trans }}:
-                {{ request.getStudent().getEmail() }}
+                {{ request.student.email }}
             </mj-text>
+            {% set phone = request.student.phone %}
+            {% if phone %}
+                <mj-text font-size="18px" color="#312336">
+                    {{ 'profile.phone'|trans }}:
+                    {{ phone }}
+                </mj-text>
+            {% endif %}
         </mj-column>
     </mj-section>
 {% endblock %}

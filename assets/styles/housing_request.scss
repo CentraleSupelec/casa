@@ -1,6 +1,23 @@
-.full-height-form-container {
-    height: 75%;
-    form {
-        height: 100%;
+.contact-form-textarea {
+    min-height: 200px !important;
+}
+
+.request-information-card {
+    h1 {
+        @include font-size(1.1rem);
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 10px;
+        margin-bottom: 0;
+    }
+
+    .card-text {
+        @include font-size(0.9rem);
+    }
+
+    .school-email {
+        @include font-size(0.8rem);
     }
 }

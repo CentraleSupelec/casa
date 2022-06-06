@@ -107,6 +107,7 @@ profile:
     full_name: Full name
     birthdate: Birthdate
     email: Email
+    phone: Phone
     school: School
     social_scholarship: CROUS Social Scholarship
     reduced_mobility: I have a disability and I’m looking for suitable accommodation
@@ -175,6 +176,9 @@ housing_request:
     send_button: Send the request
     send_error: An error occurred while sending the request. Please try again.
     send_success: Your request has been sent.
+    information_card:
+        title: Housing request
+        default: Housing Service - Paris Saclay University
     email:
         subject: '[PSUH] Student request'
         header: Student request regarding accomodation

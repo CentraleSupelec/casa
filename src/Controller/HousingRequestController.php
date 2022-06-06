@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Constants;
 use App\Entity\Student;
 use App\Form\HousingGenericRequestType;
 use App\Model\HousingGenericRequestModel;
@@ -22,16 +21,15 @@ class HousingRequestController extends AbstractController
     {
         /** @var Student $student */
         $student = $this->getUser();
-        $destinationEmail = $student->getSchool()?->getHousingServiceEmail()
-            ?: Constants::HOUSING_REQUEST_DEFAULT_EMAIL;
+        $destinationSchool = $student->getSchool();
         $form = $this->createForm(HousingGenericRequestType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $emailService->sendHousingGenericRequestEmail(
-                    $destinationEmail,
-                    new HousingGenericRequestModel($form->get('body')->getData(), $student)
+                    new HousingGenericRequestModel($form->get('body')->getData(), $student),
+                    $destinationSchool
                 );
                 $this->addFlash('success', $translator->trans('housing_request.send_success'));
             } catch (TransportExceptionInterface) {
@@ -45,6 +43,7 @@ class HousingRequestController extends AbstractController
 
         return $this->render('housing_request/index.html.twig', [
             'requestForm' => $form->createView(),
+            'destinationSchool' => $destinationSchool,
         ]);
     }
 }

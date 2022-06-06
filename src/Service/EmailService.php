@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Constants;
+use App\Entity\School;
 use App\Model\HousingGenericRequestModel;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -21,9 +22,11 @@ class EmailService
     /**
      * @throws TransportExceptionInterface
      */
-    public function sendHousingGenericRequestEmail(string $destinationEmail, HousingGenericRequestModel $requestModel): void
-    {
+    public function sendHousingGenericRequestEmail(
+        HousingGenericRequestModel $requestModel, ?School $destinationSchool
+    ): void {
         $studentEmail = $requestModel->getStudent()->getEmail();
+        $destinationEmail = $destinationSchool?->getHousingServiceEmail() ?: Constants::HOUSING_REQUEST_DEFAULT_EMAIL;
         $this->mailer->send(
             (new TemplatedEmail())
             ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))

@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% import 'housing/_address.html.twig' as Address %}
+
 {% block title %}
     {{ 'housing_request.page_title'|trans }}
 {% endblock %}
 
 {% block body %}
-    <main class="container mb-3 flex-grow-1 d-flex flex-column justify-content-center"
-        id="maincontent">
-        <div class="row h-100 d-flex justify-content-center align-items-center">
-            <div class="col-12 col-md-6 col-lg-8 full-height-form-container">
+    <main class="container mb-3" id="maincontent">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-8 mt-3">
                 {{ form_start(requestForm) }}
                 <div class="form-floating mb-3 h-75">
                     {{ form_row(requestForm.body) }}
@@ -26,6 +27,43 @@
                     </div>
                 </div>
                 {{ form_end(requestForm) }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mt-3 d-flex justify-content-center">
+                <div class="card request-information-card">
+                    <div class="card-body">
+                        <h1 class="card-title text-primary">
+                            {{ 'housing_request.information_card.title'|trans }}
+                        </h1>
+                        {% if destinationSchool is not null %}
+                            <div class="card-text fw-bolder">
+                                {{ destinationSchool.name }}
+                            </div>
+                            <div class="card-text">
+                                {{
+                                    Address.displayAddress(
+                                        destinationSchool.address
+                                    )
+                                }}
+                            </div>
+                            <div class="card-text fst-italic school-email">
+                                {{ destinationSchool.housingServiceEmail }}
+                            </div>
+                        {% else %}
+                            <div class="card-text fw-bolder">
+                                {{
+                                    'housing_request.information_card.default'|trans
+                                }}
+                            </div>
+                            <div class="card-text fst-italic school-email">
+                                {{
+                                    constant(
+                                        'App\\Constants::HOUSING_REQUEST_DEFAULT_EMAIL'
+                                    )
+                                }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </main>

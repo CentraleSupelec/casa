@@ -16,6 +16,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class StudentAdmin extends AbstractAdmin
@@ -53,6 +54,7 @@ final class StudentAdmin extends AbstractAdmin
             ->with('Données personnelles')
                 ->add('firstName', TextType::class)
                 ->add('lastName', TextType::class)
+                ->add('phone', TelType::class)
                 ->add('birthdate', DateType::class,
                     ['widget' => 'single_text'])
                 ->add('school', EntityType::class, [
@@ -84,6 +86,7 @@ final class StudentAdmin extends AbstractAdmin
                 ->add('email')
                 ->add('firstName')
                 ->add('lastName')
+                ->add('phone')
                 ->add('birthdate', null,
                     ['widget' => 'single_text'])
                 ->add('school')
