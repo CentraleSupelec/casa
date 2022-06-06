@@ -22,7 +22,9 @@
             </li>
             <li class="nav-item col-6">
                 <a class="nav-link"
-                    href="https://www.universite-paris-saclay.fr/"
+                    href={{ app.request.locale is same as('fr') ? 
+                        "https://www.universite-paris-saclay.fr/" : 
+                        "https://www.universite-paris-saclay.fr/en" }}
                     target="_blank">
                     {{ 'footer.university'|trans|upper }}
                 </a>
@@ -30,6 +32,16 @@
             <li class="nav-item col-6">
                 <a class="nav-link" href="#">
                     {{ 'footer.legal'|trans|upper }}
+                </a>
+            </li>
+            <li class="nav-item col-6">
+                <a  href= {{ app.request.locale is same as('fr') ?
+                    "https://www.universite-paris-saclay.fr/luniversite/les-campus/plans-des-campus" :
+                    "https://www.universite-paris-saclay.fr/en/about/campus-maps"  }}
+                    target="_blank"
+                    class="btn skinny bg-white text-dark btn-block px-3">
+                    <i class="fa-solid fa-location-dot fa-xs" aria-hidden="true"></i>
+                    {{ 'footer.map' | trans}}
                 </a>
             </li>
         </ul>
