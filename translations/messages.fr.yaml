@@ -10,13 +10,13 @@ housing:
             min_area:
                 label: Surface minimum
             accessibility:
-                label: J'ai besoin d'un accès PMR
+                label: Je suis en situation de Handicap et je cherche un logement adapté
             city:
                 label: Ville
             submit: Rechercher
         result: liste des logements trouvés
         not_found: Aucune offre ne correspond à vos critères
-        found: offres correspondent à votre recherche
+        found: '%total_found% offre(s) trouvée(s) pour votre recherche'
     list:
         page_title: PSUH - Offres logement
         sort:
@@ -109,7 +109,7 @@ profile:
     email: Adresse mail
     school: Établissements scolaire
     social_scholarship: Boursier sur critères sociaux du CROUS
-    reduced_mobility: personne à mobilité réduite
+    reduced_mobility: Je suis en situation de Handicap et je cherche un logement adapté
     choose_school: Veuillez sélectionner un établissement
 authentication:
     email:

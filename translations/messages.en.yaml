@@ -10,17 +10,17 @@ housing:
             min_area:
                 label: minimum Area
             accessibility:
-                label: I need reduced mobility access
+                label: I have a disability and I’m looking for suitable accommodation
             city:
                 label: Town
             submit: Search
         result: housings found
         not_found: No offer found, please refine your search
-        found: offers found
+        found: '%total_found% Offers match your search'
     list:
         page_title: PSUH - Housing
         sort:
-            label: Search by
+            label: Sort by
             price: Rent
             area: Area
     living_mode:
@@ -109,7 +109,7 @@ profile:
     email: Email
     school: School
     social_scholarship: CROUS Social Scholarship
-    reduced_mobility: Reduced mobility person
+    reduced_mobility: I have a disability and I’m looking for suitable accommodation
     choose_school: Please select a School
 authentication:
     email:

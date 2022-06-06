@@ -43,15 +43,20 @@
         {% if (pagination|length) > 0 %}
             <div class="row">
                 <div class="cards-list col-12 col-md-7 col-lg-5 px-4">
-                    <p class="mx-auto">
-                        {{ pagination.getTotalItemCount }}
-                        {{ 'housing.search.found'|trans }}
-                    </p>
+                    {# prettier-ignore #}
+                    <h1 class="mx-auto h3">
+                        {{
+                            'housing.search.found'|trans({
+                                '%total_found%': pagination.getTotalItemCount
+                            })
+                        }}
+                    </h1>
                     <div class="d-flex justify-content-end" role="navigation">
                         <div class="h3">
                             {{ 'housing.list.sort.label'|trans }}
                         </div>
-                        <div class="mx-2">
+                        <div class="mx-2"
+                            aria-label="{{ 'housing.list.sort.label'|trans }} {{ 'housing.list.sort.price'|trans }}">
                             {{
                                 knp_pagination_sortable(
                                     pagination,
@@ -60,7 +65,8 @@
                                 )
                             }}
                         </div>
-                        <div class="mx-2">
+                        <div class="mx-2"
+                            aria-label="{{ 'housing.list.sort.label'|trans }} {{ 'housing.list.sort.area'|trans }}">
                             {{
                                 knp_pagination_sortable(
                                     pagination,
@@ -80,7 +86,7 @@
                                     imageBaseUrl
                                 )
                             }}
-                            <hr class="divider" />
+                            <hr class="divider" class="visually-hidden" />
                         {% endfor %}
                     </section>
                     <div class="navigation"
