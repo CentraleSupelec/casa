@@ -39,9 +39,6 @@ class School
     #[ORM\Embedded(class: Address::class)]
     private Address $address;
 
-    #[ORM\ManyToMany(targetEntity: HousingGroup::class, mappedBy: 'schools')]
-    private Collection $housingGroups;
-
     #[ORM\Column(type: 'string', length: 32, nullable: true)]
     private ?string $acronym = null;
 
@@ -59,7 +56,6 @@ class School
     public function __construct()
     {
         $this->address = new Address();
-        $this->housingGroups = new ArrayCollection();
         $this->schoolCriteria = new ArrayCollection();
     }
 
@@ -129,33 +125,6 @@ class School
     public function setAddress(Address $address): self
     {
         $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, HousingGroup>
-     */
-    public function getHousingGroups(): Collection
-    {
-        return $this->housingGroups;
-    }
-
-    public function addHousingGroup(HousingGroup $housingGroup): self
-    {
-        if (!$this->housingGroups->contains($housingGroup)) {
-            $this->housingGroups[] = $housingGroup;
-            $housingGroup->addSchool($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHousingGroup(HousingGroup $housingGroup): self
-    {
-        if ($this->housingGroups->removeElement($housingGroup)) {
-            $housingGroup->removeSchool($this);
-        }
 
         return $this;
     }

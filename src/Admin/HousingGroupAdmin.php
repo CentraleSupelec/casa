@@ -6,7 +6,6 @@ use App\Admin\Embed\AddressEmbeddedAdmin;
 use App\Entity\Equipment;
 use App\Entity\HousingGroup;
 use App\Entity\Lessor;
-use App\Entity\School;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\AdminInterface;
@@ -66,13 +65,6 @@ class HousingGroupAdmin extends AbstractAdmin
                     'label' => 'Bailleur',
                     'class' => Lessor::class,
                 ])
-                ->add('schools', ModelType::class, [
-                    'class' => School::class,
-                    'multiple' => true,
-                    'label' => 'Etablissements',
-                    'btn_add' => false,
-                    'required' => false,
-                     ])
             ->end()
             ->with('Adresse', [
                 'class' => 'col-md-8 col-md-offset-2',
@@ -139,10 +131,8 @@ class HousingGroupAdmin extends AbstractAdmin
             ])
             ->add('lessor.name', null, [
                 'Nom du bailleur',
-            ])
-            ->add('schools', null, [
-                'label' => 'Etablissements',
             ]);
+
         AddressEmbeddedAdmin::addShowField($show);
 
         $show
