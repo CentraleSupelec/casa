@@ -6,19 +6,22 @@ use App\Entity\Housing;
 use App\Entity\ParentSchool;
 use App\Entity\School;
 use App\Entity\Student;
+use App\Form\ChangePasswordFormType;
 use App\Form\StudentFormType;
 use App\Model\StudentProfileCriteriaModel;
 use App\Service\ImageUrlService;
 use App\Service\StudentService;
+use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/student')]
 class StudentController extends AbstractController
 {
-    #[Route('/student/profile', name: 'app_student_profile')]
+    #[Route('/profile', name: 'app_student_profile')]
     public function profile(ImageUrlService $imageUrlService): Response
     {
         $student = $this->getUser();
@@ -30,13 +33,13 @@ class StudentController extends AbstractController
         ]);
     }
 
-    #[Route('/student/edit-profile', name: 'app_student_edit_profile')]
+    #[Route('/edit-profile', name: 'app_student_edit_profile')]
     public function editProfile(
         EntityManagerInterface $entityManager,
         ImageUrlService $imageUrlService,
         StudentService $studentService,
-        Request $request): Response
-    {
+        Request $request,
+    ): Response {
         $mode = 'edit';
 
         $student = $this->getUser();
@@ -62,7 +65,27 @@ class StudentController extends AbstractController
         ]);
     }
 
-    #[Route('/student/bookmarks', name: 'app_student_bookmarks')]
+    #[Route('/reset-password', name: 'app_student_reset_password')]
+    public function resetPassword(Request $request, UserService $userService): Response
+    {
+        /** @var Student $student */
+        $student = $this->getUser();
+
+        $form = $this->createForm(ChangePasswordFormType::class, $student);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userService->updateUser($student);
+
+            return $this->redirectToRoute('app_student_profile');
+        }
+
+        return $this->render('authentication/reset_password.html.twig', [
+            'resetForm' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/bookmarks', name: 'app_student_bookmarks')]
     public function bookmarks(EntityManagerInterface $entityManager, ImageUrlService $imageUrlService): Response
     {
         /** @var Student */
@@ -87,7 +110,7 @@ class StudentController extends AbstractController
         ]);
     }
 
-    #[Route('/student/profile/_schools', name: 'app_student_profile_schools')]
+    #[Route('/profile/_schools', name: 'app_student_profile_schools')]
     public function schools(EntityManagerInterface $entityManager, Request $request): Response
     {
         $parentId = $request->query->get('parentId');

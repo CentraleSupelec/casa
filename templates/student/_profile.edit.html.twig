@@ -1,51 +1,52 @@
-{{ form_start(form) }}
-<div>
-    {{ form_errors(form) }}
-</div>
+<div class="col-12 col-md-6 mb-3">
+    {{ form_start(form) }}
+    <div>
+        {{ form_errors(form) }}
+    </div>
 
-{{ form_row(form.firstName)}}
-{{ form_row(form.lastName)}}
-{{ form_row(form.phone) }}
-{{ form_row(form.birthdate)}}
+    {{ form_row(form.firstName)}}
+    {{ form_row(form.lastName)}}
+    {{ form_row(form.phone) }}
+    {{ form_row(form.birthdate)}}
 
-<div data-controller='profile-select-school' 
-{% if form.vars.data.school %}
-    data-profile-select-school-parent-id-value = {{ form.vars.data.school.parentSchool.id }}
-    data-profile-select-school-school-id-value = {{ form.vars.data.school.id }}
-{% endif %}
+    <div data-controller='profile-select-school'
+        {% if form.vars.data.school %}
+         data-profile-select-school-parent-id-value = {{ form.vars.data.school.parentSchool.id }}
+         data-profile-select-school-school-id-value = {{ form.vars.data.school.id }}
+    {% endif %}
     data-profile-select-school-url-value= {{
-        path('app_student_profile_schools')
+    path('app_student_profile_schools')
     }}>
 
-    <select class='form-select' 
-        data-action='profile-select-school#changeParentSchool'
-       >
-       <option>{{ 'profile.choose_school' | trans }}</option>
+    <select class='form-select'
+            data-action='profile-select-school#changeParentSchool'
+    >
+        <option>{{ 'profile.choose_school' | trans }}</option>
         {% for school in parentSchools %}
-            <option data-profile-select-school-target="schoolParentItem" 
-                value="{{school.id}}" 
-                {% if form.vars.data.school and form.vars.data.school.parentSchool.id is same as(school.id) %}
-                    selected
-                {% endif %}>
+            <option data-profile-select-school-target="schoolParentItem"
+                    value="{{school.id}}"
+                    {% if form.vars.data.school and form.vars.data.school.parentSchool.id is same as(school.id) %}
+            selected
+                    {% endif %}>
                 {{school.name}}
             </option>
         {% endfor %}
     </select>
 
-    {{ form_row(form.school , { 'attr' : { 
+    {{ form_row(form.school , { 'attr' : {
         'data-profile-select-school-target' : 'schoolList',
-        }})
+    }})
     }}
+    </div>
 
+    {{ form_row(form.socialScholarship)}}
+    {{ form_row(form.reducedMobility)}}
+
+    <div class="d-flex justify-content-center">
+        <input type="submit"
+               class="btn btn-primary col"
+               value="{{ 'profile.save'|trans }}" />
+    </div>
+
+    {{ form_end(form) }}
 </div>
-
-{{ form_row(form.socialScholarship)}}
-{{ form_row(form.reducedMobility)}}
-
-<div class="d-flex justify-content-center">
-    <input type="submit"
-        class="btn btn-primary col"
-        value="{{ 'profile.save'|trans }}" />
-</div>
-
-{{ form_end(form) }}

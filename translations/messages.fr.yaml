@@ -103,6 +103,7 @@ profile:
         bookmarks: Mes favoris
     information: Mes informations
     edit: Modifier
+    change_password: Changer de mot de passe
     save: Enregistrer
     first_name: Prénom
     last_name: Nom

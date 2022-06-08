@@ -1,4 +1,4 @@
-<article class="col-12">
+<article class="col-12 mb-3">
     <h2 class="fs-6 text-secondary">
         {{ 'profile.first_name'|trans }}
     </h2>
@@ -68,7 +68,13 @@
             : '<i class="fa-regular fa-square fa-xl"></i>' }}
     </p>
 </article>
-<a href="{{ path('app_student_edit_profile') }} "
-    class="btn btn-outline-primary">
-    {{ 'profile.edit'|trans }}
-</a>
+<div class="col-12 d-flex justify-content-center mb-4">
+    <a href="{{ path('app_student_edit_profile') }} "
+        class="btn btn-outline-primary me-3">
+        {{ 'profile.edit'|trans }}
+    </a>
+    <a href="{{ path('app_student_reset_password') }} "
+        class="btn btn-outline-primary">
+        {{ 'profile.change_password'|trans }}
+    </a>
+</div>

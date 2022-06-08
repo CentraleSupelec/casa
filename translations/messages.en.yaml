@@ -103,6 +103,7 @@ profile:
         bookmarks: My bookmarks
     information: My data
     edit: Edit
+    change_password: Change password
     save: Save
     first_name: First Name
     last_name: Last Name
