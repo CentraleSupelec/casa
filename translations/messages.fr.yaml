@@ -30,7 +30,9 @@ housing:
         alone: À occuper seul
         couple: Idéal pour un couple
         share: À occuper en colocation
+        occupants: '%occupants% occupants'
     type:
+        quantity: il y a %quantity% logements de ce type
         studio: Studio
         t1: T1
         t1bis: T1 Bis

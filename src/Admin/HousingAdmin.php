@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Constants;
+use App\Entity\Equipment;
 use App\Entity\Housing;
 use App\Entity\HousingGroup;
 use Knp\Menu\ItemInterface as MenuItemInterface;
@@ -81,6 +82,14 @@ class HousingAdmin extends AbstractAdmin
                 'label' => 'Lien de redirection',
                 'required' => false,
             ])
+            ->add('quantity', IntegerType::class, [
+                'label' => 'Nombre de logements',
+                'required' => false,
+            ])
+            ->add('occupants', IntegerType::class, [
+                'label' => 'Nombre d\'occupants',
+                'required' => false,
+            ])
             ->add('areaMin', IntegerType::class, [
                 'label' => 'Surface (min)',
             ])
@@ -147,6 +156,16 @@ class HousingAdmin extends AbstractAdmin
                 'label' => 'Animaux autorisés',
                 'required' => false,
             ])
+            ->end()
+            ->with('Équipements', [
+                'class' => 'col-md-8 col-md-offset-2',
+            ])
+                ->add('equipments', ModelType::class, [
+                    'class' => Equipment::class,
+                    'multiple' => true,
+                    'label' => 'Équipements des logements',
+                    'btn_add' => false,
+                ])
             ->end();
     }
 
@@ -166,6 +185,12 @@ class HousingAdmin extends AbstractAdmin
             ])
             ->addIdentifier('type', null, [
                 'label' => 'Type',
+            ])
+            ->add('quantity', null, [
+                'label' => 'Nombre de logements',
+            ])
+            ->add('occupants', null, [
+                'label' => 'Nombre d\'occupants',
             ])
             ->add('areaMin', null, [
                 'label' => 'Surface (min)',
@@ -204,6 +229,12 @@ class HousingAdmin extends AbstractAdmin
             ])
             ->add('redirectLink', null, [
                 'label' => 'Lien de redirection',
+            ])
+            ->add('quantity', null, [
+                'label' => 'Nombre de logements',
+            ])
+            ->add('occupants', null, [
+                'label' => 'Nombre d\'occupants',
             ])
             ->add('areaMin', null, [
                 'label' => 'Surface (min)',

@@ -8,6 +8,7 @@
 {% import 'housing/_address.html.twig' as Address %}
 {% import 'housing/_carousel.html.twig' as Carousel %}
 {% import 'housing/_bookmark_button.html.twig' as Bookmark %}
+{% import 'housing/_equipment.html.twig' as Equipment %}
 
 {% block body %}
     <main class="container housing-detail-page text-dark" id="maincontent">
@@ -198,7 +199,23 @@
                                 {{
                                     ("housing.occupation_mode.#{housing.occupationMode}")|trans
                                 }}
+                                {% if housing.occupants > 1 %}
+                                    ({{
+                                        'housing.occupation_mode.occupants'|trans({
+                                            '%occupants%': housing.occupants
+                                        })
+                                    }})
+                                {% endif %}
                             </li>
+                            {% if housing.quantity > 1 %}
+                                <li class="main-info">
+                                    {{
+                                        'housing.type.quantity'|trans({
+                                            '%quantity%': housing.quantity
+                                        })
+                                    }}
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="col-12 col-md-6 mt-4">
@@ -256,20 +273,10 @@
                 <div class="row">
                     <div class="col icons-container">
                         {% for equipment in housing.housingGroup.equipments %}
-                            <div>
-                                <div class="icon-with-text">
-                                    <span class="picture">
-                                        <i class="{{
-                                            equipment.picture
-                                            }} fa-2xl">
-
-                                        </i>
-                                    </span>
-                                    <span class="picture-label">
-                                        {{ equipment.label }}
-                                    </span>
-                                </div>
-                            </div>
+                            {{ Equipment.displayEquipment(equipment) }}
+                        {% endfor %}
+                        {% for equipment in housing.equipments %}
+                            {{ Equipment.displayEquipment(equipment) }}
                         {% endfor %}
                     </div>
                 </div>

@@ -1,0 +1,8 @@
+{% macro displayEquipment(equipment) %}
+    <div class="icon-with-text">
+        <span class="picture">
+            <i class="{{ equipment.picture }} fa-lg"></i>
+        </span>
+        <span class="picture-label">{{ equipment.label }}</span>
+    </div>
+{% endmacro %}

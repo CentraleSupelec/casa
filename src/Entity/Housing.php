@@ -113,12 +113,22 @@ class Housing
     #[ORM\ManyToMany(targetEntity: Student::class, mappedBy: 'bookmarks')]
     private Collection $students;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $quantity = null;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $occupants = null;
+
+    #[ORM\ManyToMany(targetEntity: Equipment::class)]
+    private Collection $equipments;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
         $this->socialScholarshipCriteria = new ArrayCollection();
         $this->schoolCriteria = new ArrayCollection();
         $this->students = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -490,6 +500,54 @@ class Housing
                 $schoolCriterion->setHousing(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getOccupants(): ?int
+    {
+        return $this->occupants;
+    }
+
+    public function setOccupants(?int $occupants): self
+    {
+        $this->occupants = $occupants;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipment>
+     */
+    public function getEquipments(): Collection
+    {
+        return $this->equipments;
+    }
+
+    public function addEquipment(Equipment $equipment): self
+    {
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments[] = $equipment;
+        }
+
+        return $this;
+    }
+
+    public function removeEquipment(Equipment $equipment): self
+    {
+        $this->equipments->removeElement($equipment);
 
         return $this;
     }

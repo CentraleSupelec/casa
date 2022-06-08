@@ -30,7 +30,9 @@ housing:
         alone: Alone
         couple: Couple
         share: House-share
+        occupants: '%occupants% occupants'
     type:
+        quantity: there are %quantity% housings of this type
         studio: Studio
         t1: T1
         t1bis: T1 Bis
