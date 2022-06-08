@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% import 'housing/_address.html.twig' as Address %}
+
+{% block title %}
+    {{ 'housing_request.emergency.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <main class="container mb-3" id="maincontent">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 col-lg-8 mt-3">
+                <h1 class="text-primary">
+                    {{ 'housing_request.emergency.qualification.title'|trans }}
+                </h1>
+                <p class="fst-italic text-secondary">
+                    {{
+                        'housing_request.emergency.qualification.subtitle'|trans
+                    }}
+                </p>
+                {{ form_start(qualificationForm) }}
+                {% for row in qualificationForm.children %}
+                    <div class="form-floating mb-3 h-75">
+                        {{ form_row(row) }}
+                        {% for error in row.vars.errors %}
+                            <div class="invalid-feedback">
+                                {{ error.message|trans }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">
+                            {{
+                                'housing_request.emergency.qualification.continue_button'|trans
+                            }}
+                        </button>
+                    </div>
+                </div>
+                {{ form_end(qualificationForm) }}
+            </div>
+        </div>
+    </main>
+{% endblock %}

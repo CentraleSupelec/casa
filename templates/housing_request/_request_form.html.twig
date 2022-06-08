@@ -1,0 +1,17 @@
+{{ form_start(requestForm) }}
+<div class="form-floating mb-3 h-75">
+    {{ form_row(requestForm.body) }}
+    {% for error in requestForm.body.vars.errors %}
+        <div class="invalid-feedback">
+            {{ error.message|trans }}
+        </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">
+            {{ 'housing_request.common.send_button'|trans }}
+        </button>
+    </div>
+</div>
+{{ form_end(requestForm) }}

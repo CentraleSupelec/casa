@@ -30,13 +30,48 @@ class EmailService
         $this->mailer->send(
             (new TemplatedEmail())
             ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
-            ->subject($this->translator->trans('housing_request.email.subject'))
+            ->subject($this->translator->trans('housing_request.generic.email.subject'))
             ->to($destinationEmail)
             ->addCc($studentEmail)
             ->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL)
             ->replyTo($studentEmail)
             ->htmlTemplate('emails/housing_generic_request.html.twig')
             ->context(['request' => $requestModel])
+        );
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendHousingEmergencyEmail(
+        HousingGenericRequestModel $requestModel,
+        ?School $destinationSchool = null,
+        array $emergencyQualificationQuestions = [],
+        array $additionalDestinationEmails = [],
+    ): void {
+        $studentEmail = $requestModel->getStudent()->getEmail();
+        $destinationEmails = array_unique(
+            array_merge(
+                [$destinationSchool?->getHousingServiceEmail() ?: Constants::HOUSING_REQUEST_DEFAULT_EMAIL],
+                $additionalDestinationEmails
+            )
+        );
+        $email = (new TemplatedEmail())
+            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
+            ->subject($this->translator->trans('housing_request.emergency.email.subject'));
+        foreach ($destinationEmails as $address) {
+            $email->addTo($address);
+        }
+        $this->mailer->send(
+            $email
+                ->addCc($studentEmail)
+                ->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL)
+                ->replyTo($studentEmail)
+                ->htmlTemplate('emails/housing_emergency_request.html.twig')
+                ->context([
+                    'request' => $requestModel,
+                    'emergencyQualificationQuestions' => $emergencyQualificationQuestions,
+                ])
         );
     }
 }

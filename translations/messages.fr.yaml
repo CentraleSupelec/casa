@@ -174,17 +174,39 @@ bookmark:
     add: Ajouter en favori
     remove: supprimer des favoris
 housing_request:
-    page_title: Envoyer une demande
-    introduction: Veuillez décrire votre demande ci-dessous
-    send_button: Envoyer la demande
-    send_error: Une erreur est survenue lors de l'envoie de la demande. Veuillez réessayer.
-    send_success: Votre demande a bien été envoyée.
-    information_card:
-        title: Envoi d'une demande de contact
-        default: Université Paris Saclay - Service Logement
-    email:
-        subject: '[PSUH] Demande étudiante'
-        header: Demande d'un étudiant à propos de logement
-        introduction: Contenu de la demande
-        student_info: Informations à propos de l'étudiant
-        carbon_copy: (en copie)
+    common:
+        introduction: Veuillez décrire votre demande ci-dessous
+        send_button: Envoyer la demande
+        send_error: Une erreur est survenue lors de l'envoie de la demande. Veuillez réessayer.
+        send_success: Votre demande a bien été envoyée.
+        information_card:
+            title: Interlocuteurs pour votre demande
+            default: Université Paris Saclay - Service Logement
+        email:
+            introduction: Contenu de la demande
+            student_info: Informations à propos de l'étudiant
+            carbon_copy: (en copie)
+    generic:
+        page_title: Envoyer une demande
+        email:
+            subject: '[PSUH] Demande étudiante'
+            header: Demande d'un étudiant à propos de logement
+    emergency:
+        qualification:
+            questions:
+                homeless: Vous êtes à la rue ou sur le point de l'être
+                underage: Vous êtes un étudiant mineur et vous ne parvenez pas à trouver un logement
+                resource: Vous n'avez pas assez de ressource pour trouver un logement
+                handicap: Vous êtes en situation de handicap physique et vous ne parvenez pas à trouver un logement adapté
+                unsafe: Vous êtes en insécurité dans votre logement
+                other: Autre situation
+            title: Qualification de la demande
+            subtitle: |-
+                Afin de prendre en compte votre demande le plus efficacement possible,
+                veuillez cocher la ou les cases qui correspondent le mieux à votre situation
+            continue_button: Continuer
+        page_title: Envoyer une demande urgente
+        email:
+            subject: '[PSUH][URGENT] Demande étudiante urgente'
+            header: Demande urgente d'un étudiant à propos de logement
+            qualification_info: Situation de l'étudiant

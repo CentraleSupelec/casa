@@ -6,7 +6,9 @@ namespace App\Admin;
 
 use App\Admin\Embed\AddressEmbeddedAdmin;
 use App\Constants;
+use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -24,6 +26,30 @@ final class SchoolAdmin extends AbstractAdmin
     {
         $collection
             ->add('geocode', $this->getRouterIdParameter().'/geocode');
+    }
+
+    protected function configureTabMenu(
+        MenuItemInterface $menu, string $action, ?AdminInterface $childAdmin = null
+    ): void {
+        if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
+            return;
+        }
+
+        $admin = $this->isChild() ? $this->getParent() : $this;
+        $id = $admin->getRequest()->get('id');
+
+        $menu->addChild('View', $admin->generateMenuUrl('show', ['id' => $id]));
+
+        if ($this->isGranted('EDIT')) {
+            $menu->addChild('Edit', $admin->generateMenuUrl('edit', ['id' => $id]));
+        }
+
+        if ($this->isGranted('LIST')) {
+            $menu->addChild(
+                'Gestion des urgences',
+                $admin->generateMenuUrl('admin.school_emergency_qualification_question.list', ['id' => $id])
+            );
+        }
     }
 
     protected function configureDatagridFilters(DatagridMapper $filter): void

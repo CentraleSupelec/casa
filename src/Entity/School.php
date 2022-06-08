@@ -53,10 +53,14 @@ class School
     #[ORM\JoinColumn(nullable: false)]
     private ParentSchool $parentSchool;
 
+    #[ORM\OneToMany(mappedBy: 'school', targetEntity: SchoolEmergencyQualificationQuestion::class, orphanRemoval: true)]
+    private Collection $schoolEmergencyQualificationQuestions;
+
     public function __construct()
     {
         $this->address = new Address();
         $this->schoolCriteria = new ArrayCollection();
+        $this->schoolEmergencyQualificationQuestions = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -161,6 +165,36 @@ class School
     public function setParentSchool(?ParentSchool $parentSchool): self
     {
         $this->parentSchool = $parentSchool;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SchoolEmergencyQualificationQuestion>
+     */
+    public function getSchoolEmergencyQualificationQuestions(): Collection
+    {
+        return $this->schoolEmergencyQualificationQuestions;
+    }
+
+    public function addSchoolEmergencyQualificationQuestion(SchoolEmergencyQualificationQuestion $schoolEmergencyQualificationQuestion): self
+    {
+        if (!$this->schoolEmergencyQualificationQuestions->contains($schoolEmergencyQualificationQuestion)) {
+            $this->schoolEmergencyQualificationQuestions[] = $schoolEmergencyQualificationQuestion;
+            $schoolEmergencyQualificationQuestion->setSchool($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchoolEmergencyQualificationQuestion(SchoolEmergencyQualificationQuestion $schoolEmergencyQualificationQuestion): self
+    {
+        if ($this->schoolEmergencyQualificationQuestions->removeElement($schoolEmergencyQualificationQuestion)) {
+            // set the owning side to null (unless already changed)
+            if ($schoolEmergencyQualificationQuestion->getSchool() === $this) {
+                $schoolEmergencyQualificationQuestion->setSchool(null);
+            }
+        }
 
         return $this;
     }

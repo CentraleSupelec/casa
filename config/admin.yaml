@@ -72,6 +72,15 @@ services:
               label: Équipements
               group: Référentiels
 
+    admin.emergency_qualification_question:
+        class: App\Admin\EmergencyQualificationQuestionAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\EmergencyQualificationQuestion
+              manager_type: orm
+              label: Questions de qualification des urgences
+              group: Référentiels
+
     admin.point_of_interest:
         class: App\Admin\PointOfInterestAdmin
         tags:
@@ -87,8 +96,21 @@ services:
               model_class: App\Entity\School
               controller: App\Controller\Admin\GeocodingController
               manager_type: orm
-              label: Etablissements
-              group: Référentiels
+              label: Établissement
+              group: Établissements
+        calls:
+            - [
+                  'addChild',
+                  ['@admin.school_emergency_qualification_question', 'school'],
+              ]
+
+    admin.school_emergency_qualification_question:
+        class: App\Admin\SchoolEmergencyQualificationQuestionAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\SchoolEmergencyQualificationQuestion
+              manager_type: orm
+              show_in_dashboard: false
 
     admin.student:
         class: App\Admin\StudentAdmin
@@ -122,5 +144,5 @@ services:
             - name: sonata.admin
               model_class: App\Entity\ParentSchool
               manager_type: orm
-              group: Référentiels
-              label: Etablissement Principal
+              label: Établissement Principal
+              group: Établissements

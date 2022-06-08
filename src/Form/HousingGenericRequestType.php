@@ -11,7 +11,7 @@ class HousingGenericRequestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('body', TextareaType::class, [
-            'label' => 'housing_request.introduction',
+            'label' => 'housing_request.common.introduction',
             'label_attr' => ['class' => 'text-primary fs-5'],
             'attr' => ['class' => 'contact-form-textarea'],
             'trim' => false,

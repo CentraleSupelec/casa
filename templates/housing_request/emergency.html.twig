@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% import 'housing_request/_contact_information_card.html.twig'
+    as ContactCard
+%}
+
+{% block title %}
+    {{ 'housing_request.emergency.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <main class="container mb-3" id="maincontent">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-8 mt-3">
+                {% include 'housing_request/_request_form.html.twig' %}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mt-3 d-flex justify-content-center">
+                {{
+                    ContactCard.displayCard(
+                        destinationSchool,
+                        additionalDestinationEmails
+                    )
+                }}
+            </div>
+        </div>
+    </main>
+{% endblock %}

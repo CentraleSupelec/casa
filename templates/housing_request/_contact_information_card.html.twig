@@ -1,0 +1,46 @@
+{% macro displayCard(school, additionalDestinationEmails = []) %}
+    {% import 'housing/_address.html.twig' as Address %}
+
+    <div class="card request-information-card">
+        <div class="card-body">
+            <h1 class="card-title text-primary">
+                {{ 'housing_request.common.information_card.title'|trans }}
+            </h1>
+            {% if school is not null %}
+                <div class="card-text fw-bolder">
+                    {{ school.name }}
+                </div>
+                <div class="card-text address-container">
+                    {{
+                    Address.displayAddress(
+                        school.address
+                    )
+                    }}
+                </div>
+                <ul>
+                    <li class="fst-italic school-email">
+                        {{ school.housingServiceEmail }}
+                    </li>
+                    {% for email in additionalDestinationEmails %}
+                        <li class="fst-italic school-email">
+                            {{ email }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="card-text fw-bolder">
+                    {{
+                    'housing_request.common.information_card.default'|trans
+                    }}
+                </div>
+                <div class="card-text fst-italic school-email">
+                    {{
+                    constant(
+                        'App\\Constants::HOUSING_REQUEST_DEFAULT_EMAIL'
+                    )
+                    }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

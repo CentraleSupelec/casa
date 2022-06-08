@@ -174,17 +174,39 @@ bookmark:
     add: Add to bookmarks
     remove: Remove from bookmarks
 housing_request:
-    page_title: Send a request
-    introduction: Please describe your request below
-    send_button: Send the request
-    send_error: An error occurred while sending the request. Please try again.
-    send_success: Your request has been sent.
-    information_card:
-        title: Housing request
-        default: Housing Service - Paris Saclay University
-    email:
-        subject: '[PSUH] Student request'
-        header: Student request regarding accomodation
-        introduction: Request content
-        student_info: Information about the student
-        carbon_copy: (in cc)
+    common:
+        introduction: Please describe your request below
+        send_button: Send the request
+        send_error: An error occurred while sending the request. Please try again.
+        send_success: Your request has been sent.
+        information_card:
+            title: Housing request
+            default: Housing Service - Paris Saclay University
+        email:
+            introduction: Request content
+            student_info: Information about the student
+            carbon_copy: (in cc)
+    generic:
+        page_title: Send a request
+        email:
+            subject: '[PSUH] Student request'
+            header: Student request regarding accomodation
+    emergency:
+        qualification:
+            questions:
+                homeless: You are (or you are about to be) homeless
+                underage: You are underage and you have trouble finding your accomodation
+                resource: You do not have enough resources to find an accomodation
+                handicap: You suffer from a physical handicap and you have trouve finding your accomodation
+                unsafe: You are not safe in your accomodation
+                other: Other situation
+            title: Request qualification
+            subtitle: |-
+                In order to have your request handled as effectively as possible, please
+                check what corresponds best to your current situation
+            continue_button: Continue
+        page_title: Send an urgent request
+        email:
+            subject: '[PSUH][URGENT] Urgent student request'
+            header: Urgent student request regarding accomodation
+            qualification_info: Student situation

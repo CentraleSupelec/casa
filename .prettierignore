@@ -13,3 +13,4 @@ templates/student/_navlink.html.twig
 templates/student/_profile.edit.html.twig
 templates/student/_profile.select_school_widget.html.twig
 templates/_footer.html.twig
+templates/housing_request/_contact_information_card.html.twig

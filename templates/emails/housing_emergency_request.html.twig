@@ -4,10 +4,29 @@
     <mj-section>
         <mj-column>
             <mj-text align="center" color="#8b1b59" font-size="30px">
-                {{ 'housing_request.generic.email.header'|trans }}
+                {{ 'housing_request.emergency.email.header'|trans }}
             </mj-text>
         </mj-column>
     </mj-section>
+    {% if (emergencyQualificationQuestions|length) > 0 %}
+        <mj-section>
+            <mj-column>
+                <mj-text align="center" font-size="20px" color="#312336">
+                    {{
+                        'housing_request.emergency.email.qualification_info'|trans
+                    }}
+                </mj-text>
+                {% for question in emergencyQualificationQuestions %}
+                    <mj-text font-size="18px" color="#312336">
+                        {{
+                            ('housing_request.emergency.qualification.questions.'
+                                ~ question.translationLabel)|trans
+                        }}
+                    </mj-text>
+                {% endfor %}
+            </mj-column>
+        </mj-section>
+    {% endif %}
     <mj-section>
         <mj-column>
             <mj-text align="center" font-size="20px" color="#312336">

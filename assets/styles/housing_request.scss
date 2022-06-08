@@ -9,8 +9,14 @@
 
     ul {
         list-style: none;
-        padding-left: 10px;
+        padding-left: 0;
         margin-bottom: 0;
+    }
+
+    .address-container {
+        ul {
+            padding-left: 15px !important;
+        }
     }
 
     .card-text {

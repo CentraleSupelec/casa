@@ -10,7 +10,12 @@
                 <a class="nav-link" href="#">{{ 'footer.faq'|trans|upper }}</a>
             </li>
             <li class="nav-item col-6">
-                <a class="nav-link" href="#">
+                <a class="nav-link"
+                    href="{{
+                    path(
+                        'app_housing_emergency_request_qualification'
+                    )
+                    }}">
                     {{ 'footer.urgent'|trans|upper }}
                 </a>
             </li>
