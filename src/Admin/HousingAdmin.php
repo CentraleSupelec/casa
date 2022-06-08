@@ -17,6 +17,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HousingAdmin extends AbstractAdmin
@@ -74,7 +75,7 @@ class HousingAdmin extends AbstractAdmin
                 'label' => 'Type',
                 'choices' => Constants::getHousingTypes(),
             ])
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => false,
             ])

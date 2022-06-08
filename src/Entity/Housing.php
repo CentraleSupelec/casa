@@ -21,7 +21,7 @@ class Housing
     #[ORM\Column(type: 'uuid', unique: true)]
     private ?string $id = null;
 
-    #[ORM\Column(type: 'string', length: 512, nullable: true)]
+    #[ORM\Column(type: 'text', length: 65535, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
