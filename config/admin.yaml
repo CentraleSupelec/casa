@@ -120,7 +120,22 @@ services:
               controller: ~
               manager_type: orm
               group: Utilisateurs
-              label: Student
+              label: Étudiants
+
+    admin.administrator:
+        class: App\Admin\AdministratorAdmin
+        arguments:
+            - '@App\Service\UserService'
+            - ~
+            - App\Entity\Administrator
+            - ~
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Administrator
+              controller: ~
+              manager_type: orm
+              group: Utilisateurs
+              label: Administrateurs
 
     admin.social_scholarship_criterion:
         class: App\Admin\SocialScholarshipCriterionAdmin

@@ -10,12 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
+class Student implements PsuhUserInterface
 {
     use TimestampableEntity;
 
@@ -92,9 +91,11 @@ class Student implements PsuhUserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function eraseCredentials()
+    public function eraseCredentials(): self
     {
         $this->plainPassword = null;
+
+        return $this;
     }
 
     public function getId(): ?string

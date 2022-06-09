@@ -1,0 +1,114 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block sonata_nav %}
+
+{% endblock %}
+
+{% block logo %}
+
+{% endblock %}
+
+{% block sonata_left_side %}
+
+{% endblock %}
+
+{% block body_attributes %}
+    class="sonata-bc login-page"
+{% endblock %}
+
+{% block sonata_wrapper %}
+    <div class="login-box" style="margin-top: 20px !important;">
+        {% block login_box_header %}
+            <div class="login-logo">
+                <div>
+                    <img style="max-width: 300px"
+                        src="{{ asset('build/images/logo-saclay.svg') }}"
+                        alt="Logo UPS" />
+                </div>
+                <a href="{{ path('sonata_admin_dashboard') }}">Admin</a>
+            </div>
+        {% endblock %}
+        <div class="login-box-body">
+            {% block sonata_user_login_form %}
+                {% block sonata_user_login_error %}
+                    {% if error %}
+                        <div class="alert alert-danger alert-error">
+                            {{
+                                error.messageKey|trans(
+                                    error.messageData,
+                                    'security'
+                                )
+                            }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+                <p class="login-box-msg">
+                    Veuillez vous identifier
+                </p>
+                <form action="{{ path('admin_login_check') }}"
+                    method="post"
+                    role="form"
+                    id="login-form">
+                    <input type="hidden"
+                        name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}" />
+
+                    <div class="form-group has-feedback">
+                        <label for="username">Email</label>
+                        <input class="form-control"
+                            id="username"
+                            name="_username"
+                            placeholder="Email"
+                            required="required"
+                            type="text"
+                            value="{{
+                            lastUsername is defined
+                                ? lastUsername
+                                : null
+                            }}" />
+                        <span class="glyphicon glyphicon-user form-control-feedback">
+
+                        </span>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="username">Mot de passe</label>
+                        <input class="form-control"
+                            id="password"
+                            name="_password"
+                            placeholder="Mot de passe"
+                            required="required"
+                            type="password" />
+                        <span class="glyphicon glyphicon-lock form-control-feedback">
+
+                        </span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                        id="remember_me"
+                                        name="_remember_me"
+                                        value="on" />Se souvenir de moi
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="submit"
+                                class="btn btn-primary btn-block btn-flat">
+                                Connexion
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            {% endblock %}
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ path('home') }}">
+                <i class="fas fa-fw fa-chevron-left"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
+{% endblock %}

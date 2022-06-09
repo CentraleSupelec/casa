@@ -40,6 +40,10 @@ services:
         arguments:
             - 'Symfony\Component\Uid\UuidV4'
 
+    Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator:
+        arguments:
+            - '@Symfony\Component\Uid\Factory\UuidFactory'
+
     s3_object_storage:
         class: Aws\S3\S3Client
         arguments:

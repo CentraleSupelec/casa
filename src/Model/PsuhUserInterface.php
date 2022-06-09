@@ -2,13 +2,18 @@
 
 namespace App\Model;
 
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-interface PsuhUserInterface extends UserInterface
+interface PsuhUserInterface extends UserInterface, PasswordAuthenticatedUserInterface
 {
     public function getEnabled(): bool;
 
     public function setEnabled(bool $enabled): self;
+
+    public function getPlainPassword(): ?string;
+
+    public function setPassword(string $password): self;
 
     public function getVerified(): bool;
 

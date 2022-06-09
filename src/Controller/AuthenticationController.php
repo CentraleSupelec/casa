@@ -19,14 +19,9 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class AuthenticationController extends AbstractController
 {
-    private EmailVerifier $emailVerifier;
-
-    private TranslatorInterface $translator;
-
-    public function __construct(EmailVerifier $emailVerifier, TranslatorInterface $translator)
-    {
-        $this->emailVerifier = $emailVerifier;
-        $this->translator = $translator;
+    public function __construct(
+        private readonly EmailVerifier $emailVerifier, private readonly TranslatorInterface $translator
+    ) {
     }
 
     #[Route('/login', name: 'app_login')]
@@ -37,17 +32,17 @@ class AuthenticationController extends AbstractController
 
         $template_data = [
             'error' => $error,
-            'last_username' => $lastUsername,
+            'lastUsername' => $lastUsername,
         ];
 
         $user = $studentRepository->findOneBy(['email' => $lastUsername]);
 
-        $template_data['verification_token'] = $user?->getVerificationToken();
+        $template_data['verificationToken'] = $user?->getVerificationToken();
 
         return $this->render('authentication/login.html.twig', $template_data);
     }
 
-    #[Route('/login_check', name: 'app_login_check')]
+    #[Route('/login-check', name: 'app_login_check')]
     public function authenticate()
     {
     }
@@ -109,8 +104,8 @@ class AuthenticationController extends AbstractController
 
         return $this->render('authentication/login.html.twig', [
             'error' => null,
-            'last_username' => $lastUsername,
-            'verification_token' => null,
+            'lastUsername' => $lastUsername,
+            'verificationToken' => null,
         ]);
     }
 

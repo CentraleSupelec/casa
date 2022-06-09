@@ -5,20 +5,45 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
         App\Entity\Student:
             algorithm: auto
+        App\Entity\Administrator:
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        student:
             entity:
                 class: App\Entity\Student
+                property: email
+        admin:
+            entity:
+                class: App\Entity\Administrator
                 property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
+
+        admin:
+            pattern: /admin(.*)
+            context: main
+            provider: admin
+            user_checker: App\Security\UserChecker
+            form_login:
+                provider: admin
+                login_path: admin_login
+                check_path: admin_login_check
+                default_target_path: /admin
+                enable_csrf: true
+            logout:
+                path: admin_logout
+                target: admin_login
+                invalidate_session: true
+
+        app:
             pattern: ^/
+            context: main
+            provider: student
             user_checker: App\Security\UserChecker
             form_login:
                 login_path: app_login
@@ -37,9 +62,20 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/(fr|en)/student, roles: ROLE_STUDENT }
-        - { path: ^/(fr|en)/housing-request, roles: ROLE_STUDENT }
-        - { path: ^/(.+)/(add|remove)-bookmark, roles: ROLE_STUDENT }
+        # App
+        - path: ^/(fr|en)/student
+          roles: ROLE_STUDENT
+        - path: ^/(fr|en)/housing-request
+          roles: ROLE_STUDENT
+        - path: ^/(.+)/(add|remove)-bookmark
+          roles: ROLE_STUDENT
+        - path: ^/(.+)/(add|remove)-bookmark
+          roles: ROLE_STUDENT
+        # Admin
+        - path: ^/admin/login
+          roles: PUBLIC_ACCESS
+        - path: ^/admin(.*)
+          roles: ROLE_ADMIN
 
 when@test:
     security:

@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Service\MapService;
 use Sonata\AdminBundle\Controller\CRUDController;
+use Sonata\AdminBundle\Exception\LockException;
+use Sonata\AdminBundle\Exception\ModelManagerThrowable;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,6 +18,10 @@ class GeocodingController extends CRUDController
         $this->mapService = $service;
     }
 
+    /**
+     * @throws LockException
+     * @throws ModelManagerThrowable
+     */
     public function geocodeAction($id): Response
     {
         $object = $this->admin->getSubject();

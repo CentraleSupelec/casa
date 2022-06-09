@@ -17,8 +17,8 @@
                         class="form-control"
                         name="_username"
                         value="{{
-                        last_username is defined
-                            ? last_username
+                        lastUsername is defined
+                            ? lastUsername
                             : null
                         }}"
                         placeholder="{{ 'authentication.email.placeholder'|trans }}" />
@@ -63,7 +63,7 @@
                                     path(
                                         'app_send_verification_email',
                                         {
-                                            verificationToken: verification_token
+                                            verificationToken: verificationToken
                                         }
                                     )
                                     }}">

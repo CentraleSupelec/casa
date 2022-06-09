@@ -4,3 +4,10 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('build/admin.css') }}" />
 {% endblock %}
+
+{% block side_bar_after_nav_content %}
+    <a href="{{ path('admin_logout') }}">
+        <i class="fas fa-fw fa-sign-out"></i>
+        Se déconnecter
+    </a>
+{% endblock %}
