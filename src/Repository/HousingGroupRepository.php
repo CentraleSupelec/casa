@@ -22,11 +22,11 @@ class HousingGroupRepository extends ServiceEntityRepository
     public function getDistinctCities(): array
     {
         $results = $this->createQueryBuilder('h')
-            ->select('h.address.city')
+            ->select('UPPER(h.address.city) as city')
             ->distinct()
             ->getQuery()
             ->getResult();
 
-        return array_column($results, 'address.city');
+        return array_column($results, 'city');
     }
 }

@@ -148,7 +148,7 @@ class HousingRepository extends ServiceEntityRepository
     ): QueryBuilder {
         if ($searchCriteriaModel->getCity()) {
             $queryBuilder
-                ->innerJoin('h.housingGroup', 'hg', Join::WITH, 'hg.address.city = :city')
+                ->innerJoin('h.housingGroup', 'hg', Join::WITH, 'UPPER(hg.address.city) = :city')
                 ->setParameter('city', $searchCriteriaModel->getCity());
         }
 
