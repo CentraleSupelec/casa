@@ -72,15 +72,6 @@ services:
               label: Équipements
               group: Référentiels
 
-    admin.emergency_qualification_question:
-        class: App\Admin\EmergencyQualificationQuestionAdmin
-        tags:
-            - name: sonata.admin
-              model_class: App\Entity\EmergencyQualificationQuestion
-              manager_type: orm
-              label: Questions de qualification des urgences
-              group: Référentiels
-
     admin.point_of_interest:
         class: App\Admin\PointOfInterestAdmin
         tags:

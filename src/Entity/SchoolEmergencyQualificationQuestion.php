@@ -18,10 +18,10 @@ class SchoolEmergencyQualificationQuestion
     #[ORM\Column(type: 'uuid', unique: true)]
     private ?string $id = null;
 
-    #[ORM\ManyToOne(targetEntity: EmergencyQualificationQuestion::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Choice(callback: ['App\Constants', 'getEmergencyQualificationQuestions'])]
     #[Assert\NotNull]
-    private ?EmergencyQualificationQuestion $question = null;
+    private ?string $question = null;
 
     #[ORM\ManyToOne(targetEntity: School::class, inversedBy: 'schoolEmergencyQualificationQuestions')]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,12 +41,12 @@ class SchoolEmergencyQualificationQuestion
         return $this->id;
     }
 
-    public function getQuestion(): ?EmergencyQualificationQuestion
+    public function getQuestion(): ?string
     {
         return $this->question;
     }
 
-    public function setQuestion(?EmergencyQualificationQuestion $question): self
+    public function setQuestion(?string $question): self
     {
         $this->question = $question;
 

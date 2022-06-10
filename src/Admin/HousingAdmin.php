@@ -70,7 +70,6 @@ class HousingAdmin extends AbstractAdmin
         }
 
         $form
-
             ->add('type', ChoiceType::class, [
                 'label' => 'Type',
                 'choices' => Constants::getHousingTypes(),

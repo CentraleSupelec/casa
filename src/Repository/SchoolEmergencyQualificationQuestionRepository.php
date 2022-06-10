@@ -35,11 +35,8 @@ class SchoolEmergencyQualificationQuestionRepository extends ServiceEntityReposi
                 'school = :school'
             )
             ->setParameter('school', $school)
-            ->innerJoin(
-                'school_emergency_qualification_question.question',
-                'question',
-                Join::WITH,
-                'question IN (:questions)'
+            ->andWhere(
+                'school_emergency_qualification_question.question IN (:questions)'
             )
             ->setParameter('questions', $questions);
     }

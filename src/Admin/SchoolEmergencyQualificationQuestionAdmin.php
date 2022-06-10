@@ -2,15 +2,15 @@
 
 namespace App\Admin;
 
-use App\Entity\EmergencyQualificationQuestion;
+use App\Constants;
 use App\Entity\School;
 use App\Entity\SchoolEmergencyQualificationQuestion;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
@@ -28,10 +28,9 @@ class SchoolEmergencyQualificationQuestionAdmin extends AbstractAdmin
             ->with('Général', [
                 'class' => 'col-md-8 col-md-offset-2',
             ])
-                ->add('question', ModelType::class, [
+                ->add('question', ChoiceType::class, [
                     'label' => 'Question de qualification d\'urgence',
-                    'class' => EmergencyQualificationQuestion::class,
-                    'btn_add' => false,
+                    'choices' => Constants::getEmergencyQualificationQuestions(),
                 ])
 
                 ->add('contactList', CollectionType::class, [
@@ -65,6 +64,13 @@ class SchoolEmergencyQualificationQuestionAdmin extends AbstractAdmin
             ])
             ->add('contactList', null, [
                 'label' => 'Contacts associés',
+            ])
+            ->add(ListMapper::NAME_ACTIONS, null, [
+                'actions' => [
+                    'show' => [],
+                    'edit' => [],
+                    'delete' => [],
+                ],
             ]);
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\EmergencyQualificationQuestion;
 use App\Entity\School;
 use App\Entity\SchoolEmergencyQualificationQuestion;
 use App\Entity\Student;
@@ -56,11 +55,9 @@ class HousingRequestController extends AbstractController
     #[Route('/emergency-qualification', name: 'app_housing_emergency_request_qualification')]
     public function emergencyRequestQualification(
         Request $request,
-        EntityManagerInterface $entityManager,
         EmergencyQuestionsSessionService $emergencyQuestionsSession
     ): Response {
-        $questions = $entityManager->getRepository(EmergencyQualificationQuestion::class)->findAll();
-        $form = $this->createForm(EmergencyQualificationType::class, [], ['qualification_questions' => $questions]);
+        $form = $this->createForm(EmergencyQualificationType::class);
 
         $form->handleRequest($request);
 
@@ -69,11 +66,7 @@ class HousingRequestController extends AbstractController
             /** @var bool $value */
             foreach ($form->getData() as $key => $value) {
                 if ($value) {
-                    $questionId = explode('_', $key)[1];
-                    $question = current(array_filter($questions, fn ($val) => $val->getId() == $questionId));
-                    if ($question) {
-                        $selectedQuestions[] = $question;
-                    }
+                    $selectedQuestions[] = $key;
                 }
             }
             $emergencyQuestionsSession->storeQuestions($selectedQuestions);

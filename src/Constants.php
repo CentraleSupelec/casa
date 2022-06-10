@@ -15,6 +15,21 @@ final class Constants
     /**
      * @return string[]
      */
+    public static function getEmergencyQualificationQuestions(): array
+    {
+        return [
+            'housing_request.emergency.qualification.questions.homeless' => 'homeless',
+            'housing_request.emergency.qualification.questions.underage' => 'underage',
+            'housing_request.emergency.qualification.questions.resource' => 'resource',
+            'housing_request.emergency.qualification.questions.handicap' => 'handicap',
+            'housing_request.emergency.qualification.questions.unsafe' => 'unsafe',
+            'housing_request.emergency.qualification.questions.other' => 'other',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
     public static function getHousingTypes(): array
     {
         return [
