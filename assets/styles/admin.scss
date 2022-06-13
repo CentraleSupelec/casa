@@ -1,3 +1,33 @@
+@use 'variables' as v;
+
+.main-header .logo {
+    display: flex !important;
+    align-items: center;
+}
+
+.main-sidebar {
+    background-color: v.$dark !important;
+}
+
+.skin-black .sidebar-menu > li.active > a,
+.skin-black .sidebar-menu > li.menu-open > a,
+.skin-black .sidebar-menu > li:hover > a {
+    background: v.$info !important;
+}
+
+.skin-black .sidebar-menu > li > .treeview-menu {
+    background: v.$info !important;
+}
+
+.skin-black .sidebar-form .btn,
+.skin-black .sidebar-form input[type='text'] {
+    background-color: v.$info;
+}
+
+.skin-black .sidebar-form {
+    border: 1px solid v.$info;
+}
+
 .admin-housing-picture-show-view {
     display: flex;
     justify-content: center;
