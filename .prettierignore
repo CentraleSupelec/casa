@@ -4,6 +4,7 @@ vendor
 composer.lock
 package-lock.json
 README.md
+CHANGELOG.md
 public/bundles/
 volumes/
 
