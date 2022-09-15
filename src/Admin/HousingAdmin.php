@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -171,10 +172,21 @@ class HousingAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $filter->add('type', null, [
-            'show_filter' => true,
-            'label' => 'Recherche par type de logement',
-        ]);
+        $filter
+                ->add('type', ChoiceFilter::class, [
+                    'show_filter' => true,
+                    'label' => 'Recherche par type de logement',
+                    'field_type' => ChoiceType::class,
+                    'field_options' => [
+                        'choices' => Constants::getHousingTypes(),
+                    ],
+                ])
+                ->add('housingGroup', null, [
+                    'show_filter' => true,
+                    'label' => 'Recherche par Groupe de Logement',
+                    ])
+
+            ;
     }
 
     protected function configureListFields(ListMapper $list): void

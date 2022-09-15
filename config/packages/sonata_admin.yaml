@@ -9,6 +9,7 @@ sonata_admin:
         layout: sonata/standard_layout.html.twig
 
     show_mosaic_button: false
+    persist_filters: true
 
 sonata_block:
     blocks:

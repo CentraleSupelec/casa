@@ -88,10 +88,14 @@ class HousingGroupAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $filter->add('name', null, [
-            'show_filter' => true,
-            'label' => 'Recherche par nom',
-        ]);
+        $filter
+            ->add('name', null, [
+                'label' => 'Recherche par nom',
+            ])
+            ->add('lessor', null, [
+                'show_filter' => true,
+                'label' => 'Recherche par bailleur',
+            ]);
     }
 
     protected function configureListFields(ListMapper $list): void

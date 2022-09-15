@@ -49,6 +49,7 @@ class HousingPictureAdmin extends AbstractAdmin
         $form
             ->add('file', VichImageType::class, [
                 'label' => 'Photo du logement',
+                'allow_delete' => false,
                 'row_attr' => [
                     'class' => 'admin-housing-picture-image-form-field',
                 ],
@@ -58,9 +59,11 @@ class HousingPictureAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
-        $filter->add('label', null, [
-            'label' => 'Recherche par titre',
-        ]);
+        $filter
+             ->add('housing.housingGroup', null, [
+                'show_filter' => true,
+                'label' => 'Recherche par Groupe de Logement',
+                ]);
     }
 
     protected function configureListFields(ListMapper $list): void
