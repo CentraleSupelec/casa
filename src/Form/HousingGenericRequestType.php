@@ -12,8 +12,10 @@ class HousingGenericRequestType extends AbstractType
     {
         $builder->add('body', TextareaType::class, [
             'label' => 'housing_request.common.introduction',
-            'label_attr' => ['class' => 'text-primary fs-5'],
-            'attr' => ['class' => 'contact-form-textarea'],
+            'label_attr' => ['class' => 'fs-5'],
+            'attr' => [
+                'class' => 'contact-form-textarea',
+                'placeholder' => 'housing_request.emergency.hints.location', ],
             'trim' => false,
         ]);
     }

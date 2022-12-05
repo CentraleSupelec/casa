@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            {{ 'home.page_title'|trans }}
+        </title>
+        <link rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block early_javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="d-flex flex-column h-100">
+        <a href="#maincontent" class="visually-hidden">
+            {{ 'home.link.skip_to_main'|trans }}
+        </a>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand fs-6 d-flex align-items-center"
+                        href="{{ path('app_home') }}">
+                        <div class="me-2">
+                            <i class="fa-solid fa-key fa-xl text-primary"></i>
+                        </div>
+                        <div>
+                            <span class="visually-hidden">
+                                {{ 'home.homepage_link'|trans }}
+                            </span>
+                            <span class="d-none d-sm-block">
+                                {{ 'home.nav.title'|trans }}
+                                <br />
+                                {{ 'home.nav.subtitle'|trans }}
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container text-center p-4 d-md-block">
+            <h1>
+                {{ 'home.welcome.title'|trans|raw }}
+            </h1>
+        </div>
+        <div class="container col-12" role="presentation">
+            <div class="d-flex flex-col g-0">
+                <img class="img-fluid"
+                    alt=""
+                    aria-hidden="true"
+                    src="{{
+                    asset(
+                        'build/images/home/mosaic-1600-502.jpg'
+                    )
+                    }}" />
+            </div>
+        </div>
+        <main class="container col-12 mb-3" role="search" id="maincontent">
+            <div class="col-12 bg-light p-4">
+                <div class="h1 text-center">
+                Prochainement
+                </div>
+            </div>
+        </main>
+
+        <footer class="container-fluid mt-auto">
+            <div class="footer row pt-4 pb-4">
+                <div class="d-flex col-12 col-md-3 justify-content-center justyfy-content-md-start">
+                    <img src="{{ asset('build/images/logo-ups-white.svg') }}"
+                        alt="logo université paris saclay"
+                        height="60" />
+                </div>
+                <nav class="col-12 col-md-9">
+                    <ul class="nav row">
+                        <li class="nav-item col-6">
+                            <a class="nav-link" href="#">{{ 'footer.faq'|trans|upper }}</a>
+                        </li>
+                        <li class="nav-item col-6">
+                            <a class="nav-link"
+                                href="#">
+                                {{ 'footer.urgent'|trans|upper }}
+                            </a>
+                        </li>
+                        <li class="nav-item col-6">
+                            <a class="nav-link"
+                                href="#">
+                                {{ 'footer.contact'|trans|upper }}
+                            </a>
+                        </li>
+                        <li class="nav-item col-6">
+                            <a class="nav-link"
+                                href={{ app.request.locale is same as('fr') ? 
+                                    "https://www.universite-paris-saclay.fr/" : 
+                                    "https://www.universite-paris-saclay.fr/en" }}
+                                target="_blank">
+                                {{ 'footer.university'|trans|upper }}
+                            </a>
+                        </li>
+                        <li class="nav-item col-6">
+                            <a class="nav-link" href="#">
+                                {{ 'footer.legal'|trans|upper }}
+                            </a>
+                        </li>
+                        <li class="nav-item col-6">
+                            <a  href= {{ app.request.locale is same as('fr') ?
+                                "https://www.universite-paris-saclay.fr/luniversite/les-campus/plans-des-campus" :
+                                "https://www.universite-paris-saclay.fr/en/about/campus-maps"  }}
+                                target="_blank"
+                                class="btn skinny bg-white text-dark btn-block px-3">
+                                <i class="fa-solid fa-location-dot fa-xs" aria-hidden="true"></i>
+                                {{ 'footer.map' | trans}}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </footer>
+
+    </body>
+</html>
+

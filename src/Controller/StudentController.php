@@ -117,7 +117,9 @@ class StudentController extends AbstractController
         $currentSchoolId = $request->query->get('schoolId');
 
         $parent = $entityManager->getRepository(ParentSchool::class)->find($parentId);
-        $schools = $entityManager->getRepository(School::class)->findBy(['parentSchool' => $parent], ['parentSchool' => 'ASC']);
+        $schools = $entityManager->getRepository(School::class)->findBy(
+            ['parentSchool' => $parent],
+            ['parentSchool' => 'ASC', 'campus' => 'ASC', 'name' => 'ASC']);
 
         return $this->render('student/_profile.select_school_widget.html.twig',
         [

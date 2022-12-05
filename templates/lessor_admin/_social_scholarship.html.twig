@@ -1,0 +1,36 @@
+{% import _self as formUtils %}
+
+{% macro displayFormRow(criteria) %}
+    <div class="row align-items-center js-social-scholarship-item">
+        <div class="col-5">
+            {{ form_row(criteria.startDate) }}
+        </div>
+        <div class="col-5">
+            {{ form_row(criteria.endDate) }}
+        </div>
+        <span class="col-2 text-end py-4">
+            <a href="#" class="col-12 js-remove-social-scholarship">
+                <span class="btn btn-primary fa fa-remove"></span>
+            </a>
+        </span>
+    </div>
+{% endmacro %}
+
+<div id="socialScholarship"
+    class="my-4 py-4 js-social-scholarship-wrapper"
+    data-index="{{ socialScholarship|length }}"
+    data-prototype="{{ formUtils.displayFormRow(
+        socialScholarship.vars.prototype
+    )|e('html_attr') }}">
+    {% if socialScholarship|length %}
+        {% for criteria in socialScholarship %}
+            {{ formUtils.displayFormRow(criteria) }}
+        {% endfor %}
+    {% else %}
+        {# prevents weird label render when empty #}
+        {{ form_widget(socialScholarship) }}
+    {% endif %}
+    <button class="btn btn-outline-primary js-add-social-scholarship">
+        <span class="fa fa-circle-plus pe-1"></span>Ajouter un critère de bourse
+    </button>
+</div>

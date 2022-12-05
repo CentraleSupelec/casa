@@ -152,3 +152,48 @@ services:
               manager_type: orm
               label: Établissement Principal
               group: Établissements
+
+    admin.lessor_admin_user:
+        class: App\Admin\LessorAdminUserAdmin
+        arguments:
+            - '@App\Service\UserService'
+            - ~
+            - App\Entity\LessorAdminUser
+            - ~
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\LessorAdminUser
+              controller: ~
+              manager_type: orm
+              group: Utilisateurs
+              label: Administrateur Bailleur
+
+    admin.lease_term:
+        class: App\Admin\StayDurationAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\StayDuration
+              controller: ~
+              manager_type: orm
+              group: Référentiels
+              label: Durée bail
+
+    admin.guarantor:
+        class: App\Admin\GuarantorAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\Guarantor
+              controller: ~
+              manager_type: orm
+              group: Référentiels
+              label: Garants
+
+    admin.occupation_mode:
+        class: App\Admin\OccupationModeAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\OccupationMode
+              controller: ~
+              manager_type: orm
+              group: Référentiels
+              label: Mode d'occupation

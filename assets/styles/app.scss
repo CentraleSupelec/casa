@@ -12,6 +12,8 @@
 
 @import './housing_request.scss';
 
+@import './lessor_admin.scss';
+
 @font-face {
     font-family: 'Open Sans';
     src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf')
@@ -36,7 +38,8 @@ body {
 }
 
 h1 {
-    @include font-size(1.5rem);
+    @include font-size(2.5rem);
+    font-variation-settings: 'wght' 650;
 }
 
 h1 .emphase {
@@ -45,11 +48,13 @@ h1 .emphase {
 }
 
 h2 {
-    @include font-size(1.3rem);
+    @include font-size(1.8rem);
+    font-variation-settings: 'wght' 650;
 }
 
 h3 {
-    @include font-size(1.1rem);
+    @include font-size(1.2rem);
+    font-variation-settings: 'wght' 650;
 }
 
 .crop-text {
@@ -62,4 +67,20 @@ h3 {
 
 .divider {
     border-top: dotted 1px;
+}
+
+.required:after {
+    content: '*';
+    color: red;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+.bookmark-unavailable {
+    opacity: 0.8;
+    filter: grayscale(100%);
 }

@@ -1,8 +1,14 @@
 <div class="footer row pt-4 pb-4">
-    <div class="d-flex col-12 col-md-3 justify-content-center justyfy-content-md-start">
-        <img src="{{ asset('build/images/logo-ups-white.svg') }}"
-            alt="logo université paris saclay"
-            height="60" />
+    <div class="d-flex col-12 col-md-3 justify-content-center justify-content-md-start">
+        <a class="nav-link"
+            href={{ app.request.locale is same as('fr') ? 
+                "https://www.universite-paris-saclay.fr/" : 
+                "https://www.universite-paris-saclay.fr/en" }}
+            target="_blank">
+            <img src="{{ asset('build/images/logo-ups-white.svg') }}"
+                alt="logo université paris saclay"
+                height="60" />
+        </a>            
     </div>
     <nav class="col-12 col-md-9">
         <ul class="nav row">
@@ -11,27 +17,8 @@
             </li>
             <li class="nav-item col-6">
                 <a class="nav-link"
-                    href="{{
-                    path(
-                        'app_housing_emergency_request_qualification'
-                    )
-                    }}">
-                    {{ 'footer.urgent'|trans|upper }}
-                </a>
-            </li>
-            <li class="nav-item col-6">
-                <a class="nav-link"
                     href="{{ path('app_housing_generic_request') }}">
                     {{ 'footer.contact'|trans|upper }}
-                </a>
-            </li>
-            <li class="nav-item col-6">
-                <a class="nav-link"
-                    href={{ app.request.locale is same as('fr') ? 
-                        "https://www.universite-paris-saclay.fr/" : 
-                        "https://www.universite-paris-saclay.fr/en" }}
-                    target="_blank">
-                    {{ 'footer.university'|trans|upper }}
                 </a>
             </li>
             <li class="nav-item col-6">
@@ -52,3 +39,4 @@
         </ul>
     </nav>
 </div>
+

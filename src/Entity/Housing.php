@@ -25,6 +25,7 @@ class Housing
     private ?string $description = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+     #[Assert\Url]
     private ?string $redirectLink = null;
 
     #[ORM\Column(type: 'boolean')]
@@ -79,11 +80,6 @@ class Housing
     #[Assert\NotNull]
     private ?string $livingMode = null;
 
-    #[ORM\Column(type: 'string', length: 80)]
-    #[Assert\Choice(callback: ['App\Constants', 'getHousingOccupationModes'])]
-    #[Assert\NotNull]
-    private ?string $occupationMode = null;
-
     #[ORM\Column(type: 'boolean')]
     #[Assert\NotNull]
     private ?bool $accessibility = null;
@@ -101,13 +97,13 @@ class Housing
     #[Assert\NotNull]
     private ?HousingGroup $housingGroup = null;
 
-    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: HousingPicture::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: HousingPicture::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $pictures;
 
-    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SocialScholarshipCriterion::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SocialScholarshipCriterion::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $socialScholarshipCriteria;
 
-    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SchoolCriterion::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SchoolCriterion::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $schoolCriteria;
 
     #[ORM\ManyToMany(targetEntity: Student::class, mappedBy: 'bookmarks')]
@@ -122,6 +118,15 @@ class Housing
     #[ORM\ManyToMany(targetEntity: Equipment::class)]
     private Collection $equipments;
 
+    #[ORM\ManyToMany(targetEntity: StayDuration::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    private Collection $stayDurations;
+
+    #[ORM\ManyToMany(targetEntity: OccupationMode::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    private Collection $occupationModes;
+
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $aplAgreement = false;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -129,6 +134,8 @@ class Housing
         $this->schoolCriteria = new ArrayCollection();
         $this->students = new ArrayCollection();
         $this->equipments = new ArrayCollection();
+        $this->stayDurations = new ArrayCollection();
+        $this->occupationModes = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -357,18 +364,6 @@ class Housing
         return $this;
     }
 
-    public function getOccupationMode(): ?string
-    {
-        return $this->occupationMode;
-    }
-
-    public function setOccupationMode(?string $occupationMode): self
-    {
-        $this->occupationMode = $occupationMode;
-
-        return $this;
-    }
-
     public function getAccessibility(): ?bool
     {
         return $this->accessibility;
@@ -548,6 +543,66 @@ class Housing
     public function removeEquipment(Equipment $equipment): self
     {
         $this->equipments->removeElement($equipment);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StayDuration>
+     */
+    public function getStayDurations(): Collection
+    {
+        return $this->stayDurations;
+    }
+
+    public function addStayDuration(StayDuration $leaseTerm): self
+    {
+        if (!$this->stayDurations->contains($leaseTerm)) {
+            $this->stayDurations[] = $leaseTerm;
+        }
+
+        return $this;
+    }
+
+    public function removeStayDuration(StayDuration $leaseTerm): self
+    {
+        $this->stayDurations->removeElement($leaseTerm);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OccupationMode>
+     */
+    public function getOccupationModes(): Collection
+    {
+        return $this->occupationModes;
+    }
+
+    public function addOccupationMode(OccupationMode $OccupationMode): self
+    {
+        if (!$this->occupationModes->contains($OccupationMode)) {
+            $this->occupationModes[] = $OccupationMode;
+        }
+
+        return $this;
+    }
+
+    public function removeOccupationMode(OccupationMode $OccupationMode): self
+    {
+        $this->occupationModes->removeElement($OccupationMode);
+
+        return $this;
+    }
+
+    public function isAplAgreement(): ?bool
+    {
+        return $this->aplAgreement;
+    }
+
+    public function setAplAgreement(bool $aplAgreement): self
+    {
+        $this->aplAgreement = $aplAgreement;
 
         return $this;
     }

@@ -7,6 +7,8 @@ security:
             algorithm: auto
         App\Entity\Administrator:
             algorithm: auto
+        App\Entity\LessorAdminUser:
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
@@ -19,11 +21,30 @@ security:
             entity:
                 class: App\Entity\Administrator
                 property: email
+        lessor_admin:
+            entity:
+                class: App\Entity\LessorAdminUser
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        lessor_admin:
+            pattern: /lessor/admin(.*)
+            context: main
+            provider: lessor_admin
+            user_checker: App\Security\UserChecker
+            form_login:
+                provider: lessor_admin
+                login_path: lessor_admin_login
+                check_path: lessor_admin_login_check
+                default_target_path: /lessor/admin
+                enable_csrf: true
+            logout:
+                path: lessor_admin_logout
+                target: lessor_admin_login
+                invalidate_session: true
         admin:
             pattern: /admin(.*)
             context: main
@@ -71,6 +92,13 @@ security:
           roles: ROLE_STUDENT
         - path: ^/(.+)/(add|remove)-bookmark
           roles: ROLE_STUDENT
+        # Lessor Admin
+        - path: ^/lessor/admin/login
+          roles: PUBLIC_ACCESS
+        - path: ^/lessor/admin/reset(.*)
+          roles: PUBLIC_ACCESS
+        - path: ^/lessor/admin(.*)
+          roles: ROLE_LESSOR_ADMIN
         # Admin
         - path: ^/admin/login
           roles: PUBLIC_ACCESS

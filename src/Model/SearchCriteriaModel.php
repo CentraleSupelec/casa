@@ -2,17 +2,27 @@
 
 namespace App\Model;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class SearchCriteriaModel
 {
+    #[Assert\GreaterThan(0)]
     private ?int $maxPrice = null;
 
+    #[Assert\GreaterThan(0)]
     private ?int $minArea = null;
 
     private int $maxResultsByPage = 15;
 
     private bool $accessibility = false;
 
+    private bool $aplAgreement = false;
+
     private ?string $city = null;
+
+    private array $stayDurations = [];
+
+    private array $occupationModes = [];
 
     public function getMaxPrice(): ?int
     {
@@ -70,6 +80,66 @@ class SearchCriteriaModel
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of stayDurations.
+     */
+    public function getStayDurations(): array
+    {
+        return $this->stayDurations;
+    }
+
+    /**
+     * Set the value of stayDurations.
+     *
+     * @return self
+     */
+    public function setStayDurations($stayDurations)
+    {
+        $this->stayDurations = $stayDurations;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of stayDurations.
+     */
+    public function getOccupationModes(): array
+    {
+        return $this->occupationModes;
+    }
+
+    /**
+     * Set the value of stayDurations.
+     *
+     * @return self
+     */
+    public function setOccupationModes(array $occupationModes)
+    {
+        $this->occupationModes = $occupationModes;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of aplAgreement.
+     */
+    public function getAplAgreement(): bool
+    {
+        return $this->aplAgreement;
+    }
+
+    /**
+     * Set the value of aplAgreement.
+     *
+     * @return self
+     */
+    public function setAplAgreement(bool $aplAgreement)
+    {
+        $this->aplAgreement = $aplAgreement;
 
         return $this;
     }

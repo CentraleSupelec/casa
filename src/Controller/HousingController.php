@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Housing;
+use App\Entity\HousingGroup;
 use App\Entity\School;
 use App\Entity\Student;
 use App\Form\SearchHousingType;
@@ -66,15 +67,22 @@ class HousingController extends AbstractController
     {
         $student = $this->getUser();
         $searchHousingCriteria = new SearchCriteriaModel();
+        $cities = $entityManager->getRepository(HousingGroup::class)->getDistinctCities();
+
         $studentProfileCriteria = new StudentProfileCriteriaModel($student instanceof Student ? $student : null);
 
         $form = $this->createForm(SearchHousingType::class, $searchHousingCriteria,
-            ['method' => 'GET']
+            [
+                'method' => 'GET',
+                'advancedSearch' => true,
+                'locale' => $request->getLocale(),
+            ],
         );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $searchHousingCriteria = $form->getData();
+            $searchHousingCriteria->setCity(strtoupper($searchHousingCriteria->getCity()));
         }
 
         $housingsListQueryBuilder = $entityManager
@@ -95,6 +103,7 @@ class HousingController extends AbstractController
             'form' => $form->createView(),
             'pagination' => $pagination,
             'imageBaseUrl' => $imageUrl->getImageBaseUrl(),
+            'cities' => $cities,
         ]);
     }
 

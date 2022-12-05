@@ -1,0 +1,26 @@
+{% set isMissingSchool = student.school is empty %}
+{% set isMissingName = student.lastName is empty
+    or student.firstName is empty
+%}
+{% set isMissingPhone = student.phone is empty %}
+
+{% if isMissingName or isMissingPhone or isMissingSchool %}
+    <div class="alert alert-danger" role="alert">
+        {% if isMissingSchool %}
+            <p>
+                {{ 'housing_request.emergency.missing.school'|trans }}
+            </p>
+        {% endif %}
+        {% if isMissingName %}
+            <p>
+                {{ 'housing_request.emergency.missing.name'|trans }}
+            </p>
+        {% endif %}
+
+        {% if isMissingPhone %}
+            <p>
+                {{ 'housing_request.emergency.missing.phone'|trans }}
+            </p>
+        {% endif %}
+    </div>
+{% endif %}

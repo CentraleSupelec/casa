@@ -8,66 +8,107 @@
 {% import 'housing/_address.html.twig' as Address %}
 {% import 'housing/_carousel.html.twig' as Carousel %}
 {% import 'housing/_bookmark_button.html.twig' as Bookmark %}
-{% import 'housing/_equipment.html.twig' as Equipment %}
+{% import 'housing/_icons.html.twig' as Icons %}
+{% import 'housing/_pois.html.twig' as Pois %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+{% endblock %}
 
 {% block body %}
     <main class="container housing-detail-page text-dark" id="maincontent">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-8 pt-3">
+
+        {% if housing.housingGroup.address.coordinates.longitude and housing.housingGroup.address.coordinates.latitude %}
+            {%
+            set locationInfo = {
+                longitude: housing.housingGroup.address.coordinates.longitude,
+                latitude: housing.housingGroup.address.coordinates.latitude
+            } %}
+            {% 
+            
+            set priceInfo = {
+                rentMin :  housing.rentMin,
+                rentMax :  housing.rentMax
+            }
+        %}
+            <div class="row contains-map-data" data-location={{ locationInfo|json_encode }} data-price={{ priceInfo|json_encode}}>
+        {% else %}
+            <div class="row">
+        {% endif %}
+            <div class="col-12 pt-3">
+                {# Title and Picture #}
                 <div class="row">
-                    <h1 class="col-12 col-md-9 text-center text-primary">
-                        {{ ("housing.type.#{housing.type}")|trans }} - {{
+                    <h1 class="col-12 col-md-9">
+                        {{ ("housing.type.#{housing.type}")|trans }}<span aria-hidden='true'>·</span>
+                        {{
                             housing.housingGroup.address.city
                         }}
                     </h1>
-                    <div class="col-12 col-md-3 mb-2 text-center text-md-end">
+                    <div class="col-12 col-md-3 mb-2 text-md-end">
                         {{ Bookmark.displayBookmarkButton(housing) }}
                     </div>
+
+                    <div class="mt-4 card-detail">
+                        {{
+                            Carousel.displayHousingCarousel(
+                                housing.id,
+                                imageBaseUrl,
+                                housing.pictures
+                            )
+                        }}
+                    </div>
                 </div>
-                <div class="card-detail">
-                    {{
-                        Carousel.displayHousingCarousel(
-                            housing.id,
-                            imageBaseUrl,
-                            housing.pictures
-                        )
-                    }}
-                </div>
-                {% if hasCriteria %}
-                    <div class="row">
-                        <div class="col-12 mt-1 d-flex align-items-center justify-content-end flex-wrap">
-                            <span class="badge bg-primary criteria-badge mt-1">
-                                {{ 'housing.criteria.card_badge'|trans }}
-                            </span>
+
+                <div class="row gx-5">
+                    {% if hasCriteria %}
+                        <div class="col-12 mt-1 d-flex align-items-center justify-content-start flex-wrap">
                             {% if isPriority %}
                                 <span class="badge bg-success criteria-badge ms-1 mt-1">
                                     {{ 'housing.priority.card_badge'|trans }}
                                 </span>
+                            {% else %}
+
+                            <span class="badge bg-primary criteria-badge mt-1">
+                                {{ 'housing.criteria.card_badge'|trans }}
+                            </span>
                             {% endif %}
                         </div>
-                    </div>
-                {% endif %}
+                    {% endif %}
+
+                </div>
+
+                {# General Information #}
                 <div class="row">
+                
+                    <h2 class='mt-4'>{{ 'housing.general_information'|trans}}</h2>
+                    {# Prices #}
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-primary text-center text-md-start">
-                            <span class="me-1">
-                                <i class="fa-solid fa-euro-sign fa-xl"></i>
-                            </span>
-                            {{ 'housing.price.title'|trans }}
-                        </h2>
-                        <ul class="text-center text-md-start">
-                            <li class="main-info">
-                                <span class="strong-text">
-                                    {{ 'housing.price.rent'|trans }}
-                                </span>
+                        <h3 class="mb-2">
+                            {{ 'housing.price.title'|trans }}                                 
+                            {% if housing.aplAgreement %}
+                                <span class="badge bg-success me-2 my-auto">{{ 'housing.apl_agreement'|trans }}</span>
+                            {% endif %}
+
+                        </h3>
+                        <ul >
+                            <li class="main-info row">
+                                <span class="col-6 label">{{ 'housing.price.rent'|trans }}</span>
+                                <span class='col-6'>
                                 {{
                                     RangeData.displayMonthlyRangeCost(
                                         housing.rentMin,
                                         housing.rentMax
                                     )
                                 }}
+                                </span>
                             </li>
-                            <li class="main-info">
+                            <li class="main-info row">
+                                <span class="col-6 label">Charges</span>
+                                <span class="col-6">
                                 {{
                                     RangeData.displayCharges(
                                         housing.chargesIncluded,
@@ -75,138 +116,154 @@
                                         housing.chargesMax
                                     )
                                 }}
+                                </span>
                             </li>
-                            <li class="main-info">
-                                <span class="strong-text">
+                            <li class="main-info row">
+                                <span class="col-6 label">
                                     {{ 'housing.price.application_fee'|trans }}
                                 </span>
-                                {{
-                                    RangeData.displayRangeCost(
-                                        housing.applicationFeeMin,
-                                        housing.applicationFeeMax
-                                    )
-                                }}
+
+                                <span class="col-6">
+                                    {{
+                                        RangeData.displayRangeCost(
+                                            housing.applicationFeeMin,
+                                            housing.applicationFeeMax
+                                        )
+                                    }}
+                                </span>
                             </li>
-                            <li class="main-info">
-                                <span class="strong-text">
+                            <li class="main-info row">
+                                <span class="col-6 label">
+
                                     {{ 'housing.price.security_deposit'|trans }}
                                 </span>
+                                
+                                <span class="col-6">
                                 {{
                                     RangeData.displayRangeCost(
                                         housing.securityDepositMin,
                                         housing.securityDepositMax
                                     )
                                 }}
+                                </span>
                             </li>
                         </ul>
                     </div>
+                    {# Informations #}
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-primary text-center text-md-end">
-                            <span class="me-1">
-                                <i class="fa-solid fa-ruler-combined fa-xl"></i>
-                            </span>
-                            {{
-                                RangeData.displayArea(
-                                    housing.areaMin,
-                                    housing.areaMax
-                                )
-                            }}
-                        </h2>
-                        <ul class="text-center text-md-end">
-                            <li class="main-info">
-                                {% if housing.available %}
-                                    {{ 'housing.available'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-check"></i>
-                                    </span>
-                                {% else %}
-                                    {{ 'housing.unavailable'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </span>
-                                {% endif %}
-                            </li>
-                            <li class="main-info">
-                                {% if housing.accessibility %}
+                    
+                        <h3 class="mb-2">{{ 'housing.caracteristics'|trans }}</h3>
+                        <ul >
+                            <li class="main-info row">
+                                <span class="col-6 label">Surface</span>
+                                <span class="col-6 info">
+                                {{
+                                    RangeData.displayArea(
+                                        housing.areaMin,
+                                        housing.areaMax
+                                    )
+                                }}
+                                </span>
+                            <li class="main-info row">
+                                <span class="col-6 label">
                                     {{ 'housing.accessible'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-brands fa-accessible-icon">
-
-                                        </i>
-                                    </span>
+                                </span>
+                                <span class="col-6 info">
+                                {% if housing.accessibility %}
+                                    {{ 'general.label_yes'|trans}}
                                 {% else %}
-                                    {{ 'housing.non_accessible'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </span>
+                                    {{ 'general.label_no'|trans}}
                                 {% endif %}
                             </li>
-                            <li class="main-info">
-                                {% if housing.smoking %}
+                            <li class="main-info row">
+                                <span class="col-6 label">
                                     {{ 'housing.smoking'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-smoking"></i>
-                                    </span>
+                                </span>
+                                <span class="col-6 info">
+                                {% if housing.smoking %}
+                                    {{ 'general.label_yes'|trans}}
                                 {% else %}
-                                    {{ 'housing.non_smoking'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-ban-smoking"></i>
-                                    </span>
+                                    {{ 'general.label_no'|trans}}
                                 {% endif %}
                             </li>
-                            <li class="main-info">
-                                {% if housing.animalsAllowed %}
+                            <li class="main-info row">
+                                <span class="col-6 label">
                                     {{ 'housing.animals_allowed'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-paw"></i>
-                                    </span>
+                                </span>
+                                <span class="col-6 info">
+                                {% if housing.animalsAllowed %}
+                                    {{ 'general.label_yes'|trans}}
                                 {% else %}
-                                    {{ 'housing.animals_non_allowed'|trans }}
-                                    <span class="ms-2 text-primary">
-                                        <i class="fa-solid fa-ban"></i>
-                                    </span>
+                                    {{ 'general.label_no'|trans}}
                                 {% endif %}
                             </li>
+                         
                         </ul>
                     </div>
                 </div>
 
-                {% if housing.description is not null %}
-                    <div class="row mt-3">
-                        <div class="col">
-                            <p class="m-0 text-center">
-                                {{ housing.description }}
-                            </p>
+                <div class="row">
+
+                    <h2 class="mt-4">{{ 'housing.description'|trans}}</h2>
+
+                    {% if housing.description is not null %}
+                        <div class="row mt-3">
+                            <div class="col main-info">
+                                
+                                    {{ housing.description }}
+
+                            </div>
                         </div>
-                    </div>
-                {% endif %}
+                    {% else %}
+                        {{ 'housing.no_description'|trans}}
+                    {% endif %}
+                </div>
 
                 <div class="row">
+                    <h2 class="mt-4">
+                        {{ 'housing.practical_information'|trans }}
+                    </h2>
                     <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-primary text-center text-md-start">
-                            <span class="me-1">
-                                <i class="fa-solid fa-circle-info fa-xl"></i>
-                            </span>
-                            {{ 'housing.practical_information'|trans }}
-                        </h2>
-                        <ul class="text-center text-md-start">
+                        <ul >
                             <li class="main-info">
                                 {{
                                     ("housing.living_mode.#{housing.livingMode}")|trans
                                 }}
                             </li>
-                            <li class="main-info">
-                                {{
-                                    ("housing.occupation_mode.#{housing.occupationMode}")|trans
-                                }}
-                                {% if housing.occupants > 1 %}
-                                    ({{
-                                        'housing.occupation_mode.occupants'|trans({
-                                            '%occupants%': housing.occupants
-                                        })
-                                    }})
-                                {% endif %}
-                            </li>
+                            {% if housing.occupationModes|length %}
+                                <ul >
+                                    <li class="main-info text-primary">
+                                    {{
+                                        ("housing.occupation_mode.label")|trans
+                                    }}
+                                    </li>
+                                {% for mode in housing.occupationModes %}
+                                    <li class="main-info"> {{ mode|label_translate}}</li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                                
+                            {% if housing.occupants > 1 %}
+                                ({{
+                                    'housing.occupation_mode.occupants'|trans({
+                                        '%occupants%': housing.occupants
+                                    })
+                                }})
+                            {% endif %}
+
+                            {% if housing.stayDurations|length %}
+                                <ul >
+                                    <li class="main-info text-primary">
+                                        {{
+                                            ("housing.stay_duration.label")|trans
+                                        }}
+                                    </li>
+                                    {% for stayduration in housing.stayDurations %}
+                                        <li class="main-info">{{ stayduration|label_translate }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
                             {% if housing.quantity > 1 %}
                                 <li class="main-info">
                                     {{
@@ -218,35 +275,104 @@
                             {% endif %}
                         </ul>
                     </div>
-                    <div class="col-12 col-md-6 mt-4">
-                        <h2 class="text-primary text-center text-md-end">
-                            <span class="me-1">
-                                <i class="fa-solid fa-location-dot fa-xl"></i>
-                            </span>
+                </div>
+                <h2 class="mt-4 mb-3">
+                    {{ 'housing.equipment.title'|trans }}
+                </h2>
+                <div class="row">
+                    <div class="col icons-container">
+                        {# This removes double display if admin ticked equipement both in Group and Housing #}
+                        {% set displayed = [] %}
+                        {% for equipment in housing.housingGroup.equipments %}
+                            {{ Icons.displayEquipment(equipment) }}
+                            {% set displayed =
+                                displayed|merge(
+                                    [
+                                        {
+                                            id: equipment.id
+                                        }
+                                    ]
+                                )
+                            %}
+                        {% endfor %}
+
+                        {% for equipment in housing.equipments %}
+                            {% if not equipment.id in displayed %}
+                                {{ Icons.displayEquipment(equipment) }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row gx-0">
+                    <div class="col-12 mt-4">
+                        <h2>
                             {{ 'housing.address'|trans }}
                         </h2>
-                        <div class="text-center text-md-end">
+                        
                             {{
                                 Address.displayAddress(
                                     housing.housingGroup.address
                                 )
                             }}
-                        </div>
+
+
+                    </div>
+                    <div class="col-12 mt-4 p-4 bg-light" id="map"></div>
+                </div>
+
+
+                <h2 class="mt-4 mb-3">
+                    {{ 'housing.services.included'|trans }}
+                </h2>
+                {% set includedServices = housing.housingGroup.housingGroupServices|filter((s) => not s.isOptional) %}
+                <div class="row">
+                    <div class="col icons-container">
+                        {% if includedServices|length %}
+                            {% for housingGroupService in includedServices %}
+                                {{
+                                    Icons.displayEquipment(
+                                        housingGroupService.service
+                                    )
+                                }}
+                            {% endfor %}
+                        {% else %}
+                            {{ 'general.novalue'|trans }}
+                        {% endif %}
                     </div>
                 </div>
 
+                <h2 class="mt-4 mb-3">
+                    {{ 'housing.services.optional'|trans }}
+                </h2>
+                {% set optionalServices = housing.housingGroup.housingGroupServices|filter((s) => s.isOptional) %}
+                <div class="row">
+                    <div class="col icons-container">
+                        {% if optionalServices|length %}
+                            {% for housingGroupService in optionalServices %}
+                                {{
+                                    Icons.displayEquipment(
+                                        housingGroupService.service
+                                    )
+                                }}
+                            {% endfor %}
+                        {% else %}
+                            {{ 'general.novalue'|trans }}
+                        {% endif %}
+                    </div>
+                </div>                
+
                 {% if hasCriteria %}
-                    <h2 class="mt-4 text-primary text-center text-md-start">
+                    <h2 class="mt-4">
                         {{ 'housing.criteria.detail.title'|trans }}
                     </h2>
                     <div class="row">
-                        <div class="col text-center text-md-start">
+                        <div clas>
                             <span>
                                 {{
                                     'housing.criteria.detail.description'|trans
                                 }}
                             </span>
-                            <ul class="text-center text-md-start ps-md-3">
+                            <ul >
                                 {% if hasSocialScholarshipCriteria %}
                                     <li class="minor-info mt-2">
                                         {{
@@ -267,82 +393,25 @@
                     </div>
                 {% endif %}
 
-                <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
-                    {{ 'housing.equipment.title'|trans }}
+                <h2 class="mt-4 mb-0">
+                    {{ 'housing_group.guarantors'|trans }}
                 </h2>
-                <div class="row">
-                    <div class="col icons-container">
-                        {% for equipment in housing.housingGroup.equipments %}
-                            {{ Equipment.displayEquipment(equipment) }}
-                        {% endfor %}
-                        {% for equipment in housing.equipments %}
-                            {{ Equipment.displayEquipment(equipment) }}
-                        {% endfor %}
-                    </div>
-                </div>
+                {% if housing.housingGroup.possibleGuarantor|length %}
+                    <ul>
+                    {% for guarantor in housing.housingGroup.possibleGuarantor %}
+                        <li>{{ guarantor|label_translate}}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    {{ 'general.novalue'|trans }}
+                {% endif %}
 
-                <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
-                    {{ 'housing.services.included'|trans }}
-                </h2>
-                <div class="row">
-                    <div class="col icons-container">
-                        {% for housingGroupService in housing.housingGroup.housingGroupServices %}
-                            {% if not housingGroupService.isOptional %}
-                                <div>
-                                    <div class="icon-with-text">
-                                        <span class="picture">
-                                            <i class="{{
-                                                housingGroupService.service.picture
-                                                }} fa-2xl">
-
-                                            </i>
-                                        </span>
-                                        <span class="picture-label">
-                                            {{
-                                                housingGroupService.service.label
-                                            }}
-                                        </span>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <h2 class="mt-4 mb-3 text-primary text-center text-md-start">
-                    {{ 'housing.services.optional'|trans }}
-                </h2>
-                <div class="row">
-                    <div class="col icons-container">
-                        {% for housingGroupService in housing.housingGroup.housingGroupServices %}
-                            {% if housingGroupService.isOptional %}
-                                <div>
-                                    <div class="icon-with-text">
-                                        <span class="text-dark picture">
-                                            <i class="{{
-                                                housingGroupService.service.picture
-                                                }} fa-2xl">
-
-                                            </i>
-                                        </span>
-                                        <span class="picture-label">
-                                            {{
-                                                housingGroupService.service.label
-                                            }}
-                                        </span>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <h2 class="mt-4 mb-0 text-primary text-center text-md-start">
+                <h2 class="mt-4 mb-0">
                     {{ 'housing.point_of_interest'|trans }}
                 </h2>
                 <div class="row">
                     <div class="col-12 col-md-6 mt-3">
-                        <h3 class="strong-text text-center text-md-start">
+                        <h3>
                             <span class="me-1">
                                 <i class="fa-solid fa-bus fa-xl"></i>
                             </span>
@@ -350,23 +419,20 @@
                                 'housing_group.point_of_interest_category.transportation'|trans
                             }}
                         </h3>
-                        <ul class="text-center text-md-start">
-                            {% for poi in housing.housingGroup.pointsOfInterest %}
-                                {% if poi.category == 'transportation' %}
-                                    <li class="main-info d-flex flex-column">
-                                        <span>{{ poi.label }}</span>
-                                        {% if poi.description is not null %}
-                                            <span class="minor-info">
-                                                {{ poi.description }}
-                                            </span>
-                                        {% endif %}
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
+                        <ul >
+                            {% set transportationPOI = housing.housingGroup.pointsOfInterest|filter((poi) => poi.category =='transportation') %}
+                            {% if transportationPOI|length %}
+                                {% for pointOfInterest in transportationPOI %}
+                                    {{ Pois.displayPOI(pointOfInterest) }}
+                                {% endfor %}
+                            {% else %}
+                                {{ 'general.novalue'|trans }}
+
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="col-12 col-md-6 mt-3">
-                        <h3 class="strong-text text-center text-md-end">
+                        <h3 class="strong-text text-md-end">
                             <span class="me-1">
                                 <i class="fa-solid fa-shop fa-xl"></i>
                             </span>
@@ -374,19 +440,15 @@
                                 'housing_group.point_of_interest_category.store'|trans
                             }}
                         </h3>
-                        <ul class="text-center text-md-end">
-                            {% for poi in housing.housingGroup.pointsOfInterest %}
-                                {% if poi.category == 'store' %}
-                                    <li class="main-info d-flex flex-column">
-                                        <span>{{ poi.label }}</span>
-                                        {% if poi.description is not null %}
-                                            <span class="minor-info">
-                                                {{ poi.description }}
-                                            </span>
-                                        {% endif %}
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
+                        <ul class="text-md-end">
+                            {% set storePOI = housing.housingGroup.pointsOfInterest|filter((poi) => poi.category =='store') %}
+                            {% if storePOI|length %}
+                                {% for pointOfInterest in storePOI %}
+                                    {{ Pois.displayPOI(pointOfInterest) }}
+                                {% endfor %}
+                            {% else %}
+                                {{ 'general.novalue'|trans }}
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -403,4 +465,10 @@
             </div>
         </div>
     </main>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('show_map') }}
+    {% endblock %}
 {% endblock %}
+
+
+

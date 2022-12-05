@@ -1,9 +1,9 @@
 {% macro displayCard(school, additionalDestinationEmails = []) %}
     {% import 'housing/_address.html.twig' as Address %}
 
-    <div class="card request-information-card">
+    <div class="request-information-card">
         <div class="card-body">
-            <h1 class="card-title text-primary">
+            <h1 class="card-title">
                 {{ 'housing_request.common.information_card.title'|trans }}
             </h1>
             {% if school is not null %}

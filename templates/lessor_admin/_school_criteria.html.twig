@@ -1,0 +1,40 @@
+{% import _self as formUtils %}
+
+{% macro displayFormRow(criteria) %}
+    <div class="row js-school-criteria-item">
+        <div class="col-3">
+            {{ form_row(criteria.startDate) }}
+        </div>
+        <div class="col-2">
+            {{ form_row(criteria.endDate) }}
+        </div>
+        <div class="col-6 py-4">
+            {{ form_row(criteria.schools) }}
+        </div>
+        <div class="col-1 text-end">
+            <a href="#" class="col-12 js-remove-school-criteria">
+                <span class="btn btn-primary fa fa-remove"></span>
+            </a>
+        </div>
+    </div>
+{% endmacro %}
+
+<div id="schoolCriteria"
+    class="my-4 py-4 js-school-criteria-wrapper"
+    data-index="{{ schoolCriteria|length }}"
+    data-prototype="{{ formUtils.displayFormRow(
+        schoolCriteria.vars.prototype
+    )|e('html_attr') }}">
+    {% if schoolCriteria|length %}
+        {% for criteria in schoolCriteria %}
+            {{ formUtils.displayFormRow(criteria) }}
+        {% endfor %}
+    {% else %}
+        {# prevents weird label render when empty #}
+        {{ form_widget(schoolCriteria) }}
+    {% endif %}
+    <button class="btn btn-outline-primary js-add-school-criteria">
+        <span class="fa fa-circle-plus"></span>Ajouter un critère
+        d'établissement
+    </button>
+</div>

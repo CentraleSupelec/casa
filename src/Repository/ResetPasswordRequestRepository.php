@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\LessorAdminUser;
+use App\Entity\LessorResetPasswordRequest;
 use App\Entity\ResetPasswordRequest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -28,6 +30,12 @@ class ResetPasswordRequestRepository extends ServiceEntityRepository implements 
 
     public function createResetPasswordRequest(object $user, \DateTimeInterface $expiresAt, string $selector, string $hashedToken): ResetPasswordRequestInterface
     {
+        // Hack to "route" to the correct Repository
+        // weither it's Student or a LessorAdminUser
+        if ($user instanceof LessorAdminUser) {
+            return new LessorResetPasswordRequest($user, $expiresAt, $selector, $hashedToken);
+        }
+
         return new ResetPasswordRequest($user, $expiresAt, $selector, $hashedToken);
     }
 }

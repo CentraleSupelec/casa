@@ -1,0 +1,59 @@
+{% macro displaySearch(form , cities, advanced) %}
+    {{ form_start(form) }}
+    <div class="row pb-2">
+        <div>
+            {{ form_errors(form) }}
+        </div>
+        <div class="col-6 mt-2">
+            {{ form_label(form.maxPrice) }}
+            <div class="input-group">
+                {{ form_widget(form.maxPrice) }}
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 mt-2">
+            {{ form_label(form.minArea) }}
+            <div class="input-group">
+                {{ form_widget(form.minArea) }}
+                <div class="input-group-append">
+                    <span class="input-group-text">M<sup>2</sup></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-2">
+            {{form_label(form.city)}}
+            {{ form_widget(form.city)}}
+            <datalist id="citylistOptions">
+                {% for city in cities %}
+                    <option value="{{ city }}">
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="col-6 mt-4">
+            {{ form_row(form.accessibility) }}
+        </div>
+
+        {% if advanced %}
+            <div class="col-6 mt-4">
+                {{ form_row(form.aplAgreement) }}
+            </div>
+            <div class="col-12 col-md-6 mt-2">
+                {{ form_row(form.stayDurations) }}
+            </div>
+            <div class="col-12 col-md-6 mt-2">
+                {{ form_row(form.occupationModes) }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <input type="submit"
+            class="btn btn-primary col"
+            value="{{ 'housing.search.criteria.submit'|trans }}" />
+    </div>
+    {{ form_end(form) }}
+{% endmacro %}

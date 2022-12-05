@@ -1,4 +1,4 @@
-{% import 'housing/_search.html.twig' as Search %}
+{% import 'housing/_search_advanced.html.twig' as Search %}
 
 {% extends 'base.html.twig' %}
 
@@ -16,7 +16,7 @@
 
 {% block body %}
     {% import 'housing/_housing_card.html.twig' as HousingCard %}
-    <div class="container-fluid" role="search">
+    <div class="container" role="search">
         {% if (pagination|length) > 0 %}
             <div class="d-flex align-items-center">
                 <button class="btn btn-sm btn-outline-primary m-2"
@@ -31,26 +31,27 @@
                     </span>
                 </button>
             </div>
+            <h1 class="h3">
+                {{
+                    'housing.search.found'|trans({
+                        '%total_found%': pagination.totalItemCount
+                    })
+                }}
+            </h1>
         {% endif %}
         <div class="collapse mb-4 {{ (pagination|length) == 0 ? 'show' }}"
             id="collapseSearch">
-            <div class="card card-body">
-                {{ Search.displaySearch(form) }}
+            <div class="card-body">
+                {{ Search.displaySearch(form, cities, true) }}
             </div>
         </div>
     </div>
-    <main class="container-fluid" id="maincontent">
+    <main class="container" id="maincontent">
         {% if (pagination|length) > 0 %}
             <div class="row">
                 <div class="cards-list col-12 col-md-7 col-lg-5 px-4">
                     {# prettier-ignore #}
-                    <h1 class="mx-auto h3">
-                        {{
-                            'housing.search.found'|trans({
-                                '%total_found%': pagination.totalItemCount
-                            })
-                        }}
-                    </h1>
+
                     <div class="d-flex justify-content-end" role="navigation">
                         <div class="h3">
                             {{ 'housing.list.sort.label'|trans }}
@@ -86,7 +87,6 @@
                                     imageBaseUrl
                                 )
                             }}
-                            <hr class="divider" aria-hidden="true" />
                         {% endfor %}
                     </section>
                     <div class="navigation"

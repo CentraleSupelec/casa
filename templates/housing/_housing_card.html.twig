@@ -1,3 +1,4 @@
+
 {% macro displayCard(housing, hasCriteria, isPriority, imageBaseUrl) %}
     {% import 'housing/_carousel.html.twig' as Carousel %}
     {% import 'housing/_range_data.html.twig' as RangeData %}
@@ -8,9 +9,15 @@
         set locationInfo = {
             longitude: housing.housingGroup.address.coordinates.longitude,
             latitude: housing.housingGroup.address.coordinates.latitude
+        } %}
+        {% 
+        
+        set priceInfo = {
+            rentMin :  housing.rentMin,
+            rentMax :  housing.rentMax
         }
         %}
-        <article class="card mb-2 contains-map-data" data-location={{ locationInfo | json_encode }}>
+        <article class="card mb-2 contains-map-data" data-location={{ locationInfo|json_encode }} data-price={{ priceInfo|json_encode}}>
     {% else %}
         <article class="card mb-2">
     {% endif %}
@@ -30,9 +37,10 @@
                     {% if hasCriteria %}
                     <div class="row mb-0 mb-md-1">
                         <div class="col-12 d-flex align-items-center justify-content-end flex-wrap">
-                            <span class="badge bg-primary criteria-badge mt-1">{{ 'housing.criteria.card_badge' | trans }}</span>
                             {% if isPriority %}
                                 <span class="badge bg-success criteria-badge ms-1 mt-1">{{ 'housing.priority.card_badge' | trans }}</span>
+                            {% else %}
+                                <span class="badge bg-primary criteria-badge mt-1">{{ 'housing.criteria.card_badge' | trans }}</span>
                             {% endif %}
                         </div>
                     </div>
@@ -48,12 +56,14 @@
                                 )
                                 }}">
                                 <h2 class="mb-0">
-                                {{ housing.type | capitalize }} • {{
+                                    {{ housing.housingGroup.address.city }}
+                                    {{ housing.type | capitalize }}
+                                    {{
                                         RangeData.displayArea(
                                             housing.areaMin,
                                             housing.areaMax
                                         )
-                                    }} • {{ housing.housingGroup.address.city }}
+                                    }} 
                                 </h2>
                             </a>
                         </div>
@@ -63,16 +73,27 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
+                        {% if not housing.available %}
+                            <h2> <span class="badge bg-secondary">{{ 'housing.unavailable'|trans}}</span></h2>
+                        {% endif %}
                             {% set living_mode = 'housing.living_mode.' ~ housing.livingMode %}  
-                            {% set occupation_mode = 'housing.occupation_mode.' ~ housing.occupationMode %}  
-                            <div class="modes">{{ living_mode | trans }} • {{ occupation_mode | trans }}</div>
-                            <hr />
+
+                            <div class="modes">{{ living_mode | trans }}
+                             </div>
                             <div class="description crop-text">{{ housing.Description }}</div>
                         </div>
-                        <div class="col-12">
-                            <span class="price card-text d-flex justify-content-end">
-                                {{ housing.rentMin }} €
+
+                        <div class="col-12 d-flex justify-content-start">
+                            {% if housing.aplAgreement %}
+                                    <span class="badge bg-success me-2 my-auto" style="height: 1.2rem">{{ 'housing.apl_agreement_tag'|trans }}</span>
+                            {% endif %}
+
+                            <span class="price card-text me-2">
+                                {{ housing.rentMin }}&nbsp;€
                             </span>
+                            {% if housing.chargesIncluded %}
+                                    <span class="my-auto" style="font-size: 0.8rem">{{'housing.price.charges.included'|trans}}</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

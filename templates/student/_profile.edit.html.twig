@@ -9,7 +9,7 @@
     {{ form_row(form.phone) }}
     {{ form_row(form.birthdate)}}
 
-    <div data-controller='profile-select-school'
+    <div class="bg-light p-4 my-2" data-controller='profile-select-school'
         {% if form.vars.data.school %}
          data-profile-select-school-parent-id-value = {{ form.vars.data.school.parentSchool.id }}
          data-profile-select-school-school-id-value = {{ form.vars.data.school.id }}
@@ -17,6 +17,7 @@
     data-profile-select-school-url-value= {{
     path('app_student_profile_schools')
     }}>
+    {{ form_label(form.school)}}
 
     <select class='form-select'
             data-action='profile-select-school#changeParentSchool'
@@ -33,7 +34,7 @@
         {% endfor %}
     </select>
 
-    {{ form_row(form.school , { 'attr' : {
+    {{ form_widget(form.school , { 'attr' : {
         'data-profile-select-school-target' : 'schoolList',
     }})
     }}

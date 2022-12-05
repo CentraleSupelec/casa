@@ -4,6 +4,7 @@ namespace App\Admin;
 
 use App\Admin\Embed\AddressEmbeddedAdmin;
 use App\Entity\Equipment;
+use App\Entity\Guarantor;
 use App\Entity\HousingGroup;
 use App\Entity\Lessor;
 use Knp\Menu\ItemInterface as MenuItemInterface;
@@ -84,6 +85,18 @@ class HousingGroupAdmin extends AbstractAdmin
                     'btn_add' => false,
                 ])
             ->end();
+
+        $form
+            ->with('Garants', [
+                'class' => 'col-md-8 col-md-offset-2',
+            ])
+                    ->add('possibleGuarantor', ModelType::class, [
+                'class' => Guarantor::class,
+                'multiple' => true,
+                'label' => 'Garants possibles pour le groupe de logement',
+                'btn_add' => false,
+            ])
+            ->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $filter): void
@@ -108,6 +121,7 @@ class HousingGroupAdmin extends AbstractAdmin
                 'label' => 'Nom du bailleur',
             ])
             ->add('address.coordinates')
+
             ->add('createdAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Création',
@@ -146,6 +160,8 @@ class HousingGroupAdmin extends AbstractAdmin
             ->add('pointsOfInterest', null, [
                 'label' => 'Points d\'intérêt',
             ])
+            ->add('possibleGuarantor')
+
             ->add('createdAt', 'datetime', [
                 'format' => 'H:i:s -- d/m/Y',
                 'label' => 'Création',

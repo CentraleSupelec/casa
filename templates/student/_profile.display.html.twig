@@ -1,4 +1,4 @@
-<article class="col-12 mb-3">
+<article class="col-12 col-md-6 mb-3">
     <h2 class="fs-6 text-secondary">
         {{ 'profile.first_name'|trans }}
     </h2>
@@ -32,24 +32,26 @@
     <h2 class="fs-6 text-secondary">
         {{ 'profile.school'|trans }}
     </h2>
-    {% set school = student.school %}
-    {% if school %}
-        {% if school.name is not same as(school.parentSchool.name) %}
+    <div class="bg-light p-4 my-2">
+        {% set school = student.school %}
+        {% if school %}
+            {% if school.name is not same as(school.parentSchool.name) %}
+                <p class="h3 mb-4">
+                    {{ school.parentSchool }}
+                </p>
+            {% endif %}
             <p class="h3 mb-4">
-                {{ school.parentSchool }}
+                {{ school }}
+            </p>
+            <p class="h3 mb-4">
+                Campus {{ school.campus }}
+            </p>
+        {% else %}
+            <p class="h3 mb-4">
+                {{ 'profile.choose_school'|trans }}
             </p>
         {% endif %}
-        <p class="h3 mb-4">
-            {{ school }}
-        </p>
-        <p class="h3 mb-4">
-            Campus {{ school.campus }}
-        </p>
-    {% else %}
-        <p class="h3 mb-4">
-            {{ 'profile.choose_school'|trans }}
-        </p>
-    {% endif %}
+    </div>
 
     <h2 class="fs-6 text-secondary">
         {{ 'profile.social_scholarship'|trans }}
@@ -67,6 +69,18 @@
             ? '<i class="fa-regular fa-square-check fa-xl"></i>'
             : '<i class="fa-regular fa-square fa-xl"></i>' }}
     </p>
+</article>
+<article class="col-12 col-md-6 mb-3">
+    <div class="col-12 mb-4">
+        <p>
+            Contenu statique à venir pour expliquer le fonctionnement du bouton
+            Urgent
+        </p>
+        <a class="btn btn-primary"
+            href="{{ path('app_housing_emergency_request_qualification') }}">
+            {{ 'footer.urgent'|trans|upper }}
+        </a>
+    </div>
 </article>
 <div class="col-12 d-flex justify-content-center mb-4">
     <a href="{{ path('app_student_edit_profile') }} "

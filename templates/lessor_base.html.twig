@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            {% block title %}
+                Welcome!
+            {% endblock %}
+        </title>
+        <link rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block early_javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="d-flex flex-column h-100">
+        <a href="#maincontent" class="visually-hidden">
+            {{ 'home.link.skip_to_main'|trans }}
+        </a>
+        <header>
+            {% include '_lessor_navbar.html.twig' %}
+        </header>
+
+        {% include '_flashes.html.twig' %}
+
+        {% block body %}
+
+        {% endblock %}
+
+        <footer class="container-fluid mt-auto">
+            {% include '_footer.html.twig' %}
+        </footer>
+        {% block javascripts %}
+
+        {% endblock %}
+    </body>
+</html>

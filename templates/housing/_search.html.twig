@@ -1,18 +1,9 @@
-{% macro displaySearch(form) %}
-    {{
-        form_start(
-            form,
-            {
-                attr: {
-                    novalidate: 'novalidate'
-                }
-            }
-        )
-    }}
-    <div>
-        {{ form_errors(form) }}
-    </div>
+{% macro displaySearch(form , cities) %}
+    {{ form_start(form) }}
     <div class="row pb-2">
+        <div>
+            {{ form_errors(form) }}
+        </div>
         <div class="col-6 mt-2">
             {{ form_label(form.maxPrice) }}
             <div class="input-group">
@@ -32,13 +23,20 @@
                 </div>
             </div>
         </div>
+
         <div class="col-12 mt-2">
-            {{ form_label(form.city) }}
-            {{ form_widget(form.city) }}
+            {{form_label(form.city)}}
+            {{ form_widget(form.city)}}
+            <datalist id="citylistOptions">
+                {% for city in cities %}
+                    <option value="{{ city }}">
+                {% endfor %}
+            </datalist>
         </div>
-    </div>
-    <div class="col-12 mt-2">
-        {{ form_row(form.accessibility) }}
+        <div class="col-6 mt-4">
+            {{ form_row(form.accessibility) }}
+        </div>
+
     </div>
 
     <div class="d-flex justify-content-center">

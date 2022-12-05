@@ -6,6 +6,7 @@ use App\Entity\Address;
 use App\Entity\Housing;
 use App\Entity\HousingGroup;
 use App\Entity\Lessor;
+use App\Entity\OccupationMode;
 
 class FixturesProvider
 {
@@ -46,7 +47,10 @@ class FixturesProvider
         $housing->setAccessibility(false);
         $housing->setAnimalsAllowed(false);
         $housing->setSmoking(false);
-        $housing->setOccupationMode('alone');
+        $occupationMode = new OccupationMode();
+        $occupationMode->setLabelFr('Mode d\'occupation');
+        $occupationMode->setLabelEn('Occupation Mode');
+        $housing->addOccupationMode($occupationMode);
         $housing->setLivingMode('full');
 
         return $housing;

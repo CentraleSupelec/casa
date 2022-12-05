@@ -2,7 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\HousingGroup;
+use App\Entity\OccupationMode;
+use App\Entity\StayDuration;
 use App\Model\SearchCriteriaModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
@@ -22,36 +23,71 @@ class SearchHousingType extends AbstractType
     {
         // TODO : handle the maxResultsByPage parameter on the UI.
 
-        $cities = $this->entitymanager->getRepository(HousingGroup::class)->getDistinctCities();
-        // Add empty line to choices
-        $cities[] = '';
+        $stayDurations = $this->entitymanager->getRepository(StayDuration::class)->findAll();
+        $occupationModes = $this->entitymanager->getRepository(OccupationMode::class)->findAll();
+
+        $locale = $options['locale'];
 
         $builder
             ->add('maxPrice', IntegerType::class, [
                 'label' => 'housing.search.criteria.max_rent.label',
                 'required' => false,
+                'attr' => ['min' => 0],
             ])
             ->add('minArea', IntegerType::class, [
                 'label' => 'housing.search.criteria.min_area.label',
                 'required' => false,
+                'attr' => ['min' => 0],
                 ])
-            ->add('city', ChoiceType::class, [
+            ->add('city', null, [
                 'label' => 'housing.search.criteria.city.label',
-                'choices' => $cities,
-                'choice_label' => function ($choice, $key, $value) {
-                    return $value;
-                },
+                'attr' => [
+                    'placeholder' => 'housing.search.criteria.city.placeholder',
+                    'list' => 'citylistOptions',
+                ],
                 ])
+
             ->add('accessibility', CheckboxType::class, [
                 'label' => 'housing.search.criteria.accessibility.label',
                 'required' => false,
-                ]);
+            ]);
+
+        if ($options['advancedSearch']) {
+            $builder
+            ->add('stayDurations', ChoiceType::class, [
+                'choices' => $stayDurations,
+                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'housing.search.criteria.length_stay.label',
+                'choice_label' => function ($choice, $key, $value) use ($locale) {
+                    return 'en' === $locale ? $choice->getLabelEn() : $choice->getLabelFr();
+                },
+                ])
+            ->add('occupationModes', ChoiceType::class, [
+                'choices' => $occupationModes,
+                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'housing.search.criteria.occupation_mode.label',
+                'choice_label' => function ($choice, $key, $value) use ($locale) {
+                    return 'en' === $locale ? $choice->getLabelEn() : $choice->getLabelFr();
+                },
+                ])
+
+            ->add('aplAgreement', CheckboxType::class, [
+                'label' => 'housing.search.criteria.apl_agreement.label',
+                'required' => false,
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => SearchCriteriaModel::class,
+            'locale' => 'fr',
+            'advancedSearch' => false,
         ]);
     }
 }

@@ -1,7 +1,12 @@
 @use 'variables' as v;
 
 .card {
-    border: none;
+    border: 1px solid transparent;
+
+    &:hover {
+        border: 1 px !important;
+        border-color: $primary;
+    }
 
     h2 {
         font-size: 1.1rem;
@@ -82,12 +87,13 @@ ul.services {
 }
 
 .price {
-    @include font-size(1.5rem);
+    @include font-size(1.2rem);
+    font-variation-settings: 800;
 }
 
 .cards-list {
     height: 75vh;
-    overflow: scroll;
+    overflow-y: scroll;
 
     @media screen and (max-width: 414px) {
         height: unset;

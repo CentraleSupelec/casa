@@ -59,3 +59,7 @@ services:
         class: App\Service\MjmlRenderer
         arguments:
             $mjmlBaseUri: '%env(MJML_PROTOCOL)%://%env(MJML_HOST)%:%env(MJML_PORT)%'
+
+    App\Service\TokenGeneratorService:
+        arguments:
+            $signingKey: '%env(APP_SECRET)%'

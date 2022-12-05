@@ -1,0 +1,8 @@
+{% macro displayPOI(poi) %}
+    <li class="main-info d-flex flex-column">
+        <span>{{ poi.label }}</span>
+        {% if poi.description is not null %}
+            <span class="minor-info">{{ poi.description }}</span>
+        {% endif %}
+    </li>
+{% endmacro %}

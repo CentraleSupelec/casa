@@ -1,0 +1,12 @@
+{% macro displayEquipment(equipment) %}
+    <div class="icon-with-text">
+        <span class="picture">
+            {% if equipment.picture is not empty %}
+                <i class="text-primary {{ equipment.picture }}"></i>
+            {% else %}
+                <i class="fa-light fa-dash"></i>
+            {% endif %}
+        </span>
+        <span class="picture-label text-wrap">{{ equipment.label }}</span>
+    </div>
+{% endmacro %}

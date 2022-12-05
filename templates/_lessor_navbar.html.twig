@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-6 d-flex align-items-center"
+            href="{{ path('app_lessor_admin_housing_group_list') }}">
+            <div class="me-2">
+                <i class="fa-solid fa-key fa-xl text-primary"></i>
+            </div>
+            <div>
+                <span class="visually-hidden">
+                    {{ 'home.homepage_link'|trans }}
+                </span>
+                <span class="d-none d-sm-block">
+                    {{ 'home.nav.title'|trans }}
+                    <br />
+                    {{ 'home.nav.subtitle'|trans }}
+                </span>
+            </div>
+        </a>
+        <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item p-2 p-sm-0">
+                        <span class="p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                            {{ app.user.lastName }} {{ app.user.firstName }}
+                            -
+                            {{ app.user.lessor.Name }}
+                        </span>
+                    </li>
+
+                    <li class="nav-item p-2 p-sm-0">
+                        <a class="text-decoration-none d-flex flex-row"
+                            href="{{ path('lessor_admin_logout') }}">
+                            <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-arrow-right-from-bracket fa-xl text-primary">
+
+                                </i>
+                            </span>
+                            <span class="d-flex align-items-center">
+                                {{ 'authentication.log_out'|trans }}
+                            </span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item p-2 p-sm-0">
+                        <a class="text-decoration-none d-flex flex-row"
+                            href="{{ path('lessor_admin_login') }}">
+                            <span class="border border-primary p-1 rounded-2 me-1 d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-arrow-right-to-bracket fa-xl text-primary">
+
+                                </i>
+                            </span>
+                            <span class="d-flex align-items-center">
+                                {{ 'authentication.log_in.button'|trans }}
+                            </span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

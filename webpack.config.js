@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('show_map', './assets/show_map.js')
+    .addEntry('lessor_admin', './assets/lessor_admin.js')
 
     .addStyleEntry('admin', './assets/styles/admin.scss')
 

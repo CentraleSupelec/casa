@@ -10,7 +10,6 @@ use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Uid\Uuid;
@@ -35,7 +34,7 @@ class AuthenticationController extends AbstractController
             'lastUsername' => $lastUsername,
         ];
 
-        $user = $studentRepository->findOneBy(['email' => $lastUsername]);
+        $user = $studentRepository->findOneBy(['email' => strtolower($lastUsername)]);
 
         $template_data['verificationToken'] = $user?->getVerificationToken();
 
@@ -52,11 +51,8 @@ class AuthenticationController extends AbstractController
     {
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserService $userService): Response
+    public function register(Request $request, UserService $userService, TranslatorInterface $translator): Response
     {
         $student = new Student();
         $form = $this->createForm(RegistrationFormType::class, $student);
@@ -64,9 +60,15 @@ class AuthenticationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $student->setVerificationToken(Uuid::v4());
+            $student->setEmail(strtolower($student->getEmail()));
             $userService->updateUser($student);
+            $this->addFlash('success', $translator->trans('authentication.register.account_created'));
 
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $student);
+            try {
+                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $student);
+            } catch (\Exception $e) {
+                $this->addFlash('error', $translator->trans('authentication.send_verification_error'));
+            }
 
             return $this->redirectToRoute('app_login');
         }
@@ -76,9 +78,6 @@ class AuthenticationController extends AbstractController
         ]);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
     #[Route('/verify/send', name: 'app_send_verification_email')]
     public function sendVerificationEmail(Request $request, AuthenticationUtils $authenticationUtils, StudentRepository $studentRepository, TranslatorInterface $translator): Response
     {
@@ -87,7 +86,7 @@ class AuthenticationController extends AbstractController
         $verificationToken = $request->get('verificationToken');
 
         if (null === $verificationToken) {
-            $this->addFlash('error', $translator->trans('authentication.log_in.send_verification_error'));
+            $this->addFlash('error', $translator->trans('authentication.send_verification_error'));
 
             return $this->redirectToRoute('app_register');
         }
@@ -95,12 +94,16 @@ class AuthenticationController extends AbstractController
         $user = $studentRepository->findOneBy(['verificationToken' => $verificationToken]);
 
         if (null === $user) {
-            $this->addFlash('error', $translator->trans('authentication.log_in.send_verification_error'));
+            $this->addFlash('error', $translator->trans('authentication.send_verification_error'));
 
             return $this->redirectToRoute('app_register');
         }
 
-        $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user);
+        try {
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user);
+        } catch (\Exception $e) {
+            $this->addFlash('error', $translator->trans('authentication.send_verification_error'));
+        }
 
         return $this->render('authentication/login.html.twig', [
             'error' => null,

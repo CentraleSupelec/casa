@@ -36,14 +36,17 @@ class HousingGroup
     #[Assert\NotNull]
     private ?Lessor $lessor = null;
 
-    #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: HousingGroupService::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: HousingGroupService::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $housingGroupServices;
 
     #[ORM\ManyToMany(targetEntity: Equipment::class)]
     private Collection $equipments;
 
-    #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: PointOfInterest::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: PointOfInterest::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $pointsOfInterest;
+
+    #[ORM\ManyToMany(targetEntity: Guarantor::class, orphanRemoval: true, cascade: ['persist'])]
+    private Collection $possibleGuarantor;
 
     public function __construct()
     {
@@ -52,6 +55,7 @@ class HousingGroup
         $this->housingGroupServices = new ArrayCollection();
         $this->equipments = new ArrayCollection();
         $this->pointsOfInterest = new ArrayCollection();
+        $this->possibleGuarantor = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -210,6 +214,30 @@ class HousingGroup
                 $pointsOfInterest->setHousingGroup(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Guarantor>
+     */
+    public function getPossibleGuarantor(): Collection
+    {
+        return $this->possibleGuarantor;
+    }
+
+    public function addPossibleGuarantor(Guarantor $possibleGuarantor): self
+    {
+        if (!$this->possibleGuarantor->contains($possibleGuarantor)) {
+            $this->possibleGuarantor[] = $possibleGuarantor;
+        }
+
+        return $this;
+    }
+
+    public function removePossibleGuarantor(Guarantor $possibleGuarantor): self
+    {
+        $this->possibleGuarantor->removeElement($possibleGuarantor);
 
         return $this;
     }

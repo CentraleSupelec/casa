@@ -14,21 +14,43 @@
                 {{
                     Navigation.displayTabs(app.request.attributes.get('_route'))
                 }}
-                <ul class="text-dark text-center text-md-start p-0"
-                    style="list-style: none">
-                    {% for bookmarkElement in bookmarksList %}
-                        <li>
-                            {{
-                                HousingCard.displayCard(
-                                    bookmarkElement[0],
-                                    bookmarkElement.hasCriteria,
-                                    bookmarkElement.isPriority,
-                                    imageBaseUrl
-                                )
-                            }}
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% if bookmarksList|length %}
+                    <ul class="text-dark text-center text-md-start p-0"
+                        style="list-style: none">
+                        {% for bookmarkElement in bookmarksList %}
+                            {% if not bookmarkElement[0].available %}
+                                <div class="bookmark-unavailable">
+                                    
+                            {% endif %}
+                         
+                           <li>
+                                {{
+                                    HousingCard.displayCard(
+                                        bookmarkElement[0],
+                                        bookmarkElement.hasCriteria,
+                                        bookmarkElement.isPriority,
+                                        imageBaseUrl
+                                    )
+                                }}
+                             
+                            </li>
+                             {% if not bookmarkElement[0].available %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="d-flex justify-content-center">
+                        <h1 class="mt-4">
+                            {{ 'bookmark.empty'|trans }}
+                            <i class="fa-solid fa-heart">
+
+                            </i><span class="visually-hidden">{{
+                                    'bookmark.remove'|trans
+                                }}</span>
+                        </h1>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </main>

@@ -1,0 +1,60 @@
+{% macro displayListItem(housing, imageBaseUrl) %}
+    {% import 'housing/_carousel.html.twig' as Carousel %}
+    {% import 'housing/_range_data.html.twig' as RangeData %}
+    {% import 'housing/_bookmark_button.html.twig' as Bookmark %}
+
+ {% if housing.housingGroup.address.coordinates.longitude and housing.housingGroup.address.coordinates.latitude %}
+    {%
+    set locationInfo = {
+        longitude: housing.housingGroup.address.coordinates.longitude,
+        latitude: housing.housingGroup.address.coordinates.latitude
+    }
+    %}
+    <div class="card mb-2 contains-map-data" style="width: 18rem;" data-location={{ locationInfo | json_encode }}>
+{% else %}
+    <div class="card mb-2" style="width: 20rem;">
+{% endif %}
+    <div class="card-header">
+        {{ housing.housingGroup.name}}
+    </div>
+
+    {% if housing.pictures|length > 0 %}
+        <img style="width: 18rem;" src="{{ imageBaseUrl }}/{{ housing.pictures[0].picture }}"
+                        alt="{{ housing.pictures[0].label }}" />
+    {% else %}
+        <div  style="width: 18rem;" class="fa-2x text-center">
+            <div class="fa-3x m-4">
+                <i class="fa-thin fa-images"></i>
+            </div>
+        </div>
+    {% endif %}
+    <div class="card-body" style="height:200px;">
+        <h2 class="card-title">
+        {{ housing.type | capitalize }} • {{
+                RangeData.displayArea(
+                    housing.areaMin,
+                    housing.areaMax
+                )
+            }} • {{ housing.housingGroup.address.city }}
+        </h2>
+        <p class="card-text crop-text">{{ housing.Description }}</p>
+            {% set living_mode = 'housing.living_mode.' ~ housing.livingMode %}  
+            <p class="card-text modes">{{ living_mode | trans }} • {{ occupation_mode | trans }}</p>
+       
+    </div>
+     <span class="align-bottom mb-2 mt-2 me-2 text-end">
+        <a href="{{
+            path(
+                'app_lessor_admin_housing_edit',
+                {
+                    id: housing.id,
+                    form_part : constant('App\\Form\\Lessor\\HousingFormType::MODE_EDIT')
+                }
+            )
+            }}"
+            class="btn btn-primary ">
+             <span class="fa-regular fa-pen-to-square pe-1"></span>Edit
+        </a>
+        
+    </div>
+{% endmacro %}

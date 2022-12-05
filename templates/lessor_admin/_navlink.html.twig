@@ -1,0 +1,15 @@
+
+{% macro displayLink(activeFormpart, routeName, label, id, formpart) %}
+    <li class="nav-item">
+        <a 
+            {% if activeFormpart == formpart %}
+                class="nav-link active"
+                aria-current="page"
+            {% else %}
+                class="nav-link" 
+            {% endif %}
+                href="{{ path(routeName, { 'id' : id , 'form_part' : formpart }) }}">
+            {{ label }}
+        </a>
+    </li>
+{% endmacro %}

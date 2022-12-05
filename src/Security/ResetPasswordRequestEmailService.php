@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Constants;
+use App\Entity\LessorAdminUser;
 use App\Model\PsuhUserInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -29,11 +30,17 @@ class ResetPasswordRequestEmailService
 
     private function getResetPasswordEmail(PsuhUserInterface $user, ResetPasswordToken $resetPasswordToken): TemplatedEmail
     {
+        if ($user instanceof LessorAdminUser) {
+            $template = 'emails/lessor_reset_password_email.html.twig';
+        } else {
+            $template = 'emails/reset_password_email.html.twig';
+        }
+
         return (new TemplatedEmail())
             ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
             ->to($user->getEmail())
             ->subject($this->translator->trans('authentication.reset_password.email.subject'))
-            ->htmlTemplate('emails/reset_password_email.html.twig')
+            ->htmlTemplate($template)
             ->context([
                 'resetToken' => $resetPasswordToken,
             ]);

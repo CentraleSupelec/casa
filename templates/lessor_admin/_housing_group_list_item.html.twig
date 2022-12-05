@@ -1,0 +1,70 @@
+{% macro displayListItem(housingGroup, imageBaseUrl) %}
+    
+
+ {% if housingGroup.address.coordinates.longitude and housingGroup.address.coordinates.latitude %}
+    {%
+    set locationInfo = {
+        longitude: housingGroup.address.coordinates.longitude,
+        latitude: housingGroup.address.coordinates.latitude
+    }
+    %}
+    <div class="card mb-2 contains-map-data"  data-location={{ locationInfo | json_encode }}>
+{% else %}
+    <div class="card mb-2">
+{% endif %}
+    <div class="row card-header">
+        <div class="col-10">
+            {{ housingGroup.name}}
+        </div>
+        <div class="col-2">
+            <a href="{{
+                path(
+                    'app_lessor_admin_housing_group_edit',
+                    {
+                        id: housingGroup.id,
+                        form_part : constant('App\\Form\\Lessor\\HousingGroupFormType::PRINCIPAL')
+                    }
+                )
+                }}"
+                class="btn btn-outline-primary">
+                <span class="fa-regular fa-pen-to-square "></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <h2 class="card-title">
+            {{ housingGroup.address.street }}
+            {{ housingGroup.address.postalCode }}
+            {{ housingGroup.address.city }}
+            {{ housingGroup.address.country }}
+        </h2>
+        {% if housingGroup.housings|length > 0  %}
+            <ul class="list-group list-group-flush">
+                {% for housing in housingGroup.housings %}
+                    <a href="{{ path('app_lessor_admin_housing_edit', {
+                        id: housing.id,
+                        form_part : constant('App\\Form\\Lessor\\HousingFormType::PRINCIPAL')
+                    }) }}">
+                        <li class="list-group-item">{{ housing.type|upper}} - {{ housing.areaMin }}m<sup>2</sup> - {{ housing.rentMin }} € 
+                            {% if housing.available %}
+                                <span class="badge bg-success float-end">publié</span>
+                            {% endif %}
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        {% endif %}
+       
+       <a class="btn btn-outline-primary mt-2 mb-2"
+            href="{{ path('app_lessor_admin_housing_create' , 
+            {
+                idHousingGroup : housingGroup.id
+            }) }}">
+            Ajouter un logement
+        </a>
+   
+    </div>
+
+    </div>
+{% endmacro %}

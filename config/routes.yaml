@@ -4,16 +4,35 @@ home:
     defaults:
         path: /fr
 
+# Temporary Prod Catch All except Admin
+# Uncomment this part to activate the "Temporary page"
+# catch_non_admin:
+#     path: /fr/{foo}
+#     requirements:
+#         foo: '.*'
+#     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+#     defaults:
+#         path: /soon
+
 controllers:
     resource: ../src/Controller/*
     type: annotation
     prefix: /{_locale}
     requirements:
         _locale: 'en|fr'
-    exclude: ../src/Controller/Admin/
+    exclude: ../src/Controller/(.*)Admin/
+
+# No Prefix for this route.
+# soon_controller:
+#     resource: ../src/Controller/Temporary/
+#     type: annotation
 
 admin_controllers:
     resource: ../src/Controller/Admin/
+    type: annotation
+
+lessor_admin_controllers:
+    resource: ../src/Controller/LessorAdmin/
     type: annotation
 
 kernel:

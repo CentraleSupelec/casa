@@ -49,6 +49,7 @@ class HousingRequestController extends AbstractController
         return $this->render('housing_request/generic.html.twig', [
             'requestForm' => $form->createView(),
             'destinationSchool' => $destinationSchool,
+            'student' => $student,
         ]);
     }
 
@@ -94,6 +95,7 @@ class HousingRequestController extends AbstractController
 
         /** @var Student $student */
         $student = $this->getUser();
+
         $destinationSchool = $student->getSchool();
         $additionalDestinationEmails = $this->getAdditionalEmailsFromQualificationQuestions(
             $entityManager, $qualificationQuestions, $destinationSchool
@@ -125,6 +127,8 @@ class HousingRequestController extends AbstractController
             'requestForm' => $form->createView(),
             'destinationSchool' => $destinationSchool,
             'additionalDestinationEmails' => $additionalDestinationEmails,
+            'qualificationQuestions' => $qualificationQuestions,
+            'student' => $student,
         ]);
     }
 

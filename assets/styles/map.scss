@@ -1,3 +1,14 @@
 #map {
-    min-width: 320px;
+    min-width: 250px;
+}
+
+.map-tooltip {
+    background-color: white !important;
+    border: 1px solid $primary !important;
+}
+.leaflet-tooltip-left.map-tooltip::before {
+    border-left-color: white;
+}
+.leaflet-tooltip-right.map-tooltip::before {
+    border-right-color: white;
 }

@@ -6,6 +6,8 @@ use App\Constants;
 use App\Entity\Equipment;
 use App\Entity\Housing;
 use App\Entity\HousingGroup;
+use App\Entity\OccupationMode;
+use App\Entity\StayDuration;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\AdminInterface;
@@ -140,23 +142,38 @@ class HousingAdmin extends AbstractAdmin
                 'required' => true,
                 'choices' => Constants::getHousingLivingModes(),
             ])
-            ->add('occupationMode', ChoiceType::class, [
-                'label' => 'Mode d\'occupation',
-                'required' => true,
-                'choices' => Constants::getHousingOccupationModes(),
+            ->add('occupationModes', ModelType::class, [
+                'class' => OccupationMode::class,
+                'multiple' => true,
+                'label' => 'Modes d\'occupation',
+                'btn_add' => false,
             ])
             ->add('accessibility', CheckboxType::class, [
-                'label' => 'Accessibilité PMR',
+                'label' => 'housing.accessible',
                 'required' => false,
             ])
             ->add('smoking', CheckboxType::class, [
-                'label' => 'Fumeur',
+                'label' => 'housing.smoking',
                 'required' => false,
             ])
             ->add('animalsAllowed', CheckboxType::class, [
-                'label' => 'Animaux autorisés',
+                'label' => 'housing.animals_allowed',
                 'required' => false,
             ])
+            ->add('aplAgreement', CheckboxType::class, [
+                'label' => 'housing.apl_agreement',
+                'required' => false,
+            ])
+            ->end()
+            ->with('Durée de séjour', [
+                'class' => 'col-md-8 col-md-offset-2',
+            ])
+                ->add('staydurations', ModelType::class, [
+                    'class' => StayDuration::class,
+                    'multiple' => true,
+                    'label' => 'Durées de séjour possibles pour le logement',
+                    'btn_add' => false,
+                ])
             ->end()
             ->with('Équipements', [
                 'class' => 'col-md-8 col-md-offset-2',
@@ -287,8 +304,11 @@ class HousingAdmin extends AbstractAdmin
             ->add('livingMode', null, [
                 'label' => 'Mode d\'habitation',
             ])
-            ->add('occupationMode', null, [
+            ->add('occupationModes', null, [
                 'label' => 'Mode d\'occupation',
+            ])
+            ->add('aplAgreement', null, [
+                'label' => 'housing.apl_agreement',
             ])
             ->add('accessibility', null, [
                 'label' => 'Accessibilité PMR',

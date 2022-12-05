@@ -1,5 +1,8 @@
 general:
     email_name: Université Paris Saclay - Plateforme de Logement
+    novalue: Non renseigné
+    label_yes: Oui
+    label_no: Non
 housing:
     search:
         criteria:
@@ -11,9 +14,18 @@ housing:
                 label: Surface minimum
             accessibility:
                 label: Je suis en situation de Handicap et je cherche un logement adapté
+            apl_agreement:
+                label: Eligible aux APL
             city:
                 label: Ville
-            submit: Rechercher
+                placeholder: Saisisser pour rechercher...
+            submit: Lancer la recherche
+            length_stay:
+                label: Durée du séjour
+            lease_term:
+                label: Durée du bail
+            occupation_mode:
+                label: Mode d'occupation
         result: liste des logements trouvés
         not_found: Aucune offre ne correspond à vos critères
         found: '%total_found% offre(s) trouvée(s) pour votre recherche'
@@ -27,12 +39,16 @@ housing:
         full: Logement entier
         homestay: Chez l'habitant
     occupation_mode:
-        alone: À occuper seul
-        couple: Idéal pour un couple
-        share: À occuper en colocation
+        #     alone: À occuper seul
+        #     couple: Idéal pour un couple
+        #     share: À occuper en colocation
         occupants: '%occupants% occupants'
+        label: Modes d'occupation possibles
+    stay_duration:
+        label: Durée de séjour possibles
     type:
         quantity: il y a %quantity% logements de ce type
+        room: Chambre
         studio: Studio
         t1: T1
         t1bis: T1 Bis
@@ -51,16 +67,23 @@ housing:
             included: Charges comprises
         security_deposit: Dépôt de garantie
         application_fee: Frais de dossier
-    practical_information: Infos pratiques
-    address: Adresse du logement
+    practical_information: Informations pratiques
+    general_information: Informations Générales
+    caracteristics: Caractéristiques
+    description: Description
+    no_description: Aucune description fournie
+    address: Emplacement du logement
     available: Disponible
     unavailable: Indisponible
     smoking: Fumeur
     non_smoking: Non fumeur
     animals_allowed: Animaux autorisés
     animals_non_allowed: Animaux non autorisés
-    accessible: Accès PMR
-    non_accessible: Pas d'accès PMR
+    apl_agreement: Eligible aux APL
+    apl_agreement_tag: APL
+    apl_agreement_false: non Eligible aux APL
+    accessible: Logement adapaté aux PMR
+    non_accessible: Logement non adapté aux PMR
     equipment:
         title: Équipements du logement
     services:
@@ -73,7 +96,7 @@ housing:
         next: image suivante
     area_unit: mètres carré
     criteria:
-        card_badge: Accès prioritaire sur critères
+        card_badge: prioritaire sur critères
         detail:
             title: Critères d'accès au logement
             description: Les étudiants validant l'ensemble des critères suivants sont prioritaires pour ce logement
@@ -85,17 +108,18 @@ housing_group:
     country:
         france: FRANCE
     point_of_interest_category:
-        store: Commerce
-        transportation: Transport
+        store: Commerces
+        transportation: Transports
+    guarantors: Garants Acceptés
 home:
     link:
         skip_to_main: Aller au contenu principal
     nav:
-        title: La plateforme de logements mutualisée
+        title: La plateforme de logements
         subtitle: de l'Université Paris-Saclay
     page_title: PSUH - Accueil
     welcome:
-        title: La <span class="emphase">plateforme</span> qui permet aux étudiantes et étudiants de l'<span class="emphase">Université Paris-Saclay</span> de trouver leur logement.
+        title: Aider les étudiantes et étudiants de l'Université Paris-Saclay<br/> à trouver leur logement.
     homepage_link: Lien vers la page d'accueil
 profile:
     title:
@@ -111,11 +135,15 @@ profile:
     birthdate: Date de naissance
     email: Adresse mail
     phone: Téléphone
-    school: Établissements scolaire
+    school: Établissements d'enseignement supérieur
     social_scholarship: Boursier sur critères sociaux du CROUS
     reduced_mobility: Je suis en situation de Handicap et je cherche un logement adapté
     choose_school: Veuillez sélectionner un établissement
 authentication:
+    send_verification_error: |
+        nous n'avons pas réussi à envoyer le message nécessaire à la vérification de votre compte.
+        Merci d'essayer de vous connecter un peu plus tard et de demander l'envoi d'un nouveau message de vérification.
+        Si le problème persiste, contactez la plateforme logement.
     email:
         label: E-Mail
         placeholder: exemple@nom-de-domaine.fr
@@ -138,6 +166,7 @@ authentication:
         call_to_action: Créer un compte
         button: S'inscrire
         page_title: PSUH - Inscription
+        account_created: Votre compte est créé. Avant de vous connecter vous devez vérifier votre adresse email.
     reset_password:
         page_title: Réinitialisation de mot de passe
         request:
@@ -149,6 +178,9 @@ authentication:
             no_email_advice:
                 text: Si vous n'avez pas reçu de mail, vérifiez vos spams ou
                 link: essayez de nouveau.
+            send_error: |
+                Nous n'avons pas réussi à envoyer le message de réinitialisation de votre mot de passe
+                Merci d'essayer un peu plus tard. Si le problème persiste, contactez la plateforme logement.
         email:
             subject: '[PSUH] Réinitialisation de votre mot de passe'
             header: Réinitialisez votre mot de passe
@@ -174,6 +206,7 @@ footer:
 bookmark:
     add: Ajouter en favori
     remove: supprimer des favoris
+    empty: Vous n'avez pas encore de favoris
 housing_request:
     common:
         introduction: Veuillez décrire votre demande ci-dessous
@@ -195,11 +228,12 @@ housing_request:
     emergency:
         qualification:
             questions:
-                homeless: Vous êtes à la rue ou sur le point de l'être
+                homeless: Vous êtes sans solution de logement et êtes dans une situation très critique
                 underage: Vous êtes un étudiant mineur et vous ne parvenez pas à trouver un logement
                 resource: Vous n'avez pas assez de ressource pour trouver un logement
-                handicap: Vous êtes en situation de handicap physique et vous ne parvenez pas à trouver un logement adapté
-                unsafe: Vous êtes en insécurité dans votre logement
+                handicap: Vous êtes en situation de handicap et vous ne parvenez pas à trouver un logement adapté
+                unsafe_housing: Votre logement est insalubre
+                unsafe: Vous avez besoin d'être séparé de votre collocataire
                 other: Autre situation
             title: Qualification de la demande
             subtitle: |-
@@ -207,6 +241,18 @@ housing_request:
                 veuillez cocher la ou les cases qui correspondent le mieux à votre situation
             continue_button: Continuer
         page_title: Envoyer une demande urgente
+        hints:
+            location: Pensez à préciser votre lieu de recherche.
+        missing:
+            school: |-
+                Vous n'avez pas encore renseigné votre établissement. 
+                Votre message sera envoyé à une adresse generique et le traitement risque de prendre plus de temps.
+            name: |-
+                Votre nom n'est pas renseigné dans votre profil. 
+                Pensez à l'indiquer dans le corps du message ou modifiez votre profil avant de faire la demande.
+            phone: |-
+                Votre numéro de téléphone n'est pas renseigné dans votre profil. 
+                Pensez à l'indiquer dans le corps du message ou modifiez votre profil avant de faire la demande.
         email:
             subject: '[PSUH][URGENT] Demande étudiante urgente'
             header: Demande urgente d'un étudiant à propos de logement

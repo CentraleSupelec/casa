@@ -1,0 +1,40 @@
+{% import _self as formUtils %}
+
+{% macro displayFormRow(poi) %}
+    <div class="row align-items-center js-housing-group-poi-item">
+        <div class="col-3">
+            {{ form_row(poi.category) }}
+        </div>
+        <div class="col-3">
+            {{ form_row(poi.label) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(poi.description) }}
+        </div>
+        <div class="col-2 text-end">
+            <a href="#" class="col-12 js-remove-housing-group-poi">
+                <span class="btn btn-primary fa fa-remove"></span>
+            </a>
+        </div>
+    </div>
+{% endmacro %}
+
+<div id="housingGroupPois"
+    class="my-4 py-4 js-housing-group-poi-wrapper"
+    data-index="{{ pointsOfInterest|length }}"
+    data-prototype="{{ formUtils.displayFormRow(
+        pointsOfInterest.vars.prototype
+    )|e('html_attr') }}">
+    {% if pointsOfInterest|length %}
+        {% for poi in pointsOfInterest %}
+            {{ formUtils.displayFormRow(poi) }}
+        {% endfor %}
+    {% else %}
+        {# prevents weird label render when empty #}
+        {{ form_widget(pointsOfInterest) }}
+    {% endif %}
+
+    <button class="btn btn-outline-primary js-add-housing-group-poi">
+        <span class="fa fa-circle-plus"></span>Ajouter un Point d'intérêt
+    </button>
+</div>

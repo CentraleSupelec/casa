@@ -32,6 +32,7 @@ class StudentFormType extends AbstractType
                 'required' => false, ])
             ->add('school', EntityType::class, [
                 'label' => 'profile.school',
+                'required' => false,
                 'class' => School::class,
                 ])
             ->add('socialScholarship', null, [

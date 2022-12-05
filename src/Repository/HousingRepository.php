@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Housing;
+use App\Entity\Lessor;
 use App\Model\SearchCriteriaModel;
 use App\Model\StudentProfileCriteriaModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -40,6 +41,7 @@ class HousingRepository extends ServiceEntityRepository
     ): QueryBuilder {
         return $this
             ->getHousingBaseQueryBuilderWithCriteriaAndPriority($searchCriteria, $studentProfileCriteria)
+              ->andWhere('h.available=true')
             ->addOrderBy('isPriority', 'desc')
             ->addOrderBy('h.createdAt', 'asc');
     }
@@ -69,6 +71,7 @@ class HousingRepository extends ServiceEntityRepository
     ): QueryBuilder {
         $queryBuilder = $this
             ->createQueryBuilder('h')
+
             ->addSelect(
                 'CASE WHEN :now between sc.startDate and sc.endDate or :now between ssc.startDate and ssc.endDate THEN true ELSE false END as hasCriteria'
             )
@@ -83,7 +86,8 @@ class HousingRepository extends ServiceEntityRepository
     }
 
     private function addSelectIsPriority(
-        QueryBuilder $queryBuilder, StudentProfileCriteriaModel $studentProfileCriteriaModel
+        QueryBuilder $queryBuilder,
+        StudentProfileCriteriaModel $studentProfileCriteriaModel
     ): QueryBuilder {
         $now = (new \DateTime())->format('Y-m-d');
         $parameters = [];
@@ -165,7 +169,31 @@ class HousingRepository extends ServiceEntityRepository
         if ($searchCriteriaModel->getAccessibility()) {
             $queryBuilder->andWhere('h.accessibility = true');
         }
+        if ($searchCriteriaModel->getAplAgreement()) {
+            $queryBuilder->andWhere('h.aplAgreement = true');
+        }
+        if ($searchCriteriaModel->getStayDurations()) {
+            $queryBuilder->innerJoin('h.stayDurations', 'lt')
+            ->andWhere('lt.id in (:selectedDurations)')
+            ->setParameter('selectedDurations', $searchCriteriaModel->getStayDurations());
+        }
+        if ($searchCriteriaModel->getOccupationModes()) {
+            $queryBuilder->innerJoin('h.occupationModes', 'om')
+            ->andWhere('om.id in (:selectedOccupationModes)')
+            ->setParameter('selectedOccupationModes', $searchCriteriaModel->getOccupationModes());
+        }
 
         return $queryBuilder;
+    }
+
+    public function getLessorHousingListQueryBuilder(Lessor $lessor, string $idHousingGroup): QueryBuilder
+    {
+        return $this
+            ->createQueryBuilder('h')
+                ->innerJoin('h.housingGroup', 'hg', Join::WITH, 'hg.id = :idHousingGroup')
+                ->innerJoin('hg.lessor', 'l', Join::WITH, 'l.id = :lessorId')
+                ->setParameter('lessorId', $lessor->getId())
+                ->setParameter('idHousingGroup', $idHousingGroup)
+                ->orderBy('h.housingGroup');
     }
 }

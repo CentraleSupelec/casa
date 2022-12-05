@@ -22,6 +22,7 @@ final class Constants
             'housing_request.emergency.qualification.questions.underage' => 'underage',
             'housing_request.emergency.qualification.questions.resource' => 'resource',
             'housing_request.emergency.qualification.questions.handicap' => 'handicap',
+            'housing_request.emergency.qualification.questions.unsafe_housing' => 'unsafe_housing',
             'housing_request.emergency.qualification.questions.unsafe' => 'unsafe',
             'housing_request.emergency.qualification.questions.other' => 'other',
         ];
@@ -33,6 +34,7 @@ final class Constants
     public static function getHousingTypes(): array
     {
         return [
+            'housing.type.room' => 'room',
             'housing.type.studio' => 'studio',
             'housing.type.t1' => 't1',
             'housing.type.t1bis' => 't1bis',
@@ -53,18 +55,6 @@ final class Constants
         return [
             'housing.living_mode.full' => 'full',
             'housing.living_mode.homestay' => 'homestay',
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
-    public static function getHousingOccupationModes(): array
-    {
-        return [
-            'housing.occupation_mode.alone' => 'alone',
-            'housing.occupation_mode.couple' => 'couple',
-            'housing.occupation_mode.share' => 'share',
         ];
     }
 

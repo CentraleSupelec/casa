@@ -1,0 +1,37 @@
+{% import _self as formUtils %}
+
+{% macro displayFormRow(service) %}
+    <div class="row align-items-center js-housing-group-service-item">
+        <div class="col-2">
+            {{ form_row(service.isOptional) }}
+        </div>
+        <div class="col-8">
+            {{ form_widget(service) }}
+        </div>
+        <div class="col-2 text-end">
+            <a href="#" class="col-12 js-remove-housing-group-service">
+                <span class="btn btn-primary fa fa-remove"></span>
+            </a>
+        </div>
+    </div>
+{% endmacro %}
+
+<div id="housingGroupServices"
+    class="my-4 py-4 js-housing-group-service-wrapper"
+    data-index="{{ services|length }}"
+    data-prototype="{{ formUtils.displayFormRow(services.vars.prototype)|e(
+        'html_attr'
+    ) }}">
+    {% if services|length %}
+        {% for service in services %}
+            {{ formUtils.displayFormRow(service) }}
+        {% endfor %}
+    {% else %}
+        {# prevents weird label render when empty #}
+        {{ form_widget(services) }}
+    {% endif %}
+
+    <button class="btn btn-outline-primary js-add-housing-group-service">
+        <span class="fa fa-circle-plus"></span>Ajouter un Service
+    </button>
+</div>

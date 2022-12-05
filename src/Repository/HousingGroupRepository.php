@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\HousingGroup;
+use App\Entity\Lessor;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -24,9 +27,18 @@ class HousingGroupRepository extends ServiceEntityRepository
         $results = $this->createQueryBuilder('h')
             ->select('UPPER(h.address.city) as city')
             ->distinct()
+            ->orderBy('city', 'ASC')
             ->getQuery()
             ->getResult();
 
         return array_column($results, 'city');
+    }
+
+    public function getLessorHousingGroupListQueryBuilder(Lessor $lessor): QueryBuilder
+    {
+        return $this
+            ->createQueryBuilder('h')
+                ->innerJoin('h.lessor', 'l', Join::WITH, 'l.id = :lessorId')
+                ->setParameter('lessorId', $lessor->getId());
     }
 }

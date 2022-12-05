@@ -1,32 +1,28 @@
 {% macro displayArea(min, max) %}
-    <span>
-        {{ min }} {% if max %}
-            - {{ max }}
-        {% endif %} <span aria-hidden="true">m<sup>2</sup></span>
-        <span class="visually-hidden">{{ 'housing.area_unit'|trans }}</span>
-    </span>
+    {{ min }} {% if max %}
+        - {{ max }}
+    {% endif %} <span aria-hidden="true">m<sup>2</sup></span>
+    <span class="visually-hidden">{{ 'housing.area_unit'|trans }}</span>
 {% endmacro %}
 
 {% macro displayRangeCost(min, max) %}
-    {% if max is null %}
-        <span>{{ min }} €</span>
-    {% else %}
-        <span>{{ min }} - {{ max }} €</span>
-    {% endif %}
+    <span class="info">
+        {% if max is null %}
+            {{ min }} €
+        {% else %}
+            {{ min }} - {{ max }} €
+        {% endif %}
+    </span>
 {% endmacro %}
 
 {% macro displayMonthlyRangeCost(min, max) %}
-    <span>
-        {{ _self.displayRangeCost(min, max) }}
-        {{ 'housing.price.per_month'|trans }}
-    </span>
+    {{ _self.displayRangeCost(min, max) }}
+    {{ 'housing.price.per_month'|trans }}
 {% endmacro %}
 
 {% macro displayCharges(included, min, max) %}
     {% if included %}
-        <span class="list-title">
-            {{ 'housing.price.charges.included'|trans }}
-        </span>
+        <span class="info">{{ 'housing.price.charges.included'|trans }}</span>
     {% else %}
         <span>
             <span class="strong-text">

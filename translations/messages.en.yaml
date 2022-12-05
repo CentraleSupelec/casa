@@ -1,5 +1,8 @@
 general:
     email_name: Université Paris Saclay - Plateforme de Logement
+    novalue: Not specified
+    label_yes: Yes
+    label_no: No
 housing:
     search:
         criteria:
@@ -11,9 +14,18 @@ housing:
                 label: minimum Area
             accessibility:
                 label: I have a disability and I’m looking for suitable accommodation
+            apl_agreement:
+                label: Eligible for APL
             city:
                 label: Town
+                placeholder: Type to start searching...
             submit: Search
+            length_stay:
+                label: Length of stay
+            lease_term:
+                label: Lease Term
+            occupation_mode:
+                label: Occupation mode
         result: housings found
         not_found: No offer found, please refine your search
         found: '%total_found% Offers match your search'
@@ -27,12 +39,16 @@ housing:
         full: Full
         homestay: Homestay accomodation
     occupation_mode:
-        alone: Alone
-        couple: Couple
-        share: House-share
+        #     alone: Alone
+        #     couple: Couple
+        #     share: House-share
         occupants: '%occupants% occupants'
+        label: Possible occupation modes
+    stay_duration:
+        label: Possible stay duration
     type:
         quantity: there are %quantity% housings of this type
+        room: Bedroom
         studio: Studio
         t1: T1
         t1bis: T1 Bis
@@ -52,15 +68,22 @@ housing:
         security_deposit: Security deposit
         application_fee: Application fees
     practical_information: Practical information
-    address: Address
+    general_information: General informations
+    caracteristics: Caracteristics
+    description: Description
+    no_description: No description provided
+    address: Housing Location
     available: Available
     unavailable: Unavailable
     smoking: Smoking allowed
     non_smoking: Smoking forbidden
     animals_allowed: Animals allowed
     animals_non_allowed: Animals forbidden
-    accessible: Reduced mobility access
-    non_accessible: No reduced mobility access
+    apl_agreement: Eligible for APL
+    apl_agreement_tag: APL
+    apl_agreement_false: non Eligible for APL
+    accessible: Suitable for people with reduced mobility
+    non_accessible: Not suitable for people with reduced mobility
     equipment:
         title: Housing equipments
     services:
@@ -87,6 +110,7 @@ housing_group:
     point_of_interest_category:
         store: Store
         transportation: Transportation
+    guarantors: Accepted Guarantors
 home:
     link:
         skip_to_main: Skip to main content
@@ -95,7 +119,7 @@ home:
         subtitle: of Paris-Saclay University
     page_title: PSUH homepage
     welcome:
-        title: The <span class="emphase">website</span> that helps students of <span class="emphase">Paris-Saclay University</span> to find their housing.
+        title: Help students of Paris-Saclay University <br/>find their housing.
     homepage_link: link to home page
 profile:
     title:
@@ -111,11 +135,15 @@ profile:
     birthdate: Birthdate
     email: Email
     phone: Phone
-    school: School
+    school: Higher education institution
     social_scholarship: CROUS Social Scholarship
     reduced_mobility: I have a disability and I’m looking for suitable accommodation
     choose_school: Please select a School
 authentication:
+    send_verification_error: |
+        We failed sending the verification email.
+        Please, try to connect to your account in few secondes and ask for a new verification email.
+        Should this problem persit, please contact the platform.
     email:
         label: Email
         placeholder: example@domain.com
@@ -138,6 +166,7 @@ authentication:
         call_to_action: Sign In
         button: Register
         page_title: PSUH - Register
+        account_created: Your account is created. You'll need to verify your email before being able to login.
     reset_password:
         page_title: Password reset
         request:
@@ -149,6 +178,9 @@ authentication:
             no_email_advice:
                 text: If you did not receive such an email, please check your spams or
                 link: try again.
+            send_error: |
+                We failed to send your password reset link.
+                Please try again later. Should this problem persit, please contact the platform.
         email:
             subject: '[PSUH] Password reset'
             header: Reset your password
@@ -174,6 +206,7 @@ footer:
 bookmark:
     add: Add to bookmarks
     remove: Remove from bookmarks
+    empty: You don't have any bookmark yet !
 housing_request:
     common:
         introduction: Please describe your request below
@@ -195,11 +228,12 @@ housing_request:
     emergency:
         qualification:
             questions:
-                homeless: You are (or you are about to be) homeless
+                homeless: You are without a housing solution and are in a very critical situation
                 underage: You are underage and you have trouble finding your accomodation
                 resource: You do not have enough resources to find an accomodation
-                handicap: You suffer from a physical handicap and you have trouve finding your accomodation
-                unsafe: You are not safe in your accomodation
+                handicap: You suffer from a handicap and you have trouve finding your accomodation
+                unsafe_housing: Your home unsanitary
+                unsafe: You need to be separated from your roommate
                 other: Other situation
             title: Request qualification
             subtitle: |-
@@ -207,6 +241,18 @@ housing_request:
                 check what corresponds best to your current situation
             continue_button: Continue
         page_title: Send an urgent request
+        hints:
+            location: Dont forget to specify your location.
+        missing:
+            school: |-
+                You have not yet entered your institution.
+                Your message will be sent to a generic address and processing may take longer.
+            name: |-
+                Your name is not specified in your profile.
+                dont forget to specify it in the body of the message or modify your profile before making the request.
+            phone: |-
+                Your name is not specified in your profile.
+                Dont forget to specify it in the body of the message or modify your profile before making the request.
         email:
             subject: '[PSUH][URGENT] Urgent student request'
             header: Urgent student request regarding accomodation

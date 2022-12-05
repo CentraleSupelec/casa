@@ -1,0 +1,122 @@
+{% extends 'lessor_base.html.twig' %}
+{% import 'lessor_admin/_navlink.html.twig' as Navigation %}
+
+{% block body %}
+    {% set form_part = app.request.attributes.get('form_part') %}
+
+    <div class="container">
+        <a class="btn btn-primary mt-4"
+            href="{{ path('app_lessor_admin_housing_group_list') }}">
+            <i class="fa-solid fa-arrow-left"></i> Retour
+        </a>
+
+        <ul class="nav nav-tabs my-4">
+            {% if
+                form_mode
+                    == constant(
+                        'App\\Form\\Lessor\\HousingGroupFormType::MODE_CREATE'
+                    ) %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                        Principal
+                    </a>
+                </li>
+            {% else %}
+                {{
+                    Navigation.displayLink(
+                        form_part,
+                        'app_lessor_admin_housing_group_edit',
+                        'Principal',
+                        form.vars.data.id,
+                        constant(
+                            'App\\Form\\Lessor\\HousingGroupFormType::PRINCIPAL'
+                        )
+                    )
+                }}
+                {{
+                    Navigation.displayLink(
+                        form_part,
+                        'app_lessor_admin_housing_group_edit',
+                        'Services',
+                        form.vars.data.id,
+                        constant(
+                            'App\\Form\\Lessor\\HousingGroupFormType::SERVICES'
+                        )
+                    )
+                }}
+                {{
+                    Navigation.displayLink(
+                        form_part,
+                        'app_lessor_admin_housing_group_edit',
+                        "Points d'intérêt",
+                        form.vars.data.id,
+                        constant('App\\Form\\Lessor\\HousingGroupFormType::POI')
+                    )
+                }}
+            {% endif %}
+        </ul>
+
+        {{ form_start(form) }}
+        {% if
+            form_part
+                == constant(
+                    'App\\Form\\Lessor\\HousingGroupFormType::PRINCIPAL'
+                )
+                or form_part is null %}
+            <div class="row my-4 py-4">
+                <div class="col-12 col-md-8">
+                    {{ form_row(form.name) }}
+                    {{ form_widget(form.address) }}
+                    {{ form_row(form.possibleGuarantor) }}
+                </div>
+
+                <div class="col-12 col-md-4 border-start border-5">
+                    <h2>
+                        Equipements
+                    </h2>
+
+                    <hr class="divider" />
+
+                    {% for equipment in form.equipments %}
+                        <div style="display: inline-block; width: 180px;">
+                            {{ form_widget(equipment) }}
+                            {{ form_label(equipment) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if
+            form_part
+                == constant(
+                    'App\\Form\\Lessor\\HousingGroupFormType::SERVICES'
+                ) %}
+            {% include 'lessor_admin/_housing_group_services.html.twig' with {
+                services: form.housingGroupServices
+            } %}
+        {% endif %}
+        {% if
+            form_part
+                == constant('App\\Form\\Lessor\\HousingGroupFormType::POI') %}
+            {% include 'lessor_admin/_housing_group_poi.html.twig' with {
+                pointsOfInterest: form.pointsOfInterest
+            } %}
+        {% endif %}
+
+        <input type="submit"
+            value="Enregistrer"
+            class="btn btn-primary my-4 form-control" />
+
+        {{ form_end(form) }}
+
+        <a class="btn btn-primary mb-4"
+            href="{{ path('app_lessor_admin_housing_group_list') }}">
+            <i class="fa-solid fa-arrow-left"></i> Retour
+        </a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('lessor_admin') }}
+{% endblock %}

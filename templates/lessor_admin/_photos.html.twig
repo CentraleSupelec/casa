@@ -1,0 +1,30 @@
+{% import _self as formUtils %}
+
+{% macro displayFormRow(pictureForm) %}
+    <div class="col-4 my-4 text-center js-photo-item">
+        {{ form_row(pictureForm.label) }}
+        {{ form_widget(pictureForm.file) }}
+        <a href="#" class="btn btn-outline-primary js-remove-photo mt-4">
+            <span class="fa-regular fa-trash-can fa-2x"></span>
+        </a>
+    </div>
+{% endmacro %}
+
+<div id="photos"
+    class="container row js-photo-wrapper"
+    data-index="{{ pictures|length }}"
+    data-prototype="{{ formUtils.displayFormRow(pictures.vars.prototype)|e(
+        'html_attr'
+    ) }}">
+    {% if pictures|length %}
+        {% for pictureForm in pictures %}
+            {{ formUtils.displayFormRow(pictureForm) }}
+        {% endfor %}
+    {% else %}
+        {{ form_widget(pictures) }}
+    {% endif %}
+    <button class="col-4 btn btn-outline-primary js-add-photo">
+        <span class="fa-solid fa-plus-circle"></span>
+        Ajouter une Photo
+    </button>
+</div>

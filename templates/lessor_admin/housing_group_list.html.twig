@@ -1,0 +1,53 @@
+{% extends 'lessor_base.html.twig' %}
+{% import 'lessor_admin/_housing_group_list_item.html.twig'
+    as HousingGroupItem
+%}
+
+{% block title %}
+    {{ 'housing.list.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <main class="container" id="maincontent">
+        {% if pagination|length %}
+            <div class="row py-4 g-5">
+                {% for housingGroup in pagination %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        {{
+                            HousingGroupItem.displayListItem(
+                                housingGroup,
+                                imageBaseUrl
+                            )
+                        }}
+                    </div>
+                {% endfor %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a class="btn btn-primary mt-2 mb-2"
+                        href="{{
+                        path(
+                            'app_lessor_admin_housing_group_create'
+                        )
+                        }}">
+                        Ajouter un Groupe de Logement
+                    </a>
+                </div>
+            </div>
+            <div class="navigation" role="navigation" aria-label="pages">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        {% else %}
+            <div class="col-12">
+                <h1>
+                    Bonjour et bienvenue
+                </h1>
+                <p>
+                    Créez votre premier groupe de logement
+                </p>
+                <a class="btn btn-primary mt-2 mb-2"
+                    href="{{ path('app_lessor_admin_housing_group_create') }}">
+                    Ajouter un Groupe de Logement
+                </a>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

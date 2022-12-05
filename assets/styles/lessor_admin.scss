@@ -1,0 +1,21 @@
+.thumbnail {
+    width: 200px;
+}
+
+.vich-image {
+    display: flex;
+    flex-direction: column;
+    a {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        img {
+            max-height: 300px;
+            max-width: 300px;
+            border: solid;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    }
+}
