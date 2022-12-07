@@ -22,21 +22,32 @@ class EmailService
     /**
      * @throws TransportExceptionInterface
      */
+
+    // TODO - Etrange de ne pas avoir la boucle sur les destinataires des établissements.
     public function sendHousingGenericRequestEmail(
         HousingGenericRequestModel $requestModel, ?School $destinationSchool
     ): void {
         $studentEmail = $requestModel->getStudent()->getEmail();
         $destinationEmail = $destinationSchool?->getHousingServiceEmail() ?: Constants::HOUSING_REQUEST_DEFAULT_EMAIL;
-        $this->mailer->send(
-            (new TemplatedEmail())
-            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
+
+        $contentEmail = new TemplatedEmail();
+
+        $contentEmail->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
             ->subject($this->translator->trans('housing_request.generic.email.subject'))
             ->to($destinationEmail)
-            ->addCc($studentEmail)
-            ->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL)
-            ->replyTo($studentEmail)
-            ->htmlTemplate('emails/housing_generic_request.html.twig')
-            ->context(['request' => $requestModel])
+            ->addCc($studentEmail);
+
+        if (Constants::HOUSING_REQUEST_ARCHIVE_EMAIL != $destinationEmail) {
+            $contentEmail->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL);
+        }
+
+        $contentEmail
+                ->replyTo($studentEmail)
+                ->htmlTemplate('emails/housing_generic_request.html.twig')
+                ->context(['request' => $requestModel]);
+
+        $this->mailer->send(
+            $contentEmail
         );
     }
 
@@ -59,19 +70,27 @@ class EmailService
         $email = (new TemplatedEmail())
             ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
             ->subject($this->translator->trans('housing_request.emergency.email.subject'));
+
         foreach ($destinationEmails as $address) {
             $email->addTo($address);
         }
+        $email
+            ->addCc($studentEmail);
+        // Add BCC to central email if not already the "to"
+        if (!in_array(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL, $destinationEmails)) {
+            $email->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL);
+        }
+
+        $email
+            ->replyTo($studentEmail)
+            ->htmlTemplate('emails/housing_emergency_request.html.twig')
+            ->context([
+                'request' => $requestModel,
+                'emergencyQualificationQuestions' => $emergencyQualificationQuestions,
+            ]);
+
         $this->mailer->send(
             $email
-                ->addCc($studentEmail)
-                ->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL)
-                ->replyTo($studentEmail)
-                ->htmlTemplate('emails/housing_emergency_request.html.twig')
-                ->context([
-                    'request' => $requestModel,
-                    'emergencyQualificationQuestions' => $emergencyQualificationQuestions,
-                ])
         );
     }
 }

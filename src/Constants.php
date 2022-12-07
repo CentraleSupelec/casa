@@ -8,9 +8,9 @@ final class Constants
 
     public const APP_EMAIL_ADDRESS = 'no-reply@universite-paris-saclay.fr';
 
-    public const HOUSING_REQUEST_DEFAULT_EMAIL = 'housing-service@universite-paris-saclay.fr';
+    public const HOUSING_REQUEST_DEFAULT_EMAIL = 'logement.etudiant@universite-paris-saclay.fr';
 
-    public const HOUSING_REQUEST_ARCHIVE_EMAIL = 'housing-service-archive@universite-paris-saclay.fr';
+    public const HOUSING_REQUEST_ARCHIVE_EMAIL = 'logement.etudiant@universite-paris-saclay.fr';
 
     /**
      * @return string[]
