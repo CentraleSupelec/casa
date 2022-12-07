@@ -280,28 +280,32 @@
                     {{ 'housing.equipment.title'|trans }}
                 </h2>
                 <div class="row">
-                    <div class="col icons-container">
-                        {# This removes double display if admin ticked equipement both in Group and Housing #}
-                        {% set displayed = [] %}
-                        {% for equipment in housing.housingGroup.equipments %}
-                            {{ Icons.displayEquipment(equipment) }}
-                            {% set displayed =
-                                displayed|merge(
-                                    [
-                                        {
-                                            id: equipment.id
-                                        }
-                                    ]
-                                )
-                            %}
-                        {% endfor %}
+                        <div class="col icons-container">
+                            {% if housing.housingGroup.equipments|length %}
+                                    {# This removes double display if admin ticked equipement both in Group and Housing #}
+                                    {% set displayed = [] %}
+                                    {% for equipment in housing.housingGroup.equipments %}
+                                        {{ Icons.displayEquipment(equipment) }}
+                                        {% set displayed =
+                                            displayed|merge(
+                                                [
+                                                    {
+                                                        id: equipment.id
+                                                    }
+                                                ]
+                                            )
+                                        %}
+                                    {% endfor %}
 
-                        {% for equipment in housing.equipments %}
-                            {% if not equipment.id in displayed %}
-                                {{ Icons.displayEquipment(equipment) }}
+                                    {% for equipment in housing.equipments %}
+                                        {% if not equipment.id in displayed %}
+                                            {{ Icons.displayEquipment(equipment) }}
+                                        {% endif %}
+                                    {% endfor %}
+                            {% else %}
+                                {{ 'general.novalue'|trans }}
                             {% endif %}
-                        {% endfor %}
-                    </div>
+                        </div>
                 </div>
                 <div class="row gx-0">
                     <div class="col-12 mt-4">
