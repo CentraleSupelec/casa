@@ -1,5 +1,5 @@
 general:
-    email_name: Université Paris Saclay - Plateforme de Logement
+    email_name: Université Paris-Saclay - Plateforme de Logement
     novalue: Not specified
     label_yes: Yes
     label_no: No
@@ -116,10 +116,10 @@ home:
         skip_to_main: Skip to main content
     nav:
         title: The housing platorm
-        subtitle: of Paris-Saclay University
+        subtitle: of Université Paris-Saclay
     page_title: PSUH homepage
     welcome:
-        title: Help students of Paris-Saclay University <br/>find their housing.
+        title: Help students of Université Paris-Saclay <br/>find their housing.
     homepage_link: link to home page
 profile:
     title:
@@ -215,7 +215,7 @@ housing_request:
         send_success: Your request has been sent.
         information_card:
             title: Housing request
-            default: Housing Service - Paris Saclay University
+            default: Housing Service - Université Paris-Saclay
         email:
             introduction: Request content
             student_info: Information about the student
