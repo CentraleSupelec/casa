@@ -8,11 +8,22 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PlainPasswordType extends AbstractType
 {
+    public function __construct(private TranslatorInterface $translator)
+    {
+    }
+
     public function configureOptions(OptionsResolver $resolver): void
     {
+        $minLimit = 8;
+        $maxLimit = 4096;
+
+        $minMessage = $this->translator->trans('authentication.password.short', ['%limit%' => $minLimit]);
+        $maxMessage = $this->translator->trans('authentication.password.long', ['%limit' => $maxLimit]);
+
         $resolver->setDefaults([
             'type' => PasswordType::class,
             'first_options' => [
@@ -23,10 +34,10 @@ class PlainPasswordType extends AbstractType
                         'message' => 'authentication.password.blank',
                     ]),
                     new Length([
-                        'min' => 8,
-                        'max' => 4096,
-                        'minMessage' => 'authentication.password.short',
-                        'maxMessage' => 'authentication.password.long',
+                        'min' => $minLimit,
+                        'max' => $maxLimit,
+                        'minMessage' => $minMessage,
+                        'maxMessage' => $maxMessage,
                     ]),
                 ],
             ],

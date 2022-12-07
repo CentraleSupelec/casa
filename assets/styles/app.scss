@@ -69,15 +69,9 @@ h3 {
     border-top: dotted 1px;
 }
 
-.required:after {
+label.required:after {
     content: '*';
     color: red;
-}
-
-*,
-:after,
-:before {
-    box-sizing: border-box;
 }
 
 .bookmark-unavailable {
