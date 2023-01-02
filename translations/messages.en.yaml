@@ -26,6 +26,8 @@ housing:
                 label: Lease Term
             occupation_mode:
                 label: Occupation mode
+            lease_type:
+                label: Lease Type
         result: housings found
         not_found: No offer found, please refine your search
         found: '%total_found% Offers match your search'
@@ -39,13 +41,12 @@ housing:
         full: Full
         homestay: Homestay accomodation
     occupation_mode:
-        #     alone: Alone
-        #     couple: Couple
-        #     share: House-share
         occupants: '%occupants% occupants'
         label: Possible occupation modes
     stay_duration:
         label: Possible stay duration
+    lease_type:
+        label: Lease Type
     type:
         quantity: there are %quantity% housings of this type
         room: Bedroom

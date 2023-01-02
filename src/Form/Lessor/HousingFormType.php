@@ -6,6 +6,7 @@ use App\Constants;
 use App\Entity\Equipment;
 use App\Entity\Housing;
 use App\Entity\HousingGroup;
+use App\Entity\LeaseType;
 use App\Entity\OccupationMode;
 use App\Entity\StayDuration;
 use Doctrine\ORM\EntityRepository;
@@ -152,6 +153,12 @@ class HousingFormType extends AbstractType
                         'multiple' => true,
                         'expanded' => true,
                         'label' => 'Durées de séjour possibles',
+                    ])
+                ->add('leaseType', EntityType::class, [
+                        'class' => LeaseType::class,
+                        'multiple' => true,
+                        'expanded' => true,
+                        'label' => 'Type de bail possible',
                     ])
                 ->add('equipments', EntityType::class, [
                         'class' => Equipment::class,

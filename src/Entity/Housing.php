@@ -25,7 +25,7 @@ class Housing
     private ?string $description = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-     #[Assert\Url]
+    #[Assert\Url]
     private ?string $redirectLink = null;
 
     #[ORM\Column(type: 'boolean')]
@@ -127,6 +127,9 @@ class Housing
     #[ORM\Column(type: 'boolean')]
     private ?bool $aplAgreement = false;
 
+    #[ORM\ManyToMany(targetEntity: LeaseType::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    private Collection $leaseType;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -136,6 +139,7 @@ class Housing
         $this->equipments = new ArrayCollection();
         $this->stayDurations = new ArrayCollection();
         $this->occupationModes = new ArrayCollection();
+        $this->leaseType = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -603,6 +607,30 @@ class Housing
     public function setAplAgreement(bool $aplAgreement): self
     {
         $this->aplAgreement = $aplAgreement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LeaseType>
+     */
+    public function getLeaseType(): Collection
+    {
+        return $this->leaseType;
+    }
+
+    public function addLeaseType(LeaseType $leaseType): self
+    {
+        if (!$this->leaseType->contains($leaseType)) {
+            $this->leaseType[] = $leaseType;
+        }
+
+        return $this;
+    }
+
+    public function removeLeaseType(LeaseType $leaseType): self
+    {
+        $this->leaseType->removeElement($leaseType);
 
         return $this;
     }

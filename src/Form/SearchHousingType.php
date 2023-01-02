@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\LeaseType;
 use App\Entity\OccupationMode;
 use App\Entity\StayDuration;
 use App\Model\SearchCriteriaModel;
@@ -25,6 +26,7 @@ class SearchHousingType extends AbstractType
 
         $stayDurations = $this->entitymanager->getRepository(StayDuration::class)->findAll();
         $occupationModes = $this->entitymanager->getRepository(OccupationMode::class)->findAll();
+        $leaseType = $this->entitymanager->getRepository(LeaseType::class)->findAll();
 
         $locale = $options['locale'];
 
@@ -70,6 +72,16 @@ class SearchHousingType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'housing.search.criteria.occupation_mode.label',
+                'choice_label' => function ($choice, $key, $value) use ($locale) {
+                    return 'en' === $locale ? $choice->getLabelEn() : $choice->getLabelFr();
+                },
+                ])
+            ->add('leaseType', ChoiceType::class, [
+                'choices' => $leaseType,
+                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'housing.search.criteria.lease_type.label',
                 'choice_label' => function ($choice, $key, $value) use ($locale) {
                     return 'en' === $locale ? $choice->getLabelEn() : $choice->getLabelFr();
                 },

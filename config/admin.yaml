@@ -197,3 +197,13 @@ services:
               manager_type: orm
               group: Référentiels
               label: Mode d'occupation
+
+    admin.lease_type:
+        class: App\Admin\LeaseTypeAdmin
+        tags:
+            - name: sonata.admin
+              model_class: App\Entity\LeaseType
+              controller: ~
+              manager_type: orm
+              group: Référentiels
+              label: Type de Bail

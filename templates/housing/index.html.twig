@@ -230,51 +230,75 @@
                                     ("housing.living_mode.#{housing.livingMode}")|trans
                                 }}
                             </li>
-                            {% if housing.occupationModes|length %}
-                                <ul >
-                                    <li class="main-info text-primary">
-                                    {{
-                                        ("housing.occupation_mode.label")|trans
-                                    }}
-                                    </li>
-                                {% for mode in housing.occupationModes %}
-                                    <li class="main-info"> {{ mode|label_translate}}</li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-                                
-                            {% if housing.occupants > 1 %}
-                                ({{
-                                    'housing.occupation_mode.occupants'|trans({
-                                        '%occupants%': housing.occupants
-                                    })
-                                }})
-                            {% endif %}
-
-                            {% if housing.stayDurations|length %}
-                                <ul >
-                                    <li class="main-info text-primary">
-                                        {{
-                                            ("housing.stay_duration.label")|trans
-                                        }}
-                                    </li>
-                                    {% for stayduration in housing.stayDurations %}
-                                        <li class="main-info">{{ stayduration|label_translate }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-
-                            {% if housing.quantity > 1 %}
-                                <li class="main-info">
-                                    {{
-                                        'housing.type.quantity'|trans({
-                                            '%quantity%': housing.quantity
-                                        })
-                                    }}
-                                </li>
-                            {% endif %}
                         </ul>
                     </div>
+                    
+                    {% if housing.occupationModes|length %}
+                    <div class="col-12 col-md-6 mt-4">
+                        <ul >
+                            <li class="main-info text-primary">
+                            {{
+                                ("housing.occupation_mode.label")|trans
+                            }}
+                            </li>
+                        {% if housing.occupants > 1 %}
+                            ({{
+                                'housing.occupation_mode.occupants'|trans({
+                                    '%occupants%': housing.occupants
+                                })
+                            }})
+                        {% endif %}
+
+                        {% for mode in housing.occupationModes %}
+                            <li class="main-info"> {{ mode|label_translate}}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                                
+
+                    {% if housing.stayDurations|length %}
+                    <div class="col-12 col-md-6 mt-4">
+                        <ul >
+                            <li class="main-info text-primary">
+                                {{
+                                    ("housing.stay_duration.label")|trans
+                                }}
+                            </li>
+                            {% for stayduration in housing.stayDurations %}
+                                <li class="main-info">{{ stayduration|label_translate }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if housing.leaseType|length %}
+                        <div class="col-12 col-md-6 mt-4">
+                            <ul >
+                                <li class="main-info text-primary">
+                                    {{
+                                        ("housing.lease_type.label")|trans
+                                    }}
+                                </li>
+                                {% for lease in housing.leaseType %}
+                                    <li class="main-info">{{ lease|label_translate }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    {% if housing.quantity > 1 %}
+                        <div class="col-12 col-md-6 mt-4">
+                            <li class="main-info">
+                                {{
+                                    'housing.type.quantity'|trans({
+                                        '%quantity%': housing.quantity
+                                    })
+                                }}
+                            </li>
+                        </div>
+                    {% endif %}
+
                 </div>
                 <h2 class="mt-4 mb-3">
                     {{ 'housing.equipment.title'|trans }}

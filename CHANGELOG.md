@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix password length message when out of limit is showing {{ limit }}
 - Not specified is displayed when housing equipments are not present
 
+Add possible Lease Term to housing
+- Sonata admin leaseType
+- Lessor admin housing 
+- Advanced search filter
+- Housing detail display
+
 ## [1.2.3-beta] 27/10/2022
 
 - Fontawesome deployed

@@ -24,6 +24,8 @@ class SearchCriteriaModel
 
     private array $occupationModes = [];
 
+    private array $leaseType = [];
+
     public function getMaxPrice(): ?int
     {
         return $this->maxPrice;
@@ -140,6 +142,26 @@ class SearchCriteriaModel
     public function setAplAgreement(bool $aplAgreement)
     {
         $this->aplAgreement = $aplAgreement;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of leaseType.
+     */
+    public function getLeaseType(): array
+    {
+        return $this->leaseType;
+    }
+
+    /**
+     * Set the value of leaseType.
+     *
+     * @return self
+     */
+    public function setLeaseType($leaseType)
+    {
+        $this->leaseType = $leaseType;
 
         return $this;
     }

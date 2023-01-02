@@ -26,6 +26,8 @@ housing:
                 label: Durée du bail
             occupation_mode:
                 label: Mode d'occupation
+            lease_type:
+                label: Type de bail
         result: liste des logements trouvés
         not_found: Aucune offre ne correspond à vos critères
         found: '%total_found% offre(s) trouvée(s) pour votre recherche'
@@ -39,13 +41,12 @@ housing:
         full: Logement entier
         homestay: Chez l'habitant
     occupation_mode:
-        #     alone: À occuper seul
-        #     couple: Idéal pour un couple
-        #     share: À occuper en colocation
         occupants: '%occupants% occupants'
         label: Modes d'occupation possibles
     stay_duration:
         label: Durée de séjour possibles
+    lease_type:
+        label: Type de bail
     type:
         quantity: il y a %quantity% logements de ce type
         room: Chambre

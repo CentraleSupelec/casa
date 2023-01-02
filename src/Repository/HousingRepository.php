@@ -173,14 +173,19 @@ class HousingRepository extends ServiceEntityRepository
             $queryBuilder->andWhere('h.aplAgreement = true');
         }
         if ($searchCriteriaModel->getStayDurations()) {
-            $queryBuilder->innerJoin('h.stayDurations', 'lt')
-            ->andWhere('lt.id in (:selectedDurations)')
+            $queryBuilder->innerJoin('h.stayDurations', 'sd')
+            ->andWhere('sd.id in (:selectedDurations)')
             ->setParameter('selectedDurations', $searchCriteriaModel->getStayDurations());
         }
         if ($searchCriteriaModel->getOccupationModes()) {
             $queryBuilder->innerJoin('h.occupationModes', 'om')
             ->andWhere('om.id in (:selectedOccupationModes)')
             ->setParameter('selectedOccupationModes', $searchCriteriaModel->getOccupationModes());
+        }
+        if ($searchCriteriaModel->getLeaseType()) {
+            $queryBuilder->innerJoin('h.leaseType', 'lt')
+            ->andWhere('lt.id in (:selectedLeaseType)')
+            ->setParameter('selectedLeaseType', $searchCriteriaModel->getLeaseType());
         }
 
         return $queryBuilder;
