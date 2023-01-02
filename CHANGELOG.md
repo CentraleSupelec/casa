@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [1.2.4.1-beta]
 
 - Added Favico
 - Fix password length message when out of limit is showing {{ limit }}
@@ -19,6 +19,7 @@ Add possible Lease Term to housing
 Lessor Admin
 - filter housing group
 - sort housing group 
+- Geoapify credits in housing group edit. 
 
 ## [1.2.3-beta] 27/10/2022
 
