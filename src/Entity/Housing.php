@@ -118,16 +118,16 @@ class Housing
     #[ORM\ManyToMany(targetEntity: Equipment::class)]
     private Collection $equipments;
 
-    #[ORM\ManyToMany(targetEntity: StayDuration::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: StayDuration::class, cascade: ['persist'])]
     private Collection $stayDurations;
 
-    #[ORM\ManyToMany(targetEntity: OccupationMode::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: OccupationMode::class, cascade: ['persist'])]
     private Collection $occupationModes;
 
     #[ORM\Column(type: 'boolean')]
     private ?bool $aplAgreement = false;
 
-    #[ORM\ManyToMany(targetEntity: LeaseType::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: LeaseType::class, cascade: ['persist'])]
     private Collection $leaseType;
 
     public function __construct()
@@ -559,18 +559,18 @@ class Housing
         return $this->stayDurations;
     }
 
-    public function addStayDuration(StayDuration $leaseTerm): self
+    public function addStayDuration(StayDuration $stayDuration): self
     {
-        if (!$this->stayDurations->contains($leaseTerm)) {
-            $this->stayDurations[] = $leaseTerm;
+        if (!$this->stayDurations->contains($stayDuration)) {
+            $this->stayDurations[] = $stayDuration;
         }
 
         return $this;
     }
 
-    public function removeStayDuration(StayDuration $leaseTerm): self
+    public function removeStayDuration(StayDuration $stayDuration): self
     {
-        $this->stayDurations->removeElement($leaseTerm);
+        $this->stayDurations->removeElement($stayDuration);
 
         return $this;
     }

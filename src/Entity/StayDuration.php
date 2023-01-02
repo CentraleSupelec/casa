@@ -20,6 +20,9 @@ class StayDuration implements TranslatableInterface
     #[ORM\Column(type: 'string', length: 255)]
     private string $labelEn;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $sortOrder;
+
     public function __toString(): string
     {
         return $this->getLabelFr();
@@ -66,6 +69,18 @@ class StayDuration implements TranslatableInterface
     public function setLabelEn($labelEn)
     {
         $this->labelEn = $labelEn;
+
+        return $this;
+    }
+
+    public function getSortOrder(): ?int
+    {
+        return $this->sortOrder;
+    }
+
+    public function setSortOrder(?int $sortOrder): self
+    {
+        $this->sortOrder = $sortOrder;
 
         return $this;
     }

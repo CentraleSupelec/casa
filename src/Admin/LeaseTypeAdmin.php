@@ -14,6 +14,9 @@ final class LeaseTypeAdmin extends AbstractAdmin
     {
         $list
             ->add('id')
+            ->add('sortOrder', null, [
+                'label' => 'Tri',
+            ])
             ->add('labelFr', null, [
                 'label' => 'Libellé',
                 ])
@@ -31,6 +34,9 @@ final class LeaseTypeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
+            ->add('sortOrder', null, [
+                'label' => 'Tri',
+            ])
             ->add('labelFr', null, [
                 'label' => 'Libellé',
                 ])

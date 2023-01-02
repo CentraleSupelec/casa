@@ -4,19 +4,55 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
-- Fix route after editing on student profile
-- Modified birthdate format
-- FIX: birthdate is shown as today when not specified
+## [Unreleased]
 
-Search 
-- Criterion are now stored in a session cookie
-- This fixes keeping search crit after adding a bookmark / create account / validate / login 
+### Added
 
-Housing detail
-- add return to List
+- list things here
+
+### Fixed
+
+- list things here
+
+## [1.2.6] - 2022-11-22 on INT
+
+### Added
+
+- Admin
+    - Can now set display order for guarantor, lease_type, occupation_mode and stay_duration
+
+- Search 
+    - Criterion are now stored in a session cookie
+    - This fixes keeping search crit after adding a bookmark / create account / validate / login 
+
+- Housing detail
+    - add return to List
+
+### Fixed
+
+- Housing Group
+    - housing group remove, removes too much
+    - Country label is now displayed in french 
+    - Postal code moved before city
+
+- Housing
+    - help texts reworked
+    - Fix crash with URL longer than 255 
+    - Limit amounts to positive only values
+    - crash when trying to save picture with no file.
+    - Geoapify credits sentence reworked
+
+- Global    
+    - Lessor footer, removed FAQ and contact
+
+- Profile
+    - Fix route after editing on student profile
+    - Modified birthdate format
+    - FIX: birthdate is shown as today when not specified
+
 
 ## [1.2.5.1]
+
 - Env variable for Matomo script ( change value in helm env-vars before deployment )
 
 ## [1.2.4.1-beta]

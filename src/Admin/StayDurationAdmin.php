@@ -20,6 +20,9 @@ final class StayDurationAdmin extends AbstractAdmin
     {
         $list
             ->add('id')
+            ->add('sortOrder', null, [
+                'label' => 'Tri',
+            ])
             ->add('labelFr', null, [
                 'label' => 'Libellé',
                 ])
@@ -37,6 +40,9 @@ final class StayDurationAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
+            ->add('sortOrder', null, [
+                'label' => 'Tri',
+            ])
             ->add('labelFr', null, [
                 'label' => 'Libellé',
                 ])

@@ -45,7 +45,7 @@ class HousingGroup
     #[ORM\OneToMany(mappedBy: 'housingGroup', targetEntity: PointOfInterest::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $pointsOfInterest;
 
-    #[ORM\ManyToMany(targetEntity: Guarantor::class, orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\ManyToMany(targetEntity: Guarantor::class, cascade: ['persist'])]
     private Collection $possibleGuarantor;
 
     public function __construct()

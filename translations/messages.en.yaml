@@ -32,7 +32,7 @@ housing:
         not_found: No offer found, please refine your search
         found: '%total_found% Offers match your search'
     list:
-        page_title: PSUH - Housing
+        page_title: Housing list - Housing platform
         sort:
             label: Sort by
             price: Rent
@@ -119,7 +119,7 @@ home:
     nav:
         title: The housing platorm
         subtitle: of Université Paris-Saclay
-    page_title: PSUH homepage
+    page_title: Homepage - Housing platform
     welcome:
         title: Help students of Université Paris-Saclay <br/>find their housing.
     homepage_link: link to home page
@@ -160,17 +160,17 @@ authentication:
         long: Your password should be at most {{ limit }} characters long
     log_in:
         button: Log In
-        page_title: PSUH - Connection
+        page_title: Connection - Housing platform
         not_verified: You cannot log in because your email address has not been verified
         send_verification_error: Impossible send a new verification email to this address
     log_out: Log Out
     register:
         call_to_action: Sign In
         button: Register
-        page_title: PSUH - Register
+        page_title: Register - Housing platform
         account_created: Your account is created. You'll need to verify your email before being able to login.
     reset_password:
-        page_title: Password reset
+        page_title: Password reset - Housing platform
         request:
             call_to_action: Forgotten password
             button: Reset my password
@@ -223,7 +223,7 @@ housing_request:
             student_info: Information about the student
             carbon_copy: (in cc)
     generic:
-        page_title: Send a request
+        page_title: Send a request - Housing platform
         email:
             subject: '[PSUH] Student request'
             header: Student request regarding accomodation
@@ -242,7 +242,7 @@ housing_request:
                 In order to have your request handled as effectively as possible, please
                 check what corresponds best to your current situation
             continue_button: Continue
-        page_title: Send an urgent request
+        page_title: Send an urgent request - Housing platform
         hints:
             location: Dont forget to specify your location.
         missing:

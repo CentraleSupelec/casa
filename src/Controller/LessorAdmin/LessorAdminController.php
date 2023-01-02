@@ -84,19 +84,23 @@ class LessorAdminController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var HousingGroup */
-            $updatedHousingGroup = $form->getData();
-            $coordinates = $mapService->getCoordinatesFromAddress($updatedHousingGroup->getAddress());
-            $updatedHousingGroup->getAddress()->setCoordinates($coordinates);
-            $em->persist($updatedHousingGroup);
-            $em->flush();
-            $this->addFlash('success', 'Groupe de logements créé');
+        try {
+            if ($form->isSubmitted() && $form->isValid()) {
+                /** @var HousingGroup */
+                $updatedHousingGroup = $form->getData();
+                $coordinates = $mapService->getCoordinatesFromAddress($updatedHousingGroup->getAddress());
+                $updatedHousingGroup->getAddress()->setCoordinates($coordinates);
+                $em->persist($updatedHousingGroup);
+                $em->flush();
+                $this->addFlash('success', 'Groupe de logements créé');
 
-            return $this->redirectToRoute('app_lessor_admin_housing_group_edit', [
-                'id' => $updatedHousingGroup->getId(),
-                'form_part' => HousingGroupFormType::PRINCIPAL,
-            ]);
+                return $this->redirectToRoute('app_lessor_admin_housing_group_edit', [
+                    'id' => $updatedHousingGroup->getId(),
+                    'form_part' => HousingGroupFormType::PRINCIPAL,
+                ]);
+            }
+        } catch (\Exception $ex) {
+            $this->addFlash('error', 'Impossible d\'enregistrer le groupe de logement');
         }
 
         return $this->render('lessor_admin/housing_group_edit.html.twig', [
@@ -117,6 +121,11 @@ class LessorAdminController extends AbstractController
         $lessor = $user->getLessor();
 
         $housingGroup = $hr->find($id);
+        // Check that housingGroupLessor matches connected.
+
+        if ($lessor->getId() != $housingGroup->getLessor()->getId()) {
+            return $this->redirectToRoute('app_lessor_admin_housing_group_list');
+        }
 
         $form = $this->createForm(HousingGroupFormType::class, $housingGroup, [
             'form_part' => $form_part,
@@ -124,13 +133,18 @@ class LessorAdminController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var HousingGroup */
-            $updatedHousingGroup = $form->getData();
+        try {
+            if ($form->isSubmitted() && $form->isValid()) {
+                /** @var HousingGroup */
+                $updatedHousingGroup = $form->getData();
 
-            $em->persist($updatedHousingGroup);
-            $em->flush();
-            $this->addFlash('success', 'Groupe de Logements mis à jour !');
+                $em->persist($updatedHousingGroup);
+                $em->flush();
+                $this->addFlash('success', 'Groupe de Logements mis à jour !');
+            }
+        } catch (\Exception $ex) {
+            // throw $th;
+            $this->addFlash('error', 'La mise à jour du groupe de logement a échouée !');
         }
 
         return $this->render('lessor_admin/housing_group_edit.html.twig', [
@@ -147,30 +161,39 @@ class LessorAdminController extends AbstractController
     {
         /** @var LessorUserAdmin */
         $user = $this->getUser();
-
-        $housing = new Housing();
+        $lessor = $user->getLessor();
 
         $housingGroup = $em->getRepository(HousingGroup::class)->find($idHousingGroup);
+
+        if ($lessor->getId() != $housingGroup->getLessor()->getId()) {
+            return $this->redirectToRoute('app_lessor_admin_housing_group_list');
+        }
+
+        $housing = new Housing();
         $housing->setHousingGroup($housingGroup);
 
         $form = $this->createForm(HousingFormType::class, $housing, [
             'form_part' => HousingFormType::PRINCIPAL,
         ]);
 
-        $form->handleRequest($request);
+        try {
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Housing */
-            $updatedHousing = $form->getData();
-            $em->persist($updatedHousing);
-            $em->flush();
-            $this->addFlash('success', 'Logement créé !');
+            if ($form->isSubmitted() && $form->isValid()) {
+                /** @var Housing */
+                $updatedHousing = $form->getData();
+                $em->persist($updatedHousing);
+                $em->flush();
+                $this->addFlash('success', 'Logement créé !');
 
-            return $this->redirectToRoute('app_lessor_admin_housing_edit', [
-                'id' => $updatedHousing->getId(),
-                'form_part' => HousingFormType::PRINCIPAL,
-                'form_mode' => HousingFormType::MODE_EDIT,
-            ]);
+                return $this->redirectToRoute('app_lessor_admin_housing_edit', [
+                    'id' => $updatedHousing->getId(),
+                    'form_part' => HousingFormType::PRINCIPAL,
+                    'form_mode' => HousingFormType::MODE_EDIT,
+                ]);
+            }
+        } catch (\Exception $ex) {
+            $this->addFlash('error', 'Erreur lors de la creation du logement!');
         }
 
         return $this->render('lessor_admin/housing_edit.html.twig', [
@@ -187,26 +210,33 @@ class LessorAdminController extends AbstractController
     ImageUrlService $imageUrlService,
     string $form_part): Response
     {
-        $housingElement = $hr->find($id);
-
         /** @var LessorUserAdmin */
         $user = $this->getUser();
-        // $lessor = $user->getLessor();
+        $lessor = $user->getLessor();
+
+        $housingElement = $hr->find($id);
+
+        if ($lessor->getId() != $housingElement->getHousingGroup()->getLessor()->getId()) {
+            return $this->redirectToRoute('app_lessor_admin_housing_group_list');
+        }
 
         $form = $this->createForm(HousingFormType::class, $housingElement, [
             'form_part' => $form_part,
         ]);
+        try {
+            $form->handleRequest($request);
 
-        $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                /** @var Housing */
+                $updatedHousing = $form->getData();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Housing */
-            $updatedHousing = $form->getData();
-
-            $em->persist($updatedHousing);
-            $em->flush();
-            $this->addFlash('success', 'Logement mis à jour !');
-        } elseif ($form->isSubmitted() && !$form->isValid()) {
+                $em->persist($updatedHousing);
+                $em->flush();
+                $this->addFlash('success', 'Logement mis à jour !');
+            } elseif ($form->isSubmitted() && !$form->isValid()) {
+                $this->addFlash('error', 'Veuillez vérifier votre saisie');
+            }
+        } catch (\Exception $ex) {
             $this->addFlash('error', 'Veuillez vérifier votre saisie');
         }
 

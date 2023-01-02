@@ -23,6 +23,8 @@
                 {{ encore_entry_script_tags('matomo_tracker') }}
             {% endif %}
         {% endblock %}
+        <script src="https://kit.fontawesome.com/e8eeb3a7dc.js"
+            crossorigin="anonymous"></script>
     </head>
     <body class="d-flex flex-column h-100">
         <a href="#maincontent" class="visually-hidden">
@@ -39,7 +41,7 @@
         {% endblock %}
 
         <footer class="container-fluid mt-auto">
-            {% include '_footer.html.twig' %}
+            {% include '_lessor_footer.html.twig' %}
         </footer>
         {% block javascripts %}
 

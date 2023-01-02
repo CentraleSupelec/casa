@@ -17,12 +17,14 @@ class AddressFormType extends AbstractType
             ->add('street', null, [
                 'label' => 'Rue',
             ])
+            ->add('postalcode', null, [
+                'label' => 'Code postal',
+                'required' => true, ])
             ->add('city', null, [
                 'label' => 'Ville',
             ])
-            ->add('postalcode', null, [
-                'label' => 'Code postal', ])
             ->add('country', ChoiceType::class, [
+                'label' => 'Pays',
                 'choices' => Constants::getAddressCountries(),
             ])
         ;

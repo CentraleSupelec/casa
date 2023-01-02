@@ -63,7 +63,8 @@ class HousingFormType extends AbstractType
                 ->add('redirectLink', TextType::class, [
                     'label' => 'Lien de redirection',
                     'required' => true,
-                    'help' => 'Lien vers lequel le visiteur sera redirigé en cliquant sur postuler',
+                    'help' => 'Lien vers lequel le visiteur sera redirigé en cliquant sur déposer un dossier"',
+                    'attr' => ['maxlength' => 255],
                 ])
                 ->add('quantity', IntegerType::class, [
                     'label' => 'Nombre de logements',
@@ -73,35 +74,42 @@ class HousingFormType extends AbstractType
                 ->add('occupants', IntegerType::class, [
                     'label' => 'Nombre d\'occupants',
                     'required' => true,
-                    'help' => 'dans un logement. 3 pour une colocation à 3 personnes',
+                    'help' => 'exemple: 3 pour une colocation de 3 personnes',
                 ])
                 ->add('areaMin', IntegerType::class, [
                     'label' => 'Surface en m<sup>2</sup> (min)',
                     'label_html' => true,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('areaMax', IntegerType::class, [
                     'label' => 'Surface en m<sup>2</sup> (max)',
                     'label_html' => true,
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('rentMin', IntegerType::class, [
                     'label' => 'Loyer (min)',
+                    'attr' => ['min' => 0],
                 ])
                 ->add('rentMax', IntegerType::class, [
                     'label' => 'Loyer (max)',
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('chargesIncluded', CheckboxType::class, [
                     'label' => 'Charges comprises',
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('chargesMin', IntegerType::class, [
                     'label' => 'Charges (min)',
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('chargesMax', IntegerType::class, [
                     'label' => 'Charges (max)',
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('available', CheckboxType::class, [
                     'label' => 'Disponible',
@@ -109,17 +117,21 @@ class HousingFormType extends AbstractType
                 ])
                 ->add('applicationFeeMin', IntegerType::class, [
                     'label' => 'Frais de dossier (min)',
+                    'attr' => ['min' => 0],
                 ])
                 ->add('applicationFeeMax', IntegerType::class, [
                     'label' => 'Frais de dossier (max)',
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('securityDepositMin', IntegerType::class, [
                     'label' => 'Dépôt de garantie (min)',
+                    'attr' => ['min' => 0],
                 ])
                 ->add('securityDepositMax', IntegerType::class, [
                     'label' => 'Dépôt de garantie (max)',
                     'required' => false,
+                    'attr' => ['min' => 0],
                 ])
                 ->add('livingMode', ChoiceType::class, [
                     'label' => 'Mode d\'habitation',
@@ -128,6 +140,9 @@ class HousingFormType extends AbstractType
                 ])
                 ->add('occupationModes', EntityType::class, [
                         'class' => OccupationMode::class,
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('om')->orderBy('om.sortOrder', 'ASC');
+                        },
                         'multiple' => true,
                         'expanded' => true,
                         'label' => 'Modes d\'occupation',
@@ -150,12 +165,18 @@ class HousingFormType extends AbstractType
                 ])
                 ->add('stayDurations', EntityType::class, [
                         'class' => StayDuration::class,
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('sd')->orderBy('sd.sortOrder', 'ASC');
+                        },
                         'multiple' => true,
                         'expanded' => true,
                         'label' => 'Durées de séjour possibles',
                     ])
                 ->add('leaseType', EntityType::class, [
                         'class' => LeaseType::class,
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('lt')->orderBy('lt.sortOrder', 'ASC');
+                        },
                         'multiple' => true,
                         'expanded' => true,
                         'label' => 'Type de bail possible',

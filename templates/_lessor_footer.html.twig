@@ -1,0 +1,39 @@
+<div class="footer row pt-4 pb-4">
+    <div class="d-flex col-12 col-md-3 justify-content-center justify-content-md-start">
+        <a class="nav-link"
+            href={{ app.request.locale is same as('fr') ? 
+                "https://www.universite-paris-saclay.fr/" : 
+                "https://www.universite-paris-saclay.fr/en" }}
+            target="_blank">
+            <img src="{{ asset('build/images/logo-ups-white.svg') }}"
+                alt="logo université paris saclay"
+                height="60" />
+        </a>            
+    </div>
+    <nav class="col-12 col-md-9">
+        <ul class="nav row">
+            <li class="nav-item col-6">
+                <a class="nav-link" href="#">
+                    {{ 'footer.legal'|trans|upper }}
+                </a>
+            </li>
+            <li class="nav-item col-6">
+                <a class="nav-link"
+                    href="mailto:plateforme.logement@universite-paris-saclay.fr">
+                    {{ 'footer.contact'|trans|upper }}
+                </a>
+            </li>
+            <li class="nav-item col-6">
+                <a  href= {{ app.request.locale is same as('fr') ?
+                    "https://www.universite-paris-saclay.fr/luniversite/les-campus/plans-des-campus" :
+                    "https://www.universite-paris-saclay.fr/en/about/campus-maps"  }}
+                    target="_blank"
+                    class="btn skinny bg-white text-dark btn-block px-3">
+                    <i class="fa-solid fa-location-dot fa-xs" aria-hidden="true"></i>
+                    {{ 'footer.map' | trans}}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+

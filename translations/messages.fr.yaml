@@ -32,7 +32,7 @@ housing:
         not_found: Aucune offre ne correspond à vos critères
         found: '%total_found% offre(s) trouvée(s) pour votre recherche'
     list:
-        page_title: PSUH - Offres logement
+        page_title: Offres logement - Plateforme logement
         sort:
             label: Trier par
             price: Loyer
@@ -119,7 +119,7 @@ home:
     nav:
         title: La plateforme de logements
         subtitle: de l'Université Paris-Saclay
-    page_title: PSUH - Accueil
+    page_title: Accueil - Plateforme logement
     welcome:
         title: Aider les étudiantes et étudiants de l'Université Paris-Saclay<br/> à trouver leur logement.
     homepage_link: Lien vers la page d'accueil
@@ -160,17 +160,17 @@ authentication:
         long: Votre mot de passe doit contenir au plus {{ limit }} caractères
     log_in:
         button: Se connecter
-        page_title: PSUH - Connexion
+        page_title: Connexion - Plateforme logement
         not_verified: Vous ne pouvez pas vous connecter car votre email n'est pas vérifié.
         send_verification_error: Impossible de renvoyer un mail de confirmation pour cet identifiant
     log_out: Se déconnecter
     register:
         call_to_action: Créer un compte
         button: S'inscrire
-        page_title: PSUH - Inscription
+        page_title: Inscription -Plateforme logement
         account_created: Votre compte est créé. Avant de vous connecter vous devez vérifier votre adresse email.
     reset_password:
-        page_title: Réinitialisation de mot de passe
+        page_title: Réinitialisation de mot de passe - Plateforme logement
         request:
             call_to_action: Mot de passe oublié
             button: Réinitialiser mon mot de passe
@@ -223,7 +223,7 @@ housing_request:
             student_info: Informations à propos de l'étudiant
             carbon_copy: (en copie)
     generic:
-        page_title: Envoyer une demande
+        page_title: Envoyer une demande - Plateforme logement
         email:
             subject: '[PSUH] Demande étudiante'
             header: Demande d'un étudiant à propos de logement
@@ -235,14 +235,14 @@ housing_request:
                 resource: Vous n'avez pas assez de ressource pour trouver un logement
                 handicap: Vous êtes en situation de handicap et vous ne parvenez pas à trouver un logement adapté
                 unsafe_housing: Votre logement est insalubre
-                unsafe: Vous avez besoin d'être séparé de votre collocataire
+                unsafe: Vous avez besoin d'être séparé de votre colocataire
                 other: Autre situation
             title: Qualification de la demande
             subtitle: |-
                 Afin de prendre en compte votre demande le plus efficacement possible,
                 veuillez cocher la ou les cases qui correspondent le mieux à votre situation
             continue_button: Continuer
-        page_title: Envoyer une demande urgente
+        page_title: Envoyer une demande urgente - Plateforme logement
         hints:
             location: Pensez à préciser votre lieu de recherche.
         missing:

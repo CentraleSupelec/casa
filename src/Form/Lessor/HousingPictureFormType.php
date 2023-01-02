@@ -14,7 +14,7 @@ class HousingPictureFormType extends AbstractType
     {
         $builder
             ->add('label', null, [
-                'label' => 'Titre de la photo',
+                'label' => 'Texte alternatif pour l\'accessibilité',
                 'required' => false,
             ])
 
