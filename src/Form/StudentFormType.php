@@ -29,6 +29,8 @@ class StudentFormType extends AbstractType
             ])
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'profile.birthdate',
+                'choice_translation_domain' => true,
+                'widget' => 'single_text',
                 'required' => false, ])
             ->add('school', EntityType::class, [
                 'label' => 'profile.school',

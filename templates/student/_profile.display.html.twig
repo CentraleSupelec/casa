@@ -1,33 +1,45 @@
+{% macro displayField(field) %}
+    {% if field %}
+        {{ field }}
+    {% else %}
+        {{ 'general.novalue'|trans }}
+    {% endif %}
+{% endmacro %}
+
 <article class="col-12 col-md-6 mb-3">
     <h2 class="fs-6 text-secondary">
         {{ 'profile.first_name'|trans }}
     </h2>
-    <p class="h3 mb-4">
-        {{ student.firstName }}
+    <p class="mb-4">
+        {{ _self.displayField(student.firstName) }}
     </p>
     <h2 class="fs-6 text-secondary">
         {{ 'profile.last_name'|trans }}
     </h2>
-    <p class="h3 mb-4">
-        {{ student.lastName }}
+    <p class="mb-4">
+        {{ _self.displayField(student.lastName) }}
     </p>
     <h2 class="fs-6 text-secondary">
         {{ 'profile.email'|trans }}
     </h2>
-    <p class="h3 mb-4">
+    <p class="mb-4">
         {{ student.email }}
     </p>
     <h2 class="fs-6 text-secondary">
         {{ 'profile.phone'|trans }}
     </h2>
-    <p class="h3 mb-4">
-        {{ student.phone }}
+    <p class="mb-4">
+        {{ _self.displayField(student.phone) }}
     </p>
     <h2 class="fs-6 text-secondary">
         {{ 'profile.birthdate'|trans }}
     </h2>
-    <p class="h3 mb-4">
-        {{ student.birthdate|format_date }}
+    <p class="mb-4">
+        {% if student.birthdate %}
+            {{ student.birthdate|format_date }}
+        {% else %}
+            {{ 'general.novalue'|trans }}
+        {% endif %}
     </p>
     <h2 class="fs-6 text-secondary">
         {{ 'profile.school'|trans }}
@@ -36,18 +48,18 @@
         {% set school = student.school %}
         {% if school %}
             {% if school.name is not same as(school.parentSchool.name) %}
-                <p class="h3 mb-4">
+                <p class="mb-4">
                     {{ school.parentSchool }}
                 </p>
             {% endif %}
-            <p class="h3 mb-4">
+            <p class="mb-4">
                 {{ school }}
             </p>
-            <p class="h3 mb-4">
+            <p class="mb-4">
                 Campus {{ school.campus }}
             </p>
         {% else %}
-            <p class="h3 mb-4">
+            <p class="mb-4">
                 {{ 'profile.choose_school'|trans }}
             </p>
         {% endif %}
@@ -56,7 +68,7 @@
     <h2 class="fs-6 text-secondary">
         {{ 'profile.social_scholarship'|trans }}
     </h2>
-    <p class="h3 mb-4">
+    <p class="mb-4">
         {{ student.socialScholarship
             ? '<i class="fa-regular fa-square-check fa-xl"></i>'
             : '<i class="fa-regular fa-square fa-xl"></i>' }}
@@ -64,7 +76,7 @@
     <h2 class="fs-6 text-secondary">
         {{ 'profile.reduced_mobility'|trans }}
     </h2>
-    <p class="h3 mb-4">
+    <p class="mb-4">
         {{ student.reducedMobility
             ? '<i class="fa-regular fa-square-check fa-xl"></i>'
             : '<i class="fa-regular fa-square fa-xl"></i>' }}

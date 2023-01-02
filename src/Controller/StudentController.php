@@ -53,7 +53,8 @@ class StudentController extends AbstractController
             /** @var Student */
             $updatedStudent = $form->getData();
             $studentService->updateWith($updatedStudent);
-            $mode = 'display';
+
+            return $this->redirectToRoute('app_student_profile');
         }
 
         return $this->render('student/profile.html.twig', [
@@ -122,9 +123,9 @@ class StudentController extends AbstractController
             ['parentSchool' => 'ASC', 'campus' => 'ASC', 'name' => 'ASC']);
 
         return $this->render('student/_profile.select_school_widget.html.twig',
-        [
-            'schools' => $schools,
-            'currentSchoolId' => $currentSchoolId,
-        ]);
+            [
+                'schools' => $schools,
+                'currentSchoolId' => $currentSchoolId,
+            ]);
     }
 }

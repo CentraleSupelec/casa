@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [unreleased]
+- Fix route after editing on student profile
+- Modified birthdate format
+- FIX: birthdate is shown as today when not specified
+
+
+## [1.2.5.1]
 - Env variable for Matomo script ( change value in helm env-vars before deployment )
 
 ## [1.2.4.1-beta]

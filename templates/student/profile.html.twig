@@ -9,7 +9,7 @@
 
 {% block body %}
     <main class="container" id="maincontent">
-        {{ Navigation.displayTabs(app.request.attributes.get('_route')) }}
+        {{ Navigation.displayTabs(app.request.attributes.get('_route'), mode) }}
 
         <div class="row">
             {% if mode == 'edit' %}

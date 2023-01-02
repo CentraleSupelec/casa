@@ -1,7 +1,12 @@
-{% macro displayTabs(route) %}
+{% macro displayTabs(route,mode) %}
     <ul class="nav nav-tabs my-4">
 
-        {{ _self.displayLink(route, 'app_student_profile', 'profile.title.profile') }}
+        {% if mode == 'edit' %}
+            {{ _self.displayLink(route, 'app_student_edit_profile', 'profile.title.profile') }}
+        {% else %}
+            {{ _self.displayLink(route, 'app_student_profile', 'profile.title.profile') }}
+        {% endif %}
+
         {{ _self.displayLink(route, 'app_student_bookmarks', 'profile.title.bookmarks') }}
 
     </ul>
