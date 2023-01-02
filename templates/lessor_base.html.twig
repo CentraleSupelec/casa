@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
             {% block title %}
-                Welcome!
+                Administration Bailleur
             {% endblock %}
         </title>
         <link rel="icon"
@@ -19,6 +19,9 @@
 
         {% block early_javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {% if matomo == 'true' %}
+                {{ encore_entry_script_tags('matomo_tracker') }}
+            {% endif %}
         {% endblock %}
     </head>
     <body class="d-flex flex-column h-100">
