@@ -1,0 +1,113 @@
+@use 'variables' as v;
+
+.guide {
+    h1 {
+        @include font-size(2.4rem);
+    }
+
+    h2 {
+        @include font-size(1.8rem);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: v.$primary;
+        font-variation-settings: 'wgth' 800;
+    }
+
+    .sidecontent {
+        margin-top: $spacer * 1.2;
+        padding: $spacer * 1.5;
+
+        font-variation-settings: 'wgth' 600;
+
+        h1 {
+            font-variation-settings: 'wgth' 800;
+        }
+    }
+
+    .maincontent {
+        p {
+            text-align: left;
+        }
+    }
+
+    #house-calc {
+        width: 80%;
+        clip-path: polygon(0 12%, 40% 12%, 90% 63%, 74% 100%, 0% 100%);
+        transform: scaleX(-1);
+    }
+
+    #cost-img01 {
+        width: 80%;
+        clip-path: polygon(
+            51% 11%,
+            93% 0,
+            100% 46%,
+            63% 90%,
+            26% 100%,
+            0% 60%,
+            18% 0
+        );
+    }
+
+    #guide-chambre {
+        width: auto;
+        clip-path: polygon(65% 0, 90% 30%, 90% 100%, 25% 84%, 31% 19%);
+    }
+
+    #visale {
+        width: auto;
+        clip-path: polygon(0 0, 88% 13%, 100% 88%, 0% 100%);
+    }
+
+    #givekeys {
+        width: 100%;
+        clip-path: polygon(37% 0, 93% 16%, 100% 78%, 62% 100%, 6% 75%, 0 16%);
+    }
+}
+
+.cost {
+    .sidecontent {
+        background-color: #8cc63e;
+        color: #000;
+    }
+    .info-link,
+    a {
+        color: $primary;
+        font-size: larger;
+    }
+}
+
+.search {
+    .sidecontent {
+        color: #007582;
+    }
+}
+
+.apply {
+    .sidecontent {
+        background-color: #fdbd00;
+        color: #000;
+        .svg-inline--fa {
+            color: #000;
+        }
+    }
+
+    div > .svg-inline--fa {
+        color: #fdbd00;
+    }
+}
+
+.pin {
+    color: black !important;
+    background-color: $light !important;
+}
+
+.usercheck {
+    background-color: #f1f5e3;
+    margin-bottom: auto;
+}

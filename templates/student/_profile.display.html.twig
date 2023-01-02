@@ -6,6 +6,12 @@
     {% endif %}
 {% endmacro %}
 
+<div class="col-12 d-flex justify-content-start mb-4">
+    <a href="{{ path('app_student_edit_profile') }} "
+        class="btn btn-outline-primary me-3">
+        {{ 'profile.edit'|trans }}
+    </a>
+</div>
 <article class="col-12 col-md-6 mb-3">
     <h2 class="fs-6 text-secondary">
         {{ 'profile.first_name'|trans }}
@@ -82,11 +88,45 @@
             : '<i class="fa-regular fa-square fa-xl"></i>' }}
     </p>
 </article>
+
 <article class="col-12 col-md-6 mb-3">
-    <div class="col-12 mb-4">
+    <div class="col-12 mb-4 bg-info text-white p-4">
+        <p class="fs-6">
+            {{ 'profile.dossier_facile_text'|trans }}
+        </p>
+
+        <a class="btn text-center bg-white"
+            href="https://www.dossierfacile.fr/"
+            target="_blank">
+            <img src="{{ asset('build/images/logos/logo_dossierfacile.svg') }}"
+                alt="Dossier Facile" />
+            <i class="fa-solid fa-file-zipper fa-2x"></i>
+        </a>
+    </div>
+    <div class="col-12 mb-4 bg-info text-white p-4">
         <p>
-            Contenu statique à venir pour expliquer le fonctionnement du bouton
-            Urgent
+            {{ 'faq.school_information'|trans }}
+        </p>
+        {% if app.user.school %}
+            <div class="mt-4 btn text-center bg-white">
+                <i class="fa-solid fa-building-columns fa-2x"></i>
+
+                <a class="btn"
+                    href="{{ app.user.school.websiteUrl }}"
+                    target="_blank">
+                    {{ app.user.school.name }}
+                </a>
+            </div>
+        {% else %}
+            <p class="mb-4">
+                {{ 'profile.choose_school'|trans }}
+            </p>
+        {% endif %}
+    </div>
+
+    <div class="col-12 mb-4 bg-light p-4">
+        <p>
+            {{ 'profile.urgent_text'|trans }}
         </p>
         <a class="btn btn-primary"
             href="{{ path('app_housing_emergency_request_qualification') }}">
@@ -94,7 +134,8 @@
         </a>
     </div>
 </article>
-<div class="col-12 d-flex justify-content-center mb-4">
+
+<div class="col-12 d-flex justify-content-start mb-4">
     <a href="{{ path('app_student_edit_profile') }} "
         class="btn btn-outline-primary me-3">
         {{ 'profile.edit'|trans }}

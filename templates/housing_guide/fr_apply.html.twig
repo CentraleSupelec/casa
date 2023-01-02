@@ -1,0 +1,497 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="maincontent" class="container guide apply">
+        <div class="row mb-4" style="max-height: 450px;">
+            <img class="img-fluid"
+                style="z-index: -1;"
+                src="{{
+                asset(
+                    'build/images/guide/chercher/Pixabay_bed-1834327_1920.jpg'
+                )
+                }}"
+                aria-hidden="true" />
+        </div>
+
+        <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
+            <div class="maincontent col-12 col-lg-8">
+                <h1>
+                    Les pièces du dossier
+                    <strong>à fournir</strong>
+                </h1>
+
+                <p>
+                    Vous avez trouvé votre logement, vous avez préparé votre
+                    budget. L’étape finale dans la recherche de votre habitation
+                    est la constitution de votre dossier. Que votre logement
+                    soit en résidence universitaire, chez un particulier, en
+                    logement CROUS ou en bailleur privé, vous devez constituer
+                    un dossier.
+                </p>
+                <div class="text-center">
+                    <i class="fa-regular fa-stamp fa-5x"
+                        alt="icone tampon administratif">
+
+                    </i>
+                </div>
+
+                <h2>
+                    Dossier
+                </h2>
+                <p>
+                    Celui-ci est généralement composé de
+                </p>
+
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Une <strong>pièce d’identité</strong> française ou
+                        étrangère
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Un <strong>
+                            justificatif de votre domicile
+                        </strong> actuel, en général les trois dernières factures
+                        d’eau, d’électricité ou quittances de loyer à votre nom (et
+                        une attestation d’hébergement accompagnée d’une pièce d’identité
+                        de l’hébergeant si les justificatifs ne sont pas à votre
+                        nom) (Non demandé par les CROUS)
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Une <strong>
+                            carte étudiante
+                        </strong> ou un certificat de scolarité de l’année universitaire
+                        en cours
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span><strong>Un relevé d’identité bancaire</strong> (RIB)
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Une <strong>convention de stage</strong>, une convention
+                        d’accueil si vous réalisez un stage ou un programme
+                        d'échange encadré OU Un <strong>
+                            contrat de travail
+                        </strong> accompagné de vos <strong>
+                            3 derniers bulletins de salaire
+                        </strong>
+                        si vous avez un job étudiant
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Un avis d’attribution, même conditionnelle, d’une <strong>
+                            bourse sur critères sociaux
+                        </strong> (non demandé par les CROUS)
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <strong>Un acte de caution</strong> par une personne physique
+                        ou morale ou la <a href="https://www.visale.fr/"
+                            target="_blank">
+                            caution Visale
+                        </a>
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Votre <strong>
+                            <a href="https://www.caf.fr/allocataires/aides-et-demarches/mes-demarches"
+                                target="_blank">
+                                simulation pour les aides au logement.
+                            </a>
+                        </strong>
+                    </li>
+                </ul>
+
+                <p>
+                    Si vous optez pour une caution par une personne physique,
+                    votre garant doit lui aussi fournir les pièces suivantes
+                </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Une pièce d’identité
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Un justificatif de domicile
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Un contrat de travail
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Les 3 derniers bulletins de salaires ou les 3 derniers justificatifs
+                        de versement d’indemnités de retraite ou de pensions
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Le dernier ou avant-dernier avis d’imposition.
+                    </li>
+                </ul>
+            </div>
+            <div class="sidecontent col-12 col-lg-4 mb-auto">
+                <div class="text-center">
+                    <i class="fa-regular fa-triangle-exclamation fa-2x ms-2">
+
+                    </i>
+                </div>
+                <p>
+                    Attention : Ni le bailleur ni le particulier ne peuvent vous
+                    demander de fournir votre numéro de sécurité social ou votre
+                    carte d’assuré social, votre dossier médical, votre casier
+                    judiciaire, ni une attestation de bonne tenue de compte
+                    bancaire. Pour plus de détail, et afin de ne pas être
+                    victime de demandes abusives, n’hésitez pas à vous référer
+                    au Décret n° 2015-1437 du 5 novembre 2015 fixant la liste
+                    des pièces justificatives pouvant être demandées au candidat
+                    à la location et à sa caution.
+                </p>
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <div class="maincontent col-12 col-lg-8">
+                <div class="text-center">
+                    <i class="fa-regular fa-face-smile fa-5x"></i>
+                </div>
+
+                <h1>
+                    <strong>Le contrat</strong>
+                    de bail
+                </h1>
+
+                <p>
+                    Le contrat de bail est l’élément-clé de votre logement. Il
+                    concrétise votre location, et il est important d’y faire
+                    attention. Le contrat est l’aboutissement de vos démarches
+                    et vous permet de connaître les conditions d'occupation de
+                    votre logement. Voici les éléments que vous devez retrouver
+                    dans le contrat de bail.
+                </p>
+
+                <h2>
+                    Contrat de bail
+                </h2>
+
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Le nom et l’adresse du propriétaire et de son mandataire
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Le nom du locataire
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        La date à laquelle le contrat de bail commence à s’appliquer
+                        et sa durée
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        La destination (ou l’usage prévu) du logement (dans votre
+                        cas, habitation)
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        La description précise du logement et ses annexes (adresse,
+                        équipements privatifs, surface habitable, cave, garage, jardin,
+                        parking...),
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Les équipements d’accès aux technologies de l’information
+                        et de la communication (moyens de réception des services
+                        de télévision dans l’immeuble, d’accès à Internet, etc.)
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>L’énumération des parties communes
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Le montant du loyer, ses modalités de paiement
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Le montant et la date du dernier versement du dernier loyer
+                        acquitté par le précédent locataire, si celui-ci a quitté
+                        le logement moins de 18 mois avant la signature du bail (valable
+                        pour les logements privés)
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        La nature et le montant des travaux effectués dans le logement
+                        depuis la fin du dernier contrat de location ou depuis le
+                        dernier renouvellement du bail,
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Le montant du dépôt de garantie.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="sidecontent">
+                    <div class="text-center">
+                        <i class="fa-regular fa-pen-to-square fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        Le bail doit être écrit et signé par le propriétaire ou
+                        le bailleur et le locataire. Il peut être sous forme
+                        d’un acte sur papier libre dont vous recevez un
+                        original, ou un acte authentique établi par un notaire
+                        dont vous recevez une copie.
+                    </p>
+                </div>
+                <div class="sidecontent">
+                    <div class="text-center">
+                        <i class="fa-regular fa-paperclip fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        L’état des lieux d’entrée et l’attestation d’assurance
+                        logement doivent être annexés au contrat de bail lors de
+                        la signature du contrat.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <div class="maincontent col-12 col-lg-8">
+                <div class="text-center">
+                    <i class="fa-regular fa-face-frown fa-5x"></i>
+                </div>
+
+                <h2>
+                    Attention, n’ont pas à figurer dans le contrat les clauses
+                    qui :
+                </h2>
+
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Imposent au locataire la souscription d’une assurance habitation
+                        auprès d’une compagnie choisie par le propriétaire,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Obligent le locataire, en vue de la vente ou de la location
+                        du logement, à laisser visiter le logement les jours fériés
+                        frown ou plus de deux heures par jour les jours ouvrables,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Imposent comme mode de paiement du loyer le prélèvement automatique,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Prévoient la responsabilité collective des locataires en
+                        cas de dégradation des parties communes de l’immeuble,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Prévoient la résiliation de plein droit du bail pour d’autres
+                        motifs que le non-paiement du loyer, des charges, du dépôt
+                        de garantie, ou la non-souscription d’une assurance des risques
+                        locatifs,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Interdisent au locataire l’exercice d’une activité politique,
+                        syndicale, associative ou confessionnelle,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Interdisent au locataire la visite des personnes ne vivant
+                        pas habituellement avec lui,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Font supporter au locataire des frais de relance ou d’expédition
+                        de la quittance,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Prévoient que le locataire est automatiquement responsable
+                        des dégradations constatées dans le logement,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Prévoient le renouvellement du bail par tacite reconduction
+                        comment pour une durée inférieure à 3 ans si le bailleur
+                        est une personne Le bail est régi par la loi, physique et
+                        6 ans si le bailleur est une personne morale (société, qui
+                        instaure des contrats- compagnie d’assurance), type pour
+                        les locations vides,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        Stipulent que tout mois commencé est dû, meublées et les
+                        colocations. obligeant le locataire à payer le loyer en cas
+                        de préavis de départ et ce même si son préavis s’est terminé
+                        à la moitié.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-comment fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        Le bail est régi par la loi qui instaure des contrats
+                        type pour les locations vides, meublées et les
+                        colocations.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <div class="maincontent col-12 col-lg-6">
+                <h2>
+                    Dans le cadre d’une location au sein d’une résidence gérée
+                    par un CROUS
+                </h2>
+                <p>
+                    Dans le cadre d’une location au sein d’une résidence gérée
+                    par un CROUS : Seule une décision d’admission unilatérale
+                    vous sera transmise, par voie dématérialisée, en amont de
+                    votre arrivée. Dans cette décision, vous trouverez
+                    l’ensemble des obligations vous concernant en tant que
+                    bénéficiaire.
+                </p>
+            </div>
+            <div class="maincontent col-12 col-lg-6">
+                <h2>
+                    Dans le cas du logement contre service
+                </h2>
+                <p>
+                    La loi encadre pour le moment mal ce type de logement. Les
+                    propriétaires qui ont recours à la location contre service
+                    peuvent soit vous proposer un contrat de location meublé (si
+                    les services effectués ont une valeur inférieure ou égale au
+                    loyer qui serait exigé habituellement), soit un contrat de
+                    travail.
+                </p>
+                <p>
+                    Pour le contrat de travail, le salaire est le logement
+                    gratuit. Ensuite, tout dépend du nombre d’heures que vous
+                    effectuerez. Si les services rendus représentent 10 à 15
+                    heures de travail par semaine, le propriétaire ne peut pas
+                    vous demander de l’argent en plus. Si les services que vous
+                    rendez sont supérieurs à 15 h par semaine, le propriétaire
+                    doit même vous rétribuer. Soyez attentif à l’accord écrit
+                    qui sera passé entre vous et le propriétaire. Ce document
+                    doit clairement indiquer :<ul class="fa-ul"
+                        style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            le début et la fin de l’échange du logement contre service
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>la nature des services
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            le planning et le nombre d’heures
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            la désignation du logement (chambre, studio...)
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            les règles de vie et la répartition des charges locatives
+                        </li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-12">
+                <img id="givekeys"
+                    src="{{
+                    asset(
+                        'build/images/guide/apply/UPSaclay iStock-P42.jpg'
+                    )
+                    }}" />
+            </div>
+        </div>
+    </div>
+{% endblock %}

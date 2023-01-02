@@ -1,0 +1,1559 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="maincontent" class="container guide cost">
+        <div class="row mb-4" style="max-height: 450px;">
+            <img class="img-fluid"
+                style="z-index: -1;"
+                src="{{
+                asset(
+                    'build/images/guide/chercher/photo_ARTE_CHARPENTIER_palaiseau.jpg'
+                )
+                }}"
+                alt="Résidence Charpentier Palaiseau" />
+        </div>
+
+        <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
+            <h1>
+                <strong>Les loyers moyens</strong><br />
+                par typologie de logement et en fonction des territoires
+            </h1>
+            <div class="maincontent col-12 col-lg-6">
+                <p>
+                    Afin de vous aider à préparer votre budget pour vous loger,
+                    nous vous proposons une grille tarifaire des loyers moyens
+                    en fonction du type de logement, et du territoire. Il faut
+                    savoir que le loyer d’un logement varie fortement en
+                    fonction du lieu où il est situé. Une location à Orsay sera
+                    par exemple moins chère qu’à Sceaux ou dans Paris. De plus,
+                    selon le type de logement, sa superficie et les services
+                    proposés par la résidence, le loyer peut parfois varier de
+                    façon significative.
+                </p>
+                <p>
+                    Voici quelques moyennes de loyer selon la superficie et le
+                    type du logement mais aussi en fonction de l’emplacement sur
+                    le territoire de l'Université.
+                </p>
+                <p>
+                    Étude réalisée sur base du référencement des offres, réalisé
+                    par le Pôle vie pratique étudiante et cellule action sociale
+                    de la Direction vie étudiante et égalité des chances.
+                    Septembre 2020.
+                </p>
+
+                <table class="table">
+                    <thead>
+                        <tr class="text-black"
+                            style="background-color: #95c11E">
+                            <th scope="col">
+                                Type de Logement
+                            </th>
+                            <th scope="col">
+                                Superfice Moyenne
+                            </th>
+                            <th scope="col">
+                                Loyer moyen mensuel TTC
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire d'Orsay
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                560 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                620 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T2
+                            </td>
+                            <td>
+                                25 m<sup>2</sup>
+                            </td>
+                            <td>
+                                750 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                510 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire de Sceaux & Châtenay-Malabry
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                580 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                605 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                625 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire Cachan
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                640 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                645 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                655 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chambre
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                635 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire du Kremlin-bicêtre
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                710 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                790 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                670 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chambre
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                510 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire de Paris 13eme et 14eme
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                950 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                1010 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                710 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chambre
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                530 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire d'Evry
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                440 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                715 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                480 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chambre
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                525 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Territoire de Saint-Quentin en Yvelines &
+                                Versailles
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                575 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                715 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Colocation
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                480 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chambre
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                525 €
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 col-lg-6">
+                <img style="width: 100%;"
+                    src="{{ asset('build/images/guide/cost/YY-unsplash.jpg') }}"
+                    alt="étudiante détendue qui consulte son ordinateur" />
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>Les frais</strong>
+                annexes
+            </h1>
+            <p class="col-12 col-lg-6 maincontent">
+                <strong>
+                    Au moment de votre recherche, ayez en tête que le loyer
+                    n’est pas la seule dépense à budgétiser lors de l’entrée
+                    dans un logement. Il est important de prendre en compte des
+                    frais supplémentaires afin de vous préparer efficacement. En
+                    effet, en plus du loyer, vous pourrez être amenés à payer
+                    non seulement mensuellement des charges et des frais, mais
+                    pensez aussi aux dépenses liées à l’arrivée dans votre
+                    logement, tels les frais d’agence ou le dépôt de garantie.
+                </strong>
+            </p>
+            <div class="col-12 col-lg-6 sidecontent">
+                <div class="text-center">
+                    <i class="fa-solid fa-triangle-exclamation fa-2x ms-2"
+                        aria-hidden="true">
+
+                    </i>
+                </div>
+                <p>
+                    <span class="visually-hidden">Danger</span>Attention : si
+                    certaines résidences ne vous facturent pas l’eau froide,
+                    elles vous factureront si vous consommez beaucoup d’eau
+                    chaude. Soyez donc vigilants vis-à-vis des charges indiquées
+                    et de votre consommation.
+                </p>
+            </div>
+
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Les frais de réservation
+                </h2>
+                <p>
+                    Certains bailleurs vous réclameront des frais afin de
+                    réserver votre logement. Les CROUS, eux, vous demanderont
+                    une avance sur la redevance afin de vous mettre de côté
+                    votre future habitation. Cette somme constitue une avance
+                    sur le premier mois dû d’un montant forfaitaire de 100 € en
+                    2020. Elle est remboursable sous réserve d’initier une
+                    annulation avant la date d’admission.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Les charges
+                </h2>
+                <p>
+                    La plupart des redevances locatives en résidences
+                    universitaires sont TCC, ce qui signifie « toutes charges
+                    comprises ». Cela induit qu’elles sont inclues dans le
+                    montant du loyer affiché. Cependant, certaines résidences et
+                    des particuliers proposent des loyers HC, c’est-à-dire hors
+                    charges. Il vous faudra donc vous renseigner sur le montant
+                    des charges en complément du montant du loyer. Il s’agit en
+                    général de l’eau, l’électricité et le chauffage. Les charges
+                    peuvent aller de 50 € à 70 € par mois.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Les frais de dossier
+                </h2>
+                <p>
+                    Les frais de dossier varient de 50 € à 300 €, selon les
+                    bailleurs. Les CROUS ne demandent pas de frais de dossier.
+                    Cette somme est versée par le futur locataire au bailleur
+                    pour permettre de prendre en charge l’enregistrement
+                    administratif de la demande de logement, des documents
+                    annexes et de la constitution du dossier locatif.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent">
+                <div class="text-center">
+                    <i class="fa-solid fa-comment fa-2x ms-2"
+                        alt="icône bulle de dialogue">
+
+                    </i>
+                </div>
+
+                <p>
+                    En fin d’année, n’oubliez pas la taxe d’habitation demandée
+                    dans certaines résidences et dans la majorité des locations
+                    privées. (En cours de réforme)
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Le dépôt de garantie
+                </h2>
+                <p>
+                    Le dépôt de garantie est une somme versée au bailleur
+                    directement par le locataire ou par l’intermédiaire d’un
+                    tiers (Action logement ou Fonds de Solidarité pour le
+                    Logement) avant l’entrée dans le logement. Il doit être
+                    mentionné par le bail de location. Le montant du dépôt varie
+                    de 1 à 2 mois de loyer hors charges selon la typologie du
+                    logement concerné (meublé ou non meublé). Le dépôt de
+                    garantie est une somme destinée à couvrir les dégradations
+                    constatées au moment de votre état des lieux de sortie, et
+                    qui vous sont directement imputables (l’usure normale du
+                    bien loué ne doit en aucun cas justifier un non
+                    remboursement du dépôt de garantie). Cette somme doit
+                    couvrir tout ou une partie de votre dette de loyers au
+                    moment de votre départ. Sauf dégradations importantes
+                    facturées, ou impayés de loyer conséquents, le dépôt de
+                    garantie a vocation à vous être remboursé en tout ou en
+                    partie une fois votre départ effectif, et ce au plus tard 2
+                    mois à compter de la remise des clefs. Afin d’éviter tout
+                    litige avec votre bailleur, notamment dans la restitution du
+                    dépôt de garantie, il est fondamental que les états des
+                    lieux d’entrée et de sortie soient réalisés avec sérieux et
+                    rigueur, la comparaison entre ces deux derniers constituant,
+                    pour le bailleur, un moyen juridique de non remboursement
+                    des sommes initialement engagées par le locataire.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    La caution
+                </h2>
+                <p>
+                    Une caution est systématiquement demandée par le bailleur ou
+                    le propriétaire. Attention : elle ne doit pas être confondue
+                    avec le dépôt de garantie. En effet, contrairement au dépôt
+                    de garantie, la caution ne se traduit pas par un versement
+                    d’argent à proprement parlé. Elle n’a pas vocation à couvrir
+                    des dégradations matérielles. L’acte de cautionnement, ou
+                    caution, est l’acte juridique qui établit une obligation à
+                    la charge d’une tierce partie (personne physique ou morale),
+                    couramment appelée « cautionnaire », portant sur le paiement
+                    des loyers en cas d’incapacité ou de manquement du locataire
+                    principal. Il s’agit donc d’une substitution de dette du
+                    locataire principal vers le cautionnaire. Attention, dans la
+                    quasi-majorité des cas, une fois la dette réglée auprès du
+                    bailleur, le cautionnaire demande remboursement de sa
+                    créance auprès du locataire principal.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent mb-auto">
+                <div class="text-center">
+                    <i class="fa-solid fa-comment fa-2x ms-2"
+                        alt="icône bulle de dialogue">
+
+                    </i>
+                </div>
+
+                <p>
+                    Faites attention aux assurances proposant une formule très
+                    peu chère. Moins vous payez et moins vous risquez d’être
+                    couvert. Toutes les assurances vous couvrent pour les
+                    incendies et les dégâts des eaux. Cependant, si vous prenez
+                    une formule plus chère, l’assurance va pouvoir prendre en
+                    charge d’autres sinistres ou incidents du quotidien : vol,
+                    vandalisme, dépannages d’urgence, catastrophes. Pour les
+                    colocations, certaines assurances proposent de payer un peu
+                    plus pour que le colocataire soit couvert également, ce qui
+                    est souvent avantageux.
+                </p>
+            </div>
+
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    L’assurance
+                </h2>
+                <p>
+                    Tout locataire entrant dans un logement, privé ou public,
+                    doit obligatoirement souscrire à une assurance habitation.
+                    Sachez que plusieurs assurances proposent des formules
+                    dédiées aux jeunes et aux étudiants. Les tarifs de
+                    l’assurance peuvent êtres annuels ou mensuels. Le prix varie
+                    selon les biens et dégâts couverts, mais également selon le
+                    type de logement. Un T2 ou un T3 sera évidemment plus cher à
+                    assurer qu’un T1 par exemple. Voici quelques prestataires
+                    d’assurances habitation proposant des tarifs étudiants
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr class="text-black"
+                            style="background-color: #95c11E">
+                            <th scope="col">
+                                Assurances
+                            </th>
+                            <th scope="col">
+                                Prestations
+                            </th>
+                            <th scope="col">
+                                Tarifs 2020
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Formule de base pour T1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ADH
+                            </td>
+                            <td>
+                                Incendie, dégâts des eaux, dépannage d'urgence
+                            </td>
+                            <td>
+                                23.50 €/an + 9.5 € pour un colocataire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ADH
+                            </td>
+                            <td>
+                                Incendie, dégâts des eaux, dépannage, vol,
+                                vandalisme, bris de vitre
+                            </td>
+                            <td>
+                                41.40 €/an
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                MAAF
+                            </td>
+                            <td>
+                                Incendie, dégâts des eaux, dépannage,vol
+                            </td>
+                            <td>
+                                55 €/an + 9 € pour un colocataire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                AXA
+                            </td>
+                            <td>
+                                Incendie, dégâts des eaux, dépannage
+                            </td>
+                            <td>
+                                6.33 €/mois
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                StudyAssur
+                            </td>
+                            <td>
+                                Incendie, dégâts des eaux
+                            </td>
+                            <td>
+                                23.45 €/an + 7.5 € pour un colocataire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Smeno
+                            </td>
+                            <td>
+                                incendie, dégâts des eaux, vol, bris de vitre,
+                                catastrophes
+                            </td>
+                            <td>
+                                66 €/an
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Formule de base pour Résidence universitaire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                AXA
+                            </td>
+                            <td>
+                                incendie, dégâts des eaux, dépannage
+                            </td>
+                            <td>
+                                33.40 €/an
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Smeno
+                            </td>
+                            <td>
+                                incendie, dégâts des eaux, vol, bris de vitre,
+                                catastrophes
+                            </td>
+                            <td>
+                                29 €/an + 23 € pour un colocataire
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Les imprévus
+                </h2>
+                <p>
+                    Occuper un logement vous expose aux imprévus qui peuvent
+                    émailler la vie d’un locataire : fuite d’eau, clé cassée
+                    dans la serrure. Votre assurance peut couvrir plusieurs
+                    types de sinistres, mais dans certaines circonstances, vous
+                    serez parfois contraint de faire vous-même appel à un
+                    serrurier, un plombier, un électricien. Certaines résidences
+                    proposent de contacter directement ces professionnels si
+                    vous signalez votre problème. D’autres résidences et
+                    propriétaires vous demanderont de vous en occuper vous-même.
+                    Dans le cas où le sinistre relève d’une maladresse, d’un
+                    oubli ou d’un accident de votre part, ce sera généralement à
+                    vous de payer des frais de réparation voire des frais
+                    d’intervention. Prévoyez-donc un budget « d’urgence » que
+                    vous pourrez utiliser en cas d’imprévu ou d’incident plus ou
+                    moins onéreux.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Les services et prestations
+                </h2>
+                <p>
+                    La plupart des résidences proposent différents services et
+                    prestations aux locataires. Ces dernières peuvent être
+                    incluses dans le loyer, ou à part. Les lave-linges
+                    collectifs, les prêts d’électroménagers, la connexion
+                    internet, les salles de sport, un service de ménage et de
+                    gardiennage, un parking : tous ces services peuvent être
+                    compris dans le loyer, ou faire l’objet de suppléments à
+                    régler à part. Prenez connaissance des services proposés par
+                    les résidences. Si ceux-ci ne sont pas compris dans les
+                    charges, prévoyez un budget mensuel pour pouvoir accéder aux
+                    offres qui vous intéressent.
+                </p>
+            </div>
+            <div class="col-12 text-center">
+                <img id="cost-img01"
+                    src="{{
+                    asset(
+                        'build/images/guide/cost/ARTE_CHARPENTIER-campus_ECLA-palaiseau.jpg'
+                    )
+                    }}"
+                    alt="zone détente de la résidence ECLA Campus à Palaiseau" />
+            </div>
+        </div>
+
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>Les aides</strong>
+                au logement
+            </h1>
+            <p class="col-12 col-lg-6 maincontent">
+                <strong>
+                    Comme vous avez pu le constater, un logement coûte cher, et
+                    tous les frais représentent un budget dont il faut tenir
+                    compte. Cependant il existe plusieurs aides financières et
+                    sociales pour vous aider à vous loger et à payer les charges
+                    et frais en toute sérénité. Voici celles auxquelles vous
+                    pourrez recourir en cas de besoin
+                </strong>
+            </p>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    APL - Aide personnalisée au logement
+                </h2>
+                <p>
+                    Les APL bénéficient aux étudiants isolés ou en couple, avec
+                    ou sans personne à charge, résidant dans un logement
+                    conventionné en métropole.
+                </p>
+
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumbtack fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        <strong>LES CONDITIONS D'ACCES A L'APL</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            L’étudiant doit être français. Les étudiants étrangers,
+                            pour leur part, doivent disposer d’un titre de séjour
+                            en cours de validité,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Le logement doit être décent (<a class="text-black"
+                                href="{{ path('housing_guide_search') }}">
+                                Voir la sous-partie les logements insalubres et
+                                non conventionnés
+                            </a>)
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Le locataire ne doit pas avoir de lien de parenté avec
+                            le propriétaire du logement
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            L’étudiant doit avoir des ressources (salaire,
+                            bourse, pension alimentaire reçue...) inférieures à
+                            certains plafonds.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Les aides de la CAF, Caisse d’Allocation Familiales
+                </h2>
+                <p>
+                    Sachez que les aides au logement de la CAF ne sont pas
+                    cumulables entre elles. De plus, elles ne sont pas
+                    rétroactives. Elles varient selon le montant du loyer, les
+                    ressources dont l’étudiant dispose, la nature du logement et
+                    le lieu d’habitation. En cas de colocation, chaque
+                    colocataire peut bénéficier d’une aide de la CAF. Pour ce
+                    faire, il faut que le logement soit occupé au moins 8 mois
+                    par an.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.caf.fr" target="_blank">www.caf.fr</a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    ALS - Allocation logement à caractère social
+                </h2>
+                <p>
+                    L’ALS est destinée aux étudiants isolés ou en couple sans
+                    personne à charge.
+                </p>
+
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumbtack fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        <strong>LES CONDITIONS D’ACCÈS À L’ALS</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Résidence en France,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Le logement doit être la résidence principale
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Le logement correspond aux normes de salubrité et d’occupation
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes étrangères doivent disposer d’un titre
+                            de séjour en cours de validité
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            L’attribution de L’ALS dépend de certains plafonds variables
+                            et en fonction de la composition du foyer et du lieu
+                            du logement
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    FSL - Fonds de solidarité pour le logement
+                </h2>
+                <p>
+                    Le Fonds de Solidarité pour le Logement fait partie des
+                    aides au logement de la CAF. Il est destiné aux personnes
+                    ayant des difficultés financières pour accéder à un
+                    logement, ou pour s’y maintenir. Cette aide se formalise via
+                    des prêts ou des subventions. Elle peut financer les
+                    dépenses de dépôt de garantie, du premier loyer,
+                    l’assurance, les frais de déménagement, les dettes, les
+                    charges et factures. Le montant délivré par le FSL varie en
+                    fonction du département. L’aide ne prend pas en compte les
+                    ressources d’aide au logement, les allocations de rentrée
+                    scolaire et les allocations d’éducation pour un enfant en
+                    situation de handicap.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.aide-sociale.fr" target="_blank">
+                        www.aide-sociale.fr
+                    </a>
+                </div>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>Qui peut bénéficier du FSL ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Le locataire et le sous-locataire
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Le propriétaire occupant
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes hébergées à titre gracieux
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes qui habitent dans un foyer en tant que
+                            résidence principale
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    ALF - Allocation logement à caractère familial
+                </h2>
+                <p>
+                    L’ALF est destinée aux étudiants isolés ou en couple avec
+                    personne à charge.
+                </p>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>Qui peut bénéficier de l'ALF ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les bénéficiaires de prestations familiales ou de l’allocation
+                            d’éducation de l’enfant handicapé
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes ayant un enfant âgé de moins de 21 ans
+                            et qui ne bénéficient pas de prestations familiales ou
+                            de l’allocation d’éducation de l’enfant handicapé
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes ayant à charges un senior de plus de 65
+                            ans
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les couples mariés depuis moins de 5 ans qui n’ont pas
+                            d’enfants à charge
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les femmes enceintes de plus de 4 mois seules ou en couple
+                            qui n’ont aucune personne à charge
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>LES CONDITIONS D’ACCÈS À L’ALF</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes étrangères doivent disposer d'un titre
+                            de séjour en cours de validité
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Le locataire ne doit pas avoir de lien de parenté avec
+                            le propriétaire du logement
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            L'attribution de L'ALF dépend de certains plafonds variables
+                            en fonction de la composition du loyer et du lieu du
+                            logement
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>Les autres aides</strong>
+            </h1>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    AILE - Aide à l’installation dans un logement pour étudiants
+                </h2>
+                <p>
+                    La ville de Paris propose 900 € pour la première
+                    installation dans un logement du parc privé parisien. Cette
+                    aide est gérée par le CROUS de Paris, elle est ouverte aux
+                    étudiants boursiers inscrits dans l’Académie de Paris, de
+                    Créteil ou de Versailles et résidant à Paris.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.paris.fr/aile" target="_blank">
+                        www.paris.fr/aile
+                    </a>
+                </div>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>Qui peut bénéficier de l'AILE ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les étudiants boursiers sur critères sociaux ou bénéficiaires
+                            de l’Aide Spécifique Allocation Annuelle des CROUS de
+                            Paris, Créteil ou Versailles,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les titulaires d’un bail pour un logement dans Paris
+                            signé entre le 1er juin et le 31 mars N+1.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Allocation exceptionnelle
+                </h2>
+                <p>
+                    Cette aide ponctuelle est destinée aux personnes ayant des
+                    difficultés financières temporaires ou en cas de sinistre
+                    nécessitant un hébergement en urgence. Cette allocation ne
+                    peut pas être renouvelée de façon régulière. Pour bénéficier
+                    de cette aide, il est nécessaire de contacter la section de
+                    l’arrondissement du CASVP, Centre Action Sociale de Ville de
+                    Paris, du domicile.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.paris.fr/pages/aides-financieres-exceptionnelles-3815"
+                        target="_blank">
+                        www.paris.fr/pages/aides-financieres-exceptionnelles-3815
+                    </a>
+                </div>
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>
+                            LES CONDITIONS D’ACCÈS À L’ALLOCATION EXCEPTIONNELLE
+                        </strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Habiter Paris depuis au moins un mois,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Justifier de la régularité de son séjour en France.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    ALCVP - Allocation Logement Complémentaire de la Ville de
+                    Paris
+                </h2>
+                <p>
+                    Cette aide est gérée par la CAF pour le département de
+                    Paris. Le plafond de cette allocation est de 183 €/mois pour
+                    une famille et 122 €/mois pour une personne isolée.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.vosinfoscaf.com" target="_blank">
+                        www.vosinfoscaf.com
+                    </a>
+                </div>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>Qui peut bénéficier de l'ALCVP ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Les allocataires du RSA
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les titulaires d’un contrat d’insertion ou les personnes
+                            ayant un projet personnalisé d’accès à l’emploi dans
+                            l’année qui précède la demande d’aide
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les bénéficiaires d’une aide au en qualité de locataire,
+                            versée par la Caisse d’allocation familiale de Paris
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidecontent mb-auto">
+                    <div class="text-center">
+                        <i class="fa-solid fa-comment fa-2x ms-2"
+                            aria-hidden="true">
+
+                        </i>
+                    </div>
+                    <p>
+                        À noter que les allocataires du RSA ne peuvent pas
+                        cumuler L’ALCVP (voir ci-dessus) et une autre aide au
+                        logement de la ville.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Paris Logement
+                </h2>
+                <p>
+                    Cette allocation, non cumulable avec une autre aide au
+                    logement municipal, se divise en trois parties<ul class="fa-ul"
+                        style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Paris Logement,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Paris Logement Famille
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Paris Logement Famille Monoparentales.
+                        </li>
+                    </ul>Cette aide est destinée aux couples avec un seul enfant
+                    ou sans enfant, ainsi qu'aux personnes seules locataires.
+                    Cette aide est mise en place afin d’aider à mieux supporter
+                    les dépenses de logement. Ce dispositif est cumulable avec
+                    les APL et peut attribuer jusqu’à<ul class="fa-ul"
+                        style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>84 €/mois pour les personnes seules,
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            95 €/mois pour les couples sans enfant
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            et 116 €/mois pour les couples avec enfant.
+                        </li>
+                    </ul>Cette aide est accessible aux étudiants.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.paris.fr/aides-au-logement"
+                        target="_blank">
+                        www.paris.fr/aides-au-logement
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent pin">
+                <div class="text-center">
+                    <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                </div>
+
+                <p>
+                    <strong>LES CONDITIONS D’ACCÈS À PARIS LOGEMENT</strong>
+                </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Être majeure
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Être de nationalité française, ou avoir un titre de séjour
+                        en cours de validité
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Être locataire, colocataire, accédant à la propriété ou propriétaire
+                        (ce dernier cas concerne uniquement les familles)
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Bénéficier ou pouvoir prétendre à l’aide au logement de la
+                        CAF
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Habiter Paris depuis au moins trois ans, de manière continue
+                        ou non
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Ne pas avoir d’impayés de charges
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Être titulaire du bail du logement occupé à titre principal
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Habiter Paris depuis au moins un an pour les couples ayant
+                        un enfant à charge en cas de mutation professionnelle imposée
+                        par l’employeur
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Avoir des ressources mensuelles inférieures ou égales à 1&nbsp;210&nbsp;€
+                        pour les personnes seules et les couples sans enfant ou inférieures
+                        ou égales à 1 600 € pour les couples avec enfant à charge
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Consacrer au moins 30% de ses ressources aux charges de logement.
+                        Les ressources prises en compte sont celles de l’ensemble
+                        des personnes vivant au sein du foyer
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Avoir sollicité l’ouverture de l’allocation logement et répondre
+                        aux conditions légales de peuplement et de salubrité
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Loca-pass
+                </h2>
+                <p>
+                    L’Avance Loca-pass permet de verser le dépôt de garantie
+                    demandé par le bailleur. Il n’y a pas d’intérêts perçus sur
+                    la somme avancée et celle-ci est remboursable sur 3 ans. Son
+                    montant peut atteindre au maximum 1 200 €. Elle est ouverte
+                    aux jeunes de moins de 30 ans, aux salariés du secteur privé
+                    non agricole, aux demandeurs d’emploi et en formation
+                    professionnelle.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.actionlogement.fr" target="_blank">
+                        www.actionlogement.fr
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent pin">
+                <div class="text-center">
+                    <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                </div>
+
+                <p>
+                    <strong>LES CONDITIONS D’ACCÈS À LOCA-PASS</strong>
+                </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Être boursier d’état ou étudiant justifiant d’un CDD, de
+                        plusieurs CDD successifs ou d’une convention de stage de
+                        3 mois minimum au cours des 6 derniers mois,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        Le logement doit être la résidence principale, situé sur
+                        le territoire français, loué avec un bail respectant la règlementation
+                        française.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    {{ include('housing_guide/_fr_visale.html.twig') }}
+    <br />
+
+    {{ include('housing_guide/_fr_mobilijeune.html.twig') }}
+
+    <div class="container guide cost">
+        <div class="row gx-6 gy-5 my-4 p-4" style="background-color: #8cc63e;">
+            <h2 class="text-black">
+                Mémo
+            </h2>
+            <div class="col-12 col-lg-6 fs-5">
+                <p>
+                    Les aides de la CAF, de la Mairie de Paris et dAction
+                    logement sont les principales aides que vous pouvez
+                    solliciter concernant votre logement étudiant. Ces aides
+                    sont cumulables avec une bourse sur critères sociaux des
+                    CROUS. Vous pouvez faire vos simulations sur le site de la
+                    <a class="btn skinny bg-white text-dark btn-block"
+                        href="https://www.caf.fr"
+                        target="_blank">
+                        CAF
+                    </a> afin de tester votre éligibilité et le montant de vos aides
+                </p>
+                <p>
+                    D’autres aides financières existent en complément des aides
+                    pour le logement. Pour en prendre connaissance, nous vous
+                    invitons à consulter <a class="btn skinny bg-white text-dark btn-block"
+                        hhref="https://www.universite-paris-saclay.fr/le-guide-interactif-etudiant-et-etudiante"
+                        target="_blank">
+                        le Guide de l’Étudiant
+                    </a>
+                    afin d’avoir plus de renseignements concernant les mesures financières
+                    et sociales dont vous pouvez bénéficier.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 fs-5">
+                <p>
+                    Enfin, si vous rencontrez des problèmes financiers,
+                    d’importants imprévus ou une situation d’urgence, n’hésitez
+                    pas à contacter les assistantes sociales. Elles vous
+                    accompagneront pour vous orienter vers les dispositifs
+                    d’aide qui correspondent à votre situation.
+                </p>
+
+                <a class="btn skinny bg-white text-dark btn-block"
+                    href="https://www.universite-paris-saclay.fr/vie-de-campus/bourses-et-aides-etudiantes"
+                    target="_blank">
+                    Bourses et aides etudiantes
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container guide cost">
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>En résumé,</strong><br />
+                le coût total d’une location
+            </h1>
+            <p class="h3 text-center">
+                Pour vous donner une idée de combien vous coûtera un logement,
+                voici deux exemples de mise en situation
+            </p>
+            <div class="maincontent col-12 col-lg-6 p-4">
+                <h2>
+                    Pour un studio d’un bailleur privé de 20 m2 environ sur le
+                    territoire d’Orsay ou ses alentours
+                </h2>
+                <p class="h3 mt-4">
+                    <strong>Chaque mois vous devez prévoir :</strong>
+                </p>
+                <p class="h2">
+                    &nbsp;&nbsp;&nbsp;560 €
+                </p>de loyer avec charges (hors aides auxquelles vous pourriez
+                prétendre)<p class="h2">
+                    + 100 €
+                </p>en moyenne de services complémentaires (laverie, ménage,
+                salle de sport etc) et d’assurance mensuelle selon les offres
+                choisies<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 660 €
+                    </span>
+                </p>
+                <p class="h3 mt-4">
+                    <strong>
+                        Lors de votre arrivée dans le logement vous devrez
+                        débourser
+                    </strong>
+                    :
+                </p>
+                <p class="h2">
+                    &nbsp;&nbsp;&nbsp;560 €
+                </p>de premier loyer<p class="h2">
+                    + 500 €
+                </p>garantie (qui correspond au de dépôt de premier loyer hors
+                charges). À la fin du bail, si ni impayés ni dégâts ne sont à
+                déplorer, vous recouvrerez ce montant<p class="h2">
+                    + 200 €
+                </p>de frais de dossier (selon votre période de candidature, ces
+                frais peuvent être offerts)<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 1260 €
+                    </span>
+                </p><br />Une fois par an n’oubliez pas la taxe d’habitation qui
+                varie de<p class="h2">
+                    30 à 110 €.
+                </p>(En cours de réforme) : >
+                <a class="info-link"
+                    href="https://www.service-public.fr/particuliers/vosdroits/F42"
+                    target="_blank">
+                    www.service-public.fr/particuliers/vosdroits/F42
+                </a>
+            </div>
+
+            <div class="maincontent col-12 col-lg-6 p-4 pin">
+                <h2>
+                    Pour un studio au sein d’une résidence universitaire sur le
+                    secteur d’Orsay ou ses alentours :
+                </h2>
+                <p class="h3 mt-4">
+                    <strong>Chaque mois vous devez prévoir :</strong>
+                </p>
+                <p class="h2">
+                    &nbsp;&nbsp;&nbsp;450 €
+                </p>de loyer avec charges (hors aides auxquelles vous pourriez
+                prétendre)<p class="h2">
+                    &nbsp;&nbsp;+ 10 €
+                </p>en moyenne pour la laverie<p class="h2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;+5
+                </p>d'assurance habitation mensuelle<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 465 €
+                    </span>
+                </p>
+                <p>
+                    L’accès à internet est gratuit en fonction du partenariat
+                    avec un fournisseur d’internet réalisé par le CROUS
+                </p>
+                <p class="h3 mt-4">
+                    <strong>
+                        Lors de votre arrivée dans le logement vous devrez
+                        débourser
+                    </strong>
+                </p>
+                <p class="h2">
+                    &nbsp; &nbsp;450 €
+                </p>de premier loyer<p class="h2">
+                    + 400 €
+                </p>de dépôt de garantie (qui correspond au premier loyer hors
+                charges). À la fin du bail, si ni impayés, ni dégâts ne sont a
+                déplorer, vous recouvrerez ce montant<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 850 €
+                    </span>
+                </p>
+                <br />
+                <p class="h2">
+                    100 €.
+                </p>de frais de réservation pourront vous être demandés avant
+                votre arrivée. Ils seront ensuite diminués du premier loyer que
+                vous aurez à payer à votre arrivée.
+            </div>
+        </div>
+    </div>
+{% endblock %}

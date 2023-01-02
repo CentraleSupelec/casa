@@ -1,5 +1,5 @@
 general:
-    email_name: Université Paris Saclay - Plateforme de Logement
+    email_name: Université Paris Saclay - Plateforme Logement Edutiant
     novalue: Non renseigné
     label_yes: Oui
     label_no: Non
@@ -122,6 +122,8 @@ home:
     page_title: Accueil - Plateforme logement
     welcome:
         title: Aider les étudiantes et étudiants de l'Université Paris-Saclay<br/> à trouver leur logement.
+        base_line: |
+            La plateforme logement étudiant de l’Université Paris-Saclay est dédiée aux étudiants et futurs étudiants des établissements de l’université. Elle référence des offres à l’échelle de l’ensemble des entités de l’université et de tous ses territoires, en partenariat avec des associations et bailleurs Les offres sont régulièrement mises à jour par les bailleurs. Vous trouverez des logements en résidence, chez l’habitant, en colocation ou encore contre service. (en cours de validation)
     homepage_link: Lien vers la page d'accueil
 profile:
     title:
@@ -141,6 +143,10 @@ profile:
     social_scholarship: Boursier sur critères sociaux du CROUS
     reduced_mobility: Je suis en situation de Handicap et je cherche un logement adapté
     choose_school: Veuillez sélectionner un établissement
+    dossier_facile_text: |
+        Constituez dès à présent votre dossier locatif numérique auprès de Dossier Facile pour maximiser vos chances. Dossier Facile vérifie vos documents et vous accompagne dans la constitution de votre dossier.
+    urgent_text: |
+        Vous êtes dans une situation d’urgence ? Cliquez ci-dessous pour détailler votre situation et contacter votre établissement.
 authentication:
     send_verification_error: |
         nous n'avons pas réussi à envoyer le message nécessaire à la vérification de votre compte.
@@ -159,6 +165,8 @@ authentication:
         short: Votre mot de passe doit contenir au moins {{ limit }} caractères
         long: Votre mot de passe doit contenir au plus {{ limit }} caractères
     log_in:
+        have_account: J'ai déjà un compte
+        have_no_account: Je n'ai pas de compte
         button: Se connecter
         page_title: Connexion - Plateforme logement
         not_verified: Vous ne pouvez pas vous connecter car votre email n'est pas vérifié.
@@ -184,7 +192,7 @@ authentication:
                 Nous n'avons pas réussi à envoyer le message de réinitialisation de votre mot de passe
                 Merci d'essayer un peu plus tard. Si le problème persiste, contactez la plateforme logement.
         email:
-            subject: '[PSUH] Réinitialisation de votre mot de passe'
+            subject: '[Plateforme Logement] Réinitialisation de votre mot de passe'
             header: Réinitialisez votre mot de passe
             body: Cliquez sur le lien ci-dessous afin de réinitialiser votre mot de passe.
             button: Définir un nouveau mot de passe
@@ -192,7 +200,7 @@ authentication:
             introduction: Veuillez indiquer votre nouveau mot de passe
             button: Changer de mot de passe
     verification_email:
-        subject: '[PSUH] Confirmation de votre adresse email'
+        subject: '[Plateforme Logement] Confirmation de votre adresse email'
         header: Sécurisez votre compte
         body: Confirmez votre adresse email en cliquant sur le lien ci-dessous pour pouvoir accéder à votre compte.
         button: Confirmer mon adresse e-mail
@@ -209,6 +217,9 @@ bookmark:
     add: Ajouter en favori
     remove: supprimer des favoris
     empty: Vous n'avez pas encore de favoris
+faq:
+    general_questions: Vos questions générales sur le logement
+    school_information: Votre établissement vous informe (FAQ)
 housing_request:
     common:
         introduction: Veuillez décrire votre demande ci-dessous
@@ -225,7 +236,7 @@ housing_request:
     generic:
         page_title: Envoyer une demande - Plateforme logement
         email:
-            subject: '[PSUH] Demande étudiante'
+            subject: '[Plateforme Logement] Demande étudiante'
             header: Demande d'un étudiant à propos de logement
     emergency:
         qualification:
@@ -256,6 +267,6 @@ housing_request:
                 Votre numéro de téléphone n'est pas renseigné dans votre profil. 
                 Pensez à l'indiquer dans le corps du message ou modifiez votre profil avant de faire la demande.
         email:
-            subject: '[PSUH][URGENT] Demande étudiante urgente'
+            subject: '[Plateforme Logement][URGENT] Demande étudiante urgente'
             header: Demande urgente d'un étudiant à propos de logement
             qualification_info: Situation de l'étudiant

@@ -77,6 +77,7 @@ final class Constants
         ];
     }
 
+    // TODO: used ?
     public static function getPlatformEmailAddress(): string
     {
         return 'psuh@paris-saclay.com';
@@ -123,6 +124,9 @@ final class Constants
             'Villejuif',
             'Sceaux',
             'Cachan',
+            'Paris',
+            'Saint-Cloud',
+            'Corbeil-Essonnes',
         ];
 
         return array_combine($campus, $campus);

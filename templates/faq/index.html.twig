@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'footer.faq'|trans }}
+{% endblock %}
+
+{% block body %}
+    <main class="container" id="maincontent">
+        <h2>
+            {{ 'faq.general_questions'|trans }}
+        </h2>
+        <ul class="fa-ul fs-3" style="--fa-li-width: 2em;">
+            <li>
+                <span class="fa-li text-primary" aria-hidden="true">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+                <a href="https://www.adele.org/faq" target="_blank">
+                    Adele.org
+                </a>
+            </li>
+            <li>
+                <span class="fa-li text-primary" aria-hidden="true">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+                <a href="https://www.etudiant.gouv.fr/fr/logement-conseils-droits-2197"
+                    target="_blank">
+                    Etudiant.gouv.fr
+                </a>
+            </li>
+        </ul>
+
+        <h2>
+            {{ 'faq.school_information'|trans }}
+        </h2>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if app.user.school %}
+                <div class="mt-4 bg-info text-white">
+                    <ul class="fa-ul fs-4" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-white" aria-hidden="true">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </span>
+                            <a class="fs-4 btn text-white"
+                                href="{{ app.user.school.websiteUrl }}"
+                                target="_blank">
+                                {{ app.user.school.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="mt-4 bg-light">
+            <ul class="fa-ul fs-5" style="--fa-li-width: 2em;">
+                {% set break = false %}
+                {% for school in schools %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if app.user.school %}
+                            {% if app.user.school is same as(school) %}
+                                {% set break = true %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% if not break %}
+                        <li class="mb-4">
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </span>
+                            <a href="{{ school.websiteUrl }}" target="_blank">
+                                {{ school.name }}
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% set break = false %}
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+{% endblock %}

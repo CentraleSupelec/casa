@@ -1,0 +1,1547 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="maincontent" class="container guide cost">
+        <div class="row mb-4" style="max-height: 450px;">
+            <img class="img-fluid"
+                style="z-index: -1;"
+                src="{{
+                asset(
+                    'build/images/guide/chercher/photo_ARTE_CHARPENTIER_palaiseau.jpg'
+                )
+                }}"
+                alt="Résidence Charpentier Palaiseau" />
+        </div>
+
+        <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
+            <h1>
+                <strong>Average rents</strong><br />
+                by housing type and according to regions
+            </h1>
+            <div class="maincontent col-12 col-lg-6">
+                <p>
+                    We offer you a price list of average rents according to the
+                    type of accommodation and the region to help you prepare
+                    your housing budget. It is important to realise that the
+                    rental of accommodation varies considerably depending on
+                    where it is situated. Accommodation in Orsay, for example,
+                    is less expensive than in Sceaux or Paris. In addition, rent
+                    can vary significantly depending on the type of
+                    accommodation, its floor area and its facilities.
+                </p>
+                <p>
+                    Here are some average rents according to the size and type
+                    of the accommodation, but also according to its location in
+                    the Paris-Saclay region.
+                </p>
+                <p>
+                    Survey based on the accommodation list put together by the
+                    Student Life and Social Action Unit in the Department of
+                    Student Life & Equal Opportunities. September 2020.
+                </p>
+
+                <table class="table">
+                    <thead>
+                        <tr class="text-black"
+                            style="background-color: #95c11E">
+                            <th scope="col">
+                                Type of accomodation
+                            </th>
+                            <th scope="col">
+                                Average floor area
+                            </th>
+                            <th scope="col">
+                                Average monthly rent all taxes included
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Orsay region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                560 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (studio apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                620 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T2 (one bedroom apartment)
+                            </td>
+                            <td>
+                                25 m<sup>2</sup>
+                            </td>
+                            <td>
+                                750 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                510 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Sceaux & Châtenay-Malabry region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                580 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (one bedroom apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                605 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                625 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Cachan region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                640 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (one bedroom apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                645 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                655 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bedroom
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                635 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Kremlin-bicêtre region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                710 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (one bedroom apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                790 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                670 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bedroom
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                510 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Paris 13th & 14th region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                950 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (one bedroom apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                1010 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                710 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bedroom
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                530 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Evry region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                440 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (one bedroom apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                715 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                480 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bedroom
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                525 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Saint-Quentin en Yvelines & Versailles region
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Studio
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                575 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                T1 (one bedroom apartment)
+                            </td>
+                            <td>
+                                20 m<sup>2</sup>
+                            </td>
+                            <td>
+                                715 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shared accomodation
+                            </td>
+                            <td>
+                                15 m<sup>2</sup>
+                            </td>
+                            <td>
+                                480 €
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bedroom
+                            </td>
+                            <td>
+                                10 m<sup>2</sup>
+                            </td>
+                            <td>
+                                525 €
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 col-lg-6">
+                <img style="width: 100%;"
+                    src="{{ asset('build/images/guide/cost/YY-unsplash.jpg') }}"
+                    alt="étudiante détendue qui consulte son ordinateur" />
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>Additional</strong>
+                expenses
+            </h1>
+            <p class="col-12 col-lg-6 maincontent">
+                <strong>
+                    When looking for a place to live, keep in mind that rent is
+                    not the only expense to budget for when moving into your
+                    accommodation. It is important to take into account any
+                    additional costs so that you are best prepared. In addition
+                    to rent, you may have to pay not only monthly utility bills
+                    and fees, but also expenses related to moving into your
+                    accommodation such as agency fees or a security deposit.
+                </strong>
+            </p>
+            <div class="col-12 col-lg-6 sidecontent">
+                <div class="text-center">
+                    <i class="fa-solid fa-triangle-exclamation fa-2x ms-2"
+                        aria-hidden="true">
+
+                    </i>
+                </div>
+                <p>
+                    <span class="visually-hidden">Danger</span>Please note: if
+                    some residences do not charge you for cold water, they will
+                    charge you if you use a lot of hot water Therefore, be aware
+                    of the charges shown and your consumption.
+                </p>
+            </div>
+
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Reservation fees
+                </h2>
+                <p>
+                    Some landlords will charge you a fee to reserve your
+                    accommodation. CROUS, for example, will ask you for an
+                    advance on the rent in order to secure your accommodation.
+                    In 2020, this was an advance on the first month's payment of
+                    a flat rate of € 100. It is refundable provided that any
+                    cancellation is made before the date of acceptance.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Charges
+                </h2>
+                <p>
+                    Most rental fees in student residences are TCC, which means
+                    'all charges included' (toutes charges comprises). This
+                    means that they are included in the advertised rent.
+                    However, some residences and private individuals offer HC
+                    rents, which means 'excluding charges' (hors charges). In
+                    this case, you will need to find out how much the charges
+                    are in addition to the rent. These are usually for water,
+                    electricity and heating. The charges can be between € 50 and
+                    € 70 per month.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Administration fees
+                </h2>
+                <p>
+                    Administration fees vary between € 50 and € 300 depending on
+                    the landlord. CROUS do not ask for any administration fees.
+                    This sum is paid by the future tenant to the landlord in
+                    order to cover any administration to do with the
+                    registration of the housing application, related documents
+                    and compilation the rental file.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent">
+                <div class="text-center">
+                    <i class="fa-solid fa-comment fa-2x ms-2"
+                        alt="icône bulle de dialogue">
+
+                    </i>
+                </div>
+
+                <p>
+                    At the end of the year, do not forget the residence tax
+                    required in some residences and in the majority of private
+                    rentals. (In progress)
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    The security deposit
+                </h2>
+                <p>
+                    The security deposit is a sum paid to the landlord directly
+                    by the tenant or through a third party ('Action logement' or
+                    'Fonds de Solidarité pour le Logement') before moving in. It
+                    should be mentioned in the lease. The security deposit
+                    amount varies from between 1 and 2 months rent (excluding
+                    charges) depending on the type of accommodation concerned
+                    (furnished or unfurnished). The security deposit is a sum
+                    intended to cover any damage noted at the time of your
+                    departure which is directly attributable to you (normal wear
+                    and tear of the rented property should under no
+                    circumstances justify a non-refund of the security deposit).
+                    This sum should cover all or part of your rental debt at the
+                    time of your departure. Except in the case of major damage
+                    or unpaid rent, the security deposit will be reimbursed to
+                    you in whole or in part once you have left - at the latest 2
+                    months after you have returned the keys. In order to avoid
+                    any dispute with your landlord, particularly with regard to
+                    the return of the security deposit, it is essential that the
+                    inventory of fixtures and fittings at the start and end of
+                    the rental period be carried out accurately and rigorously,
+                    as the comparison between the two constitutes a legal means
+                    for the landlord not to reimburse any sums initially paid by
+                    the tenant.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    The surety
+                </h2>
+                <p>
+                    A surety is always requested by the landlord or owner.
+                    Please note: a surety should not be confused with a security
+                    deposit. Unlike the security deposit, a surety is not a
+                    payment of money as such. It is not for covering the costs
+                    of any material damage. The deed of guarantee, or surety, is
+                    a legal act which establishes an obligation on the part of a
+                    third party (natural or legal person) - commonly referred to
+                    as the 'guarantor' - to pay rent in the event of failure or
+                    default on the part of the principal tenant to do so. It is
+                    therefore a transfer of debt from the main tenant to the
+                    guarantor. Please note that in almost all cases, once the
+                    debt has been settled with the landlord, the guarantor will
+                    request reimbursement of the claim from the principal
+                    tenant.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent mb-auto">
+                <div class="text-center">
+                    <i class="fa-solid fa-comment fa-2x ms-2"
+                        alt="icône bulle de dialogue">
+
+                    </i>
+                </div>
+
+                <p>
+                    Be careful of insurance providers offering a very low-cost
+                    package. The less you pay, the less likely you are to be
+                    covered. All insurance providers should cover you for fire
+                    and water damage. However, If you take out a more expensive
+                    package, the insurance will cover other everyday losses or
+                    accidents such as theft, vandalism, emergency repairs or
+                    disasters. For shared accommodation, some insurance
+                    companies offer the option of charging a little more so that
+                    the co-tenant is covered as well, which is often a good
+                    idea.
+                </p>
+            </div>
+
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Insurance
+                </h2>
+                <p>
+                    All tenants moving into either public or private
+                    accommodation must take out home insurance. Several
+                    insurance companies offer special packages for young people
+                    and students. Insurance payments can be annual or monthly.
+                    The price varies according to the property and damages
+                    covered, as well as the type of accommodation. A T2 or T3
+                    will of course be more expensive to insure than a T1 for
+                    example. Here are some home insurance providers offering
+                    student rates
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr class="text-black"
+                            style="background-color: #95c11E">
+                            <th scope="col">
+                                Insurance
+                            </th>
+                            <th scope="col">
+                                Activites
+                            </th>
+                            <th scope="col">
+                                Prices for 2020
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Formule de base pour T1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ADH
+                            </td>
+                            <td>
+                                Fire, Water damage, emergency repairs
+                            </td>
+                            <td>
+                                23.50 €/an + 9.5 € pour un colocataire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ADH
+                            </td>
+                            <td>
+                                Fire, Water damage, emergency repairs, theft,
+                                vandalism, broken windows
+                            </td>
+                            <td>
+                                41.40 €/an
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                MAAF
+                            </td>
+                            <td>
+                                Fire, Water damage, emergency repairs, theft
+                            </td>
+                            <td>
+                                55 €/an + 9 € pour un colocataire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                AXA
+                            </td>
+                            <td>
+                                Fire, Water damage, repairs
+                            </td>
+                            <td>
+                                6.33 €/mois
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                StudyAssur
+                            </td>
+                            <td>
+                                Fire, Water damage
+                            </td>
+                            <td>
+                                23.45 €/an + 7.5 € pour un colocataire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Smeno
+                            </td>
+                            <td>
+                                Fire, Water damage, theft, broken windows,
+                                disasters
+                            </td>
+                            <td>
+                                66 €/an
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color: #e3edc6">
+                                Formule de base pour Résidence universitaire
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                AXA
+                            </td>
+                            <td>
+                                Fire, Water damage, repairs
+                            </td>
+                            <td>
+                                33.40 €/an
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Smeno
+                            </td>
+                            <td>
+                                Fire, Water damage, theft, broken windows,
+                                disasters
+                            </td>
+                            <td>
+                                29 €/an + 23 € pour un colocataire
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Unforeseen events
+                </h2>
+                <p>
+                    Occupying a dwelling exposes you to the unforeseen events
+                    which can occur in the life of a tenant, such as a water
+                    leak or a broken key in the lock. Your insurance may provide
+                    cover for several types of accidents, but in certain
+                    circumstances you may have to call in a locksmith, plumber
+                    or electrician yourself. Some residences offer to contact
+                    such professionals directly if you alert them to the
+                    problem. Other residences and landlords ask you to sort it
+                    out yourself. If the damage is the result of a mistake, an
+                    oversight or an accident on your part, you will generally
+                    have to pay the cost of the repairs or even the service
+                    charges yourself. Set aside some 'emergency' money which you
+                    could use in the event of an (expensive or otherwise)
+                    unforeseen event or accident.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Services and facilities
+                </h2>
+                <p>
+                    Most residences offer various services and facilities to
+                    tenants. The latter may be included in the rent, or paid for
+                    separately. Shared washing machines, electrical appliances
+                    on loan, internet connection, sports facilities, a cleaning
+                    and caretaking service and parking can be included in the
+                    rent, or be subject to supplements to be paid separately.
+                    Find out about the services offered in the accommodation. If
+                    they are not included in the rent, set aside a monthly
+                    budget so that you can access those which are of interest to
+                    you.
+                </p>
+            </div>
+            <div class="col-12 text-center">
+                <img id="cost-img01"
+                    src="{{
+                    asset(
+                        'build/images/guide/cost/ARTE_CHARPENTIER-campus_ECLA-palaiseau.jpg'
+                    )
+                    }}"
+                    alt="zone détente de la résidence ECLA Campus à Palaiseau" />
+            </div>
+        </div>
+
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>Housing</strong>
+                assistance
+            </h1>
+            <p class="col-12 col-lg-6 maincontent">
+                <strong>
+                    As you can see, accommodation is expensive and all the costs
+                    amount to a sum which must be accounted for. However, there
+                    are several types of financial and social assistance
+                    available which can help you find accommodation and pay for
+                    any charges and expenses with peace of mind. These are the
+                    ones you can use if you need to
+                </strong>
+            </p>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    APL - Personalised Housing Assistance
+                </h2>
+                <p>
+                    APL is for individual students or couples, with or without
+                    dependants, living in subsidised accommodation in mainland
+                    France.
+                </p>
+
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumbtack fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        <strong>CONDITIONS FOR ACCESSING APL</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The student must be French. Foreign students, on the
+                            other hand, must have a valid residence permit
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The dwelling must be appropriate (<a class="text-black"
+                                href="{{ path('housing_guide_search') }}">
+                                ee the sub-section on 'substandard and
+                                unsubsidised accommodation
+                            </a>)
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The tenant must not be related to the landlord of the
+                            property
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The student must have financial resources (salary, grant,
+                            support payments received, etc.) below a certain level.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    CAF assistance National Fund for Family Allowances
+                </h2>
+                <p>
+                    Please note that CAF housing benefits cannot be combined
+                    with each other. In addition, they are not retrospective.
+                    The level of assistance varies according to the amount of
+                    rent, the financial resources available to the student, the
+                    nature of the accommodation and the place of residence. In
+                    the case of shared accommodation, each tenant can benefit
+                    from CAF assistance. In order for this to happen, the
+                    accommodation must be lived in for at least 8 months of the
+                    year.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.caf.fr" target="_blank">www.caf.fr</a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    AALS - Social Housing Allowance
+                </h2>
+                <p>
+                    ALS is for individual students or couples without
+                    dependants.
+                </p>
+
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumbtack fa-2x ms-2"></i>
+                    </div>
+                    <p>
+                        <strong>THE CONDITIONS FOR ACCESSING ALS</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Resident in France,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>The accommodation must be your primary place
+                            of residence
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The accommodation meets health and habitation standards
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Foreign nationals must have a valid resi- dence permit
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Allocation of ALS depends on certain variable thresholds
+                            according to the composition of the household and the
+                            location of the accommodation
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    FSL - Housing Solidarity Fund
+                </h2>
+                <p>
+                    Fund The Housing Solidarity Fund is part of the housing
+                    assistance provided by CAF. It is for people who are
+                    experiencing financial difficulties in accessing or
+                    maintaining housing. This support is provided in the form of
+                    loans or grants. It can be used to meet the cost of a
+                    security deposit, the initial rent, insurance, moving
+                    expenses, debts, charges and bills. The total amount issued
+                    by the FSL will vary according to the département. The
+                    assistance does not take into account housing benefit
+                    income, start-of-school allowances and education allowances
+                    for a disabled child.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.aide-sociale.fr" target="_blank">
+                        www.aide-sociale.fr
+                    </a>
+                </div>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>WHO CAN ACCESS FSL ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The tenant and the sub-tenant
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The owner occupier
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            People accomodated free of charge
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            People who live in a hostel as their main place of residence
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    ALF - Allocation logement à caractère familial
+                </h2>
+                <p>
+                    The ALF is intended for students who are isolated or in a
+                    couple with dependents.
+                </p>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>WHO CAN ACCESS ALF ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Those receiving family benefits or an education allowance
+                            for disabled children
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Les personnes ayant un enfant âgé de moins de 21 ans
+                            et qui ne bénéficient pas de prestations familiales ou
+                            de l’allocation d’éducation de l’enfant handicapé
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Those looking after a senior citizen aged over 65
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Couples married for less than 5 years who do not have
+                            any dependent children
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Individual women who are more than 4 months pregnant
+                            or who are in a couple and who do not have any dependants
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>THE CONDITIONS FOR ACCESSING ALF</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Foreign nationals must have a valid residence permit
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The tenant must not be related to the land- lord of the
+                            property
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            The allocation of ALF depends on certain variable thresholds
+                            according to the composition of the household and the
+                            location of the accommodation
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                <strong>Other financial assistance</strong>
+            </h1>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    AILE - Aide à l’installation dans un logement pour étudiants
+                </h2>
+                <p>
+                    The city of Paris offers € 900 for first time accommodation
+                    in private rented accommodation in Paris. This assistance is
+                    managed by CROUS in Paris. It is open to scholarship
+                    students enrolled at the Académie de Paris, de Créteil or de
+                    Versailles who are living in Paris.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.paris.fr/aile" target="_blank">
+                        www.paris.fr/aile
+                    </a>
+                </div>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>WHO CAN ACCESS AILE ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Studen ACCESS THIS ASSISTANCE? grounds ts granted scholarships
+                            on social or receiving a Specific Assistance Annual Allowance
+                            (Aide Spécifique Allocation Annuelle) by CROUS in Paris,
+                            Créteil or Versailles,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Holders of a lease for accommodation in Paris signed
+                            between 1 June and 31 March N+1.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Allocation exceptionnelle
+                </h2>
+                <p>
+                    This one-off assistance is intended for people in temporary
+                    financial difficulties or in the event of a disaster
+                    requiring emergency accommodation. This benefit cannot be
+                    renewed on a regular basis. To benefit from this assistance,
+                    you must contact the CASVP (Centre Action Sociale de Ville
+                    de Paris) branch of the arrondissement in which your
+                    residence is located.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.paris.fr/pages/aides-financieres-exceptionnelles-3815"
+                        target="_blank">
+                        www.paris.fr/pages/aides-financieres-exceptionnelles-3815
+                    </a>
+                </div>
+                <div class="sidecontent pin">
+                    <div class="text-center">
+                        <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>
+                            WHO CAN ACCESS ALLOCATION EXCEPTIONNELLE
+                        </strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>You must have lived in Paris for at least a
+                            month
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            You must prove the legality of your stay in France
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    ALCVP - Allocation Logement Complémentaire de la Ville de
+                    Paris
+                </h2>
+                <p>
+                    This assistance is managed by CAF for the département of
+                    Paris. The threshold for this assistance is € 183 per month
+                    for a family and € 122 per month for an individual person.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.vosinfoscaf.com" target="_blank">
+                        www.vosinfoscaf.com
+                    </a>
+                </div>
+
+                <div class="sidecontent usercheck">
+                    <div class="text-center">
+                        <i class="fa-regular fa-user-check fa-2x ms-2"></i>
+                    </div>
+
+                    <p>
+                        <strong>WHO CAN ACCESS ALCVP ?</strong>
+                    </p>
+                    <ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Recipients of RSA ('revenu de solidarité
+                            active' or social welfare)
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Holders of an integration contract or people with an
+                            individual job-seeking plan in the year preceding the
+                            request for assistance
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            Recipients of housing assistance, as tenants, paid by
+                            the National Fund for family Allowances (CAF) in Paris
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidecontent mb-auto">
+                    <div class="text-center">
+                        <i class="fa-solid fa-comment fa-2x ms-2"
+                            aria-hidden="true">
+
+                        </i>
+                    </div>
+                    <p>
+                        PLEASE note that RSA recipients cannot combine the ALCVP
+                        (see above) with any other city housing assistance.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Paris Logement
+                </h2>
+                <p>
+                    This allowance, which cannot be combined with other
+                    municipal housing assistance, is divided into three parts<ul class="fa-ul"
+                        style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Paris Logement,
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Paris Logement Famille (family)
+                        </li>
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>Paris Logement Famille Monoparentales.
+                            (single parents)
+                        </li>
+                    </ul>This assistance is aimed at couples with one child or
+                    no children, as well as single tenants. This assistance is
+                    intended to help with housing expenses. This benefit can be
+                    combined with Personalised Housing Assistance (APL) and can
+                    grant up to<ul class="fa-ul" style="--fa-li-width: 2em;">
+                        <li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>84 €/month to a single person,
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            95 €/month for a couple without children
+                        </li><li>
+                            <span class="fa-li text-primary" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            et 116 €/month for couples with children
+                        </li>
+                    </ul>This assistance can be accessed by students.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.paris.fr/aides-au-logement"
+                        target="_blank">
+                        www.paris.fr/aides-au-logement
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent pin">
+                <div class="text-center">
+                    <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                </div>
+
+                <p>
+                    <strong>THE CONDITIONS FOR ACCESSING PARIS LOGEMENT</strong>
+                </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>You must be over 18 years of age.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must be a foreign national or have a valid residence
+                        permit.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must be a tenant, a co-tenant, becoming a property owner
+                        or a property owner (this last case only concerns families).
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must receive or be entitled to receive housing assistance
+                        from CAF.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must have lived in Paris for at least three years, either
+                        on a continuous basis or not.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>You must not have any outstanding bills.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must be the leaseholder of the dwelling occupied as the
+                        main tenant.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must have lived in Paris for at least one year for couples
+                        with a dependent child in the case of a professional relocation
+                        enforced by your employer.
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must have a monthly income of less than or equal to 1,210&nbsp;€
+                        for single persons and an income of less than or equal to
+                        1,600&nbsp;€ for couples with a dependant child.
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must be spending at least 30% of your income on housing
+                        costs. The income taken into account is that of all the people
+                        living in the accommodation.
+                    </li>
+
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must have applied for the housing allowance and met the
+                        legal standards concern- ing sanitation and space.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-6 maincontent">
+                <h2>
+                    Loca-pass
+                </h2>
+                <p>
+                    The Avance Loca-pass allows you to pay the security deposit
+                    requested by the landlord. There is no interest charged on
+                    the amount loaned and it is repayable over 3 years. The
+                    total amount can be up to a maximum of 1,200 €. It is
+                    available for young people under 30 years of age, employees
+                    in the non-agricultural private sector, job seekers and
+                    those in vocational training.
+                </p>
+                <div class="info-link">
+                    <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
+                    <a href="https://www.actionlogement.fr" target="_blank">
+                        www.actionlogement.fr
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 sidecontent pin">
+                <div class="text-center">
+                    <i class="fa-regular fa-thumb-tack fa-2x ms-2"></i>
+                </div>
+
+                <p>
+                    <strong>THE CONDITIONS FOR ACCESSING THE LOCA-PASS</strong>
+                </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        You must be a state scholarship holder or student with a
+                        fixed term contract, several successive fixed term contracts
+                        or a training agreement of at least 3 months in the last
+                        6 months,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        The accommodation must be your primary residence, be located
+                        in France and rented with a lease with respect to French
+                        law.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    {{ include('housing_guide/_en_visale.html.twig') }}
+    <br />
+
+    {{ include('housing_guide/_en_mobilijeune.html.twig') }}
+
+    <div class="container guide cost">
+        <div class="row gx-6 gy-5 my-4 p-4" style="background-color: #8cc63e;">
+            <h2 class="text-black">
+                Memo
+            </h2>
+            <div class="col-12 col-lg-6 fs-5">
+                <p>
+                    Assistance from the CAF, Paris city council and Action
+                    logement are the main forms of assistance you can apply for
+                    as regards your student housing. This assistance can be
+                    combined with a grant from CROUS based on social criteria.
+
+                    <a class="btn skinny bg-white text-dark btn-block"
+                        href="https://www.caf.fr"
+                        target="_blank">
+                        CAF
+                    </a> You can try out your eligibility on the CAF website and
+                    find out the total value of the assistance available to you.
+                </p>
+                <p>
+                    Other financial assistance exists in addition to housing
+                    assistance. To find out about this, we suggest that you look
+                    at <a class="btn skinny bg-white text-dark btn-block"
+                        hhref="https://www.universite-paris-saclay.fr/le-guide-interactif-etudiant-et-etudiante"
+                        target="_blank">
+                        the Guide for Students
+                    </a>
+                    where you can find out more information about the financial and
+                    social support available to you.
+                </p>
+            </div>
+            <div class="col-12 col-lg-6 fs-5">
+                <p>
+                    Finally, if you are experiencing financial problems,
+                    unforeseen circumstances or an emergency situation, do not
+                    hesitate to contact the social workers. They will support
+                    you in finding the right assistance for your situation.
+                </p>
+
+                <a class="btn skinny bg-white text-dark btn-block"
+                    href="https://www.universite-paris-saclay.fr/vie-de-campus/bourses-et-aides-etudiantes"
+                    target="_blank">
+                    Scholarship and financials aids
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container guide cost">
+        <div class="row gx-6 gy-5 mb-4">
+            <h1>
+                In summary
+                <strong>the total cost</strong><br />
+                of renting
+            </h1>
+            <p class="h3 text-center">
+                Here are two example scenarios to give you an idea of how much
+                accommodation will cost :
+            </p>
+            <div class="maincontent col-12 col-lg-6 p-4">
+                <h2>
+                    For a studio of approximately 20 m2 rented from a private
+                    landlord in Orsay or the surrounding area:
+                </h2>
+                <p class="h3 mt-4">
+                    <strong>You should put aside each month:</strong>
+                </p>
+                <p class="h2">
+                    &nbsp;&nbsp;&nbsp;560 €
+                </p>for rent and charges (excluding any assistance to which you
+                may be entitled)<p class="h2">
+                    + 100 €
+                </p>on average of additional services (laundry, cleaning, gym,
+                etc.) and monthly insurance depending on the options chosen<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 660 €
+                    </span>
+                </p>
+                <p class="h3 mt-4">
+                    <strong>
+                        At the time of your arrival in the accommodation , you
+                        will have to pay
+                    </strong>
+                    :
+                </p>
+                <p class="h2">
+                    &nbsp;&nbsp;&nbsp;560 €
+                </p>for the first rent<p class="h2">
+                    + 500 €
+                </p>as a security deposit ( which is the same as the first rent
+                excluding charges). At the end of the lease, if there are no
+                outstanding payments or damage, you will get this amount back<p class="h2">
+                    + 200 €
+                </p>for administration fees (depending on your application
+                period these fees may be waived)<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 1260 €
+                    </span>
+                </p><br />Do not forget residence tax each year, which ca be
+                between<p class="h2">
+                    30 and 110 €.
+                </p>(in progress)
+                <a class="info-link"
+                    href="https://www.service-public.fr/particuliers/vosdroits/F42"
+                    target="_blank">
+                    www.service-public.fr/particuliers/vosdroits/F42
+                </a>
+            </div>
+
+            <div class="maincontent col-12 col-lg-6 p-4 pin">
+                <h2>
+                    For a studio within a university residence in Orsay or the
+                    surrounding area:
+                </h2>
+                <p class="h3 mt-4">
+                    <strong>You should put aside each month:</strong>
+                </p>
+                <p class="h2">
+                    &nbsp;&nbsp;&nbsp;450 €
+                </p>for rent and charges (excluding any assistance to which you
+                may be entitled) and<p class="h2">
+                    &nbsp;&nbsp;+ 10 €
+                </p>on average for laundry<p class="h2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;+5
+                </p>for home insurance per month<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 465 €
+                    </span>
+                </p>
+                <p>
+                    Internet access is free depending on the agreement drawn up
+                    by CROUS with the internet supplier
+                </p>
+                <p class="h3 mt-4">
+                    <strong>
+                        At the time of your arrival in the accommodation you
+                        will have to pay
+                    </strong>
+                </p>
+                <p class="h2">
+                    &nbsp; &nbsp;450 €
+                </p>for the first rent<p class="h2">
+                    + 400 €
+                </p>as a security deposit ( which is the same as the first rent
+                excluding charges). At the end of the lease, if there are no
+                outstanding payments or damage, you will get this amount back<p class="h2 mt-2">
+                    <span class="border-5 border-top border-primary me-auto">
+                        = 850 €
+                    </span>
+                </p>
+                <br />
+                <p class="h2">
+                    A 100 €.
+                </p>reservation fee may be requested before your arrival. This
+                will then be deducted from the first rentyou will have to pay
+                when you arrive.
+            </div>
+        </div>
+    </div>
+{% endblock %}

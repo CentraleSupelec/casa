@@ -1,5 +1,5 @@
 general:
-    email_name: Université Paris-Saclay - Plateforme de Logement
+    email_name: Université Paris-Saclay - Student housing platform
     novalue: Not specified
     label_yes: Yes
     label_no: No
@@ -122,6 +122,8 @@ home:
     page_title: Homepage - Housing platform
     welcome:
         title: Help students of Université Paris-Saclay <br/>find their housing.
+        base_line: |
+            La plateforme logement étudiant de l’Université Paris-Saclay est dédiée aux étudiants et futurs étudiants des établissements de l’université. Elle référence des offres à l’échelle de l’ensemble des entités de l’université et de tous ses territoires, en partenariat avec des associations et bailleurs Les offres sont régulièrement mises à jour par les bailleurs. Vous trouverez des logements en résidence, chez l’habitant, en colocation ou encore contre service. (en cours de validation)
     homepage_link: link to home page
 profile:
     title:
@@ -141,6 +143,10 @@ profile:
     social_scholarship: CROUS Social Scholarship
     reduced_mobility: I have a disability and I’m looking for suitable accommodation
     choose_school: Please select a School
+    dossier_facile_text: |
+        Constituez dès à présent votre dossier locatif numérique auprès de Dossier Facile pour maximiser vos chances. Dossier Facile vérifie vos documents et vous accompagne dans la constitution de votre dossier.
+    urgent_text: |
+        Vous êtes dans une situation d’urgence ? Cliquez ci-dessous pour détailler votre situation et contacter votre établissement.
 authentication:
     send_verification_error: |
         We failed sending the verification email.
@@ -159,6 +165,8 @@ authentication:
         short: Your password should be at least {{ limit }} characters long
         long: Your password should be at most {{ limit }} characters long
     log_in:
+        have_account: I have an account
+        have_no_account: I do not have an account
         button: Log In
         page_title: Connection - Housing platform
         not_verified: You cannot log in because your email address has not been verified
@@ -184,7 +192,7 @@ authentication:
                 We failed to send your password reset link.
                 Please try again later. Should this problem persit, please contact the platform.
         email:
-            subject: '[PSUH] Password reset'
+            subject: '[Student housing platform] Password reset'
             header: Reset your password
             body: Click on the link below to reset your password.
             button: Set a new password
@@ -192,7 +200,7 @@ authentication:
             introduction: Please enter your new password
             button: Change password
     verification_email:
-        subject: '[PSUH] Email address confirmation'
+        subject: '[Student housing platform] Email address confirmation'
         header: Secure your account
         body: Confirm your email address by clicking on the following link, enabling access to your account.
         button: Confirm my email address
@@ -209,6 +217,9 @@ bookmark:
     add: Add to bookmarks
     remove: Remove from bookmarks
     empty: You don't have any bookmark yet !
+faq:
+    general_questions: Frequently asked questions
+    school_information: Your school informs you (FAQ)
 housing_request:
     common:
         introduction: Please describe your request below
@@ -225,7 +236,7 @@ housing_request:
     generic:
         page_title: Send a request - Housing platform
         email:
-            subject: '[PSUH] Student request'
+            subject: '[Student housing platform] Student request'
             header: Student request regarding accomodation
     emergency:
         qualification:
@@ -256,6 +267,6 @@ housing_request:
                 Your name is not specified in your profile.
                 Dont forget to specify it in the body of the message or modify your profile before making the request.
         email:
-            subject: '[PSUH][URGENT] Urgent student request'
+            subject: '[Student housing platform][URGENT] Urgent student request'
             header: Urgent student request regarding accomodation
             qualification_info: Student situation

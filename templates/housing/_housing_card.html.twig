@@ -23,7 +23,9 @@
     {% endif %}
     
         <div class="row g-0">
+                
             <div class="col-12 col-md-6">
+            {% if housing.pictures|length %}
                 {{
                     Carousel.displayHousingCarousel(
                         housing.id,
@@ -31,6 +33,12 @@
                         housing.pictures
                     )
                 }}
+                {% else %}
+                <div class="text-center">
+                    <i class="my-auto fa-regular fa-camera-slash fa-5x" alt="no picture"></i>
+                </div>
+                
+                {% endif %}
             </div>
             <div class="col-12 col-md-6">
                 <div class="card-body p-0 p-md-2">

@@ -7,96 +7,106 @@
 {% block body %}
     <main class="container flex-grow-1 d-flex flex-column justify-content-center"
         id="maincontent">
-        <form class="row d-flex justify-content-center"
-            action="{{ path('app_login_check') }}"
-            method="post">
-            <div class="col-12 col-md-8">
-                <div class="form-floating mb-3">
-                    <input type="email"
-                        id="username"
-                        class="form-control"
-                        name="_username"
-                        value="{{
-                        lastUsername is defined
-                            ? lastUsername
-                            : null
-                        }}"
-                        placeholder="{{ 'authentication.email.placeholder'|trans }}" />
-                    <label for="username">
-                        {{ 'authentication.email.label'|trans }}
-                    </label>
-                </div>
+        <div class="row pb-3 pt-2">
+            <div class="col-12 col-md-6 text-center">
+                <h2 class="mb-4">
+                    {{ 'authentication.log_in.have_account'|trans }}
+                </h2>
 
-                <div class="form-floating mb-3">
-                    <input type="password"
-                        id="password"
-                        name="_password"
-                        class="form-control"
-                        placeholder="{{ 'authentication.password.placeholder'|trans }}" />
-                    <label for="password">
-                        {{ 'authentication.password.label'|trans }}
-                    </label>
-                </div>
+                <form class="row d-flex justify-content-center"
+                    action="{{ path('app_login_check') }}"
+                    method="post">
+                    <div class="col-12 col-md-8">
+                        <div class="form-floating mb-3">
+                            <input type="email"
+                                id="username"
+                                class="form-control"
+                                name="_username"
+                                value="{{
+                                lastUsername is defined
+                                    ? lastUsername
+                                    : null
+                                }}"
+                                placeholder="{{ 'authentication.email.placeholder'|trans }}" />
+                            <label for="username">
+                                {{ 'authentication.email.label'|trans }}
+                            </label>
+                        </div>
 
-                <input type="hidden"
-                    name="_csrf_token"
-                    value="{{ csrf_token('authenticate') }}" />
+                        <div class="form-floating mb-3">
+                            <input type="password"
+                                id="password"
+                                name="_password"
+                                class="form-control"
+                                placeholder="{{ 'authentication.password.placeholder'|trans }}" />
+                            <label for="password">
+                                {{ 'authentication.password.label'|trans }}
+                            </label>
+                        </div>
 
-                {% if error %}
-                    <div class="row mb-3">
-                        <div class="col text-center">
-                            <div class="text-danger fst-italic mb-2">
-                                {{
-                                    error.messageKey|trans(
-                                        error.messageData,
-                                        'security'
-                                    )
-                                }}
+                        <input type="hidden"
+                            name="_csrf_token"
+                            value="{{ csrf_token('authenticate') }}" />
+
+                        {% if error %}
+                            <div class="row mb-3">
+                                <div class="col text-center">
+                                    <div class="text-danger fst-italic mb-2">
+                                        {{
+                                            error.messageKey|trans(
+                                                error.messageData,
+                                                'security'
+                                            )
+                                        }}
+                                    </div>
+                                    {% if
+                                        error.code is same as(
+                                            constant(
+                                                'App\\Constants::NON_VERIFIED_ACCOUNT_ERROR_CODE'
+                                            )
+                                        ) %}
+                                        <a href="{{
+                                            path(
+                                                'app_send_verification_email',
+                                                {
+                                                    verificationToken: verificationToken
+                                                }
+                                            )
+                                            }}">
+                                            {{
+                                                'authentication.verification_email.send_again'|trans
+                                            }}
+                                        </a>
+                                    {% endif %}
+                                </div>
                             </div>
-                            {% if
-                                error.code is same as(
-                                    constant(
-                                        'App\\Constants::NON_VERIFIED_ACCOUNT_ERROR_CODE'
-                                    )
-                                ) %}
-                                <a href="{{
-                                    path(
-                                        'app_send_verification_email',
-                                        {
-                                            verificationToken: verificationToken
-                                        }
-                                    )
-                                    }}">
-                                    {{
-                                        'authentication.verification_email.send_again'|trans
-                                    }}
-                                </a>
-                            {% endif %}
+                        {% endif %}
+
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ 'authentication.log_in.button'|trans }}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                {% endif %}
-
-                <div class="row">
-                    <div class="col d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">
-                            {{ 'authentication.log_in.button'|trans }}
-                        </button>
-                    </div>
+                </form>
+                <div class="my-4">
+                    <a href="{{ path('app_reset_password_request') }}">
+                        {{
+                            'authentication.reset_password.request.call_to_action'|trans
+                        }}
+                    </a>
                 </div>
             </div>
-        </form>
 
-        <div class="row pb-3 pt-2">
-            <div class="col-12 col-md-6 text-center text-md-end">
-                <a href="{{ path('app_register') }}">
+            <div class="col-12 col-md-6 text-center">
+                <h2 class="mb-4">
+                    {{ 'authentication.log_in.have_no_account'|trans }}
+                </h2>
+                <a class="btn btn-primary mt-4"
+                    href="{{ path('app_register') }}">
                     {{ 'authentication.register.call_to_action'|trans }}
-                </a>
-            </div>
-            <div class="col-12 col-md-6 text-center text-md-start">
-                <a href="{{ path('app_reset_password_request') }}">
-                    {{
-                        'authentication.reset_password.request.call_to_action'|trans
-                    }}
                 </a>
             </div>
         </div>

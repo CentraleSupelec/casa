@@ -11,6 +11,9 @@
         <h1 class="h2">
             {{ 'home.welcome.title'|trans|raw }}
         </h1>
+        <p>
+            {{ 'home.welcome.base_line'|trans|raw }}
+        </p>
     </div>
     <div class="container col-12" role="presentation">
         <div class="d-flex flex-col g-0">
@@ -26,6 +29,17 @@
                 {{ 'housing.search.criteria.title'|trans }}
             </div>
             {{ Search.displaySearch(form, cities) }}
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 col-lg-4 mt-4">
+                {{ render(path('housing_guide_search_sumup')) }}
+            </div>
+            <div class="col-12 col-lg-4 mt-4">
+                {{ render(path('housing_guide_cost_sumup')) }}
+            </div>
+            <div class="col-12 col-lg-4 mt-4">
+                {{ render(path('housing_guide_apply_sumup')) }}
+            </div>
         </div>
     </main>
 {% endblock %}
