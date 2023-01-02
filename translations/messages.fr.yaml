@@ -37,6 +37,7 @@ housing:
             label: Trier par
             price: Loyer
             area: Surface
+        back_to_list: Retour à la liste
     living_mode:
         full: Logement entier
         homestay: Chez l'habitant

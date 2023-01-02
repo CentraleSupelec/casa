@@ -13,6 +13,8 @@ Search
 - Criterion are now stored in a session cookie
 - This fixes keeping search crit after adding a bookmark / create account / validate / login 
 
+Housing detail
+- add return to List
 
 ## [1.2.5.1]
 - Env variable for Matomo script ( change value in helm env-vars before deployment )

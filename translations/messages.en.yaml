@@ -37,6 +37,7 @@ housing:
             label: Sort by
             price: Rent
             area: Area
+        back_to_list: Back to list
     living_mode:
         full: Full
         homestay: Homestay accomodation

@@ -482,10 +482,16 @@
                 </div>
 
                 <div class="row mt-4 mb-4">
-                    <div class="col d-flex justify-content-center">
+                    <div class="col d-flex justify-content-between">
+                        <a href={{ path('app_housing_list') }}
+                            class="btn btn-primary btn-large">
+                            <i class="fa-light fa-arrow-left"></i>
+                            {{ 'housing.list.back_to_list'|trans }}
+                        </a>
+                  
                         <a href="{{ housing.redirectLink }}"
                             target="_blank"
-                            class="btn btn-outline-primary btn-large">
+                            class="btn btn-primary btn-large">
                             {{ 'housing.redirect_button'|trans }}
                         </a>
                     </div>
