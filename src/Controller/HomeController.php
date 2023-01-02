@@ -15,7 +15,12 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(Request $request, HousingGroupRepository $housingGroupRepository): Response
     {
-        $searchHousing = new SearchCriteriaModel();
+        $searchHousing = $request->getSession()->get('search_criteria');
+
+        if (null == $searchHousing) {
+            $searchHousing = new SearchCriteriaModel();
+        }
+
         $cities = $housingGroupRepository->getDistinctCities();
 
         $form = $this->createForm(SearchHousingType::class, $searchHousing,

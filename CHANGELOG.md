@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modified birthdate format
 - FIX: birthdate is shown as today when not specified
 
+Search 
+- Criterion are now stored in a session cookie
+- This fixes keeping search crit after adding a bookmark / create account / validate / login 
+
 
 ## [1.2.5.1]
 - Env variable for Matomo script ( change value in helm env-vars before deployment )

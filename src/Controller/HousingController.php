@@ -66,7 +66,12 @@ class HousingController extends AbstractController
         Request $request): Response
     {
         $student = $this->getUser();
-        $searchHousingCriteria = new SearchCriteriaModel();
+        $searchHousingCriteria = $request->getSession()->get('search_criteria');
+
+        if (null == $searchHousingCriteria) {
+            $searchHousingCriteria = new SearchCriteriaModel();
+        }
+
         $cities = $entityManager->getRepository(HousingGroup::class)->getDistinctCities();
 
         $studentProfileCriteria = new StudentProfileCriteriaModel($student instanceof Student ? $student : null);
@@ -83,6 +88,8 @@ class HousingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $searchHousingCriteria = $form->getData();
             $searchHousingCriteria->setCity(strtoupper($searchHousingCriteria->getCity()));
+
+            $request->getSession()->set('search_criteria', $searchHousingCriteria);
         }
 
         $housingsListQueryBuilder = $entityManager

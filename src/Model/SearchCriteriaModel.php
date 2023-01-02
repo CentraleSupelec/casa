@@ -79,7 +79,7 @@ class SearchCriteriaModel
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
