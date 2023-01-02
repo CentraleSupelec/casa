@@ -2,12 +2,37 @@
 {% import 'lessor_admin/_housing_group_list_item.html.twig'
     as HousingGroupItem
 %}
+{% import 'housing/_search_housing_group.html.twig' as Search %}
 
 {% block title %}
     {{ 'housing.list.page_title'|trans }}
 {% endblock %}
 
 {% block body %}
+    <div class="container" role="search">
+        {% if (pagination|length) > 0 %}
+            <div class="d-flex align-items-center">
+                <button class="btn btn-sm btn-outline-primary m-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseSearch"
+                    aria-expanded="false"
+                    aria-controls="collapseSearch">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span class="d-none d-md-inline">
+                        Filtrer la liste par ville
+                    </span>
+                </button>
+            </div>
+        {% endif %}
+        <div class="collapse mb-4 {{ (pagination|length) == 0 ? 'show' }}"
+            id="collapseSearch">
+            <div class="card-body">
+                {{ Search.displaySearch(form, cities) }}
+            </div>
+        </div>
+    </div>
+
     <main class="container" id="maincontent">
         {% if pagination|length %}
             <div class="row py-4 g-5">

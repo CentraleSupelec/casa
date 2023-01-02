@@ -16,6 +16,10 @@ Add possible Lease Term to housing
 - Advanced search filter
 - Housing detail display
 
+Lessor Admin
+- filter housing group
+- sort housing group 
+
 ## [1.2.3-beta] 27/10/2022
 
 - Fontawesome deployed

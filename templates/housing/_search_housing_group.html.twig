@@ -1,0 +1,24 @@
+{% macro displaySearch(form , cities, advanced) %}
+    {{ form_start(form) }}
+    <div class="row pb-2">
+        <div>
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="col-12 mt-2">
+            {{form_label(form.city)}}
+            {{ form_widget(form.city)}}
+            <datalist id="citylistOptions">
+                {% for city in cities %}
+                    <option value="{{ city }}">
+                {% endfor %}
+            </datalist>
+        </div>
+
+    <div class="d-flex justify-content-center">
+        <input type="submit"
+            class="btn btn-primary col"
+            value="{{ 'housing.search.criteria.submit'|trans }}" />
+    </div>
+    {{ form_end(form) }}
+{% endmacro %}

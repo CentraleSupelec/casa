@@ -6,6 +6,8 @@ use App\Entity\Housing;
 use App\Entity\HousingGroup;
 use App\Form\Lessor\HousingFormType;
 use App\Form\Lessor\HousingGroupFormType;
+use App\Form\SearchHousingGroupType;
+use App\Model\SearchHousingGroupCriteriaModel;
 use App\Repository\HousingGroupRepository;
 use App\Repository\HousingRepository;
 use App\Service\ImageUrlService;
@@ -34,9 +36,21 @@ class LessorAdminController extends AbstractController
         $user = $this->getUser();
         $lessor = $user->getLessor();
 
+        $searchHousingGroupCriteria = new SearchHousingGroupCriteriaModel();
+        $cities = $entityManager->getRepository(HousingGroup::class)->getLessorDistinctCities($lessor);
+
+        $form = $this->createForm(SearchHousingGroupType::class, $searchHousingGroupCriteria);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $searchHousingGroupCriteria = $form->getData();
+            $searchHousingGroupCriteria->setCity(strtoupper($searchHousingGroupCriteria->getCity()));
+        }
+
         $housingGroupQueryBuilder = $entityManager
             ->getRepository(HousingGroup::class)
-            ->getLessorHousingGroupListQueryBuilder($lessor);
+            ->getLessorHousingGroupListQueryBuilder($lessor, $searchHousingGroupCriteria);
 
         $pagination = $paginator->paginate(
             $housingGroupQueryBuilder,
@@ -46,6 +60,8 @@ class LessorAdminController extends AbstractController
 
         return $this->render('lessor_admin/housing_group_list.html.twig', [
             'pagination' => $pagination,
+            'form' => $form->createView(),
+            'cities' => $cities,
             'imageBaseUrl' => $imageUrlService->getImageBaseUrl(),
         ]);
     }
