@@ -121,8 +121,8 @@ class LessorAdminController extends AbstractController
         $lessor = $user->getLessor();
 
         $housingGroup = $hr->find($id);
-        // Check that housingGroupLessor matches connected.
 
+        // Security Check that housingGroupLessor matches connected.
         if ($lessor->getId() != $housingGroup->getLessor()->getId()) {
             return $this->redirectToRoute('app_lessor_admin_housing_group_list');
         }
@@ -135,15 +135,10 @@ class LessorAdminController extends AbstractController
 
         try {
             if ($form->isSubmitted() && $form->isValid()) {
-                /** @var HousingGroup */
-                $updatedHousingGroup = $form->getData();
-
-                $em->persist($updatedHousingGroup);
                 $em->flush();
                 $this->addFlash('success', 'Groupe de Logements mis à jour !');
             }
         } catch (\Exception $ex) {
-            // throw $th;
             $this->addFlash('error', 'La mise à jour du groupe de logement a échouée !');
         }
 
