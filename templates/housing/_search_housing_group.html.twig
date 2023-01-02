@@ -14,11 +14,13 @@
                 {% endfor %}
             </datalist>
         </div>
+    
 
-    <div class="d-flex justify-content-center">
-        <input type="submit"
-            class="btn btn-primary col"
-            value="{{ 'housing.search.criteria.submit'|trans }}" />
+        <div class="d-flex justify-content-center">
+            <input type="submit"
+                class="btn btn-primary col"
+                value="{{ 'housing.search.criteria.submit'|trans }}" />
+        </div>
     </div>
     {{ form_end(form) }}
 {% endmacro %}
