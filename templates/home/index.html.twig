@@ -7,30 +7,32 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container text-center p-4 d-md-block">
-        <h1 class="h2">
-            {{ 'home.welcome.title'|trans|raw }}
-        </h1>
-        <p>
-            {{ 'home.welcome.base_line'|trans|raw }}
-        </p>
-    </div>
     <div class="container col-12" role="presentation">
-        <div class="d-flex flex-col g-0">
+        <div class="row mb-4" style="max-height: 8rem;">
             <img class="img-fluid"
+                style="z-index: -1;"
                 alt=""
-                aria-hidden="true"
-                src="{{ asset('build/images/home/mosaic-1600-502.jpg') }}" />
+                src="{{ asset('build/images/home/mosaic-1600-502.jpg') }}"
+                aria-hidden="true" />
         </div>
     </div>
-    <main class="container col-12 mb-3" role="search" id="maincontent">
-        <div class="col-12 bg-light p-4">
-            <div class="h1">
+
+    <main class="container col-12" role="search" id="maincontent">
+        <div class="col-12 col-lg-10 mx-auto bg-light mb-4 p-4 border border-1">
+            <div class="h2">
                 {{ 'housing.search.criteria.title'|trans }}
             </div>
             {{ Search.displaySearch(form, cities) }}
         </div>
-        <div class="row mt-4">
+        <div class="row mb-4 d-md-block">
+            <h1 class="h2">
+                {{ 'home.welcome.title'|trans|raw }}
+            </h1>
+            <p>
+                {{ 'home.welcome.base_line'|trans|raw }}
+            </p>
+        </div>
+        <div class="row mb-4">
             <div class="col-12 col-lg-4 mt-4">
                 {{ render(path('housing_guide_search_sumup')) }}
             </div>
