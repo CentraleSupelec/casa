@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\HousingPictureRepository;
+use App\Validator\Constraints as AppAssert;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
@@ -29,6 +30,8 @@ class HousingPicture
     private ?string $picture = null;
 
     #[Vich\UploadableField(mapping: 'housing_picture', fileNameProperty: 'picture')]
+    #[AppAssert\ClamAvConstraint]
+    #[Assert\File(maxSize: '4M', mimeTypes: ['image/jpeg', 'image/png'])]
     private ?File $file = null;
 
     #[ORM\ManyToOne(targetEntity: Housing::class, inversedBy: 'pictures')]

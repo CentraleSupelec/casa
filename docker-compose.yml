@@ -13,6 +13,7 @@ services:
       - mailhog
       - mjml
       - minio
+      - clamav
     env_file: .env.docker.local
     profiles:
       - prod
@@ -78,6 +79,14 @@ services:
     profiles:
       - local
       - prod
+
+  clamav:
+    restart: on-failure
+    image: clamav/clamav
+    ports:
+      - '3310:3310'
+    profiles:
+      - local
 
   test-database:
     image: postgres:14-alpine

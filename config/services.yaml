@@ -63,3 +63,8 @@ services:
     App\Service\TokenGeneratorService:
         arguments:
             $signingKey: '%env(APP_SECRET)%'
+
+    App\Validator\Constraints\ClamAvConstraintValidator:
+        arguments:
+            - '%env(CLAMAV_URL)%'
+            - '@logger'

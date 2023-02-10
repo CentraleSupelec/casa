@@ -8,6 +8,9 @@
     "behat/transliterator": {
         "version": "v1.3.0"
     },
+    "clue/socket-raw": {
+        "version": "v1.6.0"
+    },
     "composer/pcre": {
         "version": "3.0.0"
     },
@@ -849,5 +852,8 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
+    },
+    "xenolope/quahog": {
+        "version": "v3.0.0"
     }
 }
