@@ -6,10 +6,11 @@
 
 {% block title %}
     {{ 'housing.list.page_title'|trans }}
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
-    <div class="container" role="search">
+    <div class="container">
         {% if (pagination|length) > 0 %}
             <div class="d-flex align-items-center">
                 <button class="btn btn-sm btn-outline-primary m-2"

@@ -1,9 +1,9 @@
 {% macro displaySearch(form , cities, advanced) %}
     {{ form_start(form) }}
     <div class="row pb-2">
-        <div>
+        <p>
             {{ form_errors(form) }}
-        </div>
+        </p>
         <div class="col-6 mt-2">
             {{ form_label(form.maxPrice) }}
             <div class="input-group">

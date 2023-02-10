@@ -7,9 +7,11 @@
                 {{ 'housing_request.common.information_card.title'|trans }}
             </h1>
             {% if school is not null %}
-                <div class="card-text fw-bolder">
+                
+                <p class="card-text fw-bolder">
                     {{ school.name }}
-                </div>
+                </p>
+                
                 <div class="card-text address-container">
                     {{
                     Address.displayAddress(
@@ -28,18 +30,19 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                <div class="card-text fw-bolder">
+                <p class="card-text fw-bolder">
                     {{
                     'housing_request.common.information_card.default'|trans
                     }}
-                </div>
-                <div class="card-text fst-italic school-email">
+                </p>
+                <p class="card-text fst-italic school-email">
+
                     {{
                     constant(
                         'App\\Constants::HOUSING_REQUEST_DEFAULT_EMAIL'
                     )
                     }}
-                </div>
+                </p>
             {% endif %}
         </div>
     </div>

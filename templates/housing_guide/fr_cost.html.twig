@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Le coût de la location d'un logement
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-    <div id="maincontent" class="container guide cost">
+    <main id="maincontent" class="container guide cost">
         <div class="row mb-4" style="max-height: 450px;">
             <img class="img-fluid"
                 style="z-index: -1;"
@@ -10,7 +15,8 @@
                     'build/images/guide/chercher/photo_ARTE_CHARPENTIER_palaiseau.jpg'
                 )
                 }}"
-                alt="Résidence Charpentier Palaiseau" />
+                alt=""
+                aria-hidden="true" />
         </div>
 
         <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
@@ -397,7 +403,8 @@
             <div class="col-12 col-lg-6">
                 <img style="width: 100%;"
                     src="{{ asset('build/images/guide/cost/YY-unsplash.jpg') }}"
-                    alt="étudiante détendue qui consulte son ordinateur" />
+                    alt=""
+                    aria-hidden="true" />
             </div>
         </div>
         <div class="row gx-6 gy-5 mb-4">
@@ -478,10 +485,7 @@
             </div>
             <div class="col-12 col-lg-6 sidecontent">
                 <div class="text-center">
-                    <i class="fa-solid fa-comment fa-2x ms-2"
-                        alt="icône bulle de dialogue">
-
-                    </i>
+                    <i class="fa-solid fa-comment fa-2x ms-2"></i>
                 </div>
 
                 <p>
@@ -545,10 +549,7 @@
             </div>
             <div class="col-12 col-lg-6 sidecontent mb-auto">
                 <div class="text-center">
-                    <i class="fa-solid fa-comment fa-2x ms-2"
-                        alt="icône bulle de dialogue">
-
-                    </i>
+                    <i class="fa-solid fa-comment fa-2x ms-2"></i>
                 </div>
 
                 <p>
@@ -747,7 +748,8 @@
                         'build/images/guide/cost/ARTE_CHARPENTIER-campus_ECLA-palaiseau.jpg'
                     )
                     }}"
-                    alt="zone détente de la résidence ECLA Campus à Palaiseau" />
+                    alt=""
+                    aria-hidden="true" />
             </div>
         </div>
 
@@ -1207,47 +1209,46 @@
                 </h2>
                 <p>
                     Cette allocation, non cumulable avec une autre aide au
-                    logement municipal, se divise en trois parties<ul class="fa-ul"
-                        style="--fa-li-width: 2em;">
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>Paris Logement,
-                        </li>
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>Paris Logement Famille
-                        </li>
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>Paris Logement Famille Monoparentales.
-                        </li>
-                    </ul>Cette aide est destinée aux couples avec un seul enfant
-                    ou sans enfant, ainsi qu'aux personnes seules locataires.
-                    Cette aide est mise en place afin d’aider à mieux supporter
-                    les dépenses de logement. Ce dispositif est cumulable avec
-                    les APL et peut attribuer jusqu’à<ul class="fa-ul"
-                        style="--fa-li-width: 2em;">
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>84 €/mois pour les personnes seules,
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            95 €/mois pour les couples sans enfant
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            et 116 €/mois pour les couples avec enfant.
-                        </li>
-                    </ul>Cette aide est accessible aux étudiants.
+                    logement municipal, se divise en trois parties
                 </p>
-                <div class="info-link">
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Paris Logement,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Paris Logement Famille
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Paris Logement Famille Monoparentales.
+                    </li>
+                </ul>Cette aide est destinée aux couples avec un seul enfant ou
+                sans enfant, ainsi qu'aux personnes seules locataires. Cette
+                aide est mise en place afin d’aider à mieux supporter les
+                dépenses de logement. Ce dispositif est cumulable avec les APL
+                et peut attribuer jusqu’à<ul class="fa-ul"
+                    style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>84 €/mois pour les personnes seules,
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        95 €/mois pour les couples sans enfant
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        et 116 €/mois pour les couples avec enfant.
+                    </li>
+                </ul>Cette aide est accessible aux étudiants.<div class="info-link">
                     <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
                     <a href="https://www.paris.fr/aides-au-logement"
                         target="_blank">
@@ -1391,169 +1392,174 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <br />
-    {{ include('housing_guide/_fr_visale.html.twig') }}
-    <br />
 
-    {{ include('housing_guide/_fr_mobilijeune.html.twig') }}
+        <br />
+        {{ include('housing_guide/_fr_visale.html.twig') }}
+        <br />
 
-    <div class="container guide cost">
-        <div class="row gx-6 gy-5 my-4 p-4" style="background-color: #8cc63e;">
-            <h2 class="text-black">
-                Mémo
-            </h2>
-            <div class="col-12 col-lg-6 fs-5">
-                <p>
-                    Les aides de la CAF, de la Mairie de Paris et dAction
-                    logement sont les principales aides que vous pouvez
-                    solliciter concernant votre logement étudiant. Ces aides
-                    sont cumulables avec une bourse sur critères sociaux des
-                    CROUS. Vous pouvez faire vos simulations sur le site de la
+        {{ include('housing_guide/_fr_mobilijeune.html.twig') }}
+
+        <div class="container guide cost">
+            <div class="row gx-6 gy-5 my-4 p-4"
+                style="background-color: #8cc63e;">
+                <h2 class="text-black">
+                    Mémo
+                </h2>
+                <div class="col-12 col-lg-6 fs-5">
+                    <p>
+                        Les aides de la CAF, de la Mairie de Paris et dAction
+                        logement sont les principales aides que vous pouvez
+                        solliciter concernant votre logement étudiant. Ces aides
+                        sont cumulables avec une bourse sur critères sociaux des
+                        CROUS. Vous pouvez faire vos simulations sur le site de
+                        la
+                        <a class="btn skinny bg-white text-dark btn-block"
+                            href="https://www.caf.fr"
+                            target="_blank">
+                            CAF
+                        </a> afin de tester votre éligibilité et le montant de vos
+                        aides
+                    </p>
+                    <p>
+                        D’autres aides financières existent en complément des
+                        aides pour le logement. Pour en prendre connaissance,
+                        nous vous invitons à consulter <a class="btn skinny bg-white text-dark btn-block"
+                            href="https://www.universite-paris-saclay.fr/le-guide-interactif-etudiant-et-etudiante"
+                            target="_blank">
+                            le Guide de l’Étudiant
+                        </a>
+                        afin d’avoir plus de renseignements concernant les mesures
+                        financières et sociales dont vous pouvez bénéficier.
+                    </p>
+                </div>
+                <div class="col-12 col-lg-6 fs-5">
+                    <p>
+                        Enfin, si vous rencontrez des problèmes financiers,
+                        d’importants imprévus ou une situation d’urgence,
+                        n’hésitez pas à contacter les assistantes sociales.
+                        Elles vous accompagneront pour vous orienter vers les
+                        dispositifs d’aide qui correspondent à votre situation.
+                    </p>
+
                     <a class="btn skinny bg-white text-dark btn-block"
-                        href="https://www.caf.fr"
+                        href="https://www.universite-paris-saclay.fr/vie-de-campus/bourses-et-aides-etudiantes"
                         target="_blank">
-                        CAF
-                    </a> afin de tester votre éligibilité et le montant de vos aides
-                </p>
-                <p>
-                    D’autres aides financières existent en complément des aides
-                    pour le logement. Pour en prendre connaissance, nous vous
-                    invitons à consulter <a class="btn skinny bg-white text-dark btn-block"
-                        hhref="https://www.universite-paris-saclay.fr/le-guide-interactif-etudiant-et-etudiante"
-                        target="_blank">
-                        le Guide de l’Étudiant
+                        Bourses et aides etudiantes
                     </a>
-                    afin d’avoir plus de renseignements concernant les mesures financières
-                    et sociales dont vous pouvez bénéficier.
-                </p>
-            </div>
-            <div class="col-12 col-lg-6 fs-5">
-                <p>
-                    Enfin, si vous rencontrez des problèmes financiers,
-                    d’importants imprévus ou une situation d’urgence, n’hésitez
-                    pas à contacter les assistantes sociales. Elles vous
-                    accompagneront pour vous orienter vers les dispositifs
-                    d’aide qui correspondent à votre situation.
-                </p>
-
-                <a class="btn skinny bg-white text-dark btn-block"
-                    href="https://www.universite-paris-saclay.fr/vie-de-campus/bourses-et-aides-etudiantes"
-                    target="_blank">
-                    Bourses et aides etudiantes
-                </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container guide cost">
-        <div class="row gx-6 gy-5 mb-4">
-            <h1>
-                <strong>En résumé,</strong><br />
-                le coût total d’une location
-            </h1>
-            <p class="h3 text-center">
-                Pour vous donner une idée de combien vous coûtera un logement,
-                voici deux exemples de mise en situation
-            </p>
-            <div class="maincontent col-12 col-lg-6 p-4">
-                <h2>
-                    Pour un studio d’un bailleur privé de 20 m2 environ sur le
-                    territoire d’Orsay ou ses alentours
-                </h2>
-                <p class="h3 mt-4">
-                    <strong>Chaque mois vous devez prévoir :</strong>
+        <div class="container guide cost">
+            <div class="row gx-6 gy-5 mb-4">
+                <h1>
+                    <strong>En résumé,</strong><br />
+                    le coût total d’une location
+                </h1>
+                <p class="h3 text-center">
+                    Pour vous donner une idée de combien vous coûtera un
+                    logement, voici deux exemples de mise en situation
                 </p>
-                <p class="h2">
-                    &nbsp;&nbsp;&nbsp;560 €
-                </p>de loyer avec charges (hors aides auxquelles vous pourriez
-                prétendre)<p class="h2">
-                    + 100 €
-                </p>en moyenne de services complémentaires (laverie, ménage,
-                salle de sport etc) et d’assurance mensuelle selon les offres
-                choisies<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 660 €
-                    </span>
-                </p>
-                <p class="h3 mt-4">
-                    <strong>
-                        Lors de votre arrivée dans le logement vous devrez
-                        débourser
-                    </strong>
-                    :
-                </p>
-                <p class="h2">
-                    &nbsp;&nbsp;&nbsp;560 €
-                </p>de premier loyer<p class="h2">
-                    + 500 €
-                </p>garantie (qui correspond au de dépôt de premier loyer hors
-                charges). À la fin du bail, si ni impayés ni dégâts ne sont à
-                déplorer, vous recouvrerez ce montant<p class="h2">
-                    + 200 €
-                </p>de frais de dossier (selon votre période de candidature, ces
-                frais peuvent être offerts)<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 1260 €
-                    </span>
-                </p><br />Une fois par an n’oubliez pas la taxe d’habitation qui
-                varie de<p class="h2">
-                    30 à 110 €.
-                </p>(En cours de réforme) : >
-                <a class="info-link"
-                    href="https://www.service-public.fr/particuliers/vosdroits/F42"
-                    target="_blank">
-                    www.service-public.fr/particuliers/vosdroits/F42
-                </a>
-            </div>
+                <div class="maincontent col-12 col-lg-6 p-4">
+                    <h2>
+                        Pour un studio d’un bailleur privé de 20 m2 environ sur
+                        le territoire d’Orsay ou ses alentours
+                    </h2>
+                    <p class="h3 mt-4">
+                        <strong>Chaque mois vous devez prévoir :</strong>
+                    </p>
+                    <p class="h2">
+                        &nbsp;&nbsp;&nbsp;560 €
+                    </p>de loyer avec charges (hors aides auxquelles vous
+                    pourriez prétendre)<p class="h2">
+                        + 100 €
+                    </p>en moyenne de services complémentaires (laverie, ménage,
+                    salle de sport etc) et d’assurance mensuelle selon les
+                    offres choisies<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 660 €
+                        </span>
+                    </p>
+                    <p class="h3 mt-4">
+                        <strong>
+                            Lors de votre arrivée dans le logement vous devrez
+                            débourser
+                        </strong>
+                        :
+                    </p>
+                    <p class="h2">
+                        &nbsp;&nbsp;&nbsp;560 €
+                    </p>de premier loyer<p class="h2">
+                        + 500 €
+                    </p>garantie (qui correspond au de dépôt de premier loyer
+                    hors charges). À la fin du bail, si ni impayés ni dégâts ne
+                    sont à déplorer, vous recouvrerez ce montant<p class="h2">
+                        + 200 €
+                    </p>de frais de dossier (selon votre période de candidature,
+                    ces frais peuvent être offerts)<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 1260 €
+                        </span>
+                    </p><br />Une fois par an n’oubliez pas la taxe d’habitation
+                    qui varie de<p class="h2">
+                        30 à 110 €.
+                    </p>(En cours de réforme) : >
+                    <a class="info-link"
+                        href="https://www.service-public.fr/particuliers/vosdroits/F42"
+                        target="_blank">
+                        www.service-public.fr/particuliers/vosdroits/F42
+                    </a>
+                </div>
 
-            <div class="maincontent col-12 col-lg-6 p-4 pin">
-                <h2>
-                    Pour un studio au sein d’une résidence universitaire sur le
-                    secteur d’Orsay ou ses alentours :
-                </h2>
-                <p class="h3 mt-4">
-                    <strong>Chaque mois vous devez prévoir :</strong>
-                </p>
-                <p class="h2">
-                    &nbsp;&nbsp;&nbsp;450 €
-                </p>de loyer avec charges (hors aides auxquelles vous pourriez
-                prétendre)<p class="h2">
-                    &nbsp;&nbsp;+ 10 €
-                </p>en moyenne pour la laverie<p class="h2">
-                    &nbsp;&nbsp;&nbsp;&nbsp;+5
-                </p>d'assurance habitation mensuelle<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 465 €
-                    </span>
-                </p>
-                <p>
-                    L’accès à internet est gratuit en fonction du partenariat
-                    avec un fournisseur d’internet réalisé par le CROUS
-                </p>
-                <p class="h3 mt-4">
-                    <strong>
-                        Lors de votre arrivée dans le logement vous devrez
-                        débourser
-                    </strong>
-                </p>
-                <p class="h2">
-                    &nbsp; &nbsp;450 €
-                </p>de premier loyer<p class="h2">
-                    + 400 €
-                </p>de dépôt de garantie (qui correspond au premier loyer hors
-                charges). À la fin du bail, si ni impayés, ni dégâts ne sont a
-                déplorer, vous recouvrerez ce montant<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 850 €
-                    </span>
-                </p>
-                <br />
-                <p class="h2">
-                    100 €.
-                </p>de frais de réservation pourront vous être demandés avant
-                votre arrivée. Ils seront ensuite diminués du premier loyer que
-                vous aurez à payer à votre arrivée.
+                <div class="maincontent col-12 col-lg-6 p-4 pin">
+                    <h2>
+                        Pour un studio au sein d’une résidence universitaire sur
+                        le secteur d’Orsay ou ses alentours :
+                    </h2>
+                    <p class="h3 mt-4">
+                        <strong>Chaque mois vous devez prévoir :</strong>
+                    </p>
+                    <p class="h2">
+                        &nbsp;&nbsp;&nbsp;450 €
+                    </p>de loyer avec charges (hors aides auxquelles vous
+                    pourriez prétendre)<p class="h2">
+                        &nbsp;&nbsp;+ 10 €
+                    </p>en moyenne pour la laverie<p class="h2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;+5
+                    </p>d'assurance habitation mensuelle<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 465 €
+                        </span>
+                    </p>
+                    <p>
+                        L’accès à internet est gratuit en fonction du
+                        partenariat avec un fournisseur d’internet réalisé par
+                        le CROUS
+                    </p>
+                    <p class="h3 mt-4">
+                        <strong>
+                            Lors de votre arrivée dans le logement vous devrez
+                            débourser
+                        </strong>
+                    </p>
+                    <p class="h2">
+                        &nbsp; &nbsp;450 €
+                    </p>de premier loyer<p class="h2">
+                        + 400 €
+                    </p>de dépôt de garantie (qui correspond au premier loyer
+                    hors charges). À la fin du bail, si ni impayés, ni dégâts ne
+                    sont a déplorer, vous recouvrerez ce montant<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 850 €
+                        </span>
+                    </p>
+                    <br />
+                    <p class="h2">
+                        100 €.
+                    </p>de frais de réservation pourront vous être demandés
+                    avant votre arrivée. Ils seront ensuite diminués du premier
+                    loyer que vous aurez à payer à votre arrivée.
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

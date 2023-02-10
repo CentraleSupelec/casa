@@ -76,16 +76,16 @@
     </h2>
     <p class="mb-4">
         {{ student.socialScholarship
-            ? '<i class="fa-regular fa-square-check fa-xl"></i>'
-            : '<i class="fa-regular fa-square fa-xl"></i>' }}
+            ? 'general.label_yes'|trans
+            : 'general.label_no'|trans }}
     </p>
     <h2 class="fs-6 text-secondary">
         {{ 'profile.reduced_mobility'|trans }}
     </h2>
     <p class="mb-4">
         {{ student.reducedMobility
-            ? '<i class="fa-regular fa-square-check fa-xl"></i>'
-            : '<i class="fa-regular fa-square fa-xl"></i>' }}
+            ? 'general.label_yes'|trans
+            : 'general.label_no'|trans }}
     </p>
 </article>
 

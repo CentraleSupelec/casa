@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'profile.title.profile'|trans }}
+    {% if mode == 'edit' %}
+        {{ 'profile.title.edit_profile'|trans }}
+    {% else %}
+        {{ 'profile.title.profile'|trans }}
+    {% endif %}
+    {{ parent() }}
 {% endblock %}
 
 {% import 'housing/_housing_card.html.twig' as HousingCard %}

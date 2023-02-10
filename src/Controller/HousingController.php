@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class HousingController extends AbstractController
 {
@@ -63,6 +64,7 @@ class HousingController extends AbstractController
     public function list(EntityManagerInterface $entityManager,
         ImageUrlService $imageUrl,
         PaginatorInterface $paginator,
+        TranslatorInterface $translator,
         Request $request): Response
     {
         $student = $this->getUser();
@@ -106,11 +108,22 @@ class HousingController extends AbstractController
             $searchHousingCriteria->getMaxResultsByPage(),
         );
 
+        // Add some information to title for accessibility purpose
+
+        $title_informations = $translator->trans(
+            'housing.list.title_information',
+            [
+                '%searchcriteria%' => $this->getTitleInformation($searchHousingCriteria),
+                '%current%' => $pagination->getCurrentPageNumber(),
+                '%totalitem%' => $pagination->getTotalItemCount(), ], null, $request->getLocale(),
+        );
+
         return $this->render('housing/list.html.twig', [
             'form' => $form->createView(),
             'pagination' => $pagination,
             'imageBaseUrl' => $imageUrl->getImageBaseUrl(),
             'cities' => $cities,
+            'title_information' => $title_informations,
         ]);
     }
 
@@ -167,5 +180,18 @@ class HousingController extends AbstractController
         }
 
         return $this->redirectToRoute($origin, $redirection_params);
+    }
+
+    private function getTitleInformation(SearchCriteriaModel $searchHousingCriteria): string
+    {
+        $searchCriteria = $searchHousingCriteria->getCity();
+        if ($searchHousingCriteria->getMaxPrice()) {
+            $searchCriteria = $searchCriteria.' '.$searchHousingCriteria->getMaxPrice().' €';
+        }
+        if ($searchHousingCriteria->getMinArea()) {
+            $searchCriteria = $searchCriteria.' '.$searchHousingCriteria->getMinArea().' m2';
+        }
+
+        return $searchCriteria;
     }
 }

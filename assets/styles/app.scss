@@ -22,6 +22,27 @@
         format('truetype-variations');
 }
 
+// Accessibility recommandation
+// [Critère 10.5] Dans chaque page web, les déclarations CSS de couleurs de fond d’élément et de police sont-elles correctement utilisées ?
+// https://www.w3.org/WAI/WCAG21/Techniques/failures/F24
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+button,
+li,
+blockquote,
+input,
+select,
+textarea {
+    background-color: transparent;
+}
+
 html {
     height: 100%;
 }
@@ -80,3 +101,14 @@ label.required:after {
     opacity: 0.8;
     filter: grayscale(100%);
 }
+
+// ul {
+//     border: 3px rgba(255, 0, 0, 0.25) solid;
+// }
+
+// ul::before {
+//     content: '<ul>';
+//     background: rgba(255, 0, 0, 0.25);
+//     color: black;
+//     display: block;
+// }

@@ -4,7 +4,7 @@
         data-bs-interval="false"
         data-bs-ride="carousel"
         aria-roledescription="carousel">
-        <div class="carousel-inner" aria-live="off">
+        <div class="carousel-inner" aria-live="polite">
             {% for picture in pictures %}
                 <div class="carousel-item {{
                     loop.index0 is same as(0)
@@ -14,7 +14,7 @@
                     aria-roledescription="slide"
                     aria-label="image {{
                     loop.index
-                    }} of {{ pictures|length }} ">
+                    }} {{ 'housing.carousel_image_of'|trans }} {{ pictures|length }} ">
                     <img src="{{ pictureBaseUrl }}/{{ picture.picture }}"
                         alt="{{ picture.label }}"
                         tabindex="0" />
@@ -32,7 +32,9 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true">
 
                 </span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">
+                    "{{ 'housing.carousel_button.previous'|trans }}
+                </span>
             </button>
             <button class="carousel-control-next"
                 type="button"
@@ -43,7 +45,9 @@
                 <span class="carousel-control-next-icon" aria-hidden="true">
 
                 </span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">
+                    {{ 'housing.carousel_button.next'|trans }}
+                </span>
             </button>
         {% endif %}
     </div>

@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    The cost of renting accommodation
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-    <div id="maincontent" class="container guide cost">
+    <main id="maincontent" class="container guide cost">
         <div class="row mb-4" style="max-height: 450px;">
             <img class="img-fluid"
                 style="z-index: -1;"
@@ -10,7 +15,8 @@
                     'build/images/guide/chercher/photo_ARTE_CHARPENTIER_palaiseau.jpg'
                 )
                 }}"
-                alt="Résidence Charpentier Palaiseau" />
+                alt=""
+                aria-hidden="true" />
         </div>
 
         <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
@@ -394,7 +400,8 @@
             <div class="col-12 col-lg-6">
                 <img style="width: 100%;"
                     src="{{ asset('build/images/guide/cost/YY-unsplash.jpg') }}"
-                    alt="étudiante détendue qui consulte son ordinateur" />
+                    alt=""
+                    aria-hidden="true" />
             </div>
         </div>
         <div class="row gx-6 gy-5 mb-4">
@@ -472,10 +479,7 @@
             </div>
             <div class="col-12 col-lg-6 sidecontent">
                 <div class="text-center">
-                    <i class="fa-solid fa-comment fa-2x ms-2"
-                        alt="icône bulle de dialogue">
-
-                    </i>
+                    <i class="fa-solid fa-comment fa-2x ms-2"></i>
                 </div>
 
                 <p>
@@ -537,10 +541,7 @@
             </div>
             <div class="col-12 col-lg-6 sidecontent mb-auto">
                 <div class="text-center">
-                    <i class="fa-solid fa-comment fa-2x ms-2"
-                        alt="icône bulle de dialogue">
-
-                    </i>
+                    <i class="fa-solid fa-comment fa-2x ms-2"></i>
                 </div>
 
                 <p>
@@ -737,7 +738,8 @@
                         'build/images/guide/cost/ARTE_CHARPENTIER-campus_ECLA-palaiseau.jpg'
                     )
                     }}"
-                    alt="zone détente de la résidence ECLA Campus à Palaiseau" />
+                    alt=""
+                    aria-hidden="true" />
             </div>
         </div>
 
@@ -1193,47 +1195,46 @@
                 </h2>
                 <p>
                     This allowance, which cannot be combined with other
-                    municipal housing assistance, is divided into three parts<ul class="fa-ul"
-                        style="--fa-li-width: 2em;">
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>Paris Logement,
-                        </li>
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>Paris Logement Famille (family)
-                        </li>
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>Paris Logement Famille Monoparentales.
-                            (single parents)
-                        </li>
-                    </ul>This assistance is aimed at couples with one child or
-                    no children, as well as single tenants. This assistance is
-                    intended to help with housing expenses. This benefit can be
-                    combined with Personalised Housing Assistance (APL) and can
-                    grant up to<ul class="fa-ul" style="--fa-li-width: 2em;">
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>84 €/month to a single person,
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            95 €/month for a couple without children
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            et 116 €/month for couples with children
-                        </li>
-                    </ul>This assistance can be accessed by students.
+                    municipal housing assistance, is divided into three parts
                 </p>
-                <div class="info-link">
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Paris Logement,
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Paris Logement Famille (family)
+                    </li>
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>Paris Logement Famille Monoparentales. (single
+                        parents)
+                    </li>
+                </ul>This assistance is aimed at couples with one child or no
+                children, as well as single tenants. This assistance is intended
+                to help with housing expenses. This benefit can be combined with
+                Personalised Housing Assistance (APL) and can grant up to<ul class="fa-ul"
+                    style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>84 €/month to a single person,
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        95 €/month for a couple without children
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        et 116 €/month for couples with children
+                    </li>
+                </ul>This assistance can be accessed by students.<div class="info-link">
                     <i class="fa-regular fa-circle-info fa-2x ms-2"></i>
                     <a href="https://www.paris.fr/aides-au-logement"
                         target="_blank">
@@ -1379,169 +1380,177 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <br />
-    {{ include('housing_guide/_en_visale.html.twig') }}
-    <br />
 
-    {{ include('housing_guide/_en_mobilijeune.html.twig') }}
+        <br />
+        {{ include('housing_guide/_en_visale.html.twig') }}
+        <br />
 
-    <div class="container guide cost">
-        <div class="row gx-6 gy-5 my-4 p-4" style="background-color: #8cc63e;">
-            <h2 class="text-black">
-                Memo
-            </h2>
-            <div class="col-12 col-lg-6 fs-5">
-                <p>
-                    Assistance from the CAF, Paris city council and Action
-                    logement are the main forms of assistance you can apply for
-                    as regards your student housing. This assistance can be
-                    combined with a grant from CROUS based on social criteria.
+        {{ include('housing_guide/_en_mobilijeune.html.twig') }}
+
+        <div class="container guide cost">
+            <div class="row gx-6 gy-5 my-4 p-4"
+                style="background-color: #8cc63e;">
+                <h2 class="text-black">
+                    Memo
+                </h2>
+                <div class="col-12 col-lg-6 fs-5">
+                    <p>
+                        Assistance from the CAF, Paris city council and Action
+                        logement are the main forms of assistance you can apply
+                        for as regards your student housing. This assistance can
+                        be combined with a grant from CROUS based on social
+                        criteria.
+
+                        <a class="btn skinny bg-white text-dark btn-block"
+                            href="https://www.caf.fr"
+                            target="_blank">
+                            CAF
+                        </a> You can try out your eligibility on the CAF website
+                        and find out the total value of the assistance available
+                        to you.
+                    </p>
+                    <p>
+                        Other financial assistance exists in addition to housing
+                        assistance. To find out about this, we suggest that you
+                        look at <a class="btn skinny bg-white text-dark btn-block"
+                            href="https://www.universite-paris-saclay.fr/le-guide-interactif-etudiant-et-etudiante"
+                            target="_blank">
+                            the Guide for Students
+                        </a>
+                        where you can find out more information about the financial
+                        and social support available to you.
+                    </p>
+                </div>
+                <div class="col-12 col-lg-6 fs-5">
+                    <p>
+                        Finally, if you are experiencing financial problems,
+                        unforeseen circumstances or an emergency situation, do
+                        not hesitate to contact the social workers. They will
+                        support you in finding the right assistance for your
+                        situation.
+                    </p>
 
                     <a class="btn skinny bg-white text-dark btn-block"
-                        href="https://www.caf.fr"
+                        href="https://www.universite-paris-saclay.fr/vie-de-campus/bourses-et-aides-etudiantes"
                         target="_blank">
-                        CAF
-                    </a> You can try out your eligibility on the CAF website and
-                    find out the total value of the assistance available to you.
-                </p>
-                <p>
-                    Other financial assistance exists in addition to housing
-                    assistance. To find out about this, we suggest that you look
-                    at <a class="btn skinny bg-white text-dark btn-block"
-                        hhref="https://www.universite-paris-saclay.fr/le-guide-interactif-etudiant-et-etudiante"
-                        target="_blank">
-                        the Guide for Students
+                        Scholarship and financials aids
                     </a>
-                    where you can find out more information about the financial and
-                    social support available to you.
-                </p>
-            </div>
-            <div class="col-12 col-lg-6 fs-5">
-                <p>
-                    Finally, if you are experiencing financial problems,
-                    unforeseen circumstances or an emergency situation, do not
-                    hesitate to contact the social workers. They will support
-                    you in finding the right assistance for your situation.
-                </p>
-
-                <a class="btn skinny bg-white text-dark btn-block"
-                    href="https://www.universite-paris-saclay.fr/vie-de-campus/bourses-et-aides-etudiantes"
-                    target="_blank">
-                    Scholarship and financials aids
-                </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container guide cost">
-        <div class="row gx-6 gy-5 mb-4">
-            <h1>
-                In summary
-                <strong>the total cost</strong><br />
-                of renting
-            </h1>
-            <p class="h3 text-center">
-                Here are two example scenarios to give you an idea of how much
-                accommodation will cost :
-            </p>
-            <div class="maincontent col-12 col-lg-6 p-4">
-                <h2>
-                    For a studio of approximately 20 m2 rented from a private
-                    landlord in Orsay or the surrounding area:
-                </h2>
-                <p class="h3 mt-4">
-                    <strong>You should put aside each month:</strong>
+        <div class="container guide cost">
+            <div class="row gx-6 gy-5 mb-4">
+                <h1>
+                    In summary
+                    <strong>the total cost</strong><br />
+                    of renting
+                </h1>
+                <p class="h3 text-center">
+                    Here are two example scenarios to give you an idea of how
+                    much accommodation will cost :
                 </p>
-                <p class="h2">
-                    &nbsp;&nbsp;&nbsp;560 €
-                </p>for rent and charges (excluding any assistance to which you
-                may be entitled)<p class="h2">
-                    + 100 €
-                </p>on average of additional services (laundry, cleaning, gym,
-                etc.) and monthly insurance depending on the options chosen<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 660 €
-                    </span>
-                </p>
-                <p class="h3 mt-4">
-                    <strong>
-                        At the time of your arrival in the accommodation , you
-                        will have to pay
-                    </strong>
-                    :
-                </p>
-                <p class="h2">
-                    &nbsp;&nbsp;&nbsp;560 €
-                </p>for the first rent<p class="h2">
-                    + 500 €
-                </p>as a security deposit ( which is the same as the first rent
-                excluding charges). At the end of the lease, if there are no
-                outstanding payments or damage, you will get this amount back<p class="h2">
-                    + 200 €
-                </p>for administration fees (depending on your application
-                period these fees may be waived)<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 1260 €
-                    </span>
-                </p><br />Do not forget residence tax each year, which ca be
-                between<p class="h2">
-                    30 and 110 €.
-                </p>(in progress)
-                <a class="info-link"
-                    href="https://www.service-public.fr/particuliers/vosdroits/F42"
-                    target="_blank">
-                    www.service-public.fr/particuliers/vosdroits/F42
-                </a>
-            </div>
+                <div class="maincontent col-12 col-lg-6 p-4">
+                    <h2>
+                        For a studio of approximately 20 m2 rented from a
+                        private landlord in Orsay or the surrounding area:
+                    </h2>
+                    <p class="h3 mt-4">
+                        <strong>You should put aside each month:</strong>
+                    </p>
+                    <p class="h2">
+                        &nbsp;&nbsp;&nbsp;560 €
+                    </p>for rent and charges (excluding any assistance to which
+                    you may be entitled)<p class="h2">
+                        + 100 €
+                    </p>on average of additional services (laundry, cleaning,
+                    gym, etc.) and monthly insurance depending on the options
+                    chosen<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 660 €
+                        </span>
+                    </p>
+                    <p class="h3 mt-4">
+                        <strong>
+                            At the time of your arrival in the accommodation ,
+                            you will have to pay
+                        </strong>
+                        :
+                    </p>
+                    <p class="h2">
+                        &nbsp;&nbsp;&nbsp;560 €
+                    </p>for the first rent<p class="h2">
+                        + 500 €
+                    </p>as a security deposit ( which is the same as the first
+                    rent excluding charges). At the end of the lease, if there
+                    are no outstanding payments or damage, you will get this
+                    amount back<p class="h2">
+                        + 200 €
+                    </p>for administration fees (depending on your application
+                    period these fees may be waived)<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 1260 €
+                        </span>
+                    </p><br />Do not forget residence tax each year, which ca be
+                    between<p class="h2">
+                        30 and 110 €.
+                    </p>(in progress)
+                    <a class="info-link"
+                        href="https://www.service-public.fr/particuliers/vosdroits/F42"
+                        target="_blank">
+                        www.service-public.fr/particuliers/vosdroits/F42
+                    </a>
+                </div>
 
-            <div class="maincontent col-12 col-lg-6 p-4 pin">
-                <h2>
-                    For a studio within a university residence in Orsay or the
-                    surrounding area:
-                </h2>
-                <p class="h3 mt-4">
-                    <strong>You should put aside each month:</strong>
-                </p>
-                <p class="h2">
-                    &nbsp;&nbsp;&nbsp;450 €
-                </p>for rent and charges (excluding any assistance to which you
-                may be entitled) and<p class="h2">
-                    &nbsp;&nbsp;+ 10 €
-                </p>on average for laundry<p class="h2">
-                    &nbsp;&nbsp;&nbsp;&nbsp;+5
-                </p>for home insurance per month<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 465 €
-                    </span>
-                </p>
-                <p>
-                    Internet access is free depending on the agreement drawn up
-                    by CROUS with the internet supplier
-                </p>
-                <p class="h3 mt-4">
-                    <strong>
-                        At the time of your arrival in the accommodation you
-                        will have to pay
-                    </strong>
-                </p>
-                <p class="h2">
-                    &nbsp; &nbsp;450 €
-                </p>for the first rent<p class="h2">
-                    + 400 €
-                </p>as a security deposit ( which is the same as the first rent
-                excluding charges). At the end of the lease, if there are no
-                outstanding payments or damage, you will get this amount back<p class="h2 mt-2">
-                    <span class="border-5 border-top border-primary me-auto">
-                        = 850 €
-                    </span>
-                </p>
-                <br />
-                <p class="h2">
-                    A 100 €.
-                </p>reservation fee may be requested before your arrival. This
-                will then be deducted from the first rentyou will have to pay
-                when you arrive.
+                <div class="maincontent col-12 col-lg-6 p-4 pin">
+                    <h2>
+                        For a studio within a university residence in Orsay or
+                        the surrounding area:
+                    </h2>
+                    <p class="h3 mt-4">
+                        <strong>You should put aside each month:</strong>
+                    </p>
+                    <p class="h2">
+                        &nbsp;&nbsp;&nbsp;450 €
+                    </p>for rent and charges (excluding any assistance to which
+                    you may be entitled) and<p class="h2">
+                        &nbsp;&nbsp;+ 10 €
+                    </p>on average for laundry<p class="h2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;+5
+                    </p>for home insurance per month<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 465 €
+                        </span>
+                    </p>
+                    <p>
+                        Internet access is free depending on the agreement drawn
+                        up by CROUS with the internet supplier
+                    </p>
+                    <p class="h3 mt-4">
+                        <strong>
+                            At the time of your arrival in the accommodation you
+                            will have to pay
+                        </strong>
+                    </p>
+                    <p class="h2">
+                        &nbsp; &nbsp;450 €
+                    </p>for the first rent<p class="h2">
+                        + 400 €
+                    </p>as a security deposit ( which is the same as the first
+                    rent excluding charges). At the end of the lease, if there
+                    are no outstanding payments or damage, you will get this
+                    amount back<p class="h2 mt-2">
+                        <span class="border-5 border-top border-primary me-auto">
+                            = 850 €
+                        </span>
+                    </p>
+                    <br />
+                    <p class="h2">
+                        A 100 €.
+                    </p>reservation fee may be requested before your arrival.
+                    This will then be deducted from the first rentyou will have
+                    to pay when you arrive.
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

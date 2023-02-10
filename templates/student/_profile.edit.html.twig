@@ -1,13 +1,13 @@
 <div class="col-12 col-md-6 mb-3">
     {{ form_start(form) }}
-    <div>
+    <p>
         {{ form_errors(form) }}
-    </div>
+    </p>
 
-    {{ form_row(form.firstName)}}
-    {{ form_row(form.lastName)}}
-    {{ form_row(form.phone) }}
-    {{ form_row(form.birthdate)}}
+    {{ form_row(form.firstName , { 'attr' : { 'autocomplete' : 'given-name'}})}} 
+    {{ form_row(form.lastName ,  { 'attr' : { 'autocomplete' : 'family-name'}})}}
+    {{ form_row(form.phone ,  { 'attr' : { 'autocomplete' : 'tel'}}) }}
+    {{ form_row(form.birthdate,  { 'attr' : { 'autocomplete' : 'bday'}})}}
 
     <div class="bg-light p-4 my-2" data-controller='profile-select-school'
         {% if form.vars.data.school %}
@@ -17,9 +17,10 @@
     data-profile-select-school-url-value= {{
     path('app_student_profile_schools')
     }}>
-    {{ form_label(form.school)}}
-
-    <select class='form-select'
+    
+    <label class="form-label" for="student_form_parent_school">{{ 'profile.school' | trans }} </label>
+    <p class="visually-hidden">{{ 'profile.school_help' | trans }} </p>
+    <select id="student_form_parent_school" class='form-select'
             data-action='profile-select-school#changeParentSchool'
     >
         <option>{{ 'profile.choose_school' | trans }}</option>

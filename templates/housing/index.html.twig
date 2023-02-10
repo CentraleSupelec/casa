@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Logement
+    {{ 'housing.detail_page_title' | trans }} {{ housing.type }} {{ housing.housingGroup.address.city}}
+    {{ parent() }}
 {% endblock %}
 
 {% import 'housing/_range_data.html.twig' as RangeData %}
@@ -67,14 +68,14 @@
                     {% if hasCriteria %}
                         <div class="col-12 mt-1 d-flex align-items-center justify-content-start flex-wrap">
                             {% if isPriority %}
-                                <span class="badge bg-success criteria-badge ms-1 mt-1">
+                                <p class="badge bg-success criteria-badge ms-1 mt-1">
                                     {{ 'housing.priority.card_badge'|trans }}
-                                </span>
+                                </p>
                             {% else %}
 
-                            <span class="badge bg-primary criteria-badge mt-1">
+                            <p class="badge bg-primary criteria-badge mt-1">
                                 {{ 'housing.criteria.card_badge'|trans }}
-                            </span>
+                            </p>
                             {% endif %}
                         </div>
                     {% endif %}
@@ -90,25 +91,25 @@
                         <h3 class="mb-2">
                             {{ 'housing.price.title'|trans }}                                 
                             {% if housing.aplAgreement %}
-                                <span class="badge bg-success me-2 my-auto">{{ 'housing.apl_agreement'|trans }}</span>
+                                <p class="badge bg-success me-2 my-auto">{{ 'housing.apl_agreement'|trans }}</p>
                             {% endif %}
 
                         </h3>
                         <ul >
                             <li class="main-info row">
-                                <span class="col-6 label">{{ 'housing.price.rent'|trans }}</span>
-                                <span class='col-6'>
+                                <p class="col-6 label">{{ 'housing.price.rent'|trans }}</p>
+                                <p class='col-6'>
                                 {{
                                     RangeData.displayMonthlyRangeCost(
                                         housing.rentMin,
                                         housing.rentMax
                                     )
                                 }}
-                                </span>
+                                </p>
                             </li>
                             <li class="main-info row">
-                                <span class="col-6 label">Charges</span>
-                                <span class="col-6">
+                                <p class="col-6 label">Charges</p>
+                                <p class="col-6">
                                 {{
                                     RangeData.displayCharges(
                                         housing.chargesIncluded,
@@ -116,36 +117,36 @@
                                         housing.chargesMax
                                     )
                                 }}
-                                </span>
+                                </p>
                             </li>
                             <li class="main-info row">
-                                <span class="col-6 label">
+                                <p class="col-6 label">
                                     {{ 'housing.price.application_fee'|trans }}
-                                </span>
+                                </p>
 
-                                <span class="col-6">
+                                <p class="col-6">
                                     {{
                                         RangeData.displayRangeCost(
                                             housing.applicationFeeMin,
                                             housing.applicationFeeMax
                                         )
                                     }}
-                                </span>
+                                </p>
                             </li>
                             <li class="main-info row">
-                                <span class="col-6 label">
+                                <p class="col-6 label">
 
                                     {{ 'housing.price.security_deposit'|trans }}
-                                </span>
+                                </p>
                                 
-                                <span class="col-6">
+                                <p class="col-6">
                                 {{
                                     RangeData.displayRangeCost(
                                         housing.securityDepositMin,
                                         housing.securityDepositMax
                                     )
                                 }}
-                                </span>
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -155,20 +156,20 @@
                         <h3 class="mb-2">{{ 'housing.caracteristics'|trans }}</h3>
                         <ul >
                             <li class="main-info row">
-                                <span class="col-6 label">Surface</span>
-                                <span class="col-6 info">
+                                <p class="col-6 label">Surface</p>
+                                <p class="col-6 info">
                                 {{
                                     RangeData.displayArea(
                                         housing.areaMin,
                                         housing.areaMax
                                     )
                                 }}
-                                </span>
+                                </p>
                             <li class="main-info row">
-                                <span class="col-6 label">
+                                <p class="col-6 label">
                                     {{ 'housing.accessible'|trans }}
-                                </span>
-                                <span class="col-6 info">
+                                </p>
+                                <p class="col-6 info">
                                 {% if housing.accessibility %}
                                     {{ 'general.label_yes'|trans}}
                                 {% else %}
@@ -176,10 +177,10 @@
                                 {% endif %}
                             </li>
                             <li class="main-info row">
-                                <span class="col-6 label">
+                                <p class="col-6 label">
                                     {{ 'housing.smoking'|trans }}
-                                </span>
-                                <span class="col-6 info">
+                                </p>
+                                <p class="col-6 info">
                                 {% if housing.smoking %}
                                     {{ 'general.label_yes'|trans}}
                                 {% else %}
@@ -187,10 +188,10 @@
                                 {% endif %}
                             </li>
                             <li class="main-info row">
-                                <span class="col-6 label">
+                                <p class="col-6 label">
                                     {{ 'housing.animals_allowed'|trans }}
-                                </span>
-                                <span class="col-6 info">
+                                </p>
+                                <p class="col-6 info">
                                 {% if housing.animalsAllowed %}
                                     {{ 'general.label_yes'|trans}}
                                 {% else %}
@@ -208,11 +209,9 @@
 
                     {% if housing.description is not null %}
                         <div class="row mt-3">
-                            <div class="col main-info">
-                                
-                                    {{ housing.description }}
-
-                            </div>
+                            <p class="col main-info">
+                                {{ housing.description }}
+                            </p>
                         </div>
                     {% else %}
                         {{ 'housing.no_description'|trans}}
@@ -225,13 +224,26 @@
                     </h2>
                     <div class="col-12 col-md-6 mt-4">
                         <ul >
+                        {% if housing.quantity > 1 %}
+                            <li class="main-info">
+                                {{
+                                    'housing.type.quantity'|trans({
+                                        '%quantity%': housing.quantity
+                                    })
+                                }}
+                            </li>
+                        
+                        {% endif %}
+
                             <li class="main-info">
                                 {{
                                     ("housing.living_mode.#{housing.livingMode}")|trans
                                 }}
                             </li>
+
                         </ul>
                     </div>
+
                     
                     {% if housing.occupationModes|length %}
                     <div class="col-12 col-md-6 mt-4">
@@ -242,11 +254,13 @@
                             }}
                             </li>
                         {% if housing.occupants > 1 %}
-                            ({{
-                                'housing.occupation_mode.occupants'|trans({
-                                    '%occupants%': housing.occupants
-                                })
-                            }})
+                            <li>
+                                ({{
+                                    'housing.occupation_mode.occupants'|trans({
+                                        '%occupants%': housing.occupants
+                                    })
+                                }})
+                            </li>
                         {% endif %}
 
                         {% for mode in housing.occupationModes %}
@@ -287,49 +301,38 @@
                         </div>
                     {% endif %}
 
-                    {% if housing.quantity > 1 %}
-                        <div class="col-12 col-md-6 mt-4">
-                            <li class="main-info">
-                                {{
-                                    'housing.type.quantity'|trans({
-                                        '%quantity%': housing.quantity
-                                    })
-                                }}
-                            </li>
-                        </div>
-                    {% endif %}
 
                 </div>
                 <h2 class="mt-4 mb-3">
                     {{ 'housing.equipment.title'|trans }}
                 </h2>
                 <div class="row">
-                        <div class="col icons-container">
-                            {% if housing.housingGroup.equipments|length %}
-                                    {# This removes double display if admin ticked equipement both in Group and Housing #}
-                                    {% set displayed = [] %}
-                                    {% for equipment in housing.housingGroup.equipments %}
-                                        {{ Icons.displayEquipment(equipment) }}
-                                        {% set displayed =
-                                            displayed|merge(
-                                                [
-                                                    {
-                                                        id: equipment.id
-                                                    }
-                                                ]
-                                            )
-                                        %}
-                                    {% endfor %}
+                    <ul class="col icons-container">
+                        {% if housing.housingGroup.equipments|length %}
+                                {# This removes double display if admin ticked equipement both in Group and Housing #}
+                                {% set displayed = [] %}
+                                {% for equipment in housing.housingGroup.equipments %}
+                                    {{ Icons.displayEquipment(equipment) }}
+                                    {% set displayed =
+                                        displayed|merge(
+                                            [
+                                                {
+                                                    id: equipment.id
+                                                }
+                                            ]
+                                        )
+                                    %}
+                                {% endfor %}
 
-                                    {% for equipment in housing.equipments %}
-                                        {% if not equipment.id in displayed %}
-                                            {{ Icons.displayEquipment(equipment) }}
-                                        {% endif %}
-                                    {% endfor %}
-                            {% else %}
-                                {{ 'general.novalue'|trans }}
-                            {% endif %}
-                        </div>
+                                {% for equipment in housing.equipments %}
+                                    {% if not equipment.id in displayed %}
+                                        {{ Icons.displayEquipment(equipment) }}
+                                    {% endif %}
+                                {% endfor %}
+                        {% else %}
+                            {{ 'general.novalue'|trans }}
+                        {% endif %}
+                    </ul>
                 </div>
                 <div class="row gx-0">
                     <div class="col-12 mt-4">
@@ -343,7 +346,6 @@
                                 )
                             }}
 
-
                     </div>
                     <div class="col-12 mt-4 p-4 bg-light" id="map"></div>
                 </div>
@@ -354,7 +356,7 @@
                 </h2>
                 {% set includedServices = housing.housingGroup.housingGroupServices|filter((s) => not s.isOptional) %}
                 <div class="row">
-                    <div class="col icons-container">
+                    <ul class="col icons-container">
                         {% if includedServices|length %}
                             {% for housingGroupService in includedServices %}
                                 {{
@@ -366,7 +368,7 @@
                         {% else %}
                             {{ 'general.novalue'|trans }}
                         {% endif %}
-                    </div>
+                    </ul>
                 </div>
 
                 <h2 class="mt-4 mb-3">
@@ -374,7 +376,7 @@
                 </h2>
                 {% set optionalServices = housing.housingGroup.housingGroupServices|filter((s) => s.isOptional) %}
                 <div class="row">
-                    <div class="col icons-container">
+                    <ul class="col icons-container">
                         {% if optionalServices|length %}
                             {% for housingGroupService in optionalServices %}
                                 {{
@@ -386,7 +388,7 @@
                         {% else %}
                             {{ 'general.novalue'|trans }}
                         {% endif %}
-                    </div>
+                    </ul>
                 </div>                
 
                 {% if hasCriteria %}
@@ -394,30 +396,28 @@
                         {{ 'housing.criteria.detail.title'|trans }}
                     </h2>
                     <div class="row">
-                        <div clas>
-                            <span>
-                                {{
-                                    'housing.criteria.detail.description'|trans
-                                }}
-                            </span>
-                            <ul >
-                                {% if hasSocialScholarshipCriteria %}
-                                    <li class="minor-info mt-2">
-                                        {{
-                                            'housing.criteria.detail.social_scholarship_criterion'|trans
-                                        }}
-                                    </li>
-                                {% endif %}
-                                {% if hasSchoolCriteria %}
-                                    <li class="minor-info mt-2">
-                                        {{
-                                            'housing.criteria.detail.school_criterion'|trans
-                                        }}
-                                        {{ schools|join(', ') }}
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </div>
+                        <p>
+                            {{
+                                'housing.criteria.detail.description'|trans
+                            }}
+                        </p>
+                        <ul >
+                            {% if hasSocialScholarshipCriteria %}
+                                <li class="minor-info mt-2">
+                                    {{
+                                        'housing.criteria.detail.social_scholarship_criterion'|trans
+                                    }}
+                                </li>
+                            {% endif %}
+                            {% if hasSchoolCriteria %}
+                                <li class="minor-info mt-2">
+                                    {{
+                                        'housing.criteria.detail.school_criterion'|trans
+                                    }}
+                                    {{ schools|join(', ') }}
+                                </li>
+                            {% endif %}
+                        </ul>
                     </div>
                 {% endif %}
 
@@ -440,9 +440,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6 mt-3">
                         <h3>
-                            <span class="me-1">
-                                <i class="fa-solid fa-bus fa-xl"></i>
-                            </span>
+                            <i class="fa-solid fa-bus fa-xl me-1"></i>
                             {{
                                 'housing_group.point_of_interest_category.transportation'|trans
                             }}
@@ -461,9 +459,7 @@
                     </div>
                     <div class="col-12 col-md-6 mt-3">
                         <h3 class="strong-text text-md-end">
-                            <span class="me-1">
-                                <i class="fa-solid fa-shop fa-xl"></i>
-                            </span>
+                            <i class="fa-solid fa-shop fa-xl me-1"></i>
                             {{
                                 'housing_group.point_of_interest_category.store'|trans
                             }}

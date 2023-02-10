@@ -9,6 +9,8 @@ public/bundles/
 volumes/
 
 # Necessary because of filter arrow function not supported (impossible to ignore lines only)
+templates/authentication/login.html.twig
+templates/authentication/register.html.twig
 templates/housing/_housing_card.html.twig
 templates/housing/_search.html.twig
 templates/housing/_search_housing_group.html.twig

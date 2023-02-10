@@ -4,6 +4,7 @@
 
 {% block title %}
     {{ 'home.page_title'|trans }}
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -11,17 +12,17 @@
         <div class="row mb-4" style="max-height: 8rem;">
             <img class="img-fluid"
                 style="z-index: -1;"
-                alt=""
                 src="{{ asset('build/images/home/mosaic-1600-502.jpg') }}"
+                alt=""
                 aria-hidden="true" />
         </div>
     </div>
 
-    <main class="container col-12" role="search" id="maincontent">
+    <main class="container col-12" id="maincontent">
         <div class="col-12 col-lg-10 mx-auto bg-light mb-4 p-4 border border-1">
-            <div class="h2">
+            <h1 class="h2">
                 {{ 'housing.search.criteria.title'|trans }}
-            </div>
+            </h1>
             {{ Search.displaySearch(form, cities) }}
         </div>
         <div class="row mb-4 d-md-block">
@@ -32,16 +33,18 @@
                 {{ 'home.welcome.base_line'|trans|raw }}
             </p>
         </div>
-        <div class="row mb-4">
-            <div class="col-12 col-lg-4 mt-4">
+
+        <ul class="row mb-4"
+            style="list-style-type: none; padding: 0; margin: 0;">
+            <li class="col-12 col-lg-4 mt-4">
                 {{ render(path('housing_guide_search_sumup')) }}
-            </div>
-            <div class="col-12 col-lg-4 mt-4">
+            </li>
+            <li class="col-12 col-lg-4 mt-4">
                 {{ render(path('housing_guide_cost_sumup')) }}
-            </div>
-            <div class="col-12 col-lg-4 mt-4">
+            </li>
+            <li class="col-12 col-lg-4 mt-4">
                 {{ render(path('housing_guide_apply_sumup')) }}
-            </div>
-        </div>
+            </li>
+        </ul>
     </main>
 {% endblock %}

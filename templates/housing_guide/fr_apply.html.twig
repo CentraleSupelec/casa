@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Constituer son dossier
+
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-    <div id="maincontent" class="container guide apply">
+    <main id="maincontent" class="container guide apply">
         <div class="row mb-4" style="max-height: 450px;">
             <img class="img-fluid"
                 style="z-index: -1;"
@@ -10,6 +16,7 @@
                     'build/images/guide/chercher/Pixabay_bed-1834327_1920.jpg'
                 )
                 }}"
+                alt=""
                 aria-hidden="true" />
         </div>
 
@@ -29,10 +36,7 @@
                     un dossier.
                 </p>
                 <div class="text-center">
-                    <i class="fa-regular fa-stamp fa-5x"
-                        alt="icone tampon administratif">
-
-                    </i>
+                    <i class="fa-regular fa-stamp fa-5x"></i>
                 </div>
 
                 <h2>
@@ -454,44 +458,46 @@
                     rendez sont supérieurs à 15 h par semaine, le propriétaire
                     doit même vous rétribuer. Soyez attentif à l’accord écrit
                     qui sera passé entre vous et le propriétaire. Ce document
-                    doit clairement indiquer :<ul class="fa-ul"
-                        style="--fa-li-width: 2em;">
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            le début et la fin de l’échange du logement contre service
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>la nature des services
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            le planning et le nombre d’heures
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            la désignation du logement (chambre, studio...)
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            les règles de vie et la répartition des charges locatives
-                        </li>
-                    </ul>
+                    doit clairement indiquer :
                 </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        le début et la fin de l’échange du logement contre service
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>la nature des services
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        le planning et le nombre d’heures
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        la désignation du logement (chambre, studio...)
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        les règles de vie et la répartition des charges locatives
+                    </li>
+                </ul>
             </div>
             <div class="col-12">
                 <img id="givekeys"
                     src="{{
                     asset(
-                        'build/images/guide/apply/UPSaclay iStock-P42.jpg'
+                        'build/images/guide/apply/UPSaclay-iStock-P42.jpg'
                     )
-                    }}" />
+                    }}"
+                    alt=""
+                    aria-hidden="true" />
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

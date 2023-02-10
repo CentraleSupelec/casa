@@ -2,10 +2,11 @@
 
 {% block title %}
     {{ 'footer.legal'|trans }}
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
-    <main class="container col-12 my-4" role="search" id="maincontent">
+    <main class="container col-12 my-4" id="maincontent">
         <h1>
             Legal Notice
         </h1>

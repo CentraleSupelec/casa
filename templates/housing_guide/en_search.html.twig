@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Looking for an accommodation
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-    <div id="maincontent" class="container guide search">
+    <main id="maincontent" class="container guide search">
         <div class="row mb-4" style="max-height: 450px;">
             <img class="img-fluid"
                 style="z-index: -1;"
@@ -10,7 +15,8 @@
                     'build/images/guide/chercher/UPSaclay-iStock-891975280.jpg'
                 )
                 }}"
-                alt="" />
+                alt=""
+                aria-hidden="true" />
         </div>
 
         <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
@@ -80,19 +86,17 @@
                         regulation of real estate advertisements
                     </a>
                 </p>
-                <p class="text-center">
-                    <i class="fa-solid fa-ghost fa-10x opacity-25" alt="Ghost">
-
-                    </i>
-                </p>
+                <div class="text-center">
+                    <i class="fa-solid fa-ghost fa-10x opacity-25"></i>
+                </div>
             </div>
         </div>
 
         <div class="row gx-6 gy-5 mb-4">
             <div class="col-12 col-lg-4 sidecontent">
-                <h1>
+                <p class="h1">
                     How ?
-                </h1>
+                </p>
                 <p>
                     Find out the average price for the kind of property you are
                     looking for.
@@ -105,12 +109,9 @@
                     be retained.
                 </p>
 
-                <p class="text-center">
-                    <i class="fa-solid fa-euro-sign fa-10x opacity-25"
-                        alt="euro sign">
-
-                    </i>
-                </p>
+                <div class="text-center">
+                    <i class="fa-solid fa-euro-sign fa-10x opacity-25"></i>
+                </div>
             </div>
             <div class="col-12 col-lg-8 maincontent">
                 <h2>
@@ -141,34 +142,33 @@
                     make such payments to the recognised organisations, not to
                     your landlord.
                 </p>
-                <p class="text-end">
+                <div class="text-end">
                     <img id="house-calc"
                         src="{{
                         asset(
                             'build/images/guide/chercher/UPSaclay-Stock-932278678.jpg'
                         )
                         }}"
-                        alt="illustrastes housing budget calculation" />
-                </p>
+                        alt=""
+                        aria-hidden="true" />
+                </div>
             </div>
         </div>
 
         <div class="row gx-6 gy-5 mb-4">
             <div class="col-12 col-lg-8 maincontent">
                 <div class="fa-2x text-success">
-                    <i class="fa-solid fa-faucet-drip text-success fa-2x ms-4"
-                        alt="faucet drip icon">
+                    <i class="fa-solid fa-faucet-drip text-success fa-2x ms-4">
 
                     </i>
-                    <i class="fa-solid fa-temperature-arrow-down text-primary fa-4x mb-4 ms-2"
-                        alt="temperature down icon">
+                    <i class="fa-solid fa-temperature-arrow-down text-primary fa-4x mb-4 ms-2">
 
                     </i>
                 </div>
 
-                <h1>
+                <h2>
                     Substandard and unsubsidised accommodation
-                </h1>
+                </h2>
                 <p>
                     Some landlords rent out unsubsidised and unregulated
                     properties. The accommodation may have no running water or
@@ -188,9 +188,9 @@
                     tricked every year and lose a lot of time and money.
                 </p>
                 <div class="bg-success text-white p-4">
-                    <h2 class="text-white">
+                    <p class="h2 text-white">
                         Be careful
-                    </h2>
+                    </p>
 
                     <p>
                         To avoid becoming a victim of this type of scam, avoid
@@ -203,9 +203,7 @@
             </div>
             <div class="col-12 col-lg-4 sidecontent">
                 <div class="text-center">
-                    <i class="fa-solid fa-comment fa-2x ms-2" alt="dialog icon">
-
-                    </i>
+                    <i class="fa-solid fa-comment fa-2x ms-2"></i>
                 </div>
 
                 <p>
@@ -220,7 +218,7 @@
                 </p>
 
                 <p>
-                    <a href="https:///www.service-public.fr/particuliers/vosdroits/F2042?lang=en"
+                    <a href="https://www.service-public.fr/particuliers/vosdroits/F2042?lang=en"
                         target="_blank">
                         Information about decent housing regulations
                     </a>
@@ -237,7 +235,7 @@
                     </strong>
                 </p>
 
-                <ul style="list-group list-group-flush">
+                <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <span class="badge text-white bg-info rounded-pill fs-4">
                             1
@@ -269,10 +267,7 @@
                 </ul>
                 <div class="border-bottom mb-4">
                     <div class="text-center">
-                        <i class="fa-solid fa-comment fa-2x ms-2"
-                            alt="dialog icon">
-
-                        </i>
+                        <i class="fa-solid fa-comment fa-2x ms-2"></i>
                     </div> <br />
                     <p class="fs-6">
                         In all three cases, it is advisable to search for
@@ -293,12 +288,9 @@
                 <ul>
                     <li>
                         <p>
-                            <i class="fa-solid fa-stopwatch"
-                                alt="stopwatch icon">
-
-                            </i> FROM MID-JANUARY • You are eligible for a grant
-                            based on social criteria: your Student social file (DSE)
-                            will be compiled
+                            <i class="fa-solid fa-stopwatch"></i> FROM MID-JANUARY
+                            • You are eligible for a grant based on social criteria:
+                            your Student social file (DSE) will be compiled
                             <strong>from mid-January to 15 May</strong> for the start
                             of the academic year in September. You can apply on the
                             site <a href="https://www.messervices.etudiant.gouv.fr"
@@ -329,20 +321,21 @@
                         </p>
                     </li>
                     <li>
-                        <i class="fa-solid fa-stopwatch" alt="stopwatch icon">
-
-                        </i> start of July additional phase • If you are not eligible
-                        for a grant based on social criteria, you can submit your
-                        accommodation requests directly on <a href="https://trouverunlogement.lescrous.fr"
-                            target="_blank">
-                            la plateforme nationale
-                        </a> but only from the start of July. Please note that you
-                        can also make a request via : <a hre="https://logement.campus-paris-saclay.fr"
-                            target="_blank">
-                            the GUPS
-                        </a>
-                        as from June onwards. Your application will then be processed
-                        by your school on the basis of academic criteria in particular.
+                        <p>
+                            <i class="fa-solid fa-stopwatch"></i> start of July additional
+                            phase • If you are not eligible for a grant based on
+                            social criteria, you can submit your accommodation requests
+                            directly on <a href="https://trouverunlogement.lescrous.fr"
+                                target="_blank">
+                                la plateforme nationale
+                            </a> but only from the start of July. Please note that
+                            you can also make a request via : <a href="https://logement.campus-paris-saclay.fr"
+                                target="_blank">
+                                the GUPS
+                            </a>
+                            as from June onwards. Your application will then be processed
+                            by your school on the basis of academic criteria in particular.
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -350,64 +343,58 @@
 
         <div class="row gx-6 gy-5 mb-4">
             <div class="col-12 col-lg-8 maincontent">
-                <p>
-                    <ul>
-                        <li>
-                            <h2>
-                                Social and private landlords
-                            </h2>
-                            <h3 class="text-info">
-                                BY JUNE AT THE LATEST
-                            </h3>
-                            <p>
-                                For social landlords, an application must be
-                                completed by June at the latest for the start of
-                                the academic year in September. What are the
-                                advantages of doing it as far in advance as
-                                possible? You maximise your chances of getting
-                                the accommodation you would like. It should be
-                                noted that some social landlords reserve places
-                                in residences for students meeting specific
-                                criteria. So, if you see a residence with free
-                                places, they may not be available to everyone
-                                and only to certain students
-                            </p>
-                        </li>
-                        <li>
-                            <h2>
-                                Private individuals
-                            </h2>
-                            <h3 class="text-info">
-                                AS EARLY AS POSSIBLE
-                            </h3>
-                            <p>
-                                The watchword for private individuals too is
-                                foresight - the earlier you apply, the better
-                                your chances of finding accommodation.
-                            </p>
-                            <p>
-                                If you are looking for accommodation <strong>
-                                    outside the start of academic terms
-                                </strong> (end of August, start of September & January),
-                                you can also apply. In fact, many landlords, and
-                                CROUS in particular, manage accommodation requests
-                                ‘as they come in’. Between the start of the two academic
-                                years, some students may leave their accommodation
-                                for personal reasons or to go on work experience.
-                                When this occurs, a few vacated dwellings become
-                                available again and you can make an application
-                            </p>
-                        </li>
-                    </ul>
-                </p>
+                <ul>
+                    <li>
+                        <h2>
+                            Social and private landlords
+                        </h2>
+                        <p class="h3 text-info">
+                            BY JUNE AT THE LATEST
+                        </p>
+                        <p>
+                            For social landlords, an application must be
+                            completed by June at the latest for the start of the
+                            academic year in September. What are the advantages
+                            of doing it as far in advance as possible? You
+                            maximise your chances of getting the accommodation
+                            you would like. It should be noted that some social
+                            landlords reserve places in residences for students
+                            meeting specific criteria. So, if you see a
+                            residence with free places, they may not be
+                            available to everyone and only to certain students
+                        </p>
+                    </li>
+                    <li>
+                        <h2>
+                            Private individuals
+                        </h2>
+                        <p class="h3 text-info">
+                            AS EARLY AS POSSIBLE
+                        </p>
+                        <p>
+                            The watchword for private individuals too is
+                            foresight - the earlier you apply, the better your
+                            chances of finding accommodation.
+                        </p>
+                        <p>
+                            If you are looking for accommodation <strong>
+                                outside the start of academic terms
+                            </strong> (end of August, start of September & January),
+                            you can also apply. In fact, many landlords, and CROUS
+                            in particular, manage accommodation requests ‘as they
+                            come in’. Between the start of the two academic years,
+                            some students may leave their accommodation for personal
+                            reasons or to go on work experience. When this occurs,
+                            a few vacated dwellings become available again and you
+                            can make an application
+                        </p>
+                    </li>
+                </ul>
             </div>
             <div class="col-12 col-lg-4 sidecontent">
                 <div class="border-bottom mb-4">
                     <div class="text-center">
-                        <i class="fa-solid fa-comment fa-2x ms-2"
-                            alt="dialog icon">
-
-                        </i>
+                        <i class="fa-solid fa-comment fa-2x ms-2"></i>
                     </div>
                     <br />
                     <p class="fs-6">
@@ -420,15 +407,17 @@
                         benefit
                     </p>
                 </div>
-                <p class="text-center">
+                <div class="text-center">
                     <img id="guide-chambre"
                         src="{{
                         asset(
                             'build/images/guide/chercher/Lile-Bures-sur-Yvette-11.jpg'
                         )
                         }}"
-                        style="height: 300px; object-fit:contain" />
-                </p>
+                        style="height: 300px; object-fit:contain"
+                        alt=""
+                        aria-hidden="true" />
+                </div>
                 <p>
                     If you have not been able to apply or file your application
                     in time, you can try to look for accommodation in a shorter
@@ -440,10 +429,8 @@
         <div class="row gx-6 gy-5 mb-4">
             <h1>
                 <strong>The selection criteria</strong>
+                <span class="h2">and allocation</span>
             </h1>
-            <h2 class="mt-0">
-                and allocation
-            </h2>
 
             <div class="col-12 col-lg-6 maincontent">
                 <p>
@@ -462,9 +449,9 @@
             </div>
             <div class="col-12 col-lg-6 sidecontent mb-4">
                 <div class="bg-success text-white p-4">
-                    <h2 class="text-white">
+                    <p class="h2 text-white">
                         Need help?
-                    </h2>
+                    </p>
 
                     <p>
                         Despite reading this guide, do you still feel lost? Do
@@ -487,5 +474,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

@@ -21,6 +21,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('patch-aria-current', './assets/patch-aria-current-page.js')
     .addEntry('show_map', './assets/show_map.js')
     .addEntry('lessor_admin', './assets/lessor_admin.js')
     .addEntry('matomo_tracker', './assets/matomo_tracker.js')

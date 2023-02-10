@@ -17,9 +17,9 @@
             rentMax :  housing.rentMax
         }
         %}
-        <article class="card mb-2 contains-map-data" data-location={{ locationInfo|json_encode }} data-price={{ priceInfo|json_encode}}>
+        <li class="card mb-2 contains-map-data" data-location={{ locationInfo|json_encode }} data-price={{ priceInfo|json_encode}}>
     {% else %}
-        <article class="card mb-2">
+        <li class="card mb-2">
     {% endif %}
     
         <div class="row g-0">
@@ -35,7 +35,7 @@
                 }}
                 {% else %}
                 <div class="text-center">
-                    <i class="my-auto fa-regular fa-camera-slash fa-5x" alt="no picture"></i>
+                    <i class="my-auto fa-regular fa-camera-slash fa-5x"></i>
                 </div>
                 
                 {% endif %}
@@ -107,5 +107,5 @@
                 </div>
             </div>
         </div>
-    </article>
+    </li>
 {% endmacro %}

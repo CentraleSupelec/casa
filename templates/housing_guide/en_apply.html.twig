@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Putting together your file
+
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-    <div id="maincontent" class="container guide apply">
+    <main id="maincontent" class="container guide apply">
         <div class="row mb-4" style="max-height: 450px;">
             <img class="img-fluid"
                 style="z-index: -1;"
@@ -10,7 +16,8 @@
                     'build/images/guide/chercher/Pixabay_bed-1834327_1920.jpg'
                 )
                 }}"
-                alt="bureau lumineux" />
+                alt=""
+                aria-hidden="true" />
         </div>
         <div class="row gx-6 gy-5 mb-4" style="background-color: white;">
             <div class="maincontent col-12 col-lg-8">
@@ -26,9 +33,7 @@
                     accommodation or with a private landlord.
                 </p>
                 <div class="text-center">
-                    <i class="fa-regular fa-stamp fa-5x" alt="icon of a stamp">
-
-                    </i>
+                    <i class="fa-regular fa-stamp fa-5x"></i>
                 </div>
 
                 <h2>
@@ -95,11 +100,13 @@
                             <i class="fa-solid fa-check"></i>
                         </span>Your assessment for housing assistance.
                     </li>
-                    <p>
-                        If you choose a deed of guarantee by a natural or legal
-                        person, you guarantor must also provide the following
-                        documents:
-                    </p>
+                </ul>
+                <p>
+                    If you choose a deed of guarantee by a natural or legal
+                    person, you guarantor must also provide the following
+                    documents:
+                </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
                     <li>
                         <span class="fa-li text-primary" aria-hidden="true">
                             <i class="fa-solid fa-check"></i>
@@ -413,47 +420,48 @@
                     money. If the services you provide are more than 15 hours
                     per week, the owner must then pay you. Look closely at the
                     written agreement between you and the owner. This document
-                    should clearly show :<ul class="fa-ul"
-                        style="--fa-li-width: 2em;">
-                        <li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            the beginning and the end of the period of exchange of
-                            accommodation for services
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>the nature of the services
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            the schedule and the number of hours
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            the type of accommodation (bedroom, studio, etc.)
-                        </li><li>
-                            <span class="fa-li text-primary" aria-hidden="true">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-                            rules for the living environment and the division of
-                            the rental charges
-                        </li>
-                    </ul>
+                    should clearly show :
                 </p>
+                <ul class="fa-ul" style="--fa-li-width: 2em;">
+                    <li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        the beginning and the end of the period of exchange of accommodation
+                        for services
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>the nature of the services
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        the schedule and the number of hours
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        the type of accommodation (bedroom, studio, etc.)
+                    </li><li>
+                        <span class="fa-li text-primary" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        rules for the living environment and the division of the
+                        rental charges
+                    </li>
+                </ul>
             </div>
             <div class="col-12">
                 <img id="givekeys"
                     src="{{
                     asset(
-                        'build/images/guide/apply/UPSaclay iStock-P42.jpg'
+                        'build/images/guide/apply/UPSaclay-iStock-P42.jpg'
                     )
                     }}"
-                    alt="illustration d'échange de remise de clés" />
+                    alt=""
+                    aria-hidden="true" />
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

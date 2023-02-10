@@ -4,6 +4,7 @@
 
 {% block title %}
     {{ 'housing_request.emergency.page_title'|trans }}
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -13,7 +14,7 @@
                 <h1 class="h2">
                     {{ 'housing_request.emergency.qualification.title'|trans }}
                 </h1>
-                <p class="fst-italic text-secondary">
+                <p class="fst-italic">
                     {{
                         'housing_request.emergency.qualification.subtitle'|trans
                     }}

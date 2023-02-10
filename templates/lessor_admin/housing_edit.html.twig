@@ -78,9 +78,9 @@
         </ul>
 
         {{ form_start(form) }}
-        <div>
+        <p>
             {{ form_errors(form) }}
-        </div>
+        </p>
 
         {% if
             form_part
@@ -147,7 +147,9 @@
                     <h3>
                         Ajoutez ceux spécifiques à ce logement
                     </h3>
-                    {{ form_errors(form.equipments) }}
+                    <p>
+                        {{ form_errors(form.equipments) }}
+                    </p>
 
                     {% for equipment in form.equipments %}
                         <div style="display: inline-block; width: 180px;">

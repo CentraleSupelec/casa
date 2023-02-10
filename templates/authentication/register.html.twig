@@ -2,6 +2,13 @@
 
 {% block title %}
     {{ 'authentication.register.page_title'|trans }}
+    {% if
+        (registrationForm.plainPassword.second.vars.errors|length)
+            or (registrationForm.email.vars.errors|length)
+            or (registrationForm.plainPassword.first.vars.errors|length) %}
+        {{ 'general.title_form_errors'|trans }}
+    {% endif %}
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -9,32 +16,46 @@
         id="maincontent">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
+                {% if
+                    (registrationForm.plainPassword.second.vars.errors|length)
+                        or (registrationForm.email.vars.errors|length)
+                        or (registrationForm.plainPassword.first.vars.errors|length) %}
+                        <p class="visually-hidden">
+                    {{ 'general.title_form_errors'|trans }}
+                    </p>
+                {% endif %}
+
+                <p>
+                    {{ 'authentication.register.all_field_mandatory'|trans }}
+                </p>
                 {{ form_start(registrationForm) }}
                 <div class="form-floating mb-3">
-                    {{ form_widget(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email, 
+                        { 'attr' : { 'autocomplete': 'email'}}
+                    ) }}
                     {{ form_label(registrationForm.email) }}
                     {% for error in registrationForm.email.vars.errors %}
-                        <div class="invalid-feedback">
+                        <p class="invalid-feedback">
                             {{ error.message|trans }}
-                        </div>
+                        </p>
                     {% endfor %}
                 </div>
                 <div class="form-floating mb-3">
-                    {{ form_widget(registrationForm.plainPassword.first) }}
+                    {{ form_widget(registrationForm.plainPassword.first , { 'attr' : { 'autocomplete': 'new-password'}}) }}
                     {{ form_label(registrationForm.plainPassword.first) }}
                     {% for error in registrationForm.plainPassword.first.vars.errors %}
-                        <div class="invalid-feedback">
+                        <p class="invalid-feedback">
                             {{ error.message|trans }}
-                        </div>
+                        </p>
                     {% endfor %}
                 </div>
                 <div class="form-floating mb-3">
                     {{ form_widget(registrationForm.plainPassword.second) }}
                     {{ form_label(registrationForm.plainPassword.second) }}
                     {% for error in registrationForm.plainPassword.second.vars.errors %}
-                        <div class="invalid-feedback">
+                        <p class="invalid-feedback">
                             {{ error.message|trans }}
-                        </div>
+                        </p>
                     {% endfor %}
                 </div>
                 <div class="row">

@@ -3,7 +3,13 @@ general:
     novalue: Non renseigné
     label_yes: Oui
     label_no: Non
+    close: Fermer
+    title_form_errors: le formulaire comporte des erreurs
+    platform_name: PSUH
+menu:
+    toggle_menu: Ouvrir et fermer le menu
 housing:
+    detail_page_title: Detail logement
     search:
         criteria:
             title: Trouvez votre logement
@@ -32,7 +38,8 @@ housing:
         not_found: Aucune offre ne correspond à vos critères
         found: '%total_found% offre(s) trouvée(s) pour votre recherche'
     list:
-        page_title: Offres logement - Plateforme logement
+        page_title: Liste de logements %more_info%
+        title_information: '%searchcriteria% - %totalitem% résultats - Page %current%'
         sort:
             label: Trier par
             price: Loyer
@@ -96,6 +103,7 @@ housing:
     carousel_button:
         previous: image précédente
         next: image suivante
+    carousel_image_of: sur
     area_unit: mètres carré
     criteria:
         card_badge: prioritaire sur critères
@@ -119,7 +127,7 @@ home:
     nav:
         title: La plateforme de logements
         subtitle: de l'Université Paris-Saclay
-    page_title: Accueil - Plateforme logement
+    page_title: Accueil
     welcome:
         title: Aider les étudiantes et étudiants de l'Université Paris-Saclay<br/> à trouver leur logement.
         base_line: |
@@ -128,6 +136,7 @@ home:
 profile:
     title:
         profile: Mon profil
+        edit_profile: Modifier Mon profil
         bookmarks: Mes favoris
     information: Mes informations
     edit: Modifier
@@ -140,6 +149,7 @@ profile:
     email: Adresse mail
     phone: Téléphone
     school: Établissements d'enseignement supérieur
+    school_help: choisissez votre établissement principal dans la première liste, puis précisez votre établissement dans la seconde liste
     social_scholarship: Boursier sur critères sociaux du CROUS
     reduced_mobility: Je suis en situation de Handicap et je cherche un logement adapté
     choose_school: Veuillez sélectionner un établissement
@@ -168,17 +178,18 @@ authentication:
         have_account: J'ai déjà un compte
         have_no_account: Je n'ai pas de compte
         button: Se connecter
-        page_title: Connexion - Plateforme logement
+        page_title: Connexion
         not_verified: Vous ne pouvez pas vous connecter car votre email n'est pas vérifié.
         send_verification_error: Impossible de renvoyer un mail de confirmation pour cet identifiant
     log_out: Se déconnecter
     register:
         call_to_action: Créer un compte
         button: S'inscrire
-        page_title: Inscription -Plateforme logement
+        page_title: Inscription
         account_created: Votre compte est créé. Avant de vous connecter vous devez vérifier votre adresse email.
+        all_field_mandatory: Tous les champs sont obligatoires
     reset_password:
-        page_title: Réinitialisation de mot de passe - Plateforme logement
+        page_title: Réinitialisation de mot de passe
         request:
             call_to_action: Mot de passe oublié
             button: Réinitialiser mon mot de passe
@@ -234,7 +245,7 @@ housing_request:
             student_info: Informations à propos de l'étudiant
             carbon_copy: (en copie)
     generic:
-        page_title: Envoyer une demande - Plateforme logement
+        page_title: Envoyer une demande
         email:
             subject: '[Plateforme Logement] Demande étudiante'
             header: Demande d'un étudiant à propos de logement
@@ -253,7 +264,7 @@ housing_request:
                 Afin de prendre en compte votre demande le plus efficacement possible,
                 veuillez cocher la ou les cases qui correspondent le mieux à votre situation
             continue_button: Continuer
-        page_title: Envoyer une demande urgente - Plateforme logement
+        page_title: Envoyer une demande urgente
         hints:
             location: Pensez à préciser votre lieu de recherche.
         missing:
@@ -270,3 +281,5 @@ housing_request:
             subject: '[Plateforme Logement][URGENT] Demande étudiante urgente'
             header: Demande urgente d'un étudiant à propos de logement
             qualification_info: Situation de l'étudiant
+student:
+    duplicate: Il existe déjà un compte avec ce mail

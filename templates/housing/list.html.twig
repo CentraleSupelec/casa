@@ -3,7 +3,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'housing.list.page_title'|trans }}
+    {{
+        'housing.list.page_title'|trans({
+            '%more_info%': title_information
+        })
+    }}
+    {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -16,7 +21,8 @@
 
 {% block body %}
     {% import 'housing/_housing_card.html.twig' as HousingCard %}
-    <div class="container" role="search">
+
+    <div class="container">
         {% if (pagination|length) > 0 %}
             <div class="d-flex align-items-center">
                 <button class="btn btn-sm btn-outline-primary m-2"
@@ -53,9 +59,10 @@
                     {# prettier-ignore #}
 
                     <div class="d-flex justify-content-end" role="navigation">
-                        <div class="h3">
+                        <p class="h3">
                             {{ 'housing.list.sort.label'|trans }}
-                        </div>
+                        </p>
+                        
                         <div class="mx-2"
                             aria-label="{{ 'housing.list.sort.label'|trans }} {{ 'housing.list.sort.price'|trans }}">
                             {{
@@ -77,7 +84,8 @@
                             }}
                         </div>
                     </div>
-                    <section aria-label="{{ 'housing.search.result'|trans }}">
+                    <ul class="list-group"
+                        aria-label="{{ 'housing.search.result'|trans }}">
                         {% for pageElement in pagination %}
                             {{
                                 HousingCard.displayCard(
@@ -88,8 +96,9 @@
                                 )
                             }}
                         {% endfor %}
-                    </section>
-                    <div class="navigation"
+                    </ul>
+                    <div id="paginator"
+                        class="navigation"
                         role="navigation"
                         aria-label="pages">
                         {{ knp_pagination_render(pagination) }}
@@ -99,11 +108,14 @@
             </div>
         {% else %}
             <div class="container bg-light h2 p-2">
-                {{ 'housing.search.not_found'|trans }}
+                <p>
+                    {{ 'housing.search.not_found'|trans }}
+                </p>
             </div>
         {% endif %}
     </main>
     {% block javascripts %}
+        {{ encore_entry_script_tags('patch-aria-current') }}
         {{ encore_entry_script_tags('show_map') }}
     {% endblock %}
 {% endblock %}

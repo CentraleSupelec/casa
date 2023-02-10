@@ -1,9 +1,9 @@
 {% for flash_error in app.flashes('error') %}
     <div class="row d-flex justify-content-center mt-3">
         <div class="col-12 col-md-8 d-flex justify-content-center">
-            <div class="w-75 alert alert-danger" role="alert">
+            <p class="w-75 alert alert-danger" role="alert">
                 {{ flash_error }}
-            </div>
+            </p>
         </div>
     </div>
 {% endfor %}
@@ -13,11 +13,13 @@
         <div class="col-12 col-md-8 d-flex justify-content-center">
             <div class="w-75 alert alert-success alert-dismissible fade show text-center"
                 role="alert">
-                {{ flash_message }}
+                <p>
+                    {{ flash_message }}
+                </p>
                 <button type="button"
                     class="btn-close p-2"
                     data-bs-dismiss="alert"
-                    aria-label="Close">
+                    aria-label="{{ 'general.close'|trans }}">
 
                 </button>
             </div>
@@ -30,11 +32,13 @@
         <div class="col-12 col-md-8 d-flex justify-content-center">
             <div class="w-75 alert alert-danger alert-dismissible fade show"
                 role="alert">
-                <span>{{ flash_error }}</span>
+                <p>
+                    {{ flash_error }}
+                </p>
                 <button type="button"
                     class="btn-close"
                     data-bs-dismiss="alert"
-                    aria-label="Close">
+                    aria-label="{{ 'general.close'|trans }}">
 
                 </button>
             </div>
