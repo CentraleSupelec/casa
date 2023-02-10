@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Image;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HousingPictureAdmin extends AbstractAdmin
@@ -50,6 +51,7 @@ class HousingPictureAdmin extends AbstractAdmin
             ->add('file', VichImageType::class, [
                 'label' => 'Photo du logement',
                 'allow_delete' => false,
+                'constraints' => new Image(),
                 'row_attr' => [
                     'class' => 'admin-housing-picture-image-form-field',
                 ],

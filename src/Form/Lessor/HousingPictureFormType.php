@@ -6,6 +6,7 @@ use App\Entity\HousingPicture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HousingPictureFormType extends AbstractType
@@ -22,6 +23,7 @@ class HousingPictureFormType extends AbstractType
                 'required' => false,
                 'allow_delete' => false,
                 'download_uri' => false,
+                'constraints' => new Image(),
 
                 'attr' => [
                     'class' => 'lessor-admin-image',
