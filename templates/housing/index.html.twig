@@ -91,7 +91,7 @@
                         <h3 class="mb-2">
                             {{ 'housing.price.title'|trans }}                                 
                             {% if housing.aplAgreement %}
-                                <p class="badge bg-success me-2 my-auto">{{ 'housing.apl_agreement'|trans }}</p>
+                                <span class="badge bg-success me-2 my-auto">{{ 'housing.apl_agreement'|trans }}</span>
                             {% endif %}
 
                         </h3>
@@ -330,7 +330,7 @@
                                     {% endif %}
                                 {% endfor %}
                         {% else %}
-                            {{ 'general.novalue'|trans }}
+                            <li>{{ 'general.novalue'|trans }}</li>
                         {% endif %}
                     </ul>
                 </div>
@@ -366,7 +366,7 @@
                                 }}
                             {% endfor %}
                         {% else %}
-                            {{ 'general.novalue'|trans }}
+                            <li>{{ 'general.novalue'|trans }}</li>
                         {% endif %}
                     </ul>
                 </div>
@@ -386,7 +386,7 @@
                                 }}
                             {% endfor %}
                         {% else %}
-                            {{ 'general.novalue'|trans }}
+                            <li>{{ 'general.novalue'|trans }}</li>
                         {% endif %}
                     </ul>
                 </div>                
@@ -424,15 +424,15 @@
                 <h2 class="mt-4 mb-0">
                     {{ 'housing_group.guarantors'|trans }}
                 </h2>
-                {% if housing.housingGroup.possibleGuarantor|length %}
-                    <ul>
-                    {% for guarantor in housing.housingGroup.possibleGuarantor %}
-                        <li>{{ guarantor|label_translate}}</li>
-                    {% endfor %}
+                <ul class="col" style="margin-left:0.8rem;">
+                    {% if housing.housingGroup.possibleGuarantor|length %}
+                        {% for guarantor in housing.housingGroup.possibleGuarantor %}
+                            <li>{{ guarantor|label_translate}}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>{{ 'general.novalue'|trans }}</li>
+                    {% endif %}
                     </ul>
-                {% else %}
-                    {{ 'general.novalue'|trans }}
-                {% endif %}
 
                 <h2 class="mt-4 mb-0">
                     {{ 'housing.point_of_interest'|trans }}
@@ -452,7 +452,7 @@
                                     {{ Pois.displayPOI(pointOfInterest) }}
                                 {% endfor %}
                             {% else %}
-                                {{ 'general.novalue'|trans }}
+                                <li>{{ 'general.novalue'|trans }}</li>
 
                             {% endif %}
                         </ul>
@@ -471,7 +471,7 @@
                                     {{ Pois.displayPOI(pointOfInterest) }}
                                 {% endfor %}
                             {% else %}
-                                {{ 'general.novalue'|trans }}
+                                <li>{{ 'general.novalue'|trans }}</li>
                             {% endif %}
                         </ul>
                     </div>

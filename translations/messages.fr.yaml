@@ -24,7 +24,7 @@ housing:
                 label: Eligible aux APL
             city:
                 label: Ville
-                placeholder: Saisisser pour rechercher...
+                placeholder: Saisissez le nom d'une ville
             submit: Lancer la recherche
             length_stay:
                 label: Durée du séjour
@@ -125,13 +125,12 @@ home:
     link:
         skip_to_main: Aller au contenu principal
     nav:
-        title: La plateforme de logements
-        subtitle: de l'Université Paris-Saclay
+        title: Ton espace dédié de logements vérifiés
     page_title: Accueil
     welcome:
-        title: Aider les étudiantes et étudiants de l'Université Paris-Saclay<br/> à trouver leur logement.
+        title: Aider les actuel.les et futur.es étudiantes et étudiants de l'Université Paris-Saclay à trouver leur logement.
         base_line: |
-            La plateforme logement étudiant de l’Université Paris-Saclay est dédiée aux étudiants et futurs étudiants des établissements de l’université. Elle référence des offres à l’échelle de l’ensemble des entités de l’université et de tous ses territoires, en partenariat avec des associations et bailleurs Les offres sont régulièrement mises à jour par les bailleurs. Vous trouverez des logements en résidence, chez l’habitant, en colocation ou encore contre service. (en cours de validation)
+            La plateforme logement étudiant de l’Université Paris-Saclay est dédiée aux étudiants et futurs étudiants des établissements de l’université. Elle référence des offres à l’échelle de l’ensemble des entités de l’université et de tous ses territoires, en partenariat avec des associations et bailleurs. Les offres sont régulièrement mises à jour par les bailleurs. Vous trouverez des logements en résidence, chez l’habitant, en colocation ou encore contre service. (en cours de validation)
     homepage_link: Lien vers la page d'accueil
 profile:
     title:

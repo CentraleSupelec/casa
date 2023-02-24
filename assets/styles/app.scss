@@ -55,6 +55,11 @@ body {
     padding-top: 4.5rem;
 }
 
+.baseline {
+    @include font-size(0.7rem);
+    font-variation-settings: 'wght' 500;
+}
+
 .navbar {
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
     background-color: white;

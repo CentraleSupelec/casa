@@ -7,9 +7,10 @@ home:
 # Temporary Prod Catch All except Admin
 # Uncomment this part to activate the "Temporary page"
 # catch_non_admin:
-#     path: /fr/{foo}
+#     path: /{_locale}/{foo}
 #     requirements:
 #         foo: '.*'
+#         _locale: 'en|fr'
 #     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
 #     defaults:
 #         path: /soon

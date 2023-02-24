@@ -13,7 +13,7 @@ housing:
 
     search:
         criteria:
-            title: Search a housing
+            title: Find an accommodation
             refine: Modify
             max_rent:
                 label: maximum Rent
@@ -47,8 +47,8 @@ housing:
             area: Area
         back_to_list: Back to list
     living_mode:
-        full: Full
-        homestay: Homestay accomodation
+        full: Entire accommodation
+        homestay: Homestay accommodation
     occupation_mode:
         occupants: '%occupants% occupants'
         label: Possible occupation modes
@@ -110,7 +110,7 @@ housing:
         card_badge: Priority access based on criteria
         detail:
             title: Housing access criteria
-            description: Students meeting the following criteria will have priority for this accomodation
+            description: Students meeting the following criteria will have priority for this accommodation
             social_scholarship_criterion: CROUS social scholarship
             school_criterion: 'registered in one of the following schools: '
     priority:
@@ -120,19 +120,18 @@ housing_group:
         france: FRANCE
     point_of_interest_category:
         store: Store
-        transportation: Transportation
+        transportation: Transport
     guarantors: Accepted Guarantors
 home:
     link:
         skip_to_main: Skip to main content
     nav:
-        title: The housing platorm
-        subtitle: of Université Paris-Saclay
+        title: Your dedicated space of verified accommodations
     page_title: Homepage
     welcome:
-        title: Help students of Université Paris-Saclay <br/>find their housing.
+        title: Help current and future students of the Université Paris-Saclay <br/>find an accommodation.
         base_line: |
-            La plateforme logement étudiant de l’Université Paris-Saclay est dédiée aux étudiants et futurs étudiants des établissements de l’université. Elle référence des offres à l’échelle de l’ensemble des entités de l’université et de tous ses territoires, en partenariat avec des associations et bailleurs Les offres sont régulièrement mises à jour par les bailleurs. Vous trouverez des logements en résidence, chez l’habitant, en colocation ou encore contre service. (en cours de validation)
+            The Université Paris-Saclay student housing platform is dedicated to students and future students of university establishments. It references offers of all the institutions of the university and all its territories, in partnership with associations and lessors. The offers are regularly updated by the lessors. You will find accommodations in residences, homestays, shared accommodations or against services
     homepage_link: link to home page
 profile:
     title:
@@ -249,20 +248,20 @@ housing_request:
         page_title: Send a request
         email:
             subject: '[Student housing platform] Student request'
-            header: Student request regarding accomodation
+            header: Student request regarding accommodation
     emergency:
         qualification:
             questions:
                 homeless: You are without a housing solution and are in a very critical situation
-                underage: You are underage and you have trouble finding your accomodation
-                resource: You do not have enough resources to find an accomodation
-                handicap: You suffer from a handicap and you have trouve finding your accomodation
-                unsafe_housing: Your home unsanitary
+                underage: You are underage and you have trouble finding your accommodation
+                resource: You do not have enough resources to find an accommodation
+                handicap: You have a disability and you are unable to find suitable accommodation
+                unsafe_housing: Your home is unsanitary
                 unsafe: You need to be separated from your roommate
                 other: Other situation
             title: Request qualification
             subtitle: |-
-                In order to have your request handled as effectively as possible, please
+                In order to handle your request as efficiently as possible, please
                 check what corresponds best to your current situation
             continue_button: Continue
         page_title: Send an urgent request
@@ -280,7 +279,7 @@ housing_request:
                 Dont forget to specify it in the body of the message or modify your profile before making the request.
         email:
             subject: '[Student housing platform][URGENT] Urgent student request'
-            header: Urgent student request regarding accomodation
+            header: Urgent student request regarding accommodation
             qualification_info: Student situation
 student:
     duplicate: There is already an account with this email

@@ -1,18 +1,14 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand fs-6 d-flex align-items-center"
-            href="{{ path('app_lessor_admin_housing_group_list') }}">
-            <div class="me-2">
-                <i class="fa-solid fa-key fa-xl text-primary"></i>
-            </div>
+        <a class="navbar-brand align-items-center"
+            href="{{ path('app_home') }}">
+            <img class="me-2"
+                style="max-width:200px;"
+                src="{{ asset('build/images/logo-UPS-CASA-rvb.png') }}"
+                alt="Universite Paris-Saclay CASA" />
             <div>
                 <span class="visually-hidden">
                     {{ 'home.homepage_link'|trans }}
-                </span>
-                <span class="d-none d-sm-block">
-                    {{ 'home.nav.title'|trans }}
-                    <br />
-                    {{ 'home.nav.subtitle'|trans }}
                 </span>
             </div>
         </a>
