@@ -192,6 +192,6 @@ class HousingController extends AbstractController
             $searchCriteria = $searchCriteria.' '.$searchHousingCriteria->getMinArea().' m2';
         }
 
-        return $searchCriteria;
+        return $searchCriteria ?? '';
     }
 }
