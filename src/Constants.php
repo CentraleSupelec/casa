@@ -127,6 +127,8 @@ final class Constants
             'Paris',
             'Saint-Cloud',
             'Corbeil-Essonnes',
+            'Fontenay-aux-roses',
+            'Autre campus',
         ];
 
         return array_combine($campus, $campus);

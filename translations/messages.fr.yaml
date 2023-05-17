@@ -5,7 +5,9 @@ general:
     label_no: Non
     close: Fermer
     title_form_errors: le formulaire comporte des erreurs
-    platform_name: PSUH
+    platform_name: CASA
+    disability_link: 'Accessibilité: partiellement conforme à '
+    accessibility_percentage: 94,23
 menu:
     toggle_menu: Ouvrir et fermer le menu
 housing:
@@ -21,7 +23,7 @@ housing:
             accessibility:
                 label: Je suis en situation de Handicap et je cherche un logement adapté
             apl_agreement:
-                label: Eligible aux APL
+                label: Eligible aux aides au logement de la CAF
             city:
                 label: Ville
                 placeholder: Saisissez le nom d'une ville
@@ -88,9 +90,9 @@ housing:
     non_smoking: Non fumeur
     animals_allowed: Animaux autorisés
     animals_non_allowed: Animaux non autorisés
-    apl_agreement: Eligible aux APL
-    apl_agreement_tag: APL
-    apl_agreement_false: non Eligible aux APL
+    apl_agreement: Eligible aux aides au logement de la CAF
+    apl_agreement_tag: AL
+    apl_agreement_false: non Eligible aux aides au logement de la CAF
     accessible: Logement adapaté aux PMR
     non_accessible: Logement non adapté aux PMR
     equipment:
@@ -125,12 +127,12 @@ home:
     link:
         skip_to_main: Aller au contenu principal
     nav:
-        title: Ton espace dédié de logements vérifiés
+        title: Votre espace dédié de logements vérifiés
     page_title: Accueil
     welcome:
-        title: Aider les actuel.les et futur.es étudiantes et étudiants de l'Université Paris-Saclay à trouver leur logement.
+        title: Aider les actuel·les et futur·es étudiantes et étudiants de l'Université Paris-Saclay à trouver leur logement.
         base_line: |
-            La plateforme logement étudiant de l’Université Paris-Saclay est dédiée aux étudiants et futurs étudiants des établissements de l’université. Elle référence des offres à l’échelle de l’ensemble des entités de l’université et de tous ses territoires, en partenariat avec des associations et bailleurs. Les offres sont régulièrement mises à jour par les bailleurs. Vous trouverez des logements en résidence, chez l’habitant, en colocation ou encore contre service. (en cours de validation)
+            La plateforme logement CASA de l’Université Paris-Saclay est dédiée aux étudiant·es et futurs étudiant·es de l’Université Paris-Saclay. CASA recense régulièrement des offres de logement sur les différents campus de l’université, dont des logements proposés par le CROUS, des bailleurs publics et privés, des particuliers ou des associations de logement. Vous trouverez des logements en résidence universitaire, CROUS ou privée, chez l’habitant, en colocation ou encore contre services.
     homepage_link: Lien vers la page d'accueil
 profile:
     title:

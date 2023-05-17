@@ -1,0 +1,233 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'footer.legal'|trans }}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <main class="container col-12 my-4" id="maincontent">
+        <h1>
+            Déclaration d'accessibilité
+        </h1>
+        <p>
+            L’Université Paris-Saclay s'engage à rendre ce site Internet
+            accessible conformément à l'article 47 de la loi n° 2005-102 du 11
+            février 2005.
+        </p>
+        <p>
+            À cette fin, il met en œuvre la stratégie et les actions suivantes :
+        </p>
+        <ul>
+            <li>
+                Publication du schéma pluriannuel de mise en accessibilité (en
+                cours de rédaction) ;
+            </li>
+            <li>
+                Publication du plan d’action annuel (en cours de rédaction).
+            </li>
+        </ul>
+        <p>
+            Cette déclaration d'accessibilité s'applique au site <a href="https://casa.universite-paris-saclay.fr/">
+                casa.universite-paris-saclay.fr
+            </a>.
+        </p>
+        <h2>
+            État de conformité
+        </h2>
+        <p>
+            Le site <a href="https://casa.universite-paris-saclay.fr/">
+                casa.universite-paris-saclay.fr
+            </a> est en conformité partielle <a href="https://accessibilite.numerique.gouv.fr/"
+                target="_blank">
+                le Référentiel Général d'Amélioration de l'Accessibilité (RGAA)
+            </a>.
+        </p>
+        <h2>
+            Résultats des tests
+        </h2>
+        <p>
+            L'audit de conformité réalisé par l'agence <a href="https://www.accessprod.com"
+                target="_blank"
+                title="AccessProd (nouvelle fenêtre)">
+                AccessProd
+            </a> puis l'auto-évaluation réalisée suite à des mesures correctives
+            révèle que :
+        </p>
+        <ul>
+            <li>
+                <strong>
+                    {{ 'general.accessibility_percentage'|trans }}% des critères
+                    du RGAA version 4.1 sont respectés ;
+                </strong>
+            </li>
+            <li>
+                le taux moyen de conformité du service en ligne s'élève à 80,2%.
+                Il s'agit de la moyenne du score de conformité obtenu sur
+                chacune des pages de l'échantillon.
+            </li>
+        </ul>
+        <p>
+            Ce pourcentage correspond à :
+        </p>
+        <ul>
+            <li>3 critères non conformes ;</li>
+            <li>49 critères conformes ;</li>
+            <li>54 critères non applicables.</li>
+        </ul>
+        <h2>
+            Contenus non accessibles
+        </h2>
+        <p>
+            Les contenus listés ci-dessous ne sont pas accessibles pour les
+            raisons suivantes.
+        </p>
+        <h3>
+            Non-conformités
+        </h3>
+        <ul>
+            <li>
+                La navigation au clavier n’est pas toujours assez contrastée ;
+            </li>
+            <li>
+                L’ordre du tri des filtres par loyer et par surface n’est donné
+                que par la forme ;
+            </li>
+            <li>
+                Le lien d’évitement en début de page ne s’affiche pas au
+                clavier.
+            </li>
+        </ul>
+        <h3>
+            Dérogations pour charge disproportionnée
+        </h3>
+        <p>
+            Les cartes interactives « OpenStreetMap » : l’information est
+            disponible dans le contenu adjacent. La correction de ces cartes
+            développées par un service tiers représenterait donc une charge de
+            travail disproportionnée par rapport au gain attendu.
+        </p>
+        <p>
+            Toutefois, afin de simplifier l’utilisation et la navigation, un
+            lien d’évitement sera mis en place afin de laisser la possibilité
+            d’éviter ces cartes lors de la navigation au clavier.
+        </p>
+        <h3>
+            Contenus non soumis à l'obligation d'accessibilité
+        </h3>
+        <p>
+            Aucun contenu.
+        </p>
+        <h2>
+            Établissement de cette déclaration d'accessibilité
+        </h2>
+        <p>
+            Cette déclaration a été établie le 13 janvier 2023.
+        </p>
+        <h3>
+            Technologies utilisées pour la réalisation du site web
+        </h3>
+        <ul>
+            <li>HTML 5</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <h3>
+            Agents utilisateurs, technologies d'assistance et outils utilisés
+            pour vérifier l'accessibilité
+        </h3>
+        <p>
+            Les vérifications de restitution de contenus ont été réalisées sur
+            la base des combinaisons de navigateurs web et lecteurs d'écran
+            suivants :
+        </p>
+        <ul>
+            <li>Firefox 108 et NVDA 2022.4</li>
+            <li>Chrome 109 et NVDA 2022.4</li>
+            <li>Firefox 108 et JAWS 2022</li>
+            <li>Safari 1621 et VoiceOver (OS 12.6.2)</li>
+            <li>Chrome 108 et TalkBack 14 (Android 13)</li>
+        </ul>
+        <h3>
+            Outils pour évaluer l'accessibilité
+        </h3>
+        <p>
+            Les outils suivants ont été utilisés lors de l'évaluation :
+        </p>
+        <ul>
+            <li>Color Contrast Analyser</li>
+            <li>Outils pour développeurs intégrés aux navigateurs</li>
+            <li>Barre Web Developer</li>
+        </ul>
+        <h3>
+            Pages du site ayant fait l'objet de la vérification de conformité
+        </h3>
+        <ul>
+            <li>Page « Accueil »</li>
+            <li>Page « Mentions légales »</li>
+            <li>Page « Contact »</li>
+            <li>Page « Connexion »</li>
+            <li>Page « Inscription »</li>
+            <li>Page « Profil »</li>
+            <li>Page « Édition du profil »</li>
+            <li>Page « Favoris »</li>
+            <li>Processus « Qualification de la demande »</li>
+            <li>Page de recherche d’une offre</li>
+            <li>Gabarit « Offre »</li>
+            <li>Page « Éviter les escroqueries »</li>
+            <li>Page « Les loyers moyens »</li>
+            <li>Page « Les pièces du dossier »</li>
+            <li>Page « FAQ »</li>
+        </ul>
+        <h2>
+            Retour d'informations et contact
+        </h2>
+        <p>
+            Si vous n'arrivez pas à accéder à un contenu ou à un service, vous
+            pouvez contacter le responsable du site « XXXXXXXXXX » pour être
+            orienté vers une alternative accessible ou obtenir le contenu sous
+            une autre forme.
+        </p>
+        <ul>
+            <li>
+                Envoyer un message <a href="mailto:logement.etudiant@universite-paris-saclay.fr">à
+                    logement.etudiant@universite-paris-saclay.fr</a>
+            </li>
+            <li>
+                Contacter Université Paris-Saclay 3 rue Joliot Curie Bâtiment
+                Breguet 91190 Gif-sur-Yvette
+            </li>
+        </ul>
+        <h2>
+            Voie de recours
+        </h2>
+        <p>
+            Cette procédure est à utiliser dans le cas suivant.
+        </p>
+        <p>
+            Vous avez signalé au responsable du site internet un défaut
+            d'accessibilité qui vous empêche d'accéder à un contenu ou à un des
+            services du portail et vous n'avez pas obtenu de réponse
+            satisfaisante.
+        </p>
+        <p>
+            Écrire un message au Défenseur des droits (<a href="https://formulaire.defenseurdesdroits.fr/">
+                https://formulaire.defenseurdesdroits.fr/
+            </a>)
+        </p>
+        <ul>
+            <li>
+                Contacter le délégué du Défenseur des droits dans votre région (<a href="https://www.defenseurdesdroits.fr/saisir/delegues">
+                    https://www.defenseurdesdroits.fr/saisir/delegues
+                </a>)
+            </li>
+            <li>
+                Envoyer un courrier par la poste (gratuit, ne pas mettre de
+                timbre)<br />
+                Défenseur des droits<br />
+                Libre réponse 71120<br />
+                75342 Paris CEDEX 07
+            </li>
+        </ul>
+    </main>
+{% endblock %}

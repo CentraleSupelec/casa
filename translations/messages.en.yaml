@@ -5,7 +5,9 @@ general:
     label_no: No
     close: Close
     title_form_errors: form contains errors
-    platform_name: PSUH
+    platform_name: CASA
+    disability_link: 'Accessibility: partially compliant at '
+    accessibility_percentage: 94,23
 menu:
     toggle_menu: Open and Close the menu
 housing:
@@ -22,7 +24,7 @@ housing:
             accessibility:
                 label: I have a disability and I’m looking for suitable accommodation
             apl_agreement:
-                label: Eligible for APL
+                label: Eligible for CAF housing assistance
             city:
                 label: Town
                 placeholder: Type to start searching...
@@ -89,9 +91,9 @@ housing:
     non_smoking: Smoking forbidden
     animals_allowed: Animals allowed
     animals_non_allowed: Animals forbidden
-    apl_agreement: Eligible for APL
-    apl_agreement_tag: APL
-    apl_agreement_false: non Eligible for APL
+    apl_agreement: Eligible for CAF housing assistance
+    apl_agreement_tag: AL
+    apl_agreement_false: non Eligible for CAF housing assistance
     accessible: Suitable for people with reduced mobility
     non_accessible: Not suitable for people with reduced mobility
     equipment:
@@ -131,7 +133,7 @@ home:
     welcome:
         title: Help current and future students of the Université Paris-Saclay <br/>find an accommodation.
         base_line: |
-            The Université Paris-Saclay student housing platform is dedicated to students and future students of university establishments. It references offers of all the institutions of the university and all its territories, in partnership with associations and lessors. The offers are regularly updated by the lessors. You will find accommodations in residences, homestays, shared accommodations or against services
+            The CASA housing platform is dedicated to students and future students of Université Paris-Saclay. CASA regularly lists accommodation offers on the various university campuses, including accommodation offered by the CROUS, public and private landlords, individuals or housing associations. You will find accommodation in CROUS or private residences, homestays, shared accommodation or in exchange for services.
     homepage_link: link to home page
 profile:
     title:

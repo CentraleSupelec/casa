@@ -1,4 +1,4 @@
-# PSUH - Paris Saclay University Housing
+# CASA - Paris Saclay University Housing
 
 ## Prérequis
 

@@ -14,9 +14,18 @@ class LegalNoticeController extends AbstractController
     {
         if ('fr' == $request->getLocale()) {
             return $this->render('legal_notice/fr_legal_notice.html.twig');
-        } else {
         }
 
         return $this->render('legal_notice/en_legal_notice.html.twig');
+    }
+
+    #[Route('/legal/disability_declaration', name: 'app_disability_declaration')]
+    public function disability_declaration(Request $request): Response
+    {
+        if ('fr' == $request->getLocale()) {
+            return $this->render('legal_notice/fr_disability_declaration.html.twig');
+        }
+
+        return $this->render('legal_notice/en_disability_declaration.html.twig');
     }
 }

@@ -4,7 +4,7 @@
         <p>
             {{ form_errors(form) }}
         </p>
-        <div class="col-6 mt-2">
+        <div class="col-12 col-sm-6 mt-2">
             {{ form_label(form.maxPrice) }}
             <div class="input-group">
                 {{ form_widget(form.maxPrice) }}
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="col-6 mt-2">
+        <div class="col-12 col-sm-6 mt-2">
             {{ form_label(form.minArea) }}
             <div class="input-group">
                 {{ form_widget(form.minArea) }}
@@ -33,7 +33,7 @@
                 {% endfor %}
             </datalist>
         </div>
-        <div class="col-6 mt-4">
+        <div class="col-12 mt-4">
             {{ form_row(form.accessibility) }}
         </div>
 
