@@ -222,17 +222,18 @@ class LessorAdminController extends AbstractController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                /** @var Housing */
-                $updatedHousing = $form->getData();
-
-                $em->persist($updatedHousing);
+                $em->persist($housingElement);
                 $em->flush();
+
+                // picture numbering is not ok if we do not reload.
+                $housingElement = $hr->find($id);
+
                 $this->addFlash('success', 'Logement mis à jour !');
             } elseif ($form->isSubmitted() && !$form->isValid()) {
                 $this->addFlash('error', 'Veuillez vérifier votre saisie');
             }
         } catch (\Exception $ex) {
-            $this->addFlash('error', 'Veuillez vérifier votre saisie');
+            $this->addFlash('error', 'Veuillez vérifier votre saisie ');
         }
 
         return $this->render('lessor_admin/housing_edit.html.twig', [

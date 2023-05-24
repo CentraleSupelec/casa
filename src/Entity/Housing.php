@@ -6,6 +6,7 @@ use App\Repository\HousingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OrderBy;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -98,6 +99,7 @@ class Housing
     private ?HousingGroup $housingGroup = null;
 
     #[ORM\OneToMany(mappedBy: 'housing', targetEntity: HousingPicture::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    #[OrderBy(['createdAt' => 'ASC'])]
     private Collection $pictures;
 
     #[ORM\OneToMany(mappedBy: 'housing', targetEntity: SocialScholarshipCriterion::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
