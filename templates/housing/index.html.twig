@@ -210,7 +210,7 @@
                     {% if housing.description is not null %}
                         <div class="row mt-3">
                             <p class="col main-info">
-                                {{ housing.description }}
+                                {{ housing.description | nl2br}}
                             </p>
                         </div>
                     {% else %}
