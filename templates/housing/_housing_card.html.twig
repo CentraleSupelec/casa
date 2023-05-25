@@ -1,6 +1,6 @@
 
 {% macro displayCard(housing, hasCriteria, isPriority, imageBaseUrl) %}
-    {% import 'housing/_carousel.html.twig' as Carousel %}
+    {% import 'housing/_carousel.list.html.twig' as Carousel %}
     {% import 'housing/_range_data.html.twig' as RangeData %}
     {% import 'housing/_bookmark_button.html.twig' as Bookmark %}
 
@@ -23,14 +23,21 @@
     {% endif %}
     
         <div class="row g-0">
-                
             <div class="col-12 col-md-6">
+                 <a href="{{
+                                path(
+                                    'app_housing_detail',
+                                    {
+                                        id: housing.id
+                                    }
+                                )
+                                }}">
             {% if housing.pictures|length %}
                 {{
                     Carousel.displayHousingCarousel(
                         housing.id,
                         imageBaseUrl,
-                        housing.pictures
+                        housing.pictures | first
                     )
                 }}
                 {% else %}
@@ -39,6 +46,7 @@
                 </div>
                 
                 {% endif %}
+                </a>
             </div>
             <div class="col-12 col-md-6">
                 <div class="card-body p-0 p-md-2">
@@ -79,31 +87,58 @@
                             {{ Bookmark.displayBookmarkButton(housing) }}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                        {% if not housing.available %}
-                            <h2> <span class="badge bg-secondary">{{ 'housing.unavailable'|trans}}</span></h2>
-                        {% endif %}
-                            {% set living_mode = 'housing.living_mode.' ~ housing.livingMode %}  
+                        <div class="row">
+                            <a class="card-link" href="{{
+                                path(
+                                    'app_housing_detail',
+                                    {
+                                        id: housing.id
+                                    }
+                                )
+                                }}">
 
-                            <div class="modes">{{ living_mode | trans }}
-                             </div>
-                            <div class="description crop-text">{{ housing.Description }}</div>
-                        </div>
-
-                        <div class="col-12 d-flex justify-content-start">
-                            {% if housing.aplAgreement %}
-                                    <span class="badge bg-success me-2 my-auto" style="height: 1.2rem">{{ 'housing.apl_agreement_tag'|trans }}</span>
+                            <div class="col-12">
+                            {% if not housing.available %}
+                                <h2> <span class="badge bg-secondary">{{ 'housing.unavailable'|trans}}</span></h2>
                             {% endif %}
+                                {% set living_mode = 'housing.living_mode.' ~ housing.livingMode %}  
 
-                            <span class="price card-text me-2">
-                                {{ housing.rentMin }}&nbsp;€
-                            </span>
-                            {% if housing.chargesIncluded %}
-                                    <span class="my-auto" style="font-size: 0.8rem">{{'housing.price.charges.included'|trans}}</span>
+                                <div class="modes">{{ living_mode | trans }}
+                                </div>
+                                <div class="description crop-text">{{ housing.Description }}</div>
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-start">
+                                {% if housing.aplAgreement %}
+                                        <span class="badge bg-success me-2 my-auto" style="height: 1.2rem">{{ 'housing.apl_agreement_tag'|trans }}</span>
+                                {% endif %}
+
+                                <span class="price card-text me-2">
+                                    {{ housing.rentMin }}&nbsp;€
+                                </span>
+                                {% if housing.chargesIncluded %}
+                                        <span class="my-auto" style="font-size: 0.8rem">{{'housing.price.charges.included'|trans}}</span>
+                                {% endif %}
+
+                                
+                            </div>
+                            <div class="col-12">
+                                    {% if housing.quantity > 1 %}
+                                    <p class="description mt-2" >
+                                
+                                    {{
+                                        'housing.type.quantity'|trans({
+                                            '%quantity%': housing.quantity
+                                        })
+                                    }}
+                                    </p>
+                                
+                            
                             {% endif %}
-                        </div>
+                            </div>
+                        </a>
                     </div>
+                    
                 </div>
             </div>
         </div>

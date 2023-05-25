@@ -12,7 +12,7 @@ class SearchCriteriaModel
     #[Assert\GreaterThan(0)]
     private ?int $minArea = null;
 
-    private int $maxResultsByPage = 15;
+    private int $maxResultsByPage = 10;
 
     private bool $accessibility = false;
 

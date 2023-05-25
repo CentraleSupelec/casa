@@ -1,0 +1,18 @@
+{% macro displayHousingCarousel(housingId, pictureBaseUrl, picture) %}
+    <div id="carousel-{{ housingId }}"
+        class="carousel slide"
+        data-bs-interval="false"
+        data-bs-ride="carousel"
+        aria-roledescription="carousel">
+        <div class="carousel-inner" aria-live="polite">
+            <div class="carousel-item active"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="image 1 {{ 'housing.carousel_image_of'|trans }} 1">
+                <img src="{{ pictureBaseUrl }}/{{ picture.picture }}"
+                    alt="{{ picture.label }}"
+                    tabindex="0" />
+            </div>
+        </div>
+    </div>
+{% endmacro %}

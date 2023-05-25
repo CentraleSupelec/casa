@@ -72,6 +72,9 @@ class HousingController extends AbstractController
 
         if (null == $searchHousingCriteria) {
             $searchHousingCriteria = new SearchCriteriaModel();
+        } else {
+            // force 10, was 15 in session cookie before
+            $searchHousingCriteria->setMaxResultsByPage(10);
         }
 
         $cities = $entityManager->getRepository(HousingGroup::class)->getDistinctCities();
