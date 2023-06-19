@@ -1,11 +1,15 @@
 var _paq = (window._paq = window._paq || []);
 /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+const matomo_values = document.getElementById('matomo');
+const matomoId = matomo_values.dataset.matomoId;
+const matomoUrl = matomo_values.dataset.matomoUrl;
+
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
 (function () {
-    var u = 'https://stat.dsi.universite-paris-saclay.fr/';
+    var u = matomoUrl;
     _paq.push(['setTrackerUrl', u + 'matomo.php']);
-    _paq.push(['setSiteId', '76']);
+    _paq.push(['setSiteId', matomoId]);
     var d = document,
         g = d.createElement('script'),
         s = d.getElementsByTagName('script')[0];

@@ -2,7 +2,6 @@
 
 namespace App\Security;
 
-use App\Constants;
 use App\Entity\LessorAdminUser;
 use App\Model\PsuhUserInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -16,7 +15,8 @@ class ResetPasswordRequestEmailService
 {
     public function __construct(
         private readonly TranslatorInterface $translator,
-        private readonly MailerInterface $mailer
+        private readonly MailerInterface $mailer,
+        private readonly string $appEmailAddress
     ) {
     }
 
@@ -37,7 +37,7 @@ class ResetPasswordRequestEmailService
         }
 
         return (new TemplatedEmail())
-            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
+            ->from(new Address($this->appEmailAddress, $this->translator->trans('general.email_name')))
             ->to($user->getEmail())
             ->subject($this->translator->trans('authentication.reset_password.email.subject'))
             ->htmlTemplate($template)

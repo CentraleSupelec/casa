@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Constants;
 use App\Entity\School;
 use App\Model\HousingGenericRequestModel;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -15,7 +14,10 @@ class EmailService
 {
     public function __construct(
         private readonly TranslatorInterface $translator,
-        private readonly MailerInterface $mailer
+        private readonly MailerInterface $mailer,
+        private readonly string $appEmailAddress,
+        private readonly string $housingRequestDefaultEmail,
+        private readonly string $housingRequestArchiveEmail,
     ) {
     }
 
@@ -28,17 +30,17 @@ class EmailService
         HousingGenericRequestModel $requestModel, ?School $destinationSchool
     ): void {
         $studentEmail = $requestModel->getStudent()->getEmail();
-        $destinationEmail = $destinationSchool?->getHousingServiceEmail() ?: Constants::HOUSING_REQUEST_DEFAULT_EMAIL;
+        $destinationEmail = $destinationSchool?->getHousingServiceEmail() ?: $this->housingRequestDefaultEmail;
 
         $contentEmail = new TemplatedEmail();
 
-        $contentEmail->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
+        $contentEmail->from(new Address($this->appEmailAddress, $this->translator->trans('general.email_name')))
             ->subject($this->translator->trans('housing_request.generic.email.subject'))
             ->to($destinationEmail)
             ->addCc($studentEmail);
 
-        if (Constants::HOUSING_REQUEST_ARCHIVE_EMAIL != $destinationEmail) {
-            $contentEmail->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL);
+        if ($this->housingRequestArchiveEmail != $destinationEmail) {
+            $contentEmail->addBcc($this->housingRequestArchiveEmail);
         }
 
         $contentEmail
@@ -56,19 +58,19 @@ class EmailService
      */
     public function sendHousingEmergencyEmail(
         HousingGenericRequestModel $requestModel,
-        ?School $destinationSchool = null,
+        School $destinationSchool = null,
         array $emergencyQualificationQuestions = [],
         array $additionalDestinationEmails = [],
     ): void {
         $studentEmail = $requestModel->getStudent()->getEmail();
         $destinationEmails = array_unique(
             array_merge(
-                [$destinationSchool?->getHousingServiceEmail() ?: Constants::HOUSING_REQUEST_DEFAULT_EMAIL],
+                [$destinationSchool?->getHousingServiceEmail() ?: $this->housingRequestDefaultEmail],
                 $additionalDestinationEmails
             )
         );
         $email = (new TemplatedEmail())
-            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
+            ->from(new Address($this->appEmailAddress, $this->translator->trans('general.email_name')))
             ->subject($this->translator->trans('housing_request.emergency.email.subject'));
 
         foreach ($destinationEmails as $address) {
@@ -77,8 +79,8 @@ class EmailService
         $email
             ->addCc($studentEmail);
         // Add BCC to central email if not already the "to"
-        if (!in_array(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL, $destinationEmails)) {
-            $email->addBcc(Constants::HOUSING_REQUEST_ARCHIVE_EMAIL);
+        if (!in_array($this->housingRequestArchiveEmail, $destinationEmails)) {
+            $email->addBcc($this->housingRequestArchiveEmail);
         }
 
         $email

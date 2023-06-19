@@ -20,6 +20,10 @@
         {% block early_javascripts %}
             {{ encore_entry_script_tags('app') }}
             {% if matomo == 'true' %}
+                <div id="matomo"
+                    data-matomo-id="{{ matomo_id }}"
+                    data-matomo-url="{{ matomo_url }}"></div>
+
                 {{ encore_entry_script_tags('matomo_tracker') }}
             {% endif %}
         {% endblock %}

@@ -6,6 +6,9 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    app.email.address: '%env(APP_EMAIL_ADDRESS)%'
+    app.housingRequest.defaultEmail: '%env(HOUSING_REQUEST_DEFAULT_EMAIL)%'
+    app.housingRequest.archiveEmail: '%env(HOUSING_REQUEST_ARCHIVE_EMAIL)%'
 
 services:
     # default configuration for services in *this* file
@@ -68,3 +71,17 @@ services:
         arguments:
             - '%env(CLAMAV_URL)%'
             - '@logger'
+
+    App\Security\EmailVerifier:
+        arguments:
+            $appEmailAddress: '%app.email.address%'
+
+    App\Security\ResetPasswordRequestEmailService:
+        arguments:
+            $appEmailAddress: '%app.email.address%'
+
+    App\Service\EmailService:
+        arguments:
+            $appEmailAddress: '%app.email.address%'
+            $housingRequestDefaultEmail: '%app.housingRequest.defaultEmail%'
+            $housingRequestArchiveEmail: '%app.housingRequest.archiveEmail%'

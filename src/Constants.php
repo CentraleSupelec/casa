@@ -6,12 +6,6 @@ final class Constants
 {
     public const NON_VERIFIED_ACCOUNT_ERROR_CODE = 4031;
 
-    public const APP_EMAIL_ADDRESS = 'no-reply@universite-paris-saclay.fr';
-
-    public const HOUSING_REQUEST_DEFAULT_EMAIL = 'logement.etudiant@universite-paris-saclay.fr';
-
-    public const HOUSING_REQUEST_ARCHIVE_EMAIL = 'logement.etudiant@universite-paris-saclay.fr';
-
     /**
      * @return string[]
      */
@@ -75,12 +69,6 @@ final class Constants
             'housing_group.point_of_interest_category.store' => 'store',
             'housing_group.point_of_interest_category.transportation' => 'transportation',
         ];
-    }
-
-    // TODO: used ?
-    public static function getPlatformEmailAddress(): string
-    {
-        return 'psuh@paris-saclay.com';
     }
 
     /**

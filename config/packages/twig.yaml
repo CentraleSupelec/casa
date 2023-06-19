@@ -4,6 +4,11 @@ twig:
 
     globals:
         matomo: '%env(MATOMO)%'
+        matomo_id: '%env(MATOMO_ID)%'
+        matomo_url: '%env(MATOMO_URL)%'
+        app.email.address: '%env(APP_EMAIL_ADDRESS)%'
+        app.housingRequest.defaultEmail: '%env(HOUSING_REQUEST_DEFAULT_EMAIL)%'
+        app.housingRequest.archiveEmail: '%env(HOUSING_REQUEST_ARCHIVE_EMAIL)%'
 
 when@test:
     twig:

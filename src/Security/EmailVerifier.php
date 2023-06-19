@@ -2,7 +2,6 @@
 
 namespace App\Security;
 
-use App\Constants;
 use App\Model\PsuhUserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -16,17 +15,13 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 class EmailVerifier
 {
-    private VerifyEmailHelperInterface $verifyEmailHelper;
-    private MailerInterface $mailer;
-    private EntityManagerInterface $entityManager;
-    private TranslatorInterface $translator;
-
-    public function __construct(VerifyEmailHelperInterface $helper, MailerInterface $mailer, EntityManagerInterface $manager, TranslatorInterface $translator)
+    public function __construct(
+        private VerifyEmailHelperInterface $verifyEmailHelper,
+        private MailerInterface $mailer,
+        private EntityManagerInterface $entityManager,
+        private TranslatorInterface $translator,
+        private string $appEmailAddress)
     {
-        $this->verifyEmailHelper = $helper;
-        $this->mailer = $mailer;
-        $this->entityManager = $manager;
-        $this->translator = $translator;
     }
 
     /**
@@ -71,7 +66,7 @@ class EmailVerifier
     private function getVerificationEmail(PsuhUserInterface $user): TemplatedEmail
     {
         return (new TemplatedEmail())
-            ->from(new Address(Constants::APP_EMAIL_ADDRESS, $this->translator->trans('general.email_name')))
+            ->from(new Address($this->appEmailAddress, $this->translator->trans('general.email_name')))
             ->to($user->getEmail())
             ->subject($this->translator->trans('authentication.verification_email.subject'))
             ->htmlTemplate('emails/confirmation_email.html.twig');
