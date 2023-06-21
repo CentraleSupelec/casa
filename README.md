@@ -130,3 +130,7 @@ symfony console doctrine:fixtures:load
 
 * Formatting automatique des fichiers de front-end (templates twig, js, scss, etc.) avec `prettier`
 * Débugger php (avec Xdebug)
+
+# Assets sur Github
+
+Les répertoires assets/images/guide et assets/images/home sont vides car les images du projet initial ne peuvent pas être diffusées en open source. 
