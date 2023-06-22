@@ -134,3 +134,9 @@ symfony console doctrine:fixtures:load
 # Assets sur Github
 
 Les répertoires assets/images/guide et assets/images/home sont vides car les images du projet initial ne peuvent pas être diffusées en open source. 
+
+## Documentation
+
+Pour éditer le mini site de présentation, lancer le serveur mkdocs en local : `docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material`
+
+L'intégration continue de Github déploiera automatiquement les modifications envoyées vers la branche main sur [https://centralesupelec.github.io/casa/](https://centralesupelec.github.io/casa/)
