@@ -16,5 +16,9 @@ Ce code a été utilisé par l’[Université Paris-Saclay](https://www.universi
 </figure>
 
 <figure markdown>
+  [![Carte Github](https://github-readme-stats.vercel.app/api/pin/?username=centralesupelec&repo=casa)](https://github.com/CentraleSupelec/casa)
+</figure>
+
+<figure markdown>
   [Contactez nous](mailto:contact.opensource@centralesupelec.fr){ .md-button }
 </figure>
