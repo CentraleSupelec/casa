@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "casa.fullname" . }}-clamav
+  labels:
+    {{- include "casa.commonLabels" . | nindent 4 }}
+    {{- include "casa.clamavSelectorLabels" . | nindent 4 }}
+    app: clamav
+spec:
+  # We only support 1 replica at this time
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clamav
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: clamav
+    spec:
+      containers:
+        - image: clamav/clamav:0.104
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: '1'
+              memory: 4Gi
+            requests:
+              cpu: 25m
+              memory: 1500Mi
+          name: clamav
+          ports:
+            - containerPort: 3310
+              name: clamav
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: clamav
+            initialDelaySeconds: 120
+            periodSeconds: 5
+            timeoutSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: clamav
+            initialDelaySeconds: 120
+            periodSeconds: 5
+            timeoutSeconds: 10

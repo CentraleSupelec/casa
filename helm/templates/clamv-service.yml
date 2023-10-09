@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "casa.fullname" . }}-clamav
+  labels:
+    {{- include "casa.commonLabels" . | nindent 4 }}
+    {{- include "casa.clamavSelectorLabels" . | nindent 4 }}
+    app: clamav
+spec:
+  selector:
+    app: clamav
+  ports:
+    - name: clamav
+      port: 3310
+      targetPort: 3310

@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "casa.fullname" . }}
+  labels:
+    {{- include "casa.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.appReplicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "casa.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/app-env-secret.yaml") . | sha256sum | trunc 10 | quote  }}
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "casa.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "casa.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+      {{- include "casa.volumes" . | nindent 8 }}
+      initContainers:
+        - image: bash:5
+          command: ['sh', '-c', 'until timeout 1 bash -c "cat < /dev/null > /dev/tcp/${POSTGRES_HOST:-{{ include "casa.fullname" . }}-postgresql}/${POSTGRES_PORT:-5432}" > /dev/null 2>&1; do  >&2 echo "Wait for it - postgres"; sleep 1; done']
+          name: wait-for-postgres
+          {{- with .Values.waitFor.postgresEnv }}
+          env:
+            {{- range $key, $val := . }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+            {{- end }}
+          {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}-nginx
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.appImage.nginxRepository }}:{{ .Values.appImage.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.appImage.pullPolicy }}
+          env:
+            - name: PHP_BACKEND
+              value: localhost
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: http
+          readinessProbe:
+            tcpSocket:
+              port: http
+          resources:
+            {{- toYaml .Values.nginxResources | nindent 12 }}
+        - name: {{ .Chart.Name }}-php
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.appImage.phpRepository }}:{{ .Values.appImage.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.appImage.pullPolicy }}
+          volumeMounts:
+            {{- include "casa.volume_mounts" . | nindent 12 }}
+          ports:
+            - name: fpm
+              containerPort: 9000
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            exec:
+              command:
+                - docker-healthcheck
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            exec:
+              command:
+                - docker-healthcheck
+          resources:
+            {{- toYaml .Values.phpResources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
